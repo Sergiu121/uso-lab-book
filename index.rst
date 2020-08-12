@@ -28,6 +28,7 @@ USO lab book
    chapters/files/io_redirection.rst
    chapters/files/archive.rst
    chapters/files/file_system.rst
+   chapters/files/cheatsheet.rst
 
 .. toctree::
    :numbered:
