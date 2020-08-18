@@ -1,20 +1,20 @@
 Compilarea unui fișier cod sursă C
 ==================================
 
-1) Crearea unui nou branch de lucru
------------------------------------
+Crearea unui nou branch de lucru
+--------------------------------
 
 Își vor crea un branch cu numele lor pe care vor lucra pe parcursul acestei secțiuni.
 
-2) Compilarea unui fișier cod sursă C
--------------------------------------
+Compilarea unui fișier cod sursă C
+----------------------------------
 
 Aici vor găsi în primul director un cod sursă C. Vor avea de compilat codul
 și rulat binarul pentru a vedea că totul e în regulă. Scopul este să rezulte 2 binare: a.out
 și unul denumit custom
 
-3) Recompilarea programului
-------------------------------
+Recompilarea programului
+---------------------------
 
 Vor face o modificare în codul sursă (oricât de mică) cu scopul de a crea un commit cu asta.
 Până să comită schimbările se vor ocupa să modifice și fișierul .gitignore pentru a ignora 
