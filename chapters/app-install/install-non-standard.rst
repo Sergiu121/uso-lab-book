@@ -1,3 +1,5 @@
+.. _app_install_non_standard:
+
 Instalarea și dezinstalarea aplicațiilor în mod nestandard
 ==========================================================
 

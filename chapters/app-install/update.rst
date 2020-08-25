@@ -1,3 +1,5 @@
+.. _app_install_update:
+
 Actualizarea aplicațiilor
 =========================
 

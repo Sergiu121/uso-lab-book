@@ -1,3 +1,5 @@
+.. _app_install_config:
+
 Configurarea aplicațiilor
 =========================
 

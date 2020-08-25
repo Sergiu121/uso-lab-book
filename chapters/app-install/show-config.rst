@@ -1,3 +1,5 @@
+.. _app_install_view_config:
+
 Vizualizarea configurației sistemului
 =====================================
 

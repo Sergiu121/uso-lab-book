@@ -1,3 +1,5 @@
+.. _app_install_summary2:
+
 Sumar: Instalarea, dezinstalarea, investigarea, actualizarea aplicațiilor
 =========================================================================
 

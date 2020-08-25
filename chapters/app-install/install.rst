@@ -1,3 +1,5 @@
+.. _app_install_install_uninstall:
+
 Instalarea și dezinstalarea aplicațiilor
 ========================================
 

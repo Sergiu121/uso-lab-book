@@ -1,3 +1,5 @@
+.. _app_install_app_list:
+
 Investigarea aplicațiilor instalate
 ===================================
 

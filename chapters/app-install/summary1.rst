@@ -1,3 +1,5 @@
+.. _app_install_summary1:
+
 Sumar: Pornirea, rularea și configurarea aplicațiilor
 =======================================================
 
