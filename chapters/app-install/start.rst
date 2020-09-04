@@ -239,8 +239,8 @@ Pornirea aplicațiilor în linie de comandă
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Aplicațiile în linie de comandă nu au nevoie de mediu grafic.
-Interacțiunea lor cu utilizatorul se face prin intermediul terminalului: la terminal se introduc informații de la utilizator și tot la terminal se afișează rezultatele rulării aplicațiilor.
-Cel mai adesea numim aplicațiile în linie de comandă **utilitare**.
+Interacțiunea lor cu utilizatorul se face prin intermediul terminalului: în terminal se introduc informații de la utilizator și tot în terminal se afișează rezultatele rulării aplicațiilor.
+Cel mai adesea numim aplicațiile în linie de comandă **utilitare** sau, pur și simplu, **comenzi**.
 
 Pentru a porni aplicații / utilitare în linia de comandă, folosim comenzi care conțin numele utilitarului urmate, eventual, de argumente.
 Astfel, pentru a porni utilitarele ``ls`` sau ``ps`` folosim comenzi precum cele de mai jos, simple sau cu argumente:
@@ -275,7 +275,7 @@ Astfel, pentru a porni utilitarele ``ls`` sau ``ps`` folosim comenzi precum cele
 Aplicații interactive în linia de comandă
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Utilitarele ``ls`` și ``ps`` pe care le-am folosit mai sus pornesc, rulează, afișează informații utilizatorului la terminal și apoi se opresc.
+Utilitarele ``ls`` și ``ps`` pe care le-am folosit mai sus pornesc, rulează, afișează informații utilizatorului în terminal și apoi se opresc.
 Alte utilitare în linia de comandă sunt interactive.
 Adică folosesc date introduse de utilizator și își încheie execuția doar după introducerea acestor date sau la comanda utilizatorului.
 
@@ -295,11 +295,11 @@ Opriți aplicația folosind combinația de taste ``<Esc>:q!`` urmată de ``Enter
 Oprirea forțată a aplicațiilor în linia de comandă
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Se poate întâmpla ca o aplicație în linia de comandă să ruleze pentru prea mult sau să se blocheze.
+Se poate întâmpla ca o aplicație în linia de comandă să ruleze pentru prea mult timp sau să se blocheze.
 Caz în care dorim să o oprim.
 Soluția de avarie este să închidem fereastra de terminal, lucru care, de obicei, închide și aplicația.
 Soluția mai bună este să închidem doar aplicația.
-Acest lucru în facem folosind combinația de taste ``Ctrl+c`` care oprește aplicația care rulează în terminal.
+Acest lucru îl facem folosind combinația de taste ``Ctrl+c`` care oprește aplicația care rulează în terminal.
 Acest lucru poate fi realizat și pentru aplicații grafice, așa cum am văzut mai sus.
 
 De exemplu, dacă folosim comanda ``sleep 100`` care se va bloca pentru 100 de secunde, o vom opri folosind ``Ctrl+c`` ca mai jos:
@@ -339,7 +339,7 @@ Unele aplicații în linia de comandă sunt interactive și trebuie oprite expli
 Dacă o aplicație în linia de comandă se blochează sau durează foarte mult, poate fi oprită folosind combinația de taste ``Ctrl+c``.
 
 O aplicație grafică pornită din terminal va "acapara" terminalul și acesta nu va accepta alte comenzi.
-Pentru acesta putem trece aplicația grafică în background, folosind combinația de taste ``Ctrl+z`` urmată de comanda ``bg``.
+Pentru aceasta putem trece aplicația grafică în background, folosind combinația de taste ``Ctrl+z`` urmată de comanda ``bg``.
 
 .. _app_install_start_stop_exec:
 
