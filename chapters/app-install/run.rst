@@ -804,7 +804,7 @@ Mai sus comanda ``fg`` a restaurat procesul ``sleep`` care a preluat din nou con
 
     Supendarea și restaurarea proceselor sunt realizate folosind tot semnale.
     Astfel, combinația de taste ``Ctrl+z`` transmite un semnal, numit ``SIGSTOP`` procesului.
-    La fel, comanda ``fg`` transmite un semnal numit
+    La fel, comanda ``fg`` transmite un semnal numit ``SIGCONT``.
 
 Background și foreground
 """"""""""""""""""""""""
@@ -833,6 +833,7 @@ Dacă dorim să pornim o comanda direct în **background** folosim operatorul ``
     [1]+  Running                 sleep 100 &
 
 Așa cum reiese de mai sus, procesul ``sleep`` rulează (``Running``) în **background**.
+Operatorul shell ``&`` (*ampersand*), folosit la sfârșitul unei comenzi, duce la pornirea procesului respectiv în **background** în starea de rulare (``Running``).
 Comanda ``jobs`` are astfel rolul de a afișa toate procesele aflate în **background**, indiferent de starea lor (suspendate sau în rulare).
 
 Sumarizat, modul în care se face tranziția între stări și între **foreground** și **background** se găsește în imaginea de mai jos:
@@ -840,7 +841,7 @@ Sumarizat, modul în care se face tranziția între stări și între **foregrou
 .. image:: img/background-foreground.svg
     :width: 600px
     :align: center
-    :alt: Utilitarul top
+    :alt: Foreground și background
 
 Exerciții: Oprirea și suspendarea proceselor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
