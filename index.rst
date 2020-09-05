@@ -59,7 +59,6 @@ USO lab book
    chapters/app-install/show-config.rst
    chapters/app-install/install.rst
    chapters/app-install/install-non-standard.rst
-   chapters/app-install/update.rst
    chapters/app-install/show.rst
    chapters/app-install/summary2.rst
 
