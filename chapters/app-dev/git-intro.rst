@@ -1,10 +1,10 @@
 Introducere în Git și GitHub
 ============================
 
-În majoritatea proiectelor la care vom lucra nu vom fi singuri, ci vom contribui la un proiect mai mare care este modificat zilnic de mai mulți oameni.
-În mod particular, când vorbim despre un proiect software avem nevoie de un mod de a împarți codul și de a urmări în același timp cine ce modificări a adus programului.
+În majoritatea proiectelor vom lucra într-o echipă, deci vom contribui la un proiect mai mare care este modificat zilnic de mai mulți oameni.
+În mod particular, când vorbim despre un proiect software avem nevoie de un mod de a distribui codul și de a urmări în același timp cine ce modificări a adus programului.
 
-.. admonition:: Example
+.. admonition:: Scenariu uzual
 
           Astăzi la ora 13:00 voi vă apucați de implementat o funcționalitate pentru proiectul la care lucrați.
           Luați întregul cod sursă și îl modificați după cum aveți nevoie.
@@ -20,7 +20,7 @@ Introducere în Git și GitHub
 
           Veți avea nevoie întotdeauna să rezolvați astfel de situații, iar acest proces devine anevoios.
 
-Pentru a putea rezolva problemele de sincronizare între 2 sau mai mulți colegi de echipă care lucrează la același proiect, este util să avem o gestiune versionată a codului, adică să avem un istoric de modificări, adică o listă de versiuni.
+Pentru a putea rezolva problemele de sincronizare între 2 sau mai mulți colegi de echipă care lucrează la același proiect, este util să avem un sistem de versionare a codului, adică să avem un istoric de modificări, adică o listă de versiuni.
 Versionarea codului aduce și alte avantaje precum posibilitatea de a reveni la o versiune mai veche a proiectului, găsirea rapidă a autorului unei secvențe de cod sau pur și simplu organizarea facilă a unui proiect.
 
 **Git** este un sistem de management și versionare a codului sursă care permite această partajare dorită.
@@ -28,6 +28,7 @@ Versionarea codului aduce și alte avantaje precum posibilitatea de a reveni la 
 `GitHub <http://www.github.com/>`_ este o platformă online, bazată pe Git, pe care dezvoltatorii o pot folosi pentru a stoca și versiona codul lor sursă.
 Git este utilitarul folosit, iar GitHub este serverul și aplicația web pe care rulează acesta, locul în care păstrăm repository-ul remote.
 Similar cu GitHub există și alte platforme precum `Bitbucket <https://bitbucket.org>`_ sau `GitLab <https://about.gitlab.com>`_.
+Comenzile pe care le vom studia se aplică pentru toate platformele care folosesc ``Git``, doar interfața grafică diferă.
 În această carte vom folosi GitHub ca suport.
 În mare parte acesta nu diferă foarte mult de alte platforme.
 
@@ -53,16 +54,17 @@ Această inițializare presupune crearea unui director numit ``.git`` în care s
 
 **Fork**
 
-Operația **fork** are rolul de a crea o copie a unui repository deja existent.
+Operația **fork** are rolul de a crea o copie a unui repository deja existent care nu vă aparține/pentru care nu aveți drept de scriere.
 Copia se realizează doar pe GitHub, nu și local.
 În general, această operație se realizează în momentul în care vreți să aduceți modificări asupra unui repository deja existent sau dacă vreți să experimentați.
 Puteți ulterior să publicați schimbările făcute în repository-ul inițial, însă doar după obținerea unor aprobări de la deținătorul proiectului.
+Aceste schimbări se fac prin intermediul unui Pull Request, denumit uzual PR.
+Vom vorbi despre Pull Requesturi în secțiunea TODO.
 
 **Clone**
 
 Operația **clone** realizează o copie locală a unui repository.
 Această copie poate fi acum actualizată după bunul plac.
-
 
 Crearea unui cont pe GitHub (dacă nu aveți deja)
 ------------------------------------------------
@@ -80,11 +82,13 @@ Pagina de pornire va arăta similar cu cea din imaginea de mai jos.
 Introduceți un username, adresa voastră de e-mail și o parolă sigură pentru cont.
 Pentru validarea contului accesați-vă căsuța de e-mail.
 Acolo veți găsi un e-mail în care vi se explică cum se poate valida noul cont creat.
+Verificați și căsuța **spam** în caz că nu ați primit nimic în inbox.
 
 **GitHub Student Pack**
 
-GitHub oferă celor care sunt încă studenți numeroare benificii (pe care în mod normal utilizatorii nu le au decât contra cost) studenților. 
+GitHub oferă studenților numeroase beneficii care în mod normal sunt contra cost (plătite). 
 Găsiți mai multe detalii pe site-ul `oficial <https://education.github.com/pack>`_.
+
 
 Pregătirea inițială a mediului Git
 ----------------------------------
@@ -98,8 +102,14 @@ Pentru configurarea numelui și adresei de e-mail rulați comenzile de mai jos.
 .. code-block:: bash
 
     student@uso:~$ git config --global user.name "Prenume Nume"
-    student@uso:~$ git config --global user.email "adresa_de_email@email.com"
+    student@uso:~$ git config --global user.email "adresa_de_email@example.com"
+  
+De exemplu, pentru autoarea acestei secțiuni comenzile rulate sunt:
 
+.. code-block:: bash
+
+    student@uso:~$ git config --global user.name "Liza Babu"
+    student@uso:~$ git config --global user.email "lizababu@example.com"
 
 Crearea primului repository
 ---------------------------
@@ -119,8 +129,8 @@ Veți apăsa pe săgeată și veți obține ceva similar cu vedeți în imaginea
   :alt: Alternative text
 
 Apăsați pe ``Your profile`` pentru a merge pe profilul vostru.
-Aici este locul în care veți putea contribuțiile voastre pe GitHub, proiectele la care lucrați, informațiile despre voi pe care le faceți publice.
-În partea de sus a ecranului veți vedea un meniu orizonatal care conține 4 opțiuni: ``Overview``, ``Repositories``, `` Projects`` și ``Packages``.
+Aici este locul în care veți putea vedea contribuțiile voastre pe GitHub, proiectele la care lucrați, informațiile despre voi pe care le faceți publice.
+În partea de sus a ecranului veți vedea un meniu orizonatal care conține 4 opțiuni: ``Overview``, ``Repositories``, ``Projects`` și ``Packages``.
 
 .. figure:: ./img/Create-new-repo-2.png
   :scale: 45%
@@ -133,8 +143,8 @@ Acum veți vedea întreaga listă de repository-uri pe care le aveți. Pentru a 
   :scale: 45%
   :alt: Alternative text
 
-Acum este momentul în care veți da un nume proiectului vostru, o descriere succintă al acestuia și veți putea decide dacă să fie public (vizibil tuturor utilizatorilor) sau privat (vizibil doar pentru voi și eventualii colaboratori ai proiectului).
-Vă va apărea un form similar cu cel din imaginea de mai jos.
+Acum este momentul în care veți da un nume proiectului vostru, o descriere succintă a acestuia și veți putea decide dacă să fie public (vizibil tuturor utilizatorilor) sau privat (vizibil doar pentru voi și eventualii colaboratori ai proiectului).
+Vă va apărea un formular similar cu cel din imaginea de mai jos.
 Pentru acest tutorial vom crea un repository public.
 De asemenea, este indicat ca numele repository-ului să descrie bine proiectul.
 Descrierea proiectului este opțională, însă nicio informație în plus nu strică.
@@ -146,8 +156,10 @@ TODO: schimbă poza din privat în public
   :alt: Alternative text
 
 Apăsați pe ``Create repository``.
-Vor apărea câteva instrucțiuni pentru crearea unui repository local noi și conectarea celui noi cu cel remote.
+Vor apărea câteva instrucțiuni pentru crearea unui repository local nou și conectarea celui noi cu cel remote.
 Acest lucru este acoperit în secțiunile următoare.
+
+TODO: Adaugă GIF cu cele 4 imagini.
 
 Crearea unui repository gol local
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -164,7 +176,7 @@ Navigați către acea cale.
     student@uso:~$ cd my-first-repository
     student@uso:~/my-first-repository$
 
-Următorul pas este de a inițializa repository-ul folosind opțiunea ``init``. Observați că se crează directorul ``.git`` în directorul nostru.
+Următorul pas este de a inițializa repository-ul folosind opțiunea ``init``. Observați că se creează directorul ``.git`` în directorul nostru.
 
 .. code-block:: bash
 
@@ -179,7 +191,8 @@ Conectarea celor 2 repository-uri
 
 Ultimul pas rămas este să conectăm repository-urile proaspăt create.
 Acest lucru presupune setarea orginului, adică repository-ului remote la care se conectează cel local.
-În comanda de mai jos ``{username}`` este numele utilizatorului nostru de pe GitHub.
+În comanda de mai jos ``{username}`` este numele utilizatorului vostru de pe GitHub.
+De exemplu, pentru autoarea acestui capitol ``{username}`` se înlocuiește cu ``lizababu``.
 
 TODO: de pus o diagramă de tip before and after cu cele două repository-uri neconectate, apoi conectate.
 
@@ -187,7 +200,7 @@ TODO: de pus o diagramă de tip before and after cu cele două repository-uri ne
 
     student@uso:~/my-first-repository$  git remote add origin https://github.com/{username}/my-first-repository.git
 
-Pentru verificarea originului unui repository local folosiți comanda următoare:
+Pentru verificarea repository-ului origine, numit **origin** în Git, folosiți comanda următoare:
 
 .. code-block:: bash
 
