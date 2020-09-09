@@ -25,7 +25,7 @@ USO lab book
 
    chapters/app-dev/git-intro.rst
    chapters/app-dev/git-first-commit.rst
-   chapters/app-dev/git-more-commits.rst
+   chapters/app-dev/git-branches.rst
    chapters/app-dev/git-first-pull-request.rst
    chapters/app-dev/make-setup.rst
    chapters/app-dev/make-intro.rst
