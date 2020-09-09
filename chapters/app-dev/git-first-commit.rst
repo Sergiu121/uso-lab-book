@@ -8,105 +8,47 @@ Dacă starea proiectului nu se publică, atunci ceilalți colaboratori nu vor pu
 Pentru a putea publica o schimbare trebuie să faceți operația **push**.
 Vom vedea în următoarele secțiuni care sunt pașii pentru a crea un commit și pentru a-l publica.
 
-Branch-ul master
-----------------
+În următoarele secțiuni vom contribui la repository-ul creat în secțiunea anterioară (TODO adaugă ref).
+Vom crea pas cu pas un proiect care conține un algoritm de sortare al unui vector de elemente întregi.
 
-Un **branch** este echivalentul unui fir de evoluție a codului sursă.
-Prin analogie, branch-ul ``master`` este firul principal de evoluție al codului sursă.
-Cu alte cuvinte, uzual, branch-ul master este cel care va conține codul sursă la zi.
-
-.. admonition:: Example
-
-    Un colaborator al proiectului vrea să facă schimbări asupra codului sursă, acesta va trebui să facă aceste modificări față de o referință.
-    În general, acesta va lua ultima versiune a codului sursă și va începe să facă modificări pe acesta.
-    După cum am menționat mai devreme, ultima versiune se află pe branch-ul master.
-    Așadar putem spune că acest colaborator **lucrează pe branch-ul master**.
-
-    Un alt colaborator dorește să facă o altă schimbare asupra codului sursă în același timp cu primul.
-    La fel ca primul colaborator, acesta va lua ultima versiune a codului sursă și îl va modifica.
-
-    Ambii colaboratori vor face câte un **commit** și un **push** pe branch-ul **master** pentru a propaga schimbările.
-
-    Ce se întâmplă în momentul în care modificările celor 2 sunt contradictorii?
-    Cum alegem care modificare este cea corectă?
-    Cum alegem ce modificare vrem să păstrăm?
-
-În realitate, situația prezentată mai sus se rezolvă rapid.
-Unul dintre colaboratori va publica schimbările la un moment ``T`` de timp.
-În acel moment, branch-ul master este actualizat astfel încât cea mai nouă versiune de cod este cea modificată de cel care a efectuat primul un commit.
-La momentul ``T+x``, celălalt colaborator publică și el schimbările sale și acum branch-ul master va referi codul sursă ce conține schimbările aduse de cel de-al doilea commit.
-Practic, toate modificările aduse pe branch (în acest caz master) sunt ordonate cronologic.
-
-TODO: diagramă cu commit-uri pe branch-ul master.
-
-Problema este rezolvată, însă ce se întâmplă dacă al doilea commit nu este tocmai în regulă, iar primul da?
-Avem nevoie de o modalitate de "a da timpul înapoi".
-Din fericire, există o modalitate de a face asta, însă nu este foarte eficientă în cazul proiectelor cu mulți colaboratori care aduc multe schimbări.
-
-
-Branch-uri secundare
-^^^^^^^^^^^^^^^^^^^^
-
-Pe lângă branch-ul master, pot exista mai multe branch-uri secundare.
-Acestea ajută rezolvarea problemelor precum cea descrisă mai sus.
-Se recomandă folosirea unui branch pentru fiecare modificare a codului în parte.
-Astfel, în situația de mai sus, fiecare colaborator ar crea un nou branch (care inițial va fi identic cu cel master) și vor lucra în continuare pe acel fir de evoluție.
-În momentul în care unul a terminat de lucrat, acesta poate publica modificările pe branch-ul său.
-Astfel branch-ul master rămăne neatins.
-În acest moment, codul sursă de pe branch-ul secundar poate fi revizuit și ulterior publicat în branch-ul master dacă se decide că totul este în regulă.
-Vom vedea care sunt pașii pentru a face acest lucru într-o secțiune viitoare.
-
-În terminal putem verifica rapid pe ce branch ne aflăm folosind comanda ``git branch``.
-În acest moment comanda nu va arăta nimic pentru că nu am făcut niciun commit și deci, nu avem niciun fir de evoluție al codului sursă.
-De aceea, în secțiunea anterioară am văzut că ``HEAD branch`` este unknown.
-
-.. code-block:: bash
-
-    student@uso:~/my-first-repository$ git branch
-    student@uso:~/my-first-repository$
-
-
-Adăugarea unui README și a unui fișier .gitignore
--------------------------------------------------
+Adăugarea unui fișier README
+----------------------------
 
 Am stabilit mai devreme că într-un repository se află întreg codul sursă al unui proiect.
 Pe lângă codul sursă se recomandă adăugarea unui fișier (de obicei intitulat README) în care se află diverse informații despre un proiect.
-Spre exemplu în README se află informații despre cum se compilează un proiect, cum se rulează, ce funcționalități are proiectul, pe ce tip de platforme poate fi rulat etc.
+Spre exemplu în README se află informații despre ce funcționalități are proiectul nostru, cum se compilează un proiect, cum se rulează, pe ce tip de platforme poate fi rulat etc.
 
-Haide să adăugăm proiectului nostru un fișier ``README.md``.
-Folosim extensia ``.md`` care semnalează un fișier de tip Markdown.
-Facem acest lucru deoarece pe GitHub fișierele README sunt afișate în format Markdown.
+Adăugăm proiectului nostru un fișier ``README.md``.
 
 .. code-block:: bash
 
-    student@uso:~/my-first-repository$ echo "# My first project ever" >> README.md
+    student@uso:~/my-first-repository$ echo "# Bubble Sort Algorithm for Beginners" > README.md
     student@uso:~/my-first-repository$ ls -a
     ./         ../        .git/      README.md
 
-
-În general nu se recomandă publicarea executabilelor (programelor compilate) pe GitHub deoarece executabile sunt dependente de sistemul pe care au fost create.
-Este bine ca în cazul proiectelor de pe GitHub să existe instrucțiuni despre cum se poate obține programul final pe propriu sistem pentru a evita astfel de probleme de compatibilitate.
-Așadar, pentru a nu publica fișiere executabile, vrem ca ele să nu facă parte din commiturile noastre.
-Pentru a fi siguri că anumite fișiere sunt ignorate, putem să le adăugăm într-un fișier numit ``.gitignore``.
-Aici vom trece, câte una pe fiecare linie, fișierele pe care nu vrem să le publicăm.
-Momentan nu avem fișiere pe care vrem să le ignorăm, așa că vom crea un fișier ``.gitignore`` gol.
-
-.. code-block:: bash
-
-    student@uso:~/my-first-repository$ touch .gitignore
-    student@uso:~/my-first-repository$ ls -a
-    ./          ../         .git/       .gitignore  README.md
+Folosim extensia ``.md`` care semnalează un fișier de tip `Markdown <https://www.markdownguide.org>`_.
+Facem acest lucru deoarece pe GitHub fișierele README sunt afișate în format Markdown.
+Acest format este simplu de înțeles, însă nu face obiectul acestei cărți, deci nu vom insista pe înțelegerea lui.
 
 
 Crearea primului commit
 -----------------------
 
+Prin **commituri** aducem modificări asupra unui repository.
+Aceasta este modalitatea prin care putem propaga schimbări făcute în repository.
+Astfel, Git poate păstra un istoric al modificărilor făcute.
+
+
 Verificarea stării clonei
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Starea unei clone este dată de fapt de starea branch-ului pe care ați lucrat.
-În cazul vostru este vorba de branch-ul master.
-Pentru a verifica starea clonei folosiți comanda ``git status``.
+.. admonition:: Reamintire
+
+    O **clonă** a unui repository este o copie locală a unui repository deja existent pe GitHub.
+
+
+Ne interesează întotdeauna starea clonei pe care lucrăm.
+Starea clonei ne va indica ce fișiere am creat, modificat sau șters de la ultima sincronizare cu repository-ul remote.
 
 .. code-block:: bash
 
@@ -118,44 +60,32 @@ Pentru a verifica starea clonei folosiți comanda ``git status``.
     Untracked files:
     (use "git add <file>..." to include in what will be committed)
 
-        .gitignore
         README.md
+
+Pentru a verifica starea clonei folosim comanda ``git status``.
+
 
 Prima linie afișată ``On branch master`` se referă la branch-ul master local.
 Ne indică faptul că modificările făcute, adică crearea fișierelor ``README.md`` și ``.gitignore`` au fost făcute pe branch-ul master.
 
-A doua linie afișată ``No commit yet`` se referă la faptul că nu am făcut până acum niciun comit, adică am pornit de la un repository gol.
+A doua linie afișată ``No commits yet`` se referă la faptul că nu am făcut până acum niciun comit, adică am pornit de la un repository gol.
 
-În ultima parte a outputului vedem că se află o listă de fișiere ``untracked``, adică lista fișierelor pe care Git le vede ca modificate/nou adăugate, însă nu știe cum să le catalogheze.
-Este datoria noastră de a adăuga fișierele în aria de vizibilitate pentru Git.
+În ultima parte a outputului vedem că se află o listă de fișiere ``untracked``, adică lista fișierelor pe care Git le vede ca nou adăugate în repository-ul curent, dar pe care nu le monitorizează încă.
+Asta înseamnă că deocamdată orice modificare făcută asupra acestor fișiere nu va fi urmărită de Git.
 
-Adăugarea fișierelor (în staging)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. note::
 
-Pentru a adăuga fișierele în ``staging``, adică pentru a le face vizibile pentru Git, folosim comanda ``git add``.
-Avem două variante pentru a adăuga ambele fișiere.
+    Este datoria noastră de a adăuga fișierele în aria de vizibilitate pentru Git.
 
-Prima variantă presupune folosirea opțiunii ``-A`` care va pune în staging toate fișierele modificate (include fișierele deja existente modificate, fișierele nou create și fișierele șterse). 
-Opțiunea ``.`` va ignora fișierele șterse, iar opțiunea ``-u`` va ignora fișierele nou create.
+Adăugarea unui fișier (în staging area)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: bash
-
-    student@uso:~/my-first-repository$ git add -A
-    student@uso:~/my-first-repository$ 
-
-A doua variantă presupunerea adăugării fișierelor individual.
-Această variantă este de folos atunci când avem mai multe fișiere modificate, însă nu vrem să facem un commit decât cu o parte dintre ele.
+Adăugăm fișierul **README.md** în aria de vizibilitate pentru Git, adică în **staging area**.
+În **staging area** adăugăm fișierele pe care le pregătim pentru un commit.
 
 .. code-block:: bash
 
-    student@uso:~/my-first-repository$ git add .gitignore README.md
-    student@uso:~/my-first-repository$
-
-Ambele situații de mai sus produc, în acest caz același efect.
-În urma stagingului, comanda ``git status`` va produce un nou output. Haideți să-l interpretăm.
-
-.. code-block:: bash
-
+    student@uso:~/my-first-repository$ git add README.md
     student@uso:~/my-first-repository$ git status
     On branch master
 
@@ -164,81 +94,105 @@ Ambele situații de mai sus produc, în acest caz același efect.
     Changes to be committed:
     (use "git rm --cached <file>..." to unstage)
 
-        new file:   .gitignore
         new file:   README.md
+
+În urma stagingului, comanda ``git status`` va produce un nou output. Haideți să-l interpretăm.
 
 Primele 2 mesaje afișate au rămas neschimbate.
 Partea interesantă apare la ultima parte a outputului.
 Vedem că mesajul a devenit ``Changes to be commited``.
 Asta înseamnă că acum Git știe de noile modificări și așteaptă ca modificările să fie adunate într-un commit.
 
-
 Crearea commitului local cu un mesaj corespunzător
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Următorul pas în etapa de dezvoltare este chiar crearea unui nou commit cu modificările făcute.
-Până atunci însă, există câteva bune practici de care ar trebui să țineți întotdeauna cont.
+Când vom da comanda ``git commit`` se va deschide editorul text default al sistemului cu un fișier în care vom scrie pe prima linie o descriere a commitului, adică vom explica pe scurt ce modificări am adus cu acest commit.
+Pe următoarele linii se recomandă să facem o descriere mai detaliată a schimbărilor: care a fost problema inițială, cum am rezolvat-o.
 
-.. note::
-    E bine ca atunci când ne apucăm de lucru să avem în vedere să sincronizăm din când în când repository-ul local cu cel remote.
-    Pot apărea diferențe în momentul în care altcineva a publicat schimbări remote după ce am făcut noi ultima sincronizare.
-    În momentul în care cineva a publicat modificări asupra unei secvențe de cod pe care și noi o modificăm, apar conflicte.
-    Conflictele trebuie rezolvate.
+.. code-block::
+
+    student@uso:~/my-first-repository$ git commit
+    [master (root-commit) 0dfb632] Add README.md
+    1 file changed, 1 insertion(+)
+    create mode 100644 README.md  
+    student@uso:~/my-first-repository$ git status
+    On branch master
+    nothing to commit, working tree clean  
+
+
+Există câteva bune practici de care trebuie să țineți întotdeauna cont.
+
+E bine ca atunci când ne apucăm de lucru să avem în vedere să sincronizăm din când în când repository-ul local cu cel remote.
+Pot apărea diferențe în momentul în care altcineva a publicat schimbări remote după ce am făcut noi ultima sincronizare.
+În momentul în care cineva a publicat modificări asupra unei secvențe de cod pe care și noi o modificăm, apar conflicte.
+Conflictele trebuie rezolvate.
 
 Putem face acest lucru în două moduri.
 Operația ``fetch`` are rolul de a aduce local toate schimbările, însă nu va face și operația de ``merge`` care presupune rezolvarea conflictelor și ajungerea a un front comun.
 Operația ``pull`` face, de fapt, un ``fetch`` și un ``merge``, adică va aduce local toate modificările și va încerca să rezolve conflicetele în mod automat.
 Dacă rezolvarea conflictelor nu se poate face automat, trebuie să ne ocupăm de acest pas.
 
-.. note:: În acest moment repository-ul remote este gol, nu are niciun branch activ și niciun commit, iar operația de sincronizare nu își are rostul.
-          Vom ține cont însă de acest aspect în secțiunile următoare.
-
-Crearea unui commit nou se face prin intermediul comenzii ``git commit`` ca în exemplul de mai jos.
-
-.. code-block::
-
-    student@uso:~/my-first-repository$ git commit -m "Add README.md and .gitignore"
-    [master (root-commit) 0dfb632] Add README.md and .gitignore
-    2 files changed, 1 insertion(+)
-    create mode 100644 .gitignore
-    create mode 100644 README.md  
-    student@uso:~/my-first-repository$ git status
-    On branch master
-    nothing to commit, working tree clean  
-
-.. note:: Fiecare commit trebuie să vină cu un mesaj alăturat în care se explică pe scurt ce modificări aduce acesta.
+.. note::
+    Noi am pornit de la un repository gol, așadar operațiile ``fetch``, ``merge`` și ``pull`` nu au fost necesare.
 
 TODO: de integrat următoarele unde își vor avea locul.
 ``git pull --ff-only`` la bune practici
 ``git pull`` + explicații (de ce trebuie să dăm mai întâi pull și după aceea push)
 
+**Exercițiu:** Adăugați propoziția "We use a very very cool and new sorting algorithm for arrays named Bubble Sort." pe a doua linie din fișierul ``README.md``.
+
+**Exercițiu:** Comiteți schimbarea făcută. Folosiți următorul mesaj de commit: ``Update README with project explanation``.
+
+**Exercițiu:** Modificați titlul fișierului ``README.md`` în ``# Bubble Sort Algorithm for Arrays``.
+
+**Exercițiu:** Comiteți schimbarea făcută. Folosiți următorul mesaj de commit: ``Update README title``.
+
+**Exercițiu:** Creați un nou fișier numit ``bubble-sort.c`` cu următorul conținut:
+
+.. code-block:: c
+
+    #include <stdio.h>
+
+    int main() {
+        return 0;
+    }
+
+**Exercițiu:** Comiteți schimbarea făcută. Folosiți următorul mesaj de commit: ``Add project skeleton``.
+  
+
 Verificarea istoricului de commituri
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Pentru verificarea istoricului de commituri din repository folosim comanda ``git log``.
+La orice pas al dezvoltării proiectului vrem să știm în ce stadiu ne aflăm.
+De aceea folosim un sistem de versionare a codului, în cazul nostru ``Git``.
+Git ne permite să vedem un istoric al modificărilor făcute în repository, adică un istoric al commiturilor.
 
+În cazul autorului acestui capitol, numele, prenumele și emailul sunt ``Liza Babu <lizababu@example.com>`` ca mai jos.
 .. code-block::
 
     student@uso:~/my-first-repository$ git log
     commit 0dfb632b9de79f9a25011e8b98be48c7b1a0aad8 (HEAD -> master)
-    Author: Prenume Nume <adresa_de_email@email.com>
+    Author: Liza Babu <lizababu@example.com>
     Date:   Wed Aug 19 17:24:01 2020 +0300
 
-        Add README.md and .gitignore
+        Add project skeleton
+    TODO: adaugă restul de commituri
+    (..)
+
+Pentru verificarea istoricului de commituri din repository am folosit comanda ``git log``.
 
 Fiecare commit are un hash asociat care identifică unic commitul.
-Aici este vorba despre ``0dfb632b9de79f9a25011e8b98be48c7b1a0aad8``.
+Discutăm în continuare despre ultimul commit din listă.
+Aici este vorba despre commitul ``0dfb632b9de79f9a25011e8b98be48c7b1a0aad8`` cu mesajul de commit ``Add project skeleton``.
+
 Acum vedem că repository-ul indică spre acest nou commit.
 Ne dăm seama de acest lucru pentru că ``HEAD`` se află în dreptul commitului tocmai făcut.
 
 Publicarea commitului pe repository-ul remote
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Vrem să publicăm noile schimbări și pe repository-ul remote.
-Pentru a face acest lucru folosim comanda ``git push``.
-Output-ul acestei comenzi ne indică faptul că în repository-ul remote nu avem niciun branch numit ``master``.
-Remediem această situație folosind indicațiile din mesaj.
-După ce am creat branch-ul master, îl putem identifica și din linia de comandă.
+Vrem să publicăm toate schimbările făcute și pe repository-ul remote.
 
 .. code-block::
 
@@ -260,7 +214,13 @@ După ce am creat branch-ul master, îl putem identifica și din linia de comand
     student@uso:~/my-first-repository$ git branch
     * master
 
+Am publicat commitul folosind comanda ``git push``.
+Prima oară când am încercat să dăm comanda ``git push`` am primit o eroare care ne indică faptul că în repository-ul remote nu avem niciun branch numit ``master``.
+Vorbim despre **branch-uri** în secțiunea următoare (TODO adaugă ref la secțiunea următoare).
+
 Întrăm pe GitHub să vedem că schimbările au fost propagate.
+
+TODO: fă și adaugă screenshot nou
 
 .. figure:: ./img/GitHub-first-commit.png
   :scale: 45%
