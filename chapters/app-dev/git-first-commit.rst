@@ -180,6 +180,11 @@ Git ne permite să vedem un istoric al modificărilor făcute în repository, ad
     TODO: adaugă restul de commituri
     (..)
 
+.. note::
+
+    Navigați prin outputul comenzii ``git log`` prin intermediul săgeților sus/jos.
+    Apăsați tasta **q** când ați terminat de inspectat.
+
 Pentru verificarea istoricului de commituri din repository am folosit comanda ``git log``.
 
 Fiecare commit are un hash asociat care identifică unic commitul.
