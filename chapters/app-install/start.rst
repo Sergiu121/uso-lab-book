@@ -69,7 +69,7 @@ Utilizatorul poate opri o aplicație grafică în mai multe moduri:
   După ce pornim utilitarul ``xkill``, cursorul mouse-ului capătă o formă de ``x``.
   Un click pe o aplicație grafică duce la omorârea acelei aplicații.
 
-Porniți aplicația Firefox și opriți-o în toate modurile de mai sus.
+**Exercițiu**: Porniți aplicația Firefox și opriți-o în toate modurile de mai sus.
 
 Pornirea unei aplicații grafice folosind Alt+F2
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
