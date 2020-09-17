@@ -1,10 +1,10 @@
 Crearea unui Pull Request (PR) pe GitHub
 ========================================
 
-În momentul în care vrem să adăugăm o funcționalitate nouă unui proiect software pe GitHub este recomandat să o facem printr-un **Pull Request**, uzual prescurtat **PR**.
+În momentul în care vrem să adăugăm o funcționalitate nouă unui proiect software pe GitHub este recomandat să o facem printr-un **Pull Request**, prescurtat **PR**.
 Un **Pull Request** este o cerere de modificare a repository-ului.
-Uzual, alți colaboratori ai proiectului vor recenza modificările și vor aproba, vor sugera schimbări sau vor respinge această cerere.
-În momentul în care un Pull Request este aprobat, atunci schimbările propuse în Pull Request poate fi integrat în proiect, adică se va putea face merge între codul sursă curent și noile modificări.
+Alți colaboratori ai proiectului vor recenza modificările și vor aproba, vor sugera schimbări sau vor respinge această cerere.
+În momentul în care un Pull Request este aprobat, atunci schimbările propuse în Pull Request pot fi integrate în proiect, adică se va putea face merge între codul sursă curent și noile modificări.
 
 Spunem că deschidem un Pull Request care urmează să fie integrat într-un anumit branch.
 De obice acel branch este **master**, însă acest lucru nu este obligatoriu.
@@ -57,7 +57,8 @@ Creăm un branch numit **bubble-sort-implementation**.
 
     student@uso:~/my-first-repository$ git branch
     *  master
-    student@uso:~/my-first-repository$ git checkout -b bubble-sort-implementation
+    student@uso:~/my-first-repository$ git branch bubble-sort-implementation
+    student@uso:~/my-first-repository$ git checkout bubble-sort-implementation
     Switched to a new branch 'bubble-sort-implementation'
     student@uso:~/my-first-repository$ git branch
     * bubble-sort-implementation
@@ -85,7 +86,7 @@ TODO: adaugă GIF cum navighezi pe GitHub spre toate commiturile
 Crearea unui commit pe branch-ul nou creat
 ------------------------------------------
 
-În această subsecțiune vom actualiza fișierul ``bubble-sort.c`` cu implementarea algoritmului ales.
+Vom actualiza fișierul ``bubble-sort.c`` cu implementarea algoritmului ales.
 Modificăm fișierul ``bubble-sort.c`` astfel încât conținutul său să fie următorul:
 
 .. code-block:: c
@@ -150,7 +151,7 @@ Modificăm fișierul ``README.md`` astfel încât el să aibă următorul conți
 .. code-block:: bash
 
   student@uso:~/my-first-repository$ cat README.md
-  # Bubble Sort Algorithm for Beginners
+  TODO: adaugă conținut potrivit
 
   Sorts a integer array in ascending order.
 
@@ -177,7 +178,8 @@ Acum trebuie să creăm un **commit** cu schimbările făcute.
     modified:   bubble-sort.c
 
   no changes added to commit (use "git add" and/or "git commit -a")
-  student@uso:~/my-first-repository$ git add -A
+  student@uso:~/my-first-repository$ git add README.md
+  student@uso:~/my-first-repository$ git add bubble-sort.c
   student@uso:~/my-first-repository$ git status
   On branch bubble-sort-implementation
   Changes to be committed:
@@ -185,14 +187,7 @@ Acum trebuie să creăm un **commit** cu schimbările făcute.
     modified:   README.md
     modified:   bubble-sort.c
 
-.. note:: 
-
-  Am folosit opțiunea ``-A`` pentru ``git add``.
-  Aceasta se ocupă de adăugarea tuturor fișierelor modificate în **staging area** pentru Git.
-
-  Alternativa la comanda ``git add -A`` este ``git add README.md bubble-sort.c``.
-
-Urmează sunt creăm commitul.
+Comitem modificările.
 Folosim o descriere succintă care să descrie ce modificări aducem asupra repository-ului.
 
 .. code-block:: bash
@@ -217,13 +212,7 @@ Pentru a putea crea un **PR** trebuie să publicăm noul commit.
 
 .. code-block:: bash
 
-  student@uso:~/my-first-repository$ git push
-  fatal: The current branch bubble-sort-implementation has no upstream branch.
-  To push the current branch and set the remote as upstream, use
-
-      git push --set-upstream origin bubble-sort-implementation
-
-  student@uso:~/my-first-repository$ git push --set-upstream origin bubble-sort-implementation
+  student@uso:~/my-first-repository$ git push origin bubble-sort-implementation
   Enumerating objects: 3, done.
   Counting objects: 100% (3/3), done.
   Delta compression using up to 4 threads
@@ -238,13 +227,6 @@ Pentru a putea crea un **PR** trebuie să publicăm noul commit.
   * [new branch]      bubble-sort-implementation -> bubble-sort-implementation
   Branch 'bubble-sort-implementation' set up to track remote branch 'bubble-sort-implementation' from 'origin'.
 
-.. note::
-
-  La executarea comenzii ``git push`` am primit eroare.
-  Această eroare se referă la faptul că pe GitHub nu există branch-ul **bubble-sort-implementation**.
-  Aceasta există doar local.
-
-  Problema a fost rezolvată prin comanda ``git push --set-upstream origin bubble-sort-implementation``.
 
 .. note::
 
@@ -298,8 +280,6 @@ O descriere potrivită poate fi:
   I implemented a non-optimized Bubble Sort algorithm in C.
   The program sorts an integer array in ascending order.
 
-  TODO list:
-  - [ ] Add tests for algorithm.
 
 TODO: adaugă GIF: fără și cu descrierea de mai sus
 
@@ -307,7 +287,7 @@ Configurarea branch-ului în care vom integra PR-ul
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Modificările pe care le-am făcut urmează a fi integrate într-un branch.
-Uzual, branch-ul ``master`` este cel care conține codul sursă actualizat la zi, deci este branch-ul în care se integrează PR-urile.
+În general, branch-ul ``master`` este cel care conține codul sursă actualizat la zi, deci este branch-ul în care se integrează PR-urile.
 
 .. note::
 
@@ -384,8 +364,8 @@ Trebuie să ștergem și branch-ul din repository-ul local.
 Am șters branch-ul **bubble-sort-implementation**.
 
 
-Exercițiu - Crearea unui PR
----------------------------
+Exercițiu practic - Crearea unui PR
+-----------------------------------
 
 Creați un nou repository pe GitHub cu numele TODO și clonați-o la voi pe calculator.
 Veți folosi acest repository pentru rezolvarea acestui exercțiu.

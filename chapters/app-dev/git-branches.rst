@@ -2,8 +2,6 @@ Lucrul pe branch-uri
 ====================
 
 TODO git rm, git mv
-TODO git -A Q: de ce vrem să adăugăm selectiv și nu cu -A? A: vrem să facem commituri cât mai specifice, câte unul pt fiecare issue rezolvat. Nu vrem să avem mai multe modificări unrelated în aceelași commit pt că nu mai putem să facem revert ușor.
-TODO git commit -m
 
 .. admonition:: Problema
 
@@ -23,7 +21,7 @@ TODO git commit -m
 
 .. admonition:: Soluția
 
-    Folosim branch-uri.
+    Folosim **branch-uri**, adică **ramuri de dezvoltare**.
     Fiecare colaborator va crea un nou branch pentru fiecare schimbare pe care vrea să o aducă repository-ului.
     Astfel, atunci când unul dintre colaboratori termină de lucrat va putea integra schimbările în branch-ul master și să țină cont și de schimbările celorlalți.
     Dacă apar situații conflictuale, acestea se rezolvă.
@@ -32,12 +30,12 @@ TODO git commit -m
 
 TODO: diagramă cu commit-uri pe branch-ul master.
 
-Un **branch** este echivalentul unui fir de evoluție a codului sursă.
-Ultima versiune al codului sursă se află uzual pe branch-ul numit **master**.
+Branch-ul principal al proiectului, acolo unde, în general, găsim versiunea funcțională a proiectului este numit **master**.
+Alte branch-uri pot exista ca ramuri de dezvoltare sau pentru a reține versiuni speciale ale proiectului.
 
 .. warning::
 
-    Atunci când contribuim la un proiect putem să lucrăm fie branch-ul **master**, fie să creăm un al branch.
+    Atunci când contribuim la un proiect putem să lucrăm fie branch-ul **master**, fie pe un alt branch.
     Este considerat **BAD-PRACTICE** să lucrăm pe branch-ul **master** din mai multe motive:
 
     1. Pe branch-ul **master** se ține întotdeauna o versiune de cod funcțională.
@@ -63,16 +61,15 @@ De acum încolo, vom face toate modificările de pe un nou branch, diferit de br
 
     student@uso:~/my-first-repository$ git branch
     *  master
-    student@uso:~/my-first-repository$ git checkout -b add-gitignore
+    student@uso:~/my-first-repository$ git branch add-gitignore
     Switched to a new branch 'add-gitignore'
-    student@uso:~/my-first-repository$ git branch
+    student@uso:~/my-first-repository$ git checkout add-gitignore
     * add-gitignore
     master
 
-Folosind comanda ``git branch`` verificăm branch-ul pe care ne aflăm.
-Observăm caracterul ``*`` în dreptul branch-ului curent.
+Caracterul ``*`` se află în dreptul branch-ului curent la folosirea comenzii ``git branch``.
 
-Mai sus am creat un nou branch cu numele **add-gitignore**.
+Am creat un nou branch cu numele **add-gitignore** folosind comanda ``git branch`` și am trecut pe acesta prin comanda ``git checkout``.
 În acest moment branch-ul **add-gitignore** nu diferă de branch-ul **master**.
 Când vom face schimbări, cele două branch-uri vor diverge.
 
@@ -103,18 +100,24 @@ Pentru a fi siguri că anumite fișiere sunt ignorate, putem să le adăugăm î
 Aici vom trece, câte una pe fiecare linie, fișierele pe care nu vrem să le publicăm.
 Momentan nu avem fișiere pe care vrem să le ignorăm, așa că am creat un fișier ``.gitignore`` gol.
 
-**Exercițiu:** Creați un nou commit prin care să adăugați fișierul **.gitignore** la repository. Folosiți următorul mesaj de commit ``Add .gitignore file``.
+.. code-block:: bash
 
-.. hint::
+    student@uso:~/my-first-repository$ git add .gitignore
+    student@uso:~/my-first-repository$ git status
+    On branch add-gitignore
 
-    Puteți folosim opțiunea ``-m`` pentru ``git commit``.
-    
-    Spre exemplu comanda ``git commit -m "Add .gitignore file"`` va crea un nou commit cu mesajul ``Add .gitignore file``.
+    Changes to be committed:
+    (use "git rm --cached <file>..." to unstage)
+        new file:   .gitignore
+    student@uso:~/my-first-repository$ git commit -m "Add .gitignore file"
+    [add-gitignore 1e4b5ca] Add .gitignore file
+    1 file changed, 0 insertions(+), 0 deletions(-)
+    create mode 100644 .gitignore
+    student@uso:~/my-first-repository$ git push origin add-gitignore
+    TODO: output
 
-
-**Exercițiu:** Publicați commitul și pe GitHub.
-
-**Exercițiu:** Verificați propagarea schimbărilor pe GitHub.
+Am creat un commit cu această schimbare și l-am publicat.
+Acum acesta este vizibil și pe GitHub.
 
 .. note::
 
@@ -132,33 +135,22 @@ Ne amintim că am făcut această operație de pe branch-ul **add-gitignore** ș
     Ne amintim că este **BAD-PRACTICE** să facem modificări direct pe branch-ul **master**.
 
 Vrem ca modificarea făcută de noi, în acest caz, crearea unui fișier **gitignore** să se regăsească și pe branch-ul master.
-Facem acest lucru prin intermediul operației ``merge``.
+Facem acest lucru prin intermediul operației ``merge``, operație care unește două branch-uri: adică aduce conținutul unui branch pe un alt branch, în cazul nostru de pe **add-gitignore** pe **master**.
 Pentru a face acest lucru trebuie să ne situăm pe branch-ul **master**, adică pe branch-ul în care vrem să integrăm schimbările.
 
-.. note::
-
-    Putem face o operație de **merge** și între 2 branch-uri secundare, nu trebuie să facem neapărat o operație de merge cu branch-ul **master**.
-    Aceasta situație nu face obiectul acestei cărți, așadar nu vom insista pe acest lucru.
 
 .. code-block:: bash
 
     student@uso:~/my-first-repository$ git checkout master
     Switched to branch 'master'
     Your branch is up to date with 'origin/master'.
-    student@uso:~/my-first-repository$ git pull --ff-only
+    student@uso:~/my-first-repository$ git pull
     Already up to date.
-
-Observăm că aici lipsește argumentul ``-b`` de la comanda ``git checkout`` deoarece branch-ul **master** deja există, nu este nevoie să-l creăm noi.
 
 .. note:: 
 
     Trebuie să ne asigurăm că branch-ul **master** local este sincronizat cu cel remote.
     Facem acum operația **pull** menționată în secțiunea TODO.
-    
-    Este considerat **GOOD-PRACTICE** să folosim opțiunea ``--ff-only`` de fiecare dată când facem operația **pull**.
-    Astfel Git se asigură că istoricul local corespunde cu cel remote.
-    Foloșiți **Întotdeauna** opțiunea ``--ff-only``.
-
 
 .. code-block:: bash 
 
@@ -196,6 +188,7 @@ Publicăm commiturile locale.
 ---------------------
 
 După ce terminăm lucrul pe un branch, este bine să îl ștergem.
+Pentru acest lucru trebuie să ne aflăm pe un branch diferit față de cel pe care vrem să-l ștergem.
 Orice nouă modificare pe care o vom face va fi diferită, numele branch-ului vechi nu va corespunde, așadar nu mai avem nevoie de el.
 Facem acest lucru atât pe repository-ul local, cât și cel de pe GitHub.
 
@@ -218,4 +211,13 @@ Facem acest lucru atât pe repository-ul local, cât și cel de pe GitHub.
 
     Spre exemplu, pentru autorul acestui capitol apare ``https://github.com/lizababu/my-first-repository.git``.
 
-**Exercițiu:** Verificați că branch-ul nu mai există pe GitHub.
+Exerciții practice
+------------------
+
+#. Creați un branch cu numele ``update-gitignore``.
+#. Treceți pe branch-ul ``update-gitignore``.
+#. Scrieți textul ``build/`` pe prima linie a fișierului ``.gitignore``.
+#. Creați un nou commit cu această schimbare folosind mesajul de commit ``Update .gitignore content``.
+#. Publicați commitul folosind comanda ``git push origin update-gitignore``.
+#. Efectuați operația **merge** între branch-ul **master** și **update-gitignore**.
+#. Ștergeți branch-ul **update-gitignore**.
