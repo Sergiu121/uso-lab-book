@@ -4,7 +4,7 @@ Configurarea aplicațiilor
 =========================
 
 Modul în care o aplicație rulează este configurabil.
-Adică informațiile afișate, interfața expusă utilizatorului, opțiunile permise utilizatorului pot varia de la o rulare la altă rulare.
+Adică informațiile afișate, interfața expusă utilizatorului și opțiunile permise utilizatorului pot varia de la o rulare la altă rulare.
 Mai mult, o aplicație care rulează (un proces) poate să își modifice comportamentul în timpul rulării.
 
 Configurarea unei aplicații se realizează în diferite moduri.
@@ -46,6 +46,10 @@ Opțiunea ``-l`` afișează detalii despre intrări.
 La fel, dacă folosim comanda ``emacs`` pornim aplicația Emacs (în mediul grafic).
 Pe când, dacă folosim comanda ``emacs -nw`` aplicația va porni în consolă, cu interfața în linia de comandă.
 
+.. note::
+
+    Pentru a închide editorul Emacs (pornit fie în mediul grafic, fie în consolă) folosim combinația de taste specifică pentru oprirea aplicației: ``Ctrl+x`` urmat de ``Ctrl+c``.
+
 Exercițiu
 ^^^^^^^^^
 
@@ -77,6 +81,7 @@ Inspectarea fișierelor de configurare
 
 Urmăriți conținutul fișierelor de configurare ``.gitconfig``, ``.vimrc``, ``.tmux.conf``.
 Aceste fișiere sunt folosite, respectiv pentru a configura Git, Vim sau tmux.
+Nu ne interesează aici să înțelegem conținutul acestor fișiere de configurare; doar le avem în vedere ca exemple reale de fișiere de configurare.
 
 Fișierele de configurare pot fi editate cu un editor.
 Alternativ, pot fi editate cu ajutorul unui utilitar dedicat, precum e cazul Git, ca mai jos:
@@ -117,21 +122,27 @@ Configurați Nano să afișeze numărul liniilor prin adăugarea următoarei lin
 Salvați fișierul.
 Porniți editorul Nano (folosind comanda ``nano``) și verificați că sunt afișate numerele liniilor.
 
+Adăugați în fișierul de configurare ``~/.nanorc`` opțiunea pentru a permite indentarea automată (``autoindent``).
+Găsiți opțiunea în pagina de manual (``man nanorc``).
+Creați în Nano un fișier cod sursă C în care verificați adăugarea opțiunii.
+
 Configurarea clientului SSH
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Configurați utilitarul ``ssh`` (client SSH) astfel încât folosirea comenzii ``ssh fav`` să însemne conectarea la un cont la distanță SSH la care aveți acces.
+Configurați utilitarul ``ssh`` (client SSH) astfel încât folosirea comenzii ``ssh fav`` să însemne conectarea la un cont la distanță SSH la care aveți acces [#ssh_config]_.
 De exemplu poate fi vorba de contul de pe sistemul ``fep.grid.pub.ro``.
 
 Configurarea clientului SSH se realizează în fișierul ``~/.ssh/config``.
 Vedeți și `exemplul de aici <https://linuxize.com/post/using-the-ssh-config-file/#shared-ssh-config-file-example>`_.
+
+    
 
 Configurarea din aplicație
 --------------------------
 
 Modul în care rulează o aplicație poate fi configurat direct din aplicație.
 
-De exemplu, în cadrul interfeței browserul web Firefox putem modifica pagina de start sau putem activa anumite pluginuri sau putem personaliza dispunerea meniurilor sau fonturile folosite.
+De exemplu, în cadrul interfeței browserului web Firefox putem modifica pagina de start sau putem activa anumite pluginuri sau putem personaliza dispunerea meniurilor sau fonturile folosite.
 Aceste opțiuni sunt frecvente în majoritatea aplicațiilor grafice.
 
 Configurări de aplicații din aplicație
@@ -151,7 +162,7 @@ Configurarea cu variabile de mediu
 
 O variabilă de mediu (*environment variable*) este o valoare care poate fi configurată la pornirea unui proces sau în timpul rulării sale pentru a afecta comportamentul procesului.
 
-De exemplu utilitarele ``wget`` și ``curl``, clienți web, folosesc variabilele de mediu ``http_proxy`` și ``https_proxy`` pentru a folosi un proxy web.
+De exemplu utilitarele ``wget`` și ``curl``, clienți web, folosesc variabilele de mediu ``http_proxy`` și ``https_proxy`` pentru a folosi un proxy web [#proxy]_.
 Shellul folosește o serie de variabile de mediu pentru a configura funcționarea sa și modul în care pornește alte aplicații.
 De exemplu, variabila de mediu ``PATH`` reține căile unde shellul caută fișierul executabil corespunzător unei comenzi.
 
@@ -170,3 +181,23 @@ Putem modifica ordinea afișată de utilitare de afișare (precum ``ls``) folosi
 
 Atunci când variabila de mediul ``LC_ALL`` folosește valoarea ``en_US.UTF-8`` se afișează intrările în ordine alfabetică, indiferent dacă numele acestora începe cu literă mare sau literă mică.
 Atunci când folosește valoarea ``POSIX`` se afișează întâi intrările al căror nume începe cu literă mare.
+
+
+.. note::
+
+    În exemplele de comenzi de mai sus variabila de mediu ``LC_ALL`` este modificată doar la nivelul comenzii ``ls``.
+    La nevoie această variabilă se poate definit la nivelul întregului shell.
+    În plus, o astfel de variabilă poate fi definită în mod persistent, într-un fișier de configurare al shellului; în felul acesta, orice proces shell nou pornit va avea acea variabilă definită.
+    **Dacă** e cazul: Mai multe informații despre variabile de mediu se găsesc în TODO (referință la capitolul de linia de comandă).
+
+.. rubric:: Note de subsol
+
+.. [#proxy]
+
+    Un proxy web este o stație internemediară în comunicația web din Internet.
+    Un proxy web este folosit pentru monitorizarea traficului, pentru a stoca informații local și a reduce încărcara traficului sau pentru anonimizare.
+    Ceva mai detaliat este prezentată folosirea unui proxy web în TODO (referință la secțiunea de proxy web din capitolul "Conectarea la Internet").
+
+.. [#ssh_config]
+
+    Secțiunea TODO (referință la secțiunea "Configurarea scurtăturilor SSH") prezintă un scenariu similar pentru folosirea unei scurtături SSH.
