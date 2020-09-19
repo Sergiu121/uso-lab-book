@@ -10,10 +10,31 @@ Atunci când pornim o aplicație se creează un proces; atunci când oprim aplic
 Procesul este pornit dintr-un fișier executabil care conține codul (instrucțiunile) și datele aplicației.
 Fișierul executabil mai este numit și **imaginea procesului**.
 Fișierul executabil este un **program**.
-Spunem că procesul este un program aflat în execuție.
+Spunem că procesul este un program aflat în execuție [#load_time_run_time]_.
 
-Momentul creării unui proces dintr-un fișier executabil, prin încărcarea codului și datelor fișierului executabil în memorie, se numește **load-time**.
-Rularea procesului și folosirea resurselor sistemului se numește **run-time**.
+.. _app_instal_run_exec:
+
+Identificarea fișierului executabil al unei aplicații
+-----------------------------------------------------
+
+Pornirea unei aplicații înseamnă că se alocă resursele sistemului (procesor, memorie, dispozitive de intrare/ieșire) pentru a rula aplicația.
+Aplicația are asociat un fișier care conține codul (instrucțiunile) și datele aplicației.
+Codul aplicației este executat, de aceea acest fișier se numește fișier executabil.
+Acest fișier executabil este încărcat în memoria sistemului și codul este executat; din acest moment spunem că aplicația **rulează**.
+
+De exemplu aplicația Firefox (browser web) are asociat fișierul executabil ``/usr/bin/firefox``; aplicația Vim (editor) are asociat fișierul executabil ``/usr/bin/vim``; aplicația LibreOffice (suită office) are asociat fișierul executabil ``/usr/bin/libreoffice``.
+Putem identifica fișierul executabil al unei aplicații folosind comanda ``which`` urmată de comanda pentru pornirea aplicației ca mai jos:
+
+.. code-block:: bash
+
+    student@uso:~$ which firefox
+    /usr/bin/firefox
+    student@uso:~$ which vim
+    /usr/bin/vim
+    student@uso:~$ which libreoffice
+    /usr/bin/libreoffice
+
+**Exercițiu**: Identificați fișierul executabil al aplicațiilor / utilitarelor Shutter, Gedit, ``ls``, ``df``.
 
 .. _app_install_run_ps:
 
@@ -94,11 +115,7 @@ Pentru a vizualiza ierarhia de procese, folosim utilitarul ``pstree``:
 
 În vârful ierarhiei de procese este procesul numit clasic ``init``.
 În listarea de mai sus vedem că procesul din vârful ierarhiei este ``systemd``.
-``systemd`` [#systemd]_ este implementarea de ``init`` prezentă în cea mai mare parte a distribuțiilor Linux curente.
-
-.. note::
-
-    Procesul ``init`` va exista în permanență în vârful ierarhiei de procese, indiferent de faptul că se va numi ``systemd``, ``init``, ``upstart`` sau altfel.
+``systemd`` [#systemd]_ este implementarea de ``init`` prezentă în cea mai mare parte a distribuțiilor Linux curente [#init]_.
 
 Atributele proceselor
 ^^^^^^^^^^^^^^^^^^^^^
@@ -116,12 +133,10 @@ Identificarea unui proces
 
 ``PID`` (*Process Id*) este atributul esențial al procesului, un index care identifică procesul la nivelul sistemului.
 Un proces este identificat după PID, nu după numele executabilului (``CMD``).
-Putem avea mai multe procese create din același executabil, fiecare proces având PID-ul său.
-Este impropriu să spunem "procesul bash"; corect este "un proces creat din programul / executabilul bash" sau "procesul cu PID-ul XY".
-Cu toate acestea vom folosi în general expresia "procesul bash" pentru că reiese din context despre ce proces este vorba.
+Putem avea mai multe procese create din același executabil, fiecare proces având PID-ul său [#process]_.
 
 Pentru a verifica existența mai multor procese, o să creăm mai multe procesele shell.
-Pentru început deschideți mai multe sesiuni de terminal, folosind, de exemplu, ``Alt+F2`` în mediul grafic și introducând comanda ``gnome-terminal`` în promptul creat.
+Pentru început deschidem mai multe sesiuni de terminal, folosind, de exemplu, ``Alt+F2`` în mediul grafic și introducând comanda ``gnome-terminal`` în promptul creat.
 Apoi vizualizăm doar procesele create din executabilul ``bash`` rulând comanda:
 
 .. code-block:: bash
@@ -135,8 +150,6 @@ Apoi vizualizăm doar procesele create din executabilul ``bash`` rulând comanda
 
 Obținem un rezultat precum cel de mai sus.
 Sunt cinci procese, toate create din executabilul ``bash``, cu cinci PID-uri diferite: ``2181``, ``2194``, ``2205``, ``14705``, ``14879``.
-
-Deși tehnic incorect, din rațiuni de expeditivitate și pentru că, în general, nu produce ambiguitate vom folosi formularea "procesul bash" în loc de "procesul cu PID-ul XY creat din executabilul bash".
 
 Afișarea atributelor unui proces
 """"""""""""""""""""""""""""""""
@@ -183,137 +196,6 @@ Opțiunile ``-f`` și ``-F`` afișează și alte atribute ale procesului, precum
 
 Astfel de atribute sunt utile pentru a vedea care sunt procesele cele mai consumatoare de resurse (de exemplu procesor sau memorie).
 
-Afișarea anumitor atribute ale proceselor
-"""""""""""""""""""""""""""""""""""""""""
-
-Pentru afișarea selectivă a anumitor atribute ale unui proces, folosim opțiunea ``-o`` a utilitarului ``ps`` ca mai jos:
-
-.. code-block:: bash
-
-    student@uso:~$ ps -e -o pid,ppid,user | head
-      PID  PPID USER
-        1     0 root
-        2     0 root
-        4     2 root
-        6     2 root
-        7     2 root
-        8     2 root
-        9     2 root
-       10     2 root
-       11     2 root
-       [...]
-
-    student@uso:~$ ps -e -o pid,ppid,user,%cpu,%mem,cmd
-      PID  PPID USER     %CPU %MEM CMD
-        1     0 root      0.0  0.4 /lib/systemd/systemd --system --deserialize 39
-        2     0 root      0.0  0.0 [kthreadd]
-        4     2 root      0.0  0.0 [kworker/0:0H]
-        6     2 root      0.0  0.0 [mm_percpu_wq]
-        7     2 root      0.0  0.0 [ksoftirqd/0]
-        8     2 root      0.0  0.0 [rcu_sched]
-        9     2 root      0.0  0.0 [rcu_bh]
-       10     2 root      0.0  0.0 [migration/0]
-       11     2 root      0.0  0.0 [watchdog/0]
-       [...]
-
-    student@uso:~$ ps -e -o pid,ppid,user,%cpu,%mem,cputime,cmd | head
-      PID  PPID USER     %CPU %MEM     TIME CMD
-        1     0 root      0.0  0.4 00:00:19 /lib/systemd/systemd --system --deserialize 39
-        2     0 root      0.0  0.0 00:00:00 [kthreadd]
-        4     2 root      0.0  0.0 00:00:00 [kworker/0:0H]
-        6     2 root      0.0  0.0 00:00:00 [mm_percpu_wq]
-        7     2 root      0.0  0.0 00:00:09 [ksoftirqd/0]
-        8     2 root      0.0  0.0 00:00:06 [rcu_sched]
-        9     2 root      0.0  0.0 00:00:00 [rcu_bh]
-       10     2 root      0.0  0.0 00:00:00 [migration/0]
-       11     2 root      0.0  0.0 00:00:00 [watchdog/0]
-
-Opțiunea ``-o`` este urmată de numele atributelor pe care vrem să le afișăm. În comenzile de mai sus am afișat:
-
-* ``pid``: PID-ul procesului
-* ``ppid``: PID-ul procesului părinte
-* ``user``: numele utilizatorului care deține procesul
-* ``%cpu``: procentul de procesor ocupat
-* ``%mem``: procentul de memorie ocupată
-* ``cputime``: timpul de rulare efectivă pe procesor
-* ``cmd``: numele complet al comenzii folosite
-
-Sortarea după atributele proceselor
-"""""""""""""""""""""""""""""""""""
-
-Afișarea atributelor proceselor este utilă mai ales pentru a vedea procesele cele mai consumatoare de resurse.
-Este util să afișăm procesele sortate după un astfel de atribut, precum consumul de memorie sau consumul de procesor.
-Astfel, pentru a afișa atributele PID, PPID și consumul de procesor pentru procesele sistemului, sortate după consumul de procesor, folosim comanda:
-
-.. code-block:: bash
-
-    student@uso:~$ ps -e -o pid,ppid,%cpu --sort %cpu
-      PID  PPID %CPU
-        1     0  0.0
-        2     0  0.0
-        4     2  0.0
-        6     2  0.0
-        7     2  0.0
-        8     2  0.0
-        9     2  0.0
-       10     2  0.0
-       11     2  0.0
-       [...]
-
-În comanda de mai sus, opțiunea ``--sort`` a utilitarului ``ps`` urmată de un atribut va afișa procesele sortate crescător după acel atribut.
-În cazul de față atributul este ``%cpu`` adică procentajul de procesor consumat.
-
-Mai relevant este să vedem la început procesele cele mai consumatoare, așa că putem folosi opțiunea de sortare descrescătoare:
-
-.. code-block:: bash
-
-    student@uso:~$ ps -e -o pid,ppid,%cpu --sort -%cpu
-      PID  PPID %CPU
-     1309  1150  0.7
-     1278  1277  0.2
-     1139  1137  0.1
-        1     0  0.0
-        2     0  0.0
-        4     2  0.0
-        6     2  0.0
-        7     2  0.0
-        8     2  0.0
-        [...]
-
-În comanda de mai sus, prefixarea atributului de după opțiunea ``-sort`` cu semnul ``-`` (minus) duce la o afișare a proceselor sortate descrescător după acel atribut.
-
-Pentru că, în general, dorim să vedem doar primele procese consumatoare de resurse putem filtra rezultatul comenzii prin utilitarul ``head``:
-
-.. code-block:: bash
-
-    student@uso:~$ ps -e -o pid,ppid,%cpu --sort -%cpu | head -6
-      PID  PPID %CPU
-     1309  1150  0.7
-     1278  1277  0.2
-     1139  1137  0.1
-        1     0  0.0
-        2     0  0.0
-
-În comanda de mai sus am extras doar primele 6 linii din afișare cu ajutorul utilitarului ``head``.
-Prima linia este capul de tabel al afișării și apoi urmează cele 5 procese din sistem care consumă cel mai mult procesor.
-
-Exerciții: Afișarea atributelor proceselor
-""""""""""""""""""""""""""""""""""""""""""
-
-.. important::
-
-    Reparcurgeți comenzile de mai sus care conțin opțiunile frecvente pentru utilitarul ``ps``.
-    Apoi realizați exercițiile din continuare.
-
-Folosiți utilitarul ``ps`` pentru a afișa, pentru **toate** procesele sistemului, următoarele atribute:
-
-#. PID, PPID, procentul de procesor, comanda completă (cu argumente)
-#. PID, PPID, procentul de procesor, comanda simplă (fără argumente)
-#. numele utilizatorului, PID, procentul de procesor, timpul de procesor, timpul de start, comanda simplă
-#. numele utilizatorului, PID, procentul de procesor, timpul de procesor, timpul de start, comanda simplă - sortate descrescător după procentul de procesor
-#. PID, PPID, procentul de procesor, procentul de memorie, comanda completă
-#. PID, PPID, procentul de procesor, procentul de memorie, comanda completă - sortate crescător după procentul de memorie
-
 Selectarea proceselor după anumite atribute
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -349,19 +231,13 @@ Așa cum vedem mai sus, utilitarul ``ps`` are diferite opțiuni care permit sele
 Opțiunea ``-u`` selectează procesele aparținând utilizatorului primit ca argument (în cazul comenzii de mai sus ``student``).
 Opțiunea ``-C`` selectează procesele care au comanda primită ca parametru (în cazul comenzii de mai sus ``bash``).
 
-Selectarea proceselor după procesul părinte
-"""""""""""""""""""""""""""""""""""""""""""
+**Exercițiu**: Folosiți utilitarul ``ps`` pentru a afișa **doar** procesele care aparțin utilizatorului ``root``.
 
-Folosiți utilitarul ``ps`` pentru a afișa **doar** procesele care au ca părinte procesul cu PID-ul ``1``.
+**Exercițiu**: Folosiți utilitarul ``ps`` pentru a afișa **doar** procesele Firefox.
 
-Actualizați comanda de mai sus ca să afișeze atributele PID, PPID, consum de memorie și comandă completă (cu argumente) pentru procesele care au ca părinte procesul cu PID-ul ``1``.
+**Exercițiu** (mai dificil): Folosiți utilitarul ``ps`` pentru a afișa **doar** procesele care au ca părinte procesul cu PID-ul ``1``.
 
-Selectarea proceselor care **nu** aparțin unui utilizator
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-Folosiți utilitarul ``ps`` pentru a afișa **doar** procesele care **NU** aparțin utilizatorului ``student``.
-
-Actualizați comanda de mai sus ca să afișeze atributele PID, PPID, consum de procesor și comandă simplă (fără argumente) pentru procesele care **NU** aparțin utilizatorului ``student``.
+**Exercițiu** (mai dificil): Folosiți utilitarul ``ps`` pentru a afișa **doar** procesele care **NU** aparțin utilizatorului ``student``.
 
 Sumar: Investigarea proceselor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -369,8 +245,7 @@ Sumar: Investigarea proceselor
 Aplicații care rulează sunt procese.
 Procesele consumă resursele sistemului.
 Pentru a vizualiza și investiga procesele sistemului folosim utilitarul ``ps``.
-Utilitarul ``ps`` are opțiuni pentru afișarea selectivă a proceselor sistemului și a atributelor acestuia.
-Putem sorta procesele afișate după anumite atribute, util pentru a selecta procesele cele mai consumatoare de resurse.
+Utilitarul ``ps`` are opțiuni pentru afișarea selectivă a proceselor sistemului.
 
 .. _app_install_run_mon:
 
@@ -400,16 +275,12 @@ Imaginea de mai jos este o fereastră de terminal cu rularea ``top``:
 ``top`` afișează informații periodice despre procese **și** despre starea sistemului: consum de procesor, de memorie.
 La fiecare perioadă (implicit ``2`` secunde) informația afișată este reîmprospătată.
 
-``top`` este un utilitar interactiv.
-Adică în timpul rulării sale utilizatorul poate interacționa cu procesele sau poate modifica informațiile afișate.
-De exemplu, folosirea tastei ``M`` într-o rulare ``top`` afișează procesele sortate după consumul de memorie.
-Un sumar al comenzilor interactive din ``top`` se obține folosind tasta ``?``.
-La fel ca în cazul utilitarului ``less``, ieșirea din utilitarul ``top`` se realizează folosind tasta ``q``.
+La fel ca în cazul utilitarului ``less``, ieșirea din utilitarul ``top`` se realizează folosind tasta ``q`` [#top]_.
 
 Utilitarul htop
 ^^^^^^^^^^^^^^^
 
-Un utilitar similar ``top`` ceva mai prietenos este utilitarul ``htop``.
+Un utilitar similar ``top`` ceva mai prietenos este utilitarul ``htop`` [#monitor]_.
 La fel ca în cazul ``top``, utilitarul ``htop`` rulează în linia de comandă prin introducerea comenzii ``htop`` și pornește, în terminal, o fereastră interactivă, ca în imaginea de mai jos:
 
 .. image:: img/htop.png
@@ -418,16 +289,6 @@ La fel ca în cazul ``top``, utilitarul ``htop`` rulează în linia de comandă 
 
 ``htop`` este, de asemenea, un utilitar interactiv, un sumar al comenzilor ce pot fi folosite fiind prezentat în bara de jos a ferestrei sale.
 De exemplu, așa cum vedem și în imaginea de mai sus, cu ajutorul tastei ``F6`` putem alege un atribut după care să sortăm procesele.
-
-Alte utilitare de monitorizare
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Monitorizarea proceselor este o activitate foarte importantă în administrarea unui sistem de calcul.
-Un proces care, intenționat sau nu, consumă abuziv resursele sistemului va duce la o proastă funcționare sau chiar la blocarea sistemului.
-De aceea, utilitarele de monitorizare a sistemului (și a proceselor) sunt diverse. Amintim:
-
-* ``iotop``: utilitar pentru monitorizarea consumului de I/O al proceselor
-* ``sysstat``: o suită de utilitare pentru monitorizarea sistemului (procese, memorie, I/O, rețea)
 
 .. _app_install_run_id:
 
@@ -482,14 +343,17 @@ Utilitarul ``pidof`` primește ca argument numele unui program și afișează PI
 ``pidof`` este util atunci când avem un singur proces pornit dintr-un program și dorim să-l identificăm.
 Dacă avem mai multe procese, rezultând în mai multe PID-uri, atunci va trebui sa detaliem procesele și să folosim utilitarul ``ps``, lucru pe care am fi putut să-l facem de la început.
 
-Un utilitar mai puternic de identificare a proceselor este utilitarul ``pgrep``:
+Un utilitar mai puternic de identificare a proceselor este utilitarul ``pgrep`` [#pidof_pgrep]_.
 
 .. code-block:: bash
-    :linenos:
 
     student@uso:~$ pgrep bash
     3467
     8386
+
+În forma simplă de mai sus, similară ``pidof``, utilitarul ``pgrep`` afișează PID-urile proceselor create din programul primit ca argumente.
+
+.. code-block:: bash
 
     student@uso:~$ pgrep -u student
     1100
@@ -497,49 +361,61 @@ Un utilitar mai puternic de identificare a proceselor este utilitarul ``pgrep``:
     1133
     [...]
 
+``pgrep`` poate afișa PID-urile proceselor aparținând unui utilizator, ``student`` în cazul de mai sus.
+
+.. code-block:: bash
+
     student@uso:~$ pgrep -P 1
     212
     272
     295
     [...]
 
-În forma simplă, similară ``pidof``, așa cum vedem în linia ``1`` din afișarea de mai sus, utilitarul ``pgrep`` afișează PID-urile proceselor create din programul primit ca argumente.
-În alte forme, ``pgrep`` afișează PID-urile proceselor aparținând unui utilizator (linia ``5``) sau PID-urile proceselor care au ca părinte procesul cu PID-ul ``1`` (linia ``11``).
-Alte opțiuni permit selectarea după alte condiții.
-
-.. note::
-
-    Utilitarele ``pgrep`` și ``pidof`` afișează doar PID-urile proceselor fără alte informații.
-    Acest lucru le face utile în practică în scripturi care conțin comenzi care au nevoie doar de PID-urile proceselor.
+Cu opțiunea ``-P``, ``pidof`` poate afișa PID-urile proceselor care au ca părinte procesul cu un PID-ul anume (``1`` în cazul de mai sus).
 
 Afișarea PID-ului unui proces ținând cont de comanda completă
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-O opțiune utilă a comenzii ``pgrep`` este ``-f`` care permite afișarea PID-urilor proceselor după comanda completă, nu doar după numele executabilului, ca mai jos:
+O opțiune utilă a comenzii ``pgrep`` este ``-f`` care permite afișarea PID-urilor proceselor după comanda completă, nu doar după numele executabilului, ca în scenariul următor.
+
+Pornim o aplicație Shutter și vedem cu ajutorul utilitarului ``ps`` că există un proces ``shutter``:
 
 .. code-block:: bash
-    :linenos:
-
-    student@uso:~$ pgrep shutter
-    4780
-
-    student@uso:~$ pgrep perl
 
     student@uso:~$ ps -f -C shutter
     UID        PID  PPID  C STIME TTY          TIME CMD
     student   4780  1309  0 12:53 tty1     00:00:02 /usr/bin/perl /usr/bin/shutter
 
+Procesul există și are PID-ul ``4780``.
+
+Folosim ``pgrep`` pentru a identifica procesul:
+
+.. code-block:: bash
+
+    student@uso:~$ pgrep shutter
+    4780
+
+Comanda de mai sus funcționează, este afișat PID-ul ``4780``.
+Din outputul comenzii ``ps`` de mai sus, știm că este folosit utilitarul ``perl`` pentru a porni aplicația Shutter.
+Așa că vrem să identificăm procesul ``perl`` folosind ``pgrep``:
+
+.. code-block:: bash
+
+    student@uso:~$ pgrep perl
+    student@uso:~$
+
+Nu se afișează, însă, nici un rezultat.
+Utilitarul ``pgrep`` folosește doar numele programului, nu comanda completă.
+Dacă vrem să utilizez comanda completă, folosim opțiunea ``-f``:
+
+.. code-block:: bash
+
     student@uso:~$ pgrep -f perl
     4780
 
-Mai sus există procesul cu PID-ul ``4780`` a cărui comandă completă este ``/usr/bin/perl /usr/bin/shutter``.
-Atunci când primește argumentul ``shutter``, comanda ``pgrep`` afișează PID-ul procesului (liniile ``1-2``); dar atunci când primește argumentul ``perl``, comanda ``pgrep`` nu afișează nimic (linia ``4``).
-Acest lucru se întâmplă pentru că se folosește doar numele programului, nu comanda completă, cu argumente.
-Dar, atunci când folosim opțiunea ``-f`` (liniile ``10-11``), se afișează PID-ul procesului și când argumentul transmis nu este numele programului, dar este parte din comanda completă.
+În această formă, ``pgrep`` afișează rezultatul așteptat, ``4780``, PID-ul procesului Shutter.
 
-Exercițiu: Afișarea PID-ului unui proces după comandă
-"""""""""""""""""""""""""""""""""""""""""""""""""""""
-Afișați PID-urile proceselor din sistem pornite cu ajutorul Python.
+**Exercițiu**: Afișați PID-urile proceselor din sistem pornite cu ajutorul Python.
 Adică să cautați după șirul ``python`` în toate procesele sistemului.
 
 Exerciții: Identificarea proceselor
@@ -628,25 +504,29 @@ Adică, dacă pornim într-un terminal un proces ``sleep`` folosind comanda de m
 
     student@uso:~$ sleep 60
 
-în alt terminal vom afla PID-ul său (folosind ``pidof``) și apoi îl vom omorî (folosind ``kill``):
+în alt terminal vom afla PID-ul său (folosind ``pidof``):
 
 .. code-block:: bash
-    :linenos:
 
     student@uso:~$ pidof sleep
     9486
+
+și apoi îl vom omorî (folosind ``kill``):
+
+.. code-block:: bash
+
     student@uso:~$ kill 9486
+
+Comanda ``kill`` primește ca argument PID-ul procesului de omorât, adică ``9486``.
+
+Verificăm din nou dacă există un proces ``sleep`` folosind ``pidof``:
+
+.. code-block:: bash
+
     student@uso:~$ pidof sleep
     student@uso:~$
 
-În secvența de mai sus:
-
-#. Aflăm PID-ul procesului folosind utilitarul ``pidof``.
-   Aici PID-ul obținut este ``9486`` (linia ``2``).
-#. Omorâm procesul folosind utilitarul ``kill``.
-   Comanda ``kill`` primește ca argument PID-ul procesului de omorât, adică ``9486`` (linia ``3``).
-#. Verificăm din nou dacă există un proces ``sleep`` folosind ``pidof`` (linia ``4``).
-   Vedem că nu există, deci procesul a fost omorât.
+Vedem din output că nu mai există procesul ``sleep``, deci a fost omorât.
 
 În terminalul inițial, în care am rulat comanda ``sleep``, apare un mesaj care indică omorârea procesului:
 
@@ -682,65 +562,11 @@ Efectul este similar dar, pe terminalul în care am rulat comanda ``sleep``, apa
 
 Mesajul ``Killed`` este afișat atunci când un proces primește semnalul ``SIGKILL``.
 
-Identificatori de semnale
-"""""""""""""""""""""""""
-
-Semnalul ``SIGKILL`` este unul dintre semnalele care pot fi trimise unui proces, semnal care va omorî garantat procesul țintă.
-Exită și alte semnale în afară de ``SIGKILL``; utilitarul ``kill`` este folosit pentru a trimite aceste semnale.
-Primirea unui semnal duce adesea la omorârea procesului; un proces poate modifica acest comportament pentru anumite semnale pe care le primește; nu este cazul semnalului ``SIGKILL`` care va omorî garantat procesul țintă.
-
-Lista de semnale este vizibilă prin folosirea utilitarului ``kill`` cu opțiunea ``-l``:
-
-.. code-block:: bash
-
-    student@uso:~$ kill -l
-     1) SIGHUP       2) SIGINT       3) SIGQUIT      4) SIGILL       5) SIGTRAP
-     6) SIGABRT      7) SIGBUS       8) SIGFPE       9) SIGKILL     10) SIGUSR1
-    11) SIGSEGV     12) SIGUSR2     13) SIGPIPE     14) SIGALRM     15) SIGTERM
-    16) SIGSTKFLT   17) SIGCHLD     18) SIGCONT     19) SIGSTOP     20) SIGTSTP
-    21) SIGTTIN     22) SIGTTOU     23) SIGURG      24) SIGXCPU     25) SIGXFSZ
-    26) SIGVTALRM   27) SIGPROF     28) SIGWINCH    29) SIGIO       30) SIGPWR
-    31) SIGSYS      34) SIGRTMIN    35) SIGRTMIN+1  36) SIGRTMIN+2  37) SIGRTMIN+3
-    38) SIGRTMIN+4  39) SIGRTMIN+5  40) SIGRTMIN+6  41) SIGRTMIN+7  42) SIGRTMIN+8
-    43) SIGRTMIN+9  44) SIGRTMIN+10 45) SIGRTMIN+11 46) SIGRTMIN+12 47) SIGRTMIN+13
-    48) SIGRTMIN+14 49) SIGRTMIN+15 50) SIGRTMAX-14 51) SIGRTMAX-13 52) SIGRTMAX-12
-    53) SIGRTMAX-11 54) SIGRTMAX-10 55) SIGRTMAX-9  56) SIGRTMAX-8  57) SIGRTMAX-7
-    58) SIGRTMAX-6  59) SIGRTMAX-5  60) SIGRTMAX-4  61) SIGRTMAX-3  62) SIGRTMAX-2
-    63) SIGRTMAX-1  64) SIGRTMAX
-
-Așa cum vedem din rularea de mai sus un semnal este identificat printr-un număr și printr-un nume.
-De exemplu semnalul ``SIGKILL`` are numărul ``9``.
-Astfel, pentru omorârea procesului cu PID-ul ``1234``, cele două comenzi de mai jos sunt echivalente:
-
-.. code-block:: bash
-
-    student@uso:~$ kill -9 1234
-    student@uso:~$ kill -KILL 1234
-
-.. note::
-
-    Semnalele au diferite roluri, unele roluri configurabile pentru fiecare program.
-    Nu insistăm pe aceste detalii, nu sunt relevante în acest context.
-    Detalii găsiți prin rularea comenzii:
-
-    .. code-block:: bash
-
-        student@uso:~$ man 7 signal
-
-.. tip::
-
-    La o rulare simplă a utilitarului ``kill`` se transmite semnalul ``SIGTERM``, numărul ``15``.
-    Anumite procese pot decide să ignore semnalul ``SIGTERM``, caz în care folosirea utilitarului ``kill``, în forma sa implicită, nu omoară procesul.
-
-.. note::
-
-    La apăsarea combinației de taste ``Ctrl+c`` pentru a întrerupe un proces se transmite acestuia semnalul ``SIGINT``.
-
 Omorârea proceselor după atribute
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Uneori apare situația de a omorî procesele după anumite atribute, de exemplu procesele obținute din programul ``sleep`` sau procesele unui utilizator.
-În această situație folosim utilitarul ``pkill`` ca mai jos:
+În această situație folosim utilitarul ``pkill`` ca mai jos [#pkill]_:
 
 .. code-block:: bash
 
@@ -751,13 +577,10 @@ Uneori apare situația de a omorî procesele după anumite atribute, de exemplu 
 
 Comenzile de mai sus au efectele
 
-* omorârea proceselor ``sleep`` (linia ``1``)
-* omorârea proceselor pentru care comanda completă conține ``perl`` (linia ``2``)
-* omorârea proceselor deținute de utilizatorul ``maverick`` (linia ``3``)
-* omorârea garantată a proceselor ``sleep`` prin transmiterea semnalului ``SIGKILL`` (linia ``4``)
-
-Utilitarul ``pkill`` are aceleași opțiuni ca utilitarul ``pgrep``.
-Diferența este că, în timp ce utilitarul ``pgrep`` este folosit la identificarea proceselor, utilitarul ``pkill`` este folosit la transmiterea de semnale către acestea, care, uzual, înseamnă omorârea acestora.
+* omorârea proceselor ``sleep`` (prima comandă)
+* omorârea proceselor pentru care comanda completă conține ``perl`` (a doua comandă)
+* omorârea proceselor deținute de utilizatorul ``maverick`` (a treia comandă)
+* omorârea garantată a proceselor ``sleep`` prin transmiterea semnalului ``SIGKILL`` (a patra comandă)
 
 Suspendarea proceselor
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -770,24 +593,23 @@ Procesul există în continuare în memorie.
 De exemplu, dacă pornim o comandă ``sleep 100`` și dorim accesul la promptul shellului, folosim combinația de taste ``Ctrl+z`` pentru a suspenda execuția procesului, ca mai jos:
 
 .. code-block:: bash
-    :linenos:
 
     student@uso:~$ sleep 100
     ^Z
     [1]+  Stopped                 sleep 100
 
-    student@uso:~$ ls
-    Desktop  Documents  Downloads  examples.desktop  Music  Pictures  Public  snap  Templates
+În comanda de mai sus, am folosit combinația de taste ``Ctrl+z`` (apare ``^Z`` în terminal), în urma căreia procesul ``sleep`` este suspendat.
+Spunem că procesul ``sleep`` este suspendat în **background**.
+
+Acum terminalul este disponibil, putem rula alte comenzi.
+Putem de exemplu, rula comanda ``jobs`` care afișează procesele aflate în background, printre care și procesul suspendat ``sleep``:
+
+.. code-block:: bash
 
     student@uso:~$ jobs
     [1]+  Stopped                 sleep 100
 
-În comanda de mai sus, prin folosirea combinației de taste ``Ctrl+z`` (linia ``2``), procesul ``sleep`` este suspendat.
-Acest lucru este marcat prin afișarea mesajului ``Stopped`` (linia ``3``).
-Acum avem din nou acces la promptul terminalului și rula alte comenzi, precum ``ls`` (linia ``5``).
-Folosind comanda ``jobs`` (linia ``8``) putem vedea lista de procese suspendate din terminalul curent.
-
-Un proces suspendat poate fi restaurat (*resume*) pentru a-și continua rularea.
+Un proces suspendat poate fi restaurat (*resume*) în **foreground** pentru a-și continua rularea [#suspend_resume]_.
 Acest lucru îl facem cu ajutorul comenzii ``fg``, continuând comenzile de mai sus:
 
 .. code-block:: bash
@@ -802,58 +624,22 @@ Mai sus comanda ``fg`` a restaurat procesul ``sleep`` care a preluat din nou con
 
 .. note::
 
-    Supendarea și restaurarea proceselor sunt realizate folosind tot semnale.
-    Astfel, combinația de taste ``Ctrl+z`` transmite un semnal, numit ``SIGSTOP`` procesului.
-    La fel, comanda ``fg`` transmite un semnal numit ``SIGCONT``.
+    Un proces poate să fie în background și să ruleze, așa cum am văzut în secțiunea :ref:`app_install_start_stop_gui`.
+    Transferul din starea suspendat în rulare în background îl facem cu ajutorul comenzii ``bg``.
 
-Background și foreground
-""""""""""""""""""""""""
-
-Atunci când rulăm o comandă în shell, aceasta pornește un proces care rulează în **foreground**.
-Când un proces rulează în **foreground** procesul controlează terminalul; adică nu permite rularea unei alte comenzi în shell.
-
-Folosirea combinației de taste ``Ctrl+z`` de mai sus trece procesul în **background**, eliberând astfel terminalul și permițând rularea altor comenzi în shell.
-Comanda ``jobs`` afișează procesele care se găsesc în **background**.
-Comanda ``fg`` aduce un proces în **foreground** și acesta acaparează acum terminalul (până la încheierea execuției).
-
-Am văzut că procesele pot fi suspendate sau în rulare.
-În **foreground** procese se pot găsi doar în rulare.
-În **background** procesele se pot găsi în ambele stări: suspendate sau în rulare.
-Combinația ``Ctrl+z`` trece un proces din **foreground** în **background** suspendat.
-Comanda ``bg``, pe care am văzut-o în :ref:`app_install_start_stop_cli`, trece un proces din starea suspendat în rulare în **background**.
-Comanda ``fg`` trece un proces din **background** (indiferent din starea în care se află) în **foreground**.
-
-Dacă dorim să pornim o comanda direct în **background** folosim operatorul ``&`` (*ampersand*) după comandă cam mai jos:
-
-.. code-block:: bash
-
-    student@uso:~$ sleep 100 &
-    [1] 10540
-    student@uso:~$ jobs
-    [1]+  Running                 sleep 100 &
-
-Așa cum reiese de mai sus, procesul ``sleep`` rulează (``Running``) în **background**.
-Operatorul shell ``&`` (*ampersand*), folosit la sfârșitul unei comenzi, duce la pornirea procesului respectiv în **background** în starea de rulare (``Running``).
-Comanda ``jobs`` are astfel rolul de a afișa toate procesele aflate în **background**, indiferent de starea lor (suspendate sau în rulare).
-
-Sumarizat, modul în care se face tranziția între stări și între **foreground** și **background** se găsește în imaginea de mai jos:
-
-.. image:: img/background-foreground.svg
-    :width: 600px
-    :align: center
-    :alt: Foreground și background
-
-Exerciții: Oprirea și suspendarea proceselor
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Exerciții: Oprirea și susppendarea proceselor
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Porniți în trei terminale diferite trei procese ``sleep``.
 Omorâți-le pe toate cu o singură comandă.
 
-Porniți un proces ``sleep`` direct în **background** în starea de rulare (``Running``).
-Omorâți procesul.
+Porniți un proces ``vim``.
+Suspendați-l.
+Restaurați-l.
+Din alt terminal opriți procesul folosind comanda ``kill``.
 
-Omorârea shellului curent
-"""""""""""""""""""""""""
+Exercițiu: Omorârea shellului curent
+""""""""""""""""""""""""""""""""""""
 
 PID-ul shellului curent poate fi aflat folosind comanda
 
@@ -864,8 +650,8 @@ PID-ul shellului curent poate fi aflat folosind comanda
 
 Omorâți shellul curent.
 
-Omorârea aplicațiilor grafice
-"""""""""""""""""""""""""""""
+Exercițiu: Omorârea aplicațiilor grafice
+""""""""""""""""""""""""""""""""""""""""
 
 Porniți o aplicație ``shutter``.
 Porniți o aplicație ``libreoffice``.
@@ -873,8 +659,8 @@ Porniți o aplicație ``firefox``.
 Porniți o aplicație ``transmission-gtk``.
 Omorâți aceste procese folosind utilitarul ``kill``.
 
-Proces abuziv
-"""""""""""""
+Exercițiu: Proces abuziv
+""""""""""""""""""""""""
 
 Folosiți scriptul ``TODO`` pentru a porni un proces care consumă mult procesor.
 Este un proces care execută o buclă infinită.
@@ -890,11 +676,54 @@ Omorârea unui proces se face, uzual, prin transmiterea unui semnal procesului.
 Utilitarul ``kill`` trimite un semna unui proces, primit ca parametru PID-ul procesului.
 Utilitarul ``pkill`` permite omorârea proceselor după anumite atribute, similar utilitarului ``pgrep`` pentru afișarea PID-urilor proceselor.
 Procesele pot fi suspendate (în **background**), folosind combinația de taste ``Ctrl+z`` și restaurate (*resume*) (în **foreground**) folosind comanda ``fg``.
-Procesele se pot găsi în **background** (suspendate sau în rulare) sau în **foreground** (doar în rulare).
-Putem porni un proces direct în **background** în rulare folosind operatorul ``&`` (*ampersand*) după comandă.
-Putem tranzita un proces din suspendare în rulare în **background** folosind comanda ``bg``.
 Putem vedea procesele aflate în **background** folosind comanda ``jobs``.
 
 .. rubric:: Note de subsol
 
+.. [#load_time_run_time]
+
+    Momentul creării unui proces dintr-un fișier executabil, prin încărcarea codului și datelor fișierului executabil în memorie, se numește **load-time**.
+    Rularea procesului și folosirea resurselor sistemului se numește **run-time**.
+
 .. [#systemd] https://freedesktop.org/wiki/Software/systemd/
+
+.. [#init]
+
+    Procesul ``init`` va exista în permanență în vârful ierarhiei de procese, indiferent de faptul că se va numi ``systemd``, ``init``, ``upstart`` sau altfel.
+
+.. [#process]
+
+    Este impropriu să spunem "procesul bash"; corect este "un proces creat din programul / executabilul bash" sau "procesul cu PID-ul XY".
+    Cu toate acestea vom folosi în general expresia "procesul bash" pentru că reiese din context despre ce proces este vorba.
+
+.. [#top]
+
+    ``top`` este un utilitar interactiv.
+    Adică în timpul rulării sale utilizatorul poate interacționa cu procesele sau poate modifica informațiile afișate.
+    De exemplu, folosirea tastei ``M`` într-o rulare ``top`` afișează procesele sortate după consumul de memorie.
+    Un sumar al comenzilor interactive din ``top`` se obține folosind tasta ``?``.
+
+.. [#monitor]
+
+    Monitorizarea proceselor este o activitate foarte importantă în administrarea unui sistem de calcul.
+    Un proces care, intenționat sau nu, consumă abuziv resursele sistemului va duce la o proastă funcționare sau chiar la blocarea sistemului.
+    De aceea, utilitarele de monitorizare a sistemului (și a proceselor) sunt diverse. Amintim:
+
+    * ``iotop``: utilitar pentru monitorizarea consumului de I/O al proceselor
+    * ``sysstat``: o suită de utilitare pentru monitorizarea sistemului (procese, memorie, I/O, rețea)
+
+.. [#pidof_pgrep]
+
+    Utilitarele ``pgrep`` și ``pidof`` afișează doar PID-urile proceselor fără alte informații.
+    Acest lucru le face utile în practică în scripturi care conțin comenzi care au nevoie doar de PID-urile proceselor.
+
+.. [#pkill]
+
+    Utilitarul ``pkill`` are aceleași opțiuni ca utilitarul ``pgrep``.
+    Diferența este că, în timp ce utilitarul ``pgrep`` este folosit la identificarea proceselor, utilitarul ``pkill`` este folosit la transmiterea de semnale către acestea, care, uzual, înseamnă omorârea acestora.
+
+.. [#suspend_resume]
+
+    Supendarea și restaurarea proceselor sunt realizate folosind tot semnale.
+    Astfel, combinația de taste ``Ctrl+z`` transmite un semnal, numit ``SIGSTOP`` procesului.
+    La fel, comanda ``fg`` transmite un semnal numit ``SIGCONT``.
