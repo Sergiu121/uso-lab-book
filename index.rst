@@ -24,7 +24,7 @@ USO lab book
    :caption: Dezvoltarea aplicațiilor
 
    chapters/app-dev/git-intro.rst
-   chapters/app-dev/git-first-commit.rst
+   chapters/app-dev/git-first-commits.rst
    chapters/app-dev/git-branches.rst
    chapters/app-dev/git-first-pull-request.rst
    chapters/app-dev/make-setup.rst

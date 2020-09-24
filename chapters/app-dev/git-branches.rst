@@ -1,3 +1,5 @@
+.. _app_dev_branches:
+
 Lucrul pe branch-uri
 ====================
 
@@ -123,6 +125,8 @@ Acum acesta este vizibil și pe GitHub.
 
     Orice operație trebuie să fie urmată de o operație de verficare.
     Spre exemplu, după crearea unui commit, verificăm **statusul clonei** și **istoricul de commituri**.
+
+TODO: clonei
 
 Operația **merge** dintre un branch secundar și master
 ------------------------------------------------------
