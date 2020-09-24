@@ -1,3 +1,5 @@
+.. _app_dev_first_commit:
+
 Primul commit
 =============
 
