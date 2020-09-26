@@ -61,6 +61,8 @@ Acțiunile de instalare, dezinstalare și configurare a pachetelor într-un sist
     Mașina virtuală de suport folosește o distribuție Ubuntu.
     Astfel că vom concentra doar pe distribuțiile bazate pe Debian / Ubuntu și deci, pe utilitarele ``apt`` și ``dpkg``.
 
+.. _app_install_install_uninstall_gui:
+
 Gestiunea pachetelor din interfața grafică
 ------------------------------------------
 
@@ -260,6 +262,8 @@ Instalați și porniți următoarele pachete:
 * ``audacity``: pachet care instalează aplicația Audacity (cu interfață grafică), un editor audio
 
 Puteți realiza instalarea din interfața grafică a managerului sau da pachete sau din interfața în linia de comandă.
+
+.. _app_install_uninstall_identify:
 
 Identificarea unei aplicații de instalat
 ----------------------------------------
