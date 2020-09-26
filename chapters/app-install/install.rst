@@ -127,7 +127,8 @@ Instalarea pachetelor în sistem este o acțiune privilegiată, care necesită p
 Din acest motiv cele două comenzi de mai sus sunt prefixate de comanda ``sudo``.
 
 În acest moment, aplicația Inkscape este instalată și poate fi pornită.
-Porniți aplicația VLC în toate modurile descrise în :ref:`app_install_start_stop_gui`.
+
+**Exercițiu**: Porniți aplicația Inkscape în toate modurile descrise în :ref:`app_install_start_stop_gui`.
 
 Anatomia instalării unei aplicații
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -195,7 +196,7 @@ Rularea comenzii ``sudo apt install inkscape`` de mai sus poate conduce la două
 
    Așa cum reiese și din rezultatul de mai sus, instalarea unui pachet (și a dependențelor sale) presupune:
 
-   #. obținerea pachetului (de exemplu linia ``18`` sau linia ): pachetul este descărcat dintr-un mediu de instalare sau, mai uzual, de pe Internet
+   #. obținerea pachetului (de exemplu linia ``18``): pachetul este descărcat dintr-un mediu de instalare sau, mai uzual, de pe Internet
    #. pregătirea pentru instalare (de exemplu liniile ``22-23``): sistemul se pregătește pentru instalare cu acțiuni specifice pachetului, de exemplu oprirea unor servicii care pot fi afectate de instalare
    #. despachetarea în sistem a fișierelor specifice (de exemplu linia ``24``)
    #. acțiuni post-instalare (de exemplu linia ``30``): aici pot fi actualizate baze de date de căutare sau de pagini de manual sau alte acțiuni specifice pachetului
@@ -224,7 +225,8 @@ Pentru a îl folosi pe sistem, instalăm pachetul ``vlc``:
     [...]
 
 Acum aplicația VLC este disponibilă în sistem.
-Porniți aplicația VLC în modurile descrise în :ref:`app_install_start_stop_gui`.
+
+**Exercițiu**: Porniți aplicația VLC în modurile descrise în :ref:`app_install_start_stop_gui`.
 
 .. note::
 
@@ -244,7 +246,7 @@ Instalăm pachetul ``glances``:
     Do you want to continue? [Y/n] Y
     [...]
 
-Porniți utilitarul în linia de comandă folosind comanda ``glances``.
+**Exercițiu**: Porniți utilitarul în linia de comandă folosind comanda ``glances``.
 Ieșirea din utilitar se face, la fel ca în cazul ``top`` și ``htop``, folosind tasta ``q``.
 
 Exerciții de instalare de aplicații
@@ -287,7 +289,7 @@ Căutarea unei aplicații în Internet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Întrucât este cel mai ușor mod, vom folosi un motor de căutare din Internet pentru a căuta o aplicație potrivită unei nevoi.
-Ne vom gândi la un șir de căutare potrivit nevoii noastre și vom folosi `Google <https://www.google.com/>`_ sau `Bing <https://www.bing.com/>` sau `DuckDuckGo <https://duckduckgo.com/>` sau alt motor de căutare.
+Ne vom gândi la un șir de căutare potrivit nevoii noastre și vom folosi `Google <https://www.google.com/>`_ sau `Bing <https://www.bing.com/>`_ sau `DuckDuckGo <https://duckduckgo.com/>`_ sau alt motor de căutare.
 Astfel, pentru nevoile de mai sus, exemple de șiruri de căutare sunt:
 
 * *internet speed test*
@@ -296,7 +298,7 @@ Astfel, pentru nevoile de mai sus, exemple de șiruri de căutare sunt:
 * *video record screen*
 * *edit pdf add signature*
 
-**De făcut**: Folosiți șirurile de căutare de mai sus într-un motor de căutare din Internet.
+**Exercițiu**: Folosiți șirurile de căutare de mai sus într-un motor de căutare din Internet.
 
 Pentru fiecare șir de căutare, motorul de căutare folosit ne va indica:
 
@@ -386,8 +388,8 @@ Putem folosi șirul de căutare ``e-book manager`` pentru a simplifica rezultate
     calibre-bin/bionic 3.21.0+dfsg-1build1 amd64
       powerful and easy to use e-book manager
 
-Căutare și instalare de aplicații
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Exercițiu
+^^^^^^^^^
 
 Folosiți, în managerul de pachete, șiruri de căutare potrivite pentru a căuta aplicații corespunzătoare nevoilor precizate mai sus.
 Folosiți managerul de pachete și în interfața grafică și în linia de comandă (``apt search``).
@@ -424,8 +426,8 @@ Folosiți atât căutarea în Internet cât și căutarea folosind managerul de 
 
 Instalați, porniți și folosiți aplicațiile găsite.
 
-Căutarea și instalarea unei aplicații pentru o nevoie proprie
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Exercițiu: Căutarea și instalarea unei aplicații pentru o nevoie proprie
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Gândiți-vă la nevoi pe care le aveți și căutați aplicații corespunzătoare pentru acele nevoi.
 Instalați, porniți și folosiți aplicațiile găsite.
@@ -601,14 +603,14 @@ Este recomandat să actualizăm informațiile interne despre pachetele sistemulu
 
         student@uso:~$ sudo apt full-upgrade
 
-Bune practici și pitfalls
--------------------------
+Bune practici și greșeli comune
+-------------------------------
 
 Acțiuni neinteractive
 ^^^^^^^^^^^^^^^^^^^^^
 
 Atunci când instalăm, dezinstalăm sau actualizăm pachete în linia de comandă, utilitarul ``apt`` solicită confirmare pentru executarea acțiunii.
-Trebuie să introducem la tastatură ``Y`` (pentru *Yes*) sau doar să apăsăm ``Enter`` la un prompt precum cel de mai jos:
+Trebuie să introducem la tastatură ``Y`` (pentru *Yes*) sau doar să apăsăm ``Enter`` la un prompt precum cel de mai jos [#enter]_:
 
 .. code-block:: bash
 
@@ -635,3 +637,4 @@ Folosirea opțiunii ``-y`` la oricare dintre comenzile de instalare, dezinstalar
 
 .. [#linuxapps] https://itsfoss.com/essential-linux-applications/
 .. [#cliapps] https://github.com/agarrharr/awesome-cli-apps
+.. [#enter] De fapt, atunci când ni se prezintă un prompt de forma ``[Y/n]`` apăsarea tastei ``Enter`` este echivalentă cu introducerea tastei marcate cu literă mare (aici ``Y``). Dacă, de exemplu, ar fi fost un prompt de forma ``[y/N]``, apăsarea tastei ``Enter`` era echivalentă cu introducerea tastei ``N``.

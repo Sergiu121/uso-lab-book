@@ -50,6 +50,12 @@ Pe când, dacă folosim comanda ``emacs -nw`` aplicația va porni în consolă, 
 
     Pentru a închide editorul Emacs (pornit fie în mediul grafic, fie în consolă) folosim combinația de taste specifică pentru oprirea aplicației: ``Ctrl+x`` urmat de ``Ctrl+c``.
 
+.. important::
+
+    Pentru a afla argumentele posibile ale unei comenzi cel mai adesea vom folosi pagina de manual a acelui utilitar.
+    De exemplu, pentru a afla argumentele posibile ale comenzii ``ls`` vom folosi comanda ``man ls`` pentru a deschide pagina de manual a utilitarului ``ls``.
+    Mai multe informații despre folosirea paginilor de manual se găsesc în TODO (referință la capitolul de linia de comandă).
+
 Exercițiu
 ^^^^^^^^^
 
@@ -104,8 +110,8 @@ Alternativ, pot fi editate cu ajutorul unui utilitar dedicat, precum e cazul Git
 
 Mai sus am folosit comanda ``git config`` cu opțiunea ``-global`` pentru a modifica fișierul global de configurare ``~/.gitconfig``.
 
-Modificarea unui fișiere de configurare
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Exercițiu: Modificarea unui fișiere de configurare
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Dorim să configurăm o aplicație din fișierul de configurare.
 O aplicație simplă este editorul Nano, care funcționează în linia de comandă, și îl vom folosi pe acesta.
@@ -126,16 +132,14 @@ Adăugați în fișierul de configurare ``~/.nanorc`` opțiunea pentru a permite
 Găsiți opțiunea în pagina de manual (``man nanorc``).
 Creați în Nano un fișier cod sursă C în care verificați adăugarea opțiunii.
 
-Configurarea clientului SSH
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Exercițiu: Configurarea clientului SSH
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Configurați utilitarul ``ssh`` (client SSH) astfel încât folosirea comenzii ``ssh fav`` să însemne conectarea la un cont la distanță SSH la care aveți acces [#ssh_config]_.
 De exemplu poate fi vorba de contul de pe sistemul ``fep.grid.pub.ro``.
 
 Configurarea clientului SSH se realizează în fișierul ``~/.ssh/config``.
 Vedeți și `exemplul de aici <https://linuxize.com/post/using-the-ssh-config-file/#shared-ssh-config-file-example>`_.
-
-    
 
 Configurarea din aplicație
 --------------------------
@@ -145,8 +149,8 @@ Modul în care rulează o aplicație poate fi configurat direct din aplicație.
 De exemplu, în cadrul interfeței browserului web Firefox putem modifica pagina de start sau putem activa anumite pluginuri sau putem personaliza dispunerea meniurilor sau fonturile folosite.
 Aceste opțiuni sunt frecvente în majoritatea aplicațiilor grafice.
 
-Configurări de aplicații din aplicație
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Exercițiu
+^^^^^^^^^
 
 Porniți editorul Gedit și configurați-l, din aplicație (mediu grafic), să afișeze numărul liniilor editate.
 
@@ -181,7 +185,6 @@ Putem modifica ordinea afișată de utilitare de afișare (precum ``ls``) folosi
 
 Atunci când variabila de mediul ``LC_ALL`` folosește valoarea ``en_US.UTF-8`` se afișează intrările în ordine alfabetică, indiferent dacă numele acestora începe cu literă mare sau literă mică.
 Atunci când folosește valoarea ``POSIX`` se afișează întâi intrările al căror nume începe cu literă mare.
-
 
 .. note::
 
