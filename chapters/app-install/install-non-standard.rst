@@ -165,20 +165,100 @@ Verificați că aplicația nu mai este instalată.
 Instalarea manuală a unei aplicații
 -----------------------------------
 
+Uneori pachetele nu se găsesc nici în depozitul standard de pachete al distribuției, nici într-un repository Snap (sau Flatpak sau AppImage).
+În acest caz trebuie să recurgem la instalarea manuală a acestora.
+
 Instalarea unui pachet standard de la furnizor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**breviar**: instalarea de la furnizor se face descărcând pachetul și instalându-l, fie din GUI fie din CLI
-sudo dpkg -i <package>
+Un pachet se poate instala direct de la furnizorul aplicației.
+În mod tipic furnizorul are un pachet în formatul distribuției (``.deb`` sau ``.rpm``) care poate fi descărcat și instalat.
 
-**tutorial**: de instalat MS Teams de la furnizor
+De exemplu, dacă dorim să instalăm aplicația Teams (de la Microsoft) pe o distribuție Ubuntu, vom descărca pachetul format ``.deb`` folosind `pagina de download Teams <https://teams.microsoft.com/uswe-01/downloads>`_.
+Pachetul poate fi instalat în momentul descărcării folosind opțiunea ``Software Install`` ca în imaginea de mai jos:
+
+.. image:: img/download-install-teams.png
+    :width: 300px
+    :align: center
+    :alt: Desărcare și instalare Teams
+
+Această opțiune duce la pornirea interfeței grafice de instalare a pachetului, ca în imaginea de mai jos:
+
+.. image:: img/install-teams-gui.png
+    :width: 600px
+    :align: center
+    :alt: Instalare Teams din modul grafic
+
+Alternativa este descărcarea pachetului și instalarea sa folosind comanda ``dpkg``:
+
+.. code-block:: bash
+
+    student@uso:~$ sudo dpkg -i ~/Downloads/teams_1.3.00.16851_amd64.deb
+
+Comanda de mai sus duce la instalarea pachetului ``teams``, presupunând că fișierul format ``.deb`` se găsește în directorul ``~/Downloads``.
+
+În urma instalării din interfața grafică sau interfața în linia de comandă, aplicația Teams este acum disponibilă și poate fi pornită.
+Comanda corespunzătoare este ``teams``.
 
 Instalarea din arhivă / executabil
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**breviar**: alte aplicații nu sunt în pachete standard, se descarcă și se rulează executabilul
+Alteori producătorul aplicației nu oferă un pachet în formatul distribuției.
+Formatul oferit este al unei arhive sau al unui executabil sau al unui script de instalare.
+În oricare situație instalarea este specifică aplicației.
 
-**tutorial**: de instalat IDA prin descărcarea și rularea executabilului
+De exemplu, în cazul aplicației IDA, versiunea freeware a acestei presupune descărcarea unui pachet specific (*custom*) de la `pagina de download IDA Freeware <https://www.hex-rays.com/products/ida/support/download_freeware/>`_.
+Putem descărca acest pachet direct în linia de comandă folosind utilitarul ``wget``:
+
+.. code-block:: bash
+
+    student@uso:~/Downloads$ wget https://out7.hex-rays.com/files/idafree70_linux.run
+    [...]
+    2020-09-26 22:38:36 (11.8 MB/s) - ‘idafree70_linux.run’ saved [47645071/47645071]
+
+Fișierul ``idafree70_linux.run`` a fost salvat în directorul curent, adică în ``~/Downloads/``:
+
+.. code-block:: bash
+
+    student@uso:~/Downloads$ ls
+    idafree70_linux.run  opensc-0.20.0  opensc-0.20.0.tar.gz
+
+Extensia ``.run`` a pachetului este un indiciu că acesta trebuie rulat în forma unui script.
+Înainte de a rula scriptul, trebuie să îi acordăm permisiuni de execuție folosind comanda ``chmod``:
+
+.. code-block:: bash
+
+    student@uso:~/Downloads$ chmod a+x idafree70_linux.run
+
+În urma comenzii de mai sus, fișierul ``idafree70_linux.run`` este executabil [#file_permissions]_.
+Pentru rularea scriptului (și, astfel, instalarea pachetului) rulăm comanda:
+
+.. code-block:: bash
+
+    student@uso:~/Downloads$ sudo ./idafree70_linux.run
+    ----------------------------------------------------------------------------
+    Welcome to the IDA Freeware 7.0 Setup Wizard.
+    [...]
+    Do you accept this license? [y/n]: y
+    [...]
+    Installation Directory [/opt/idafree-7.0]:
+    [...]
+    Do you want to continue? [Y/n]: Y
+    [...]
+    Setup has finished installing IDA Freeware 7.0 on your computer.
+
+În urma rulării comenzii de mai sus și furnizării răspunsurilor la întrebările din prompt, aplicația IDA este instalată în directorul ``/opt/idafree-7.0``.
+Poate fi pornită folosind combinația de taste ``Alt+F2`` sau din linia de comandă:
+
+.. code-block:: bash
+
+    student@uso:~$ /opt/idafree-7.0/ida64
+
+.. important::
+
+    Dezavantajul instalării specifice unei aplicații, dintr-o arhivă sau un executabil, este că nu este integrată cu sistemul de pachete al distribuție.
+    Din acest motiv nu poate fi ușor dezinstalată, actualizată și nu este instalată într-un mod în care poate fi ușor pornită.
+    Așa cum observăm și din instalarea aplicației IDA, pentru pornirea sa trebuie să furnizăm calea completă către executabil, în loc de folosirea unei comenzi simple.
 
 .. rubric:: Note de subsol
 
@@ -196,3 +276,7 @@ Instalarea din arhivă / executabil
 .. [#snap_no_deps]
 
     Un pachet Snap este de tipul all-in-one, adică dispune de toate fișierele necesare pentru a rula, nu are dependențe de alte pachete.
+
+.. [#file_permissions]
+
+    Vom prezenta mai multe despre permisiuni pe fișiere, inclusiv permisiuni de execuție, în capitolul despre utilizatori.
