@@ -1,16 +1,42 @@
 .. _app_install_summary1:
 
-Sumar: Pornirea, rularea și configurarea aplicațiilor
-=======================================================
+Exerciții: Pornirea, rularea și configurarea aplicațiilor
+=========================================================
 
-**exercițiu**: folosirea libreoffice în modul headless pentru a converti un fișier .odt în fișier .pdf
-poate fi și la pornirea unei aplicații
+Exercițiile de mai jos sunt exerciții recapitulative, cu grad sporit de dificultate.
 
-**exercițiu**: investigat ce aplicații folosesc I/O
-iotop
+Mod headless pentru aplicații grafice
+-------------------------------------
 
-**exercițiu**: pornit emacs în modul full screen
+Folosiți LibreOffice pentru a crea un document format ``.odt``.
+Închideți LibreOffice.
 
-**exercițiu**: de deschis o sesiune de browser și de terminal la login-ul utilizatorului
+Folosiți LibreOffice în linia de comandă (modul headless) pentru a converti fișierul ``.odt`` într-un fișier PDF.
 
-**exercițiu**: de configurat terminalul să aibă transparență
+Investigarea I/O a proceselor
+-----------------------------
+
+În afară de consumul de putere de calcul (memorie și procesor) ne interesează ce procese folosesc I/O (*input/output*).
+Pentru aceasta putem folosi utilitarul ``iotop``.
+
+Folosiți utilitarul ``iotop`` pentru a afișa resursele I/O consumate de procesele sistemului.
+
+În interfața afișată, reduceți afișarea doar la procesele care consumă I/O.
+**Indiciu**: Urmăriți șirul ``--only`` în pagina de manual a utilitarului ``iotop``.
+
+Emacs în modul full-screen
+--------------------------
+
+Configurați Emacs astfel încât pornirea sa în interfața grafică să fie în modul full-screen.
+**Indiciu**: Configurarea o realizați în fișierul ``~/.emacs``.
+
+Configurare aplicații de startup
+--------------------------------
+
+Configurați sistemul astfel încât, la autentificarea utilizatorului, să fie pornite automat: o aplicație browser (Firefox) și o aplicați de terminal (GNOME Terminal).
+
+Configurare transparență terminal
+---------------------------------
+
+Configurați GNOME Terminal astfel încât fereastra de terminal să aibă transparență.
+**Indiciu**: Configurarea o realizați în interfața grafică a aplicației.
