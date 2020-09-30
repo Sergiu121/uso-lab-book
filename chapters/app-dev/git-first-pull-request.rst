@@ -1,3 +1,5 @@
+.. _app_dev_pr:
+
 Crearea unui Pull Request (PR) pe GitHub
 ========================================
 
@@ -6,82 +8,87 @@ Un **Pull Request** este o cerere de modificare a repository-ului.
 Alți colaboratori ai proiectului vor recenza modificările și vor aproba, vor sugera schimbări sau vor respinge această cerere.
 În momentul în care un Pull Request este aprobat, atunci schimbările propuse în Pull Request pot fi integrate în proiect, adică se va putea face merge între codul sursă curent și noile modificări.
 
+Practic, un Pull Request este o interfață GitHub de contribuit la proiecte software, interfață bazată pe lucrul cu branch-uri Git.
+
 Spunem că deschidem un Pull Request care urmează să fie integrat într-un anumit branch.
 De obice acel branch este **master**, însă acest lucru nu este obligatoriu.
 În acest tutorial vom deschide un Pull Request care urmează să fie integrat în branch-ul **master**.
 
-.. note::
-
-  Alternativa la a crea un **Pull Request** ar fi să lucrăm direct pe branch-ul **master**.
-
-  Așa cum am menționat și în secțiunile anterioare, este **BAD-PRACTICE** să lucrăm direct pe branch-ul **master** din mai multe motive:
-
-  #. Pe branch-ul **master** se ține întotdeauna o versiune de cod funcțională. Astfel, lucrul pe acest branch ar însemna să facem commituri doar atunci când o funcționalitate este finalizată, altfel pe branch-ul **master** vom avea o bucată de cod neterminată care poate să afecteze întreg proiectul.
-  #. Lucrul pe un singur branch nu se oferă posibilitatea de a da feedback pe schimbările făcute pe repository. Dacă nu avem posibilitatea să oferim feedback unui coleg prin intermediul GitHub, atunci vom avea nevoie să comunicăm pe un alt mediu observațiile noastre, iar ei vor trebui să creeze un nou commit pentru rezolvarea problemelor. Mult mai simplu este să se realizeze întreaga etapă de feedback, numită **code review** înainte ca schimbările să apară pe **master**.
-  #. În unele situații nici nu vom avea drepturi să scriem pe branch-ul **master**, astfel devenind obligatoriu lucrul pe un alt branch și integrarea codului în branch-ul **master** printr-un **Pull Request**.
-
-
-În secțiunea anterioară (TODO adaugă ref) am adus modificările de pe branch-ul TODO pe branch-ul **master** prin operația **merge**.
-Acum vom integra schimbările prin intermediul unui **Pull Request** urmând pașii enumerați mai sus.
+În secțiunea :ref:`app_dev_branches` am adus modificările de pe branch-ul **add-gitignore** pe branch-ul **master** prin operația **merge**.
+În această secțiune vom integra schimbările prin intermediul unui **Pull Request** [#pull_request]_. urmând pașii din subsecțiunea :ref:`app_dev_pr_steps`.
 
 .. note::
 
-  Folosirea unui **Pull Request** în loc de a efectua o operație **merge** vine cu mai multe beneficii:
+	Folosirea unui **Pull Request** în loc de a efectua o operație **merge** vine cu mai multe beneficii:
 
-  #. În general, schimbările nu pot fi integrate fără ca PR-ul să fie aprobat. Aprobarea vine în mod normal de la un alt coleg de echipă.
-  #. Recenzia codului sursă se face ușor pe un Pull Request. Vom vedea în secțiunea TODO cum putem adăuga recenzenți.
+	#. În general, schimbările nu pot fi integrate fără ca PR-ul să fie aprobat. Aprobarea vine în mod normal de la un alt coleg de echipă.
+	#. Recenzia codului sursă se face ușor pe un Pull Request. Vom vedea în secțiunea :ref:`app_dev_pr_reviewers` cum adăugăm recenzenți.
 
 
-.. admonition:: Pași Pull Request
+.. _app_dev_pr_steps:
 
-  Ca să avem o contribuție prin Pull Request în mod uzual se urmează pașii:
+Pași Pull Request
+-----------------
 
-  #. Se realizează un fork sau o clonă a repository-ului. Noi vom folosi în continuare repository-ul TODO.
-  #. Creăm un branch nou.
-  #. Realizăm commit pe noul branch și îl publicăm pe GitHub.
-  #. Creăm un PR în interfața GitHub.
-  #. Ulterior, un maintainer al repository-ului va recenza PR-ul. Dacă e nevoie de modificări, vom face actualizări pe care le vom adăuga (prin operația **push**) din nou în branch-ul nou creat, PR-ul fiind actualizat.
-  #. După un număr dat de iterații, PR-ul va fi definitivat. Atunci maintainerul va integra branch-ul în master (operația **merge**).
+Ca să avem o contribuție prin Pull Request, în mod uzual se urmează pașii:
 
-În următoarele subsecțiuni vom implementa algoritmul Bubble Sort și vom contribui la repository-ul TODO prin intermediul unui **Pull Request**.
+#. Creăm un fork sau o clonă a repository-ului. Noi vom folosi în continuare repository-ul **array-sorting-algorithms**.
+#. Creăm un branch nou.
+#. Creăm un commit pe noul branch și îl publicăm pe GitHub.
+#. Creăm un PR în interfața GitHub.
+#. Ulterior, un maintainer al repository-ului va recenza PR-ul. Dacă e nevoie de modificări, vom face actualizări pe care le vom adăuga (prin operația **push**) din nou în branch-ul nou creat, PR-ul fiind actualizat.
+#. După un număr dat de iterații, PR-ul va fi definitivat. Atunci maintainerul va integra branch-ul în master (operația **merge**).
+
+În următoarele subsecțiuni vom implementa algoritmul Bubble Sort și vom modifica repository-ul ``array-sorting-algorithms`` prin intermediul unui **Pull Request**.
+
+.. _app_dev_pr_create_branch:
 
 Crearea unui branch nou
 -----------------------
 
 Pentru a putea deschide un Pull Request, trebuie să lucrăm pe un branch diferit dață de cel în care vrem să integrăm schimbările.
-În acest caz, vom lucra pe un nou branch, diferit de branch-ul **master**.
+Vom lucra pe un nou branch, diferit de branch-ul **master**.
 
-Creăm un branch numit **bubble-sort-implementation**.
+Creăm un branch numit **bubble-sort-implementation** folosind comanda ``git branch``:
 
 .. code-block:: bash
 
-    student@uso:~/my-first-repository$ git branch
-    *  master
-    student@uso:~/my-first-repository$ git branch bubble-sort-implementation
-    student@uso:~/my-first-repository$ git checkout bubble-sort-implementation
-    Switched to a new branch 'bubble-sort-implementation'
-    student@uso:~/my-first-repository$ git branch
-    * bubble-sort-implementation
-    master
+	student@uso:~/array-sorting-algorithms$ git branch
+	*  master
+	student@uso:~/array-sorting-algorithms$ git branch bubble-sort-implementation
+	student@uso:~/array-sorting-algorithms$ git checkout bubble-sort-implementation
+	Switched to a new branch 'bubble-sort-implementation'
+	student@uso:~/array-sorting-algorithms$ git branch
+	* bubble-sort-implementation
+	master
 
 
-.. note::
+Până la acest moment am făcut deja o serie de commituri în repository-ul nostru. 
 
-  La începutul aceste subsecțiui repository-ul avea un singur branch, cel **master**.
-  Ne amintim că în secțiunea anterioară (TODO adaugă ref) am șters branch-ul **add-gitignore**.
+.. code-block:: bash
 
-.. note::
+	student@uso:~/array-sorting-algorithms$ git log
+	commit 6d5189fd7095a19a6ad9bddb8c95491b37d9e828 (HEAD -> bubble-sort-implementation, origin/master, master)
+	Author: Liza Babu <lizababu@example.com>
+	Date:   Mon Sep 28 11:47:36 2020 -0700
 
-  Simbolul ``*`` din outputul comenzii ``git branch`` ne indică pe ce branch de aflăm.
-  În acest caz este vorba despre branch-ul **bubble-sort-implementation**.
+		Update .gitignore content
 
-Până la acest moment am făcut deja o serie de commituri pe repository-ul nostru. 
+	commit 988b188d2c6422a3162d1da25653f4682f7df6db
+	Author: Liza Babu <lizababu@example.com>
+	Date:   Mon Sep 28 02:29:00 2020 -0700
 
-TODO: output git log
+		Add .gitignore file
+	(...)
 
-Același istoric de commituri îl putem vedea și prin intermediul interfeței grafice GitHub.
+Vedem același istoric de commituri și prin intermediul interfeței grafice GitHub ca în imaginea de mai jos:
 
-TODO: adaugă GIF cum navighezi pe GitHub spre toate commiturile
+.. figure:: ./gifs/GitHub-view-commits-GitHub.gif
+    :alt: Vizualizarea tuturor commiturilor pe GitHub
+
+În următoarea secțiune vom face încă un commit.
+
+.. _app_dev_create_new_commit_on_branch:
 
 Crearea unui commit pe branch-ul nou creat
 ------------------------------------------
@@ -91,293 +98,397 @@ Modificăm fișierul ``bubble-sort.c`` astfel încât conținutul său să fie u
 
 .. code-block:: c
 
-  #include <stdio.h> 
-  
-  #define MAX_LEN 100
+	#include <stdio.h> 
 
-  void swap(int *x, int *y) { 
-      int tmp = *x; 
-      *x = *y; 
-      *y = tmp; 
-  } 
-    
-  void bubble_sort(int *arr, int len) { 
-    int i, j;
+	#define MAX_LEN 100
 
-    for (i = 0; i < len - 1; i++)
-        for (j = 0; j < len - 1; j++)  
-            if (arr[j] > arr[j + 1]) 
-                swap(&arr[j], &arr[j + 1]); 
-  }
+	static void swap(int *x, int *y)
+	{ 
+		int tmp = *x; 
+		*x = *y; 
+		*y = tmp; 
+	} 
 
-  void print_array(int *arr, int len) {
-    int i;
-    
-    for (i = 0; i < len; i++) {
-      printf("%d ", arr[i]);
-    }
-    printf("\n");
-  }
+	static void bubble_sort(int *array, int len)
+	{ 
+		int i, j;
 
-  int main() {
-      int arr[MAX_LEN], len, i;
-      
-      printf("What's the length of the array? Maximum lenght is %d\n", MAX_LEN);
-      scanf("%d", &len);
+		for (i = 0; i < len - 1; i++)
+			for (j = 0; j < len - 1; j++)  
+				if (array[j] > array[j + 1]) 
+					swap(&array[j], &array[j + 1]); 
+	}
 
-      printf("Gimme the %d elements\n", len);
-      for (i = 0; i < len; i++) {
-        scanf("%d", &arr[i]);
-      }
+	static void print_array(int *array, int len)
+	{
+		int i;
 
-      printf("Nonsorted array: ");
-      print_array(arr, len);
+		for (i = 0; i < len; i++) {
+			printf("%d ", array[i]);
+		}
+		printf("\n");
+	}
 
-      bubble_sort(arr, len);
+	int main()
+	{
+		int array[MAX_LEN], len, i;
+		
+		printf("What's the length of the array? Maximum lenght is %d\n", MAX_LEN);
+		scanf("%d", &len);
 
-      printf("Sorted array: ");
-      print_array(arr, len);
+		printf("Gimme the %d elements\n", len);
+		for (i = 0; i < len; i++) {
+		scanf("%d", &array[i]);
+		}
 
-      return 0; 
-  } 
+		printf("Nonsorted array: ");
+		print_array(array, len);
 
-.. note::
+		bubble_sort(array, len);
 
-  Algoritmul de mai sus sortează crescător un vector de numere întregi citit de la tastatură.
-  Trebuie să precizăm acest lucru și în fișierul ``README.md``
+		printf("Sorted array: ");
+		print_array(array, len);
 
-Modificăm fișierul ``README.md`` astfel încât el să aibă următorul conținut:
-
-.. code-block:: bash
-
-  student@uso:~/my-first-repository$ cat README.md
-  TODO: adaugă conținut potrivit
-
-  Sorts a integer array in ascending order.
-
-  The algoritm is implemented in C.
-
-.. note::
-
-  În acest moment noi am implementat funcționalitatea principală a proiectului.
-  
-  Așa cum am precizat și în secțiunea TODO, fișierul README trebuie să conțină informații despre proiect.
-  Așadar, am actualizat și fișierul README în acest caz.
+		return 0; 
+	} 
 
 
-Acum trebuie să creăm un **commit** cu schimbările făcute.
+Algoritmul de mai sus sortează crescător un vector de numere întregi citit de la tastatură.
+Vrem să precizăm acest lucru și în fișierul ``README.md``
 
-.. code-block:: bash
+Modificăm fișierul ``README.md`` ca să aibă conținutul de mai jos:
 
-  student@uso:~/my-first-repository$ git status
-  On branch bubble-sort-implementation
-  Changes not staged for commit:
-    (use "git add <file>..." to update what will be committed)
-    (use "git restore <file>..." to discard changes in working directory)
-    modified:   README.md
-    modified:   bubble-sort.c
+.. code-block:: 
 
-  no changes added to commit (use "git add" and/or "git commit -a")
-  student@uso:~/my-first-repository$ git add README.md
-  student@uso:~/my-first-repository$ git add bubble-sort.c
-  student@uso:~/my-first-repository$ git status
-  On branch bubble-sort-implementation
-  Changes to be committed:
-    (use "git restore --staged <file>..." to unstage)
-    modified:   README.md
-    modified:   bubble-sort.c
+	# Sorting Algorithm for Integer Arrays
 
-Comitem modificările.
-Folosim o descriere succintă care să descrie ce modificări aducem asupra repository-ului.
+	We implement 3 sorting algorithms for integer arrays.
+
+	## Bubble Sort
+
+	The Bubble Sort algorithm sorts the array in ascending order.
+
+	The algorithm is implemented in C.
+
+
+Creăm un **commit** cu schimbările făcute.
+Adăugăm întâi modificările în zona de lucru (*staging area*) folosind comanda ``git add``:
 
 .. code-block:: bash
 
-  student@uso:~/my-first-repository$ git commit -m "Add Bubble Sort implementation, update README accordingly"
-  [bubble-sort-implementation 2a476f4] Add Bubble Sort implementation, update README accordingly
-  2 files changed, TODO insertions(+), TODO deletions(-)
+	student@uso:~/array-sorting-algorithms$ git status
+	On branch bubble-sort-implementation
+	Changes not staged for commit:
+	(use "git add <file>..." to update what will be committed)
+	(use "git checkout -- <file>..." to discard changes in working directory)
 
-  student@uso:~/my-first-repository$ git log
-  commit 2a476f44aaca87fd17cef2af134d64f9e1b674ff (HEAD -> bubble-sort-implementation)
-  Author: Liza Babu <lizababu@example.com>
-  Date:   Thu Sep 10 12:17:51 2020 +0300
+		modified:   README.md
+		modified:   bubble-sort.c
 
-      Add Bubble Sort implementation, update README accordingly
-  TODO: adaugă mai mult output ?
+	no changes added to commit (use "git add" and/or "git commit -a")
+	student@uso:~/array-sorting-algorithms$ git add README.md
+	student@uso:~/array-sorting-algorithms$ git add bubble-sort.c
+	student@uso:~/array-sorting-algorithms$ git status
+	On branch bubble-sort-implementation
+	Changes to be committed:
+	(use "git reset HEAD <file>..." to unstage)
 
-.. note::
+		modified:   README.md
+		modified:   bubble-sort.c
 
-  TODO: discuție pe git log
 
-Pentru a putea crea un **PR** trebuie să publicăm noul commit.
+Creăm un commit cu modificările din staging area:
 
 .. code-block:: bash
 
-  student@uso:~/my-first-repository$ git push origin bubble-sort-implementation
-  Enumerating objects: 3, done.
-  Counting objects: 100% (3/3), done.
-  Delta compression using up to 4 threads
-  Compressing objects: 100% (2/2), done.
-  Writing objects: 100% (2/2), 267 bytes | 267.00 KiB/s, done.
-  Total 2 (delta 0), reused 0 (delta 0), pack-reused 0
-  remote: 
-  remote: Create a pull request for 'bubble-sort-implementation' on GitHub by visiting:
-  remote:      https://github.com/{username}/my-second-repository/pull/new/bubble-sort-implementation
-  remote: 
-  To https://github.com/{username}/my-second-repository
-  * [new branch]      bubble-sort-implementation -> bubble-sort-implementation
-  Branch 'bubble-sort-implementation' set up to track remote branch 'bubble-sort-implementation' from 'origin'.
+	student@uso:~/array-sorting-algorithms$ git commit -m "Add Bubble Sort implementation, update README accordingly"
+	[bubble-sort-implementation d400958] Add Bubble Sort implementation, update README accordingly
+	2 files changed, 61 insertions(+), 11 deletions(-)
+	rewrite bubble-sort.c (82%)
+
+	student@uso:~/array-sorting-algorithms$ git log
+	commit d400958efb8a49cd9b6050fc03783b218891d165 (HEAD -> bubble-sort-implementation)
+	Author: Liza Babu <lizababu@example.com>
+	Date:   Tue Sep 29 01:59:27 2020 -0700
+
+		Add Bubble Sort implementation, update README accordingly
+
+	commit 6d5189fd7095a19a6ad9bddb8c95491b37d9e828 (origin/master, master)
+	Author: Liza Babu <lizababu@example.com>
+	Date:   Mon Sep 28 11:47:36 2020 -0700
+
+		Update .gitignore content
+
+Acum ultimul commit din istoric pe branch-ul **bubble-sort-implementation** este *d400958efb8a49cd9b6050fc03783b218891d165*.
+
+Publicăm commitul în repository-ul origin folosind comanda ``git push``:
+
+.. code-block:: bash
+
+	student@uso:~/array-sorting-algorithms$ git push origin bubble-sort-implementation
+	Counting objects: 4, done.
+	Delta compression using up to 2 threads.
+	Compressing objects: 100% (4/4), done.
+	Writing objects: 100% (4/4), 924 bytes | 924.00 KiB/s, done.
+	Total 4 (delta 0), reused 0 (delta 0)
+	remote: 
+	remote: Create a pull request for 'bubble-sort-implementation' on GitHub by visiting:
+	remote:      https://github.com/lizababu/array-sorting-algorithms/pull/new/bubble-sort-implementation
+	remote: 
+	To https://github.com/lizababu/array-sorting-algorithms.git
+	* [new branch]      bubble-sort-implementation -> bubble-sort-implementation
 
 
-.. note::
+Linkul ``https://github.com/{username}/array-sorting-algorithms/pull/new/bubble-sort-implementation`` este link la **Pull Request**.
 
-  Linkul ``https://github.com/{username}/my-second-repository/pull/new/bubble-sort-implementation`` ne este de folos în secțiunea următoare (TODO adaugă ref).
+În loc de ``{username}`` veți avea username-ul vostru de pe GitHub.
+Pentru autorul acestui capitol este ``lizababu``.
 
-  În loc de ``{username}`` veți avea username-ul vostru de pe GitHub.
-  Pentru autorul acestui capitol este ``lizababu``.
-
+.. _app_dev_create_pr:
 
 Crearea Pull Requestului
 ------------------------
 
-TODO: adaugă screenshoturi noi pentr subsecțiunea asta
-
-După publicarea schimbărilor anterioare, intrăm pe GitHub.
-Vedem că ne apare că a fost creat un nou commit pe branch-ul ``bubble-sort-implementation``.
-
-.. figure:: ./img/GitHub-before-PR.png
-  :scale: 45%
-  :alt: Alternative text
-
-Pentru a crea un Pull Request nou avem două variante:
-
-#. Accesăm linkul ``https://github.com/{username}/my-second-repository/pull/new/bubble-sort-implementation``, unde ``{username}`` este username-ul vostru de pe GitHub.
-#. Apăsăm pe butonul ``Compare & pull request``
+Accesăm linkul PR-ului: **https://github.com/{username}/array-sorting-algorithms/pull/new/bubble-sort-implementation**
 
 În acest moment s-a deschis o nouă pagină care arată că în imaginea de mai jos.
 
 .. figure:: ./img/GitHub-create-PR.png
-  :scale: 45%
-  :alt: Alternative text
+	:scale: 45%
+	:alt: Open Pull Request (PR)
 
 Mai jos explicăm semnificația celor mai importante componente prezente în imagine.
+
+.. _app_dev_pr_description:
 
 Descrierea Pull Requestului
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-În imaginea de mai jos vedem o parte a interfeței GitHub în care avem posibilitatea de a lăsa un comentariu în care să descriem (chiar și mai în detaliu decât într-un mesaj de commit) ce schimbări am făcut. 
-
-.. figure:: ./img/GitHub-description.png
-  :scale: 45%
-  :alt: Alternative text
-
-.. warning:: **NU** apăsați incă butonul ``Create pull request``.
+În imaginea de mai jos vedem o parte a interfeței GitHub în care putem lăsa un comentariu în care să descriem (chiar și mai în detaliu decât într-un mesaj de commit) ce schimbări am făcut. 
 
 În cazul nostru, comentariul poate conține detalii despre implementarea algoritmului.
 O descriere potrivită poate fi:
 
 .. code-block::
 
-  I implemented a non-optimized Bubble Sort algorithm in C.
-  The program sorts an integer array in ascending order.
+	I implemented a non-optimized Bubble Sort algorithm in C.
+	The program sorts an integer array in ascending order.
 
+.. figure:: ./gifs/GitHub-create-PR-description.gif
+    :alt: Descrierea PR-ului
 
-TODO: adaugă GIF: fără și cu descrierea de mai sus
+.. _app_dev_pr_config:
 
 Configurarea branch-ului în care vom integra PR-ul
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Modificările pe care le-am făcut urmează a fi integrate într-un branch.
-În general, branch-ul ``master`` este cel care conține codul sursă actualizat la zi, deci este branch-ul în care se integrează PR-urile.
+Ca să finalizăm PR-ul, modificările din acesta trebuie să fie adăugate într-un branch, cel mai adesea în branch-ul **master**.
 
 .. note::
 
-  Totuși, este bine de știut că putem schimba acest branch prin apăsarea butonului ``base: master`` din imaginea de mai jos.
-  Vor fi afișate toate branch-urile din acest repository și vom putea alege în ce branch să integrăm PR-ul.
+	Putem schimba acest branch prin apăsarea butonului ``base: master`` din imaginea de mai jos.
+	Vor fi afișate toate branch-urile din acest repository și vom putea alege în ce branch să integrăm PR-ul.
 
-În acest tutorial vom folosi branch-ul ``master``.
+În acest tutorial vom folosi branch-ul ``master`` ca în imaginea de mai jos:
 
-.. figure:: ./img/GitHub-base-branch.png
-  :scale: 45%
-  :alt: Alternative text
+.. figure:: ./img/GitHub-create-PR-base-branch.png
+	:scale: 45%
+	:alt: Setarea branch-ului în care se va integra PR-ul
 
-Acum creăm **Pull Requestul** apăsând pe butonul ``Create pull request``.
+Acum creăm **Pull Requestul** apăsând pe butonul ``Create pull request`` ca în imaginea de mai jos:
+
+.. figure:: ./img/GitHub-create-PR-press-button.png
+	:scale: 45%
+	:alt: Crearea unui PR
+
+.. _app_dev_pr_reviewers:
 
 Recenzii și recenzenți
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Motivul principal pentru introducerea PR-urilor este pentru a putea avea posibilitatea de a primi feedback pe modificările aduse.
+Folosirea PR-urilor ne aduce un beneficiu important: putem primi feedback pe modificările aduse.
 Din interfața grafică GitHub putem adăuga recenzenți care să dea feedback pe modificări.
 Recenzenții fac parte din colaboratorii proiectului.
 
 .. figure:: ./img/GitHub-review.png
-  :scale: 45%
-  :alt: Alternative text
+	:scale: 45%
+	:alt: Secțiunea de adăugat recenzenți la PR
 
 În acest tutorial nu vom adăuga recenzenți la PR-ul creat.
+
+.. _app_dev_pr_integration:
 
 Integrarea PR-ului
 ------------------
 
-Așa cum am precizat în secțiunea TODO, unul sau mai mulți recenzenți se vor ocupa de recenzarea schimbărilor propuse în PR-ul nostru.
 După mai multe runde de feedback și aplicarea acestuia, PR-ul va fi gata de integrat în branch-ul **master**.
 
 .. note::
 
-  După ce aplicați feedbackul de la recenzenți veți crea un nou commit local pe același branch, în acest caz pe branch-ul **bubble-sort-implementation**.
-
-  Commitul trebuie să fie publicat folosind comanda ``git push``, la fel ca până acum.
-
-  După ce faceți acești pași, recenzenții pot începe să dea feedback pe noile modificări.
-
-  Acest scenariu *ping-pong* se va repeta până când voi, împreună cu recenzenții ajungeți la concluzia că schimbările pot fi integrate.
+	Acest scenariu *ping-pong* se va repeta până când voi, împreună cu recenzenții ajungeți la concluzia că schimbările pot fi integrate.
 
 Acum vom face operația **merge** a PR-ului.
-Apăsăm mai întâi butonul ``Merge pull request`` după care butonul ``Confirm merge`` ca în GIF-ul de mai jos.
+Apăsăm mai întâi butonul ``Merge pull request`` după care butonul ``Confirm merge`` ca în imaginea de mai jos.
 
-TODO: adaugă GIF 
+.. figure:: ./gifs/GitHub-create-PR.gif
+    :alt: Operația merge. Închiderea PR-ului
+
+Am făcut operația **merge** în repository-ul remote (*origin*).
+Avem pe branch-ul **master** implementarea algoritmului Bubble Sort.
+Actualizăm și repository-ul local folosind comanda ``git pull``:
+
+.. code-block:: bash
+
+	student@uso:~/array-sorting-algorithms$ git checkout master
+	Switched to branch 'master'
+	student@uso:~/array-sorting-algorithms$ git pull origin master
+	remote: Enumerating objects: 1, done.
+	remote: Counting objects: 100% (1/1), done.
+	remote: Total 1 (delta 0), reused 0 (delta 0), pack-reused 0
+	Unpacking objects: 100% (1/1), done.
+	From https://github.com/lizababu/array-sorting-algorithms
+	* branch            master     -> FETCH_HEAD
+	6d5189f..95c59cd  master     -> origin/master
+	Updating 6d5189f..95c59cd
+	Fast-forward
+	README.md     |  7 +++++++
+	bubble-sort.c | 53 ++++++++++++++++++++++++++++++++++++++++++++++++-----
+	2 files changed, 55 insertions(+), 5 deletions(-)
+
+.. _app_dev_pr_delete_branch:
 
 Ștergerea branch-ului în urma integrării în branch-ul master
 ------------------------------------------------------------
 
 Odată făcută operația ``merge``, putem șterge branch-ul pe care am lucrat apăsând pe butonul ``Delete branch``.
 
-.. figure:: ./img/GitHub-delete-branch.png
-  :scale: 45%
-  :alt: Alternative text
+.. figure:: ./gifs/GitHub-delete-origin-branch.gif
+	:alt: Ștergerea branch-ului **bubble-sort-implementation** remote (*origin*)
 
 Această operație va șterge branch-ul doar pe GitHub.
-Trebuie să ștergem și branch-ul din repository-ul local.
+Ca să ștergem branch-ul **bubble-sort-implementation** și din repository-ul local folosim comanda ``git branch -d``:
 
 .. code-block:: bash
 
-  student@uso:~/my-first-repository$ git checkout master
-  Switched to branch 'master'
-  Your branch is up to date with 'origin/master'.
-  student@uso:~/my-first-repository$ git branch -d bubble-sort-implementation
-  Deleted branch bubble-sort-implementation (was TODO).
-  student@uso:~/my-first-repository$ git branch
-  * master
-  student@uso:~/my-first-repository$ git log
-  TODO
+	student@uso:~/array-sorting-algorithms$ git branch -d bubble-sort-implementation
+	Deleted branch bubble-sort-implementation (was d400958).
+	student@uso:~/array-sorting-algorithms$ git branch
+	* master
 
 În final am ajuns să integrăm modificările de pe branch-ul **bubble-sort-implementation** în branch-ul **master** prin intermediul unui **Pull Request**.
 Am șters branch-ul **bubble-sort-implementation**.
 
+.. _app_dev_pr_ex:
 
 Exercițiu practic - Crearea unui PR
 -----------------------------------
 
-Creați un nou repository pe GitHub cu numele TODO și clonați-o la voi pe calculator.
-Veți folosi acest repository pentru rezolvarea acestui exercțiu.
+Veți folosi acest repository-ul ``array-sorting-algorithms`` pentru rezolvarea acestui exercțiu.
 
-Creați un **Pull Request** urmând pașii descriși mai sus în care să adăugați un nou algoritm de sortare al unui vector: TODO.
-De această dată veți crea un nou fișier numit TODO cu următorul conținut:
+Creați un **Pull Request** urmând pașii descriși mai sus în care să adăugați algoritm de sortare Radix Sort.
+De această dată veți modifica fișierul ``radix-sort.c`` cu următorul conținut:
 
-TODO conținut
+.. code-block:: c
+
+	#include <stdio.h>
+
+	#define MAX_LEN 100
+
+	static int get_max(int array[], int n) 
+	{ 
+		int max = array[0]; 
+		for (int i = 1; i < n; i++) 
+			if (array[i] > max) 
+				max = array[i]; 
+		return max; 
+	}
+
+	static void count_sort(int array[], int n, int exp) 
+	{ 
+		int output[n];
+		int i, count[10] = {0}; 
+
+		for (i = 0; i < n; i++) 
+			count[ (array[i]/exp)%10 ]++; 
+
+		for (i = 1; i < 10; i++) 
+			count[i] += count[i - 1]; 
+
+		for (i = n - 1; i >= 0; i--) 
+		{ 
+			output[count[ (array[i]/exp)%10 ] - 1] = array[i]; 
+			count[ (array[i]/exp)%10 ]--; 
+		}
+
+		for (i = 0; i < n; i++) 
+			array[i] = output[i]; 
+	} 
+
+	static void sort(int array[], int n) 
+	{ 
+		int m = get_max(array, n); 
+	
+		for (int exp = 1; m/exp > 0; exp *= 10) 
+			count_sort(array, n, exp); 
+	} 
+
+	static void print_array(int *array, int len)
+	{
+		int i;
+
+		for (i = 0; i < len; i++) {
+			printf("%d ", array[i]);
+		}
+		printf("\n");
+	}
+
+	int main()
+	{
+		int array[MAX_LEN], len, i;
+		
+		printf("What's the length of the array? Maximum lenght is %d\n", MAX_LEN);
+		scanf("%d", &len);
+
+		printf("Gimme the %d elements\n", len);
+		for (i = 0; i < len; i++) {
+		scanf("%d", &array[i]);
+		}
+
+		printf("Nonsorted array: ");
+		print_array(array, len);
+
+		sort(array, len);
+
+		printf("Sorted array: ");
+		print_array(array, len);
+
+		return 0; 
+	}
 
 Pe parcursul creării acestui Pull Request țineți cont de următoarele:
 
-#. Alegeți nume relevante pentru branch-uri și fișiere.
-#. Adăugați un fișier README în repository.
+#. Alegeți nume relevant pentru branch-ul pe care îl veți crea.
+#. Adăugați o secțiune în ``README.md`` în care să descrieți algoritmul pe care l-ați implementat (*Radix Sort*).
 #. Dați un mesaj de commit și o descriere potrivită PR-ului vostru.
-#. Nu uitați să verificați pe tot parcursul dezvoltării starea clonei (``git status``) și istoricul de commituri (``git log``).
+#. Nu uitați să verificați pe tot parcursul dezvoltării starea repository-ului (``git status``) și istoricul de commituri (``git log``).
+
+.. _app_dev_pr_good_practices:
+
+Bune practici
+-------------
+
+Alternativa la a crea un **Pull Request** ar fi să lucrăm direct pe branch-ul **master**.
+
+Așa cum am menționat și în secțiunile anterioare, este **BAD-PRACTICE** să lucrăm direct pe branch-ul **master** din mai multe motive:
+
+#. Pe branch-ul **master** se ține întotdeauna o versiune de cod funcțională. Astfel, lucrul pe acest branch ar însemna să facem commituri doar atunci când o funcționalitate este finalizată, altfel pe branch-ul **master** vom avea o bucată de cod neterminată care poate să afecteze întreg proiectul.
+#. Lucrul pe un singur branch nu se oferă posibilitatea de a da feedback pe schimbările făcute pe repository. Dacă nu avem posibilitatea să oferim feedback unui coleg prin intermediul GitHub, atunci vom avea nevoie să comunicăm pe un alt mediu observațiile noastre, iar ei vor trebui să creeze un nou commit pentru rezolvarea problemelor. Mult mai simplu este să se realizeze întreaga etapă de feedback, numită **code review** înainte ca schimbările să apară pe **master**.
+#. În unele situații nici nu vom avea drepturi să scriem pe branch-ul **master**, astfel devenind obligatoriu lucrul pe un alt branch și integrarea codului în branch-ul **master** printr-un **Pull Request**.
+
+.. rubric:: Note de subsol
+
+.. [#pull_request]
+
+	https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests
+
+	https://www.atlassian.com/git/tutorials/making-a-pull-request

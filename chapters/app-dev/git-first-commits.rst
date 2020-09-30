@@ -35,7 +35,7 @@ Git se ocupă de păstrarea și gestiunea istoricului repository-ului nostru pri
 În următoarele secțiuni vom lucra în repository-ul ``array-sorting-algorithms`` creat în secțiunea :ref:`app_dev_git_intro`.
 Vom crea pas cu pas un proiect software scris în limbajul de programare C care conține mai mulți algoritmi de sortare al unui vector de elemente întregi.
 
-Punctual, în această secțiune vom crea fișierul README al proiectului și scheletul de cod pentru algoritmii de sortare **Bubble Sort**, **Merge Sort** și **Radix Sort**.
+Punctual, în această secțiune vom crea fișierul ``README`` al proiectului și scheletul de cod pentru algoritmii de sortare **Bubble Sort**, **Merge Sort** și **Radix Sort**.
 Vom crea commituri pentru fiecare schimbare, după care vom publica commiturile astfel încât schimbările să fie vizibile și pe GitHub.
 
 .. _app_dev_add_readme:
@@ -155,7 +155,7 @@ Creăm un commit cu modificările făcute folosind comanda ``git commit``:
 .. code-block::
 
     student@uso:~/array-sorting-algorithms$ git commit -m "Add README file"
-    [master (root-commit) 0dfb632] Add README.md
+    [master (root-commit) b2a590a] Add README.md
     1 file changed, 1 insertion(+)
     create mode 100644 README.md  
     student@uso:~/array-sorting-algorithms$ git status
@@ -179,7 +179,7 @@ Crearea unui nou commit
 Vom crea un nou fișier cod sursă C ``bubble-sort.c`` și vom scrie în el scheletul de cod pentru algoritm.
 Vom crea un nou commit care va conține fișierul ``bubble-sort.c``.
 
-.. figure:: gifs/commit.gif
+.. figure:: gifs/GitHub-create-new-commit.gif
     :alt: Crearea unui nou commit
 
 Conținutul fișierului ``bubble-sort.c`` este:
@@ -246,7 +246,7 @@ Exerciții practice
 Crearea unui commit cu modificări în fișiere existente
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Până acum am creat commituri care conțineau un fișier nou create.
+Până acum am creat commituri care conțineau un fișier nou creat.
 În această secțiune vom modifica conțintului fișierului ``README.md`` și vom crea un nou commit.
 
 .. code-block::
@@ -274,7 +274,7 @@ Până acum am creat commituri care conțineau un fișier nou create.
     [master 247b87f] Update README with project explanation
     1 file changed, 1 insertion(+)
 
-Când am adăugat fișierul ``bubble-sort.c`` în staging area în GIF-ul :ref:`app_dev_create_new_commit`, comanda status ne arăta că fișierul ``bubble-sort.c`` este nou (*new file*).
+Când am adăugat fișierul ``bubble-sort.c`` în staging area în imaginea din secțiunea :ref:`app_dev_create_new_commit`, comanda status ne arăta că fișierul ``bubble-sort.c`` este nou (*new file*).
 
 .. code-block:: bash
 
@@ -397,7 +397,6 @@ Vorbim despre **branch-uri** în secțiunea :ref:`app_dev_branches`.
 Ca să verificăm publicarea commiturilor, folosim interfața GitHub:
 
 .. figure:: ./img/GitHub-publish-commits.png
-  :scale: 45%
   :alt: Vizualizarea commiturilor din interfața GitHub
 
 .. _app_dev_pull:
@@ -407,14 +406,12 @@ Obținerea commiturilor din repository-ul remote
 
 În lucrul cu Git / GitHub, există bune practici pe care recomandăm să le urmăm.
 
-E bine ca atunci când ne apucăm de lucru să avem în vedere să sincronizăm din când în când repository-ul local cu cel remote.
+Atunci când ne apucăm de lucru vrem să sincronizăm repository-ul local cu cel remote.
 Pot apărea diferențe în momentul în care altcineva a publicat schimbări remote după ce am făcut noi ultima sincronizare.
 În momentul în care cineva a publicat modificări asupra unei secvențe de cod pe care și noi o modificăm, apar conflicte.
 Conflictele trebuie rezolvate.
 
-Putem face acest lucru în două moduri.
-Operația ``fetch`` are rolul de a aduce local toate schimbările, însă nu va face și operația de ``merge`` care presupune rezolvarea conflictelor și ajungerea a un front comun.
-Operația ``pull`` aduce local toate modificările și încearcă să rezolve conflicetele în mod automat.
+Facem acest lucru prin operația ``pull`` care aduce local toate modificările și încearcă să rezolve conflicetele în mod automat.
 Dacă rezolvarea conflictelor nu se poate face automat, trebuie să ne ocupăm de acest pas.
 
 .. note::
