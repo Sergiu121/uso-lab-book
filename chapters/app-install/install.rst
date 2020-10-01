@@ -52,14 +52,14 @@ După dezinstalarea aplicației, aceasta nu mai poate fi pornită, nemaiexistân
 
 Acțiunile de instalare, dezinstalare și configurare a pachetelor într-un sistem sunt numite colectiv **gestiunea pachetelor (software)** (*(software) package management*).
 
-În Linux, aplicațiile sunt în general instalate prin intermediul unei aplicații dedicate numite **manager de pachete (software)** (*(software) package manager* sau *(software) package management system*).
-În distribuțiile Linux bazate pe Debian / Ubuntu, managerul de pachete oferă utilitare ``apt`` și ``dpkg`` (și altele) și aplicații precum Synaptic.
-În distribuțiile Linux bazate pe RedHat / Fedora, managerul de pachete oferă utilitare ``yum`` sau ``dnf`` sau ``rpm`` (și altele) precum PackageKit.
+În Linux, aplicațiile sunt, în general, instalate prin intermediul unei aplicații dedicate numite **manager de pachete (software)** (*(software) package manager* sau *(software) package management system*).
+În distribuțiile Linux bazate pe Debian / Ubuntu, managerul de pachete oferă utilitarele ``apt`` și ``dpkg`` (și altele) și aplicații precum Synaptic.
+În distribuțiile Linux bazate pe RedHat / Fedora, managerul de pachete oferă utilitarele ``yum`` sau ``dnf`` sau ``rpm`` (și altele) precum PackageKit.
 
 .. note::
 
     Mașina virtuală de suport folosește o distribuție Ubuntu.
-    Astfel că vom concentra doar pe distribuțiile bazate pe Debian / Ubuntu și deci, pe utilitarele ``apt`` și ``dpkg``.
+    De aceea ne vom concentra doar pe distribuțiile bazate pe Debian / Ubuntu și deci, pe utilitarele ``apt`` și ``dpkg``.
 
 .. _app_install_install_uninstall_gui:
 
@@ -69,10 +69,9 @@ Gestiunea pachetelor din interfața grafică
 Pe lângă utilitarele implicite în linia de comandă, un manager de pachete oferă adesea o interfață grafică.
 Pe o instalare implicită de Ubuntu, aplicația Ubuntu Software (GNOME Software) permite interacțiunea cu managerul de pachete.
 
-Aceasta poate fi pornită din meniurile grafice sau cu ajutorul comenzii ``ubuntu-software`` sau ``gnome-software`` (folosind, de exemplu, combinația de taste ``Alt+F2``).
+Această aplicație poate fi pornită din meniurile grafice sau cu ajutorul comenzii ``ubuntu-software`` sau ``gnome-software`` (folosind, de exemplu, combinația de taste ``Alt+F2``).
 
-Porniți aplicați Ubuntu Software.
-Veți obține o fereastră precum cea din imaginea de mai jos:
+Dacă pornim aplicația Ubuntu Software, vom obține o fereastră precum cea din imaginea de mai jos:
 
 .. image:: img/ubuntu-software.png
     :width: 600px
@@ -86,19 +85,19 @@ Această fereastră are butoane care permit gestiunea pachetelor software:
 * ``Updates``: lista de pachete care pot fi actualizate
 * un buton de căutare (în dreapta): căutarea pachetelor dorite
 
-În continuare vom prezenta acțiunile de instalare și dezinstalare a unui pachet atât folosind interfața grafică a managerului de pachete cât și interfața în linia de comandă.
+În continuare vom prezenta acțiunile de instalare și dezinstalare a unui pachet, atât folosind interfața grafică a managerului de pachete, cât și interfața în linia de comandă.
 
 Instalarea unei aplicații cunoscute
 -----------------------------------
 
-Cel mai adesea dorim rapid să avem o aplicație care să ne rezolve o nevoie.
+Cel mai adesea, dorim rapid să avem o aplicație care să ne rezolve o nevoie.
 Să presupunem că avem nevoia să lucrăm cu fișiere în format SVG (*Scalable Vector Graphics*).
 Pentru aceasta vom instala aplicația Inkscape.
 
 Instalarea din interfața grafică
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-În interfața în linia de comandă folosim butonul de căutare și introducem șirul ``inkscape`` și obținem o imagine precum cea de mai jos:
+În interfața grafică, folosim butonul de căutare și introducem șirul ``inkscape`` și obținem o imagine precum cea de mai jos:
 
 .. image:: img/install-inkscape.png
     :width: 600px
@@ -111,7 +110,7 @@ Dacă nu ar fi fost instalat, am fi accesat intrarea din imagine și apoi am fi 
 Instalarea din linia de comandă
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Folosind utilitarul ``apt`` pentru a instala pachetul ``inkscape``:
+În linia de comandă, folosim utilitarul ``apt`` pentru a instala pachetul ``inkscape``:
 
 .. code-block:: bash
 
@@ -124,13 +123,13 @@ Folosind utilitarul ``apt`` pentru a instala pachetul ``inkscape``:
     [...]
 
 Comanda ``sudo apt update`` actualizează informațiile despre pachete; vom clarifica mai jos rolul său, inclusiv de ce este recomandată rularea sa (fără a fi obligatorie).
-Comanda ``sudo apt install inkscape`` instalează efectiv pachetul numit ``inkscape`` care va instala aplicația Inkscape.
+Comanda ``sudo apt install inkscape`` instalează efectiv pachetul numit ``inkscape``, care va instala aplicația Inkscape.
 Instalarea pachetelor în sistem este o acțiune privilegiată, care necesită permisiuni administrative.
 Din acest motiv cele două comenzi de mai sus sunt prefixate de comanda ``sudo``.
 
 În acest moment, aplicația Inkscape este instalată și poate fi pornită.
 
-**Exercițiu**: Porniți aplicația Inkscape în toate modurile descrise în :ref:`app_install_start_stop_gui`.
+**Exercițiu**: Porniți aplicația Inkscape în toate modurile descrise în secțiunea :ref:`app_install_start_stop_gui`.
 
 Anatomia instalării unei aplicații
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -258,10 +257,10 @@ Instalați și porniți următoarele pachete:
 
 * ``wikit``: pachet care instalează utilitarului ``wikit`` (în linia de comandă) care obține informații din Wikipedia
 * ``gimp``: pachet care instalează aplicația Gimp (cu interfață grafică), un editor de imagini
-* ``neofetch``: pachet care instalează utilitarul ``neofetch`` (în linia de comandă) care afișează un sumar informativ despre sistem
+* ``neofetch``: pachet care instalează utilitarul ``neofetch`` (în linia de comandă), care afișează un sumar informativ despre sistem
 * ``audacity``: pachet care instalează aplicația Audacity (cu interfață grafică), un editor audio
 
-Puteți realiza instalarea din interfața grafică a managerului sau da pachete sau din interfața în linia de comandă.
+Puteți realiza instalarea din interfața grafică a managerului de pachete sau din interfața în linia de comandă.
 
 .. _app_install_uninstall_identify:
 
@@ -313,15 +312,11 @@ Pentru fiecare șir de căutare, motorul de căutare folosit ne va indica:
 Aici utilizatorul poate decide dacă un site rezolvă nevoia sau vrea să instaleze o aplicație și care să fie acea aplicație.
 
 De exemplu, pentru nevoia de a afla viteza conexiunii la Internet, se poate folosi direct aplicația web `Speedtest <https://www.speedtest.net/>`_, descoperită de motorul de căutare cu șirul *Internet speed test*.
-Dacă dorim o aplicație sau un utilitar actualizăm șirul de căutare la *internet speed test application linux*.
+Dacă dorim o aplicație sau un utilitar, actualizăm șirul de căutare la *internet speed test application linux* [#linux_search]_.
 Și găsim că putem instala utilitarul ``speedtest-cli``.
 
-În mod similar ajută să actualizăm șirul de căutare la *download youtube video linux* pentru a găsi o aplicație Linux cu ajutorul căreia să descărcăm un video de pe YouTube.
+În mod similar, ajută să actualizăm șirul de căutare la *download youtube video linux*, pentru a găsi o aplicație Linux cu ajutorul căreia să descărcăm un video de pe YouTube.
 Descoperim astfel utilitarul ``youtube-dl``.
-
-.. important::
-
-    În general, dacă dorim aplicații Linux, este de ajutor ca *linux* să fie parte din șirul de căutare folosit.
 
 În urma folosirii motoarelor de căutare, identificăm, așadar, următoarele aplicații:
 
@@ -337,7 +332,7 @@ Pentru siguranță, e recomandat să căutăm pachetul și folosind managerul de
 Căutarea unei aplicații cu managerul de pachete
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Căutarea unei aplicații cu managerul de pachete este utilă atât pentru a căuta un pachet potrivit unei nevoi cât și pentru a identifica ce pachet corespunde unei aplicații de care știm.
+Căutarea unei aplicații cu managerul de pachete este utilă atât pentru a căuta un pachet potrivit unei nevoi, cât și pentru a identifica ce pachet corespunde unei aplicații de care știm.
 De exemplu o aplicație descoperită prin Internet.
 
 Față de căutarea în Internet, căutarea în managerul de pachete este avantajoasă pentru că va căuta doar în pachetele disponibile și instalabile în sistem cu ajutorul managerului de pachete.
@@ -373,11 +368,7 @@ Căutarea folosind linia de comandă
       e-book reader
     [...]
 
-În rezultatul comenzii de mai sus apar aplicațiile care au legătură cu șirul ``e-book``, printre care și Calibre, aplicație pe care am descoperit-o și folosind căutarea în Internet și interfața grafică.
-
-.. note::
-
-    Comanda ``apt search`` nu este privilegiată (nu modifică informații critice în sistem) și nu trebuie prefixată de comanda ``sudo``.
+În rezultatul comenzii de mai sus [#aptsearch]_ apar aplicațiile care au legătură cu șirul ``e-book``, printre care și Calibre, aplicație pe care am descoperit-o și folosind căutarea în Internet și interfața grafică.
 
 Putem folosi șirul de căutare ``e-book manager`` pentru a simplifica rezultatele obținute:
 
@@ -392,31 +383,6 @@ Putem folosi șirul de căutare ``e-book manager`` pentru a simplifica rezultate
     calibre-bin/bionic 3.21.0+dfsg-1build1 amd64
       powerful and easy to use e-book manager
 
-Exercițiu
-^^^^^^^^^
-
-Folosiți, în managerul de pachete, șiruri de căutare potrivite pentru a căuta aplicații corespunzătoare nevoilor precizate mai sus.
-Folosiți managerul de pachete și în interfața grafică și în linia de comandă (``apt search``).
-
-Ar trebui să obțineți aplicații / utilitare precum:
-
-* ``speedtest-cli``
-* Calibre
-* ``youtube-dl``
-* Kazam sau OBS sau SimpleScreenRecorder sau recordMyDesktop
-* Gimp sau Inkscape sau Libreoffice Draw sau Xournal
-
-.. important::
-
-    Este posibil să fie nevoie să găsiți și alte aplicații potrivite.
-    Sau la anumite șiruri să nu găsiți aceste aplicații.
-    Nu există o rețetă sigură și nu există o aplicație unică.
-    În funcție de nevoi, inspirație și preferințe veți găsi și veți instala o aplicație sau alta.
-
-Instalați aplicațiile descoperite folosind fie interfața grafică, fie interfața în linia de comandă a managerului de pachete.
-
-Porniți și folosiți aplicațiile / utilitarele instalate.
-
 Exerciții de căutare și instalare
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -426,7 +392,7 @@ Căutați aplicațiile potrivite pentru următoarele nevoi:
 * Vreau să-mi organizez sarcinile / taskurile.
 * Vreau să-mi organizez rețetele de mâncare.
 
-Folosiți atât căutarea în Internet cât și căutarea folosind managerul de pachete (interfața grafică și/sau în linia de comandă).
+Folosiți atât căutarea în Internet, cât și căutarea folosind managerul de pachete (interfața grafică și/sau în linia de comandă).
 
 Instalați, porniți și folosiți aplicațiile găsite.
 
@@ -439,8 +405,8 @@ Instalați, porniți și folosiți aplicațiile găsite.
 .. note::
 
     Găsiți pe Internet liste de aplicații recomandate să fie instalate și folosite.
-    De exemplu aici [#linuxapps]_ este o listă de aplicații considerate esențiale în Linux.
-    Iar aici [#cliapps]_ este o listă extinsă de aplicații utile în linia de comandă.
+    De exemplu https://itsfoss.com/essential-linux-applications/ conține o listă de aplicații considerate esențiale în Linux.
+    Iar https://github.com/agarrharr/awesome-cli-apps conține o listă extinsă de aplicații utile în linia de comandă.
 
 Dezinstalarea aplicațiilor
 --------------------------
@@ -524,7 +490,7 @@ Dacă dorim ștergerea inclusiv a fișierelor de configurare modificate, folosim
     Purging configuration files for neofetch (3.4.0-1) ...
 
 Comanda de mai sus a șters fișierele de configurare pentru pachetul ``neofetch``.
-Comanda ``apt purge`` poate fi folosită pentru a dezinstala pachete instalate sau pentru a "curăța" (*purge*) pachete care au fost dezinstalate dar care mai au fișiere de configurare.
+Comanda ``apt purge`` poate fi folosită pentru a dezinstala pachete instalate, sau pentru a "curăța" (*purge*) pachete care au fost dezinstalate dar care mai au fișiere de configurare.
 
 Exerciții de dezinstalare
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -537,18 +503,7 @@ Actualizarea aplicațiilor
 -------------------------
 
 O aplicație este, în general, dezvoltată în continuu.
-Dezvoltatorii aplicației adaugă noi funcționalități, sau rezolvă probleme de funcționare sau de securitate, sau fac aplicația mai robustă sau mai eficientă.
-
-.. note::
-
-    Aducerea unei aplicații la o versiune mai nouă (*update* sau *upgrade*) are plusuri și minusuri.
-    Avantajul este că noua versiune va avea cele mai noi funcționalități și va avea rezolvate probleme vechi de configurare.
-    Dezavantajul este că noua versiune va fi mai puțin folosită și deci mai puțin stabilă, cu posible probleme noi de funcționare.
-    În general este recomandat ca aplicațiile sistemului să fie actualizate (*up-to-date*) cu versiuni care au îmbunătățiri de funcționare sau securitate (*security updates*).
-    Dacă se optează pentru cea mai recentă versiune a aplicației (posibil mai puțin stabilă), trebuie cântărit beneficiul adus de noile funcționalități față de posibilele probleme de funcționare.
-
-    De obicei un utilizator obișnuit va opta pentru cea mai nouă versiune, fiind interesat în primul rând de cele mai noi funcționalități.
-    Un administrator de sistem va opta pentru versiunile mai stabile care asigură o robustețe ridicată a sistemului.
+Dezvoltatorii aplicației adaugă noi funcționalități, sau rezolvă probleme de funcționare sau de securitate, sau fac aplicația mai robustă sau mai eficientă [#update]_.
 
 La fel ca în cazul instalării și dezinstalării, actualizarea aplicațiilor duce la modificarea fișierelor din sistem, deci este o acțiune privilegiată.
 
@@ -558,7 +513,6 @@ Actualizarea individuală a unei aplicații
 Dacă dorim actualizarea individuală a unui pachet, vom folosi o comandă precum:
 
 .. code-block:: bash
-    :linenos:
 
     student@uso:~$ sudo apt install inkscape
     [sudo] password for student:
@@ -569,12 +523,12 @@ Dacă dorim actualizarea individuală a unui pachet, vom folosi o comandă precu
     0 upgraded, 0 newly installed, 0 to remove and 311 not upgraded.
 
 Când comanda ``apt install`` primește ca argument un pachet deja instalat, va verifica dacă există o versiune actualizată a acestuia.
-În cazul de mai sus, versiunea instalată a pachetului ``inkscape`` (``0.92.3-1``) este cea mai nouă (linia ``6``) și nu este nevoie de actualizare.
+În cazul de mai sus, versiunea instalată a pachetului ``inkscape`` (``0.92.3-1``) este cea mai nouă și nu este nevoie de actualizare.
 
 Actualizarea tuturor aplicațiilor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Cel mai adesea un utilizator va opta pentru actualizarea tuturor aplicațiilor sistemului, sau pe scurt, pentru actualizarea sistemului.
+Cel mai adesea, un utilizator va opta pentru actualizarea tuturor aplicațiilor sistemului, sau pe scurt, pentru actualizarea sistemului.
 Acest lucru se întâmplă și pentru că sistemul notifică periodic utilizatorul de prezența unor versiuni noi de aplicații.
 
 Când este cazul, utilizatorul poate folosi interfața grafică sau sau cea în linia de comandă a managerului de pachete pentru actualizarea sistemului.
@@ -594,18 +548,8 @@ Pentru actualizarea sistemului din interfața în linia de comandă, vom folosi 
     Do you want to continue? [Y/n] Y
     [...]
 
-Folosind comanda ``apt upgrade`` actualizăm toate aplicațiile în sistem.
+Folosind comanda ``apt upgrade`` actualizăm toate aplicațiile în sistem [#apt_upgrade]_.
 Este recomandat să actualizăm informațiile interne despre pachetele sistemului folosind comanda ``apt update``.
-
-.. note::
-
-    Comanda ``apt upgrade`` face actualizare conservatoare a sistemului.
-    Dacă un anumit pachet ar fi dezinstalat de acțiunea de actualizare a sistemului, pachetul nu va fi atins de managerul de pachete.
-    Dacă dorim o actualizare completă a sistemului, incluzând dezinstalarea anumitor pachete (pentru că sunt incompatibile cu alte apchete), vom folosi comanda:
-
-    .. code-block:: bash
-
-        student@uso:~$ sudo apt full-upgrade
 
 Bune practici și greșeli comune
 -------------------------------
@@ -624,11 +568,11 @@ Această confirmare necesită intervenția utilizatorului.
 Utilizatorul poate opta să nu mai fie cerută confirmare; sau poate să considere adăugarea unei comenzi într-un script neinteractiv.
 Pentru aceasta, se poate folosi opțiunea ``-y`` la comandă ca mai jos:
 
-    .. code-block:: bash
+  .. code-block:: bash
 
-        student@uso:~$ sudo apt install -y neofetch
-        student@uso:~$ sudo apt remove -y neofetch
-        student@uso:~$ sudo apt upgrade -y
+      student@uso:~$ sudo apt install -y neofetch
+      student@uso:~$ sudo apt remove -y neofetch
+      student@uso:~$ sudo apt upgrade -y
 
 Folosirea opțiunii ``-y`` la oricare dintre comenzile de instalare, dezinstalare sau actualizare de pachete va duce la executarea acelei acțiuni în mod neinteractiv, fără nevoia de confirmare din partea utilizatorului.
 
@@ -639,6 +583,33 @@ Folosirea opțiunii ``-y`` la oricare dintre comenzile de instalare, dezinstalar
 
 .. rubric:: Note de subsol
 
-.. [#linuxapps] https://itsfoss.com/essential-linux-applications/
-.. [#cliapps] https://github.com/agarrharr/awesome-cli-apps
+.. [#linux_search]
+
+    În general, dacă dorim aplicații Linux, este de ajutor ca *linux* să fie parte din șirul de căutare folosit.
+
+.. [#aptsearch]
+
+    Comanda ``apt search`` nu este privilegiată (nu modifică informații critice în sistem) și nu trebuie prefixată de comanda ``sudo``.
+
+.. [#update]
+
+    Aducerea unei aplicații la o versiune mai nouă (*update* sau *upgrade*) are plusuri și minusuri.
+    Avantajul este că noua versiune va avea cele mai noi funcționalități și va avea rezolvate probleme vechi de configurare.
+    Dezavantajul este că noua versiune va fi mai puțin folosită și deci mai puțin stabilă, cu posible probleme noi de funcționare.
+    În general este recomandat ca aplicațiile sistemului să fie actualizate (*up-to-date*) cu versiuni care au îmbunătățiri de funcționare sau securitate (*security updates*).
+    Dacă se optează pentru cea mai recentă versiune a aplicației (posibil mai puțin stabilă), trebuie cântărit beneficiul adus de noile funcționalități față de posibilele probleme de funcționare.
+
+    De obicei un utilizator obișnuit va opta pentru cea mai nouă versiune, fiind interesat în primul rând de cele mai noi funcționalități.
+    Un administrator de sistem va opta pentru versiunile mai stabile care asigură o robustețe ridicată a sistemului.
+
+.. [#apt_upgrade]
+
+    Comanda ``apt upgrade`` face actualizare conservatoare a sistemului.
+    Dacă un anumit pachet ar fi dezinstalat de acțiunea de actualizare a sistemului, pachetul nu va fi atins de managerul de pachete.
+    Dacă dorim o actualizare completă a sistemului, incluzând dezinstalarea anumitor pachete (pentru că sunt incompatibile cu alte apchete), vom folosi comanda:
+
+    .. code-block:: bash
+
+        student@uso:~$ sudo apt full-upgrade
+
 .. [#enter] De fapt, atunci când ni se prezintă un prompt de forma ``[Y/n]`` apăsarea tastei ``Enter`` este echivalentă cu introducerea tastei marcate cu literă mare (aici ``Y``). Dacă, de exemplu, ar fi fost un prompt de forma ``[y/N]``, apăsarea tastei ``Enter`` era echivalentă cu introducerea tastei ``N``.

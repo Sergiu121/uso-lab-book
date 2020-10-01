@@ -14,16 +14,16 @@ Cu toate acestea, sistemul de gestiune a pachetelor specific distribuției are d
 
 * Un pachet căutat nu se găsește în depozit din diferite rațiuni: nu este compatibil cu alte pachete, are probleme de licențiere sau, pur și simplu, nu a fost adăugat de distribuție.
 * O versiune mai actuală a pachetului, necesară utilizatorului, nu se găsește în depozit.
-* Instalarea unei versiuni mai noi a pachetului, dintr-un alt repository, poate produce probleme de dependență cu alte pachete instalate.
+* Instalarea unei versiuni mai noi a pachetului, dintr-un alt depozit, poate produce probleme de dependență cu alte pachete instalate.
 * Actualizarea unui pachet poate necesita actualizarea multor pachete sau chiar a întregii distribuții.
 
-De acceea, există alte moduri de instala aplicații necesare utilizatorului:
+De aceea, există alte moduri de instala aplicații necesare utilizatorului:
 
 #. Instalarea unui aplicații manual, direct de la furnizorul acestuia, prin descărcarea pachetului software corespunzător și instalarea sa.
 #. Instalarea unei aplicații din surse.
 #. Folosirea unor sisteme alternative de gestiune a pachetelor.
 
-Instalarea manuală sau din surse a unei aplicații (opțiunea 1 și optiunea 2) sunt operații mai complicate care nu mențin avantajele sistemului de gestiune al pachetelor.
+Instalarea manuală sau din surse a unei aplicații (opțiunea 1 și opțiunea 2) sunt operații mai complicate care nu mențin avantajele sistemului de gestiune al pachetelor.
 De aceea, din punctul de vedere al ușurinței instalării, dezinstalării și gestiunii aplicațiilor, este de preferat să folosim opțiunea 3, adică sisteme alternative de gestiune a pachetelor.
 Sistemele alternative de gestiune a pachetelor oferă o interfață similară cu sistemele de gestiune a pachetelor specifice distribuției fără dezavantajele acestora.
 Sisteme alternative sunt `Snap <https://snapcraft.io/>`_, `Flatpak <https://www.flatpak.org/>`_, `AppImage <https://appimage.org/>`_.
@@ -40,20 +40,20 @@ Instalarea folosind interfața grafică
 
 În Ubuntu, instalarea pachetelor Snap poate fi făcută din interfața grafică folosind aplicația Ubuntu Software (GNOME Software) la fel ca în cazul pachetelor standard Ubuntu, cum am văzut în secțiunea :ref:`app_install_install_uninstall_gui`.
 La fel ca în cazul pachetelor standard Ubuntu, căutăm numele aplicației și ajungem în fereastra de instalare.
-În cazul utilitarul ``pdftk`` fereastra de instalare din Ubuntu Software va fi ca în imaginea de mai jos:
+În cazul utilitarul ``pdftk``, fereastra de instalare din Ubuntu Software va fi ca în imaginea de mai jos:
 
 .. image:: img/ubuntu-software-pdftk.png
     :width: 600px
     :align: center
     :alt: pdftk în Ubuntu Software
 
-Observăm în fereastră de instalare că pachetul se găsește în depozitul Snap (``Snap Store``) [#snap_and_standard]_.
-Observăm că pachetul este prioprietar (*proprietary*) adică nu este open source, motiv probabil pentru care nu se găsește în depozitul standard Ubuntu.
+Observăm, în fereastră de instalare, că pachetul se găsește în depozitul Snap (``Snap Store``) [#snap_and_standard]_.
+Observăm că pachetul este proprietar (*proprietary*), adică nu este open source, motiv probabil pentru care nu se găsește în depozitul standard Ubuntu.
 
 Instalarea folosind interfața în linia de comandă
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Similar utilitarului ``apt``, Spap oferă utilitarul ``snap`` pentru instalarea, dezinstalarea și getiunea pachetelor în linia de comandă.
+Similar utilitarului ``apt``, Snap oferă utilitarul ``snap`` pentru instalarea, dezinstalarea și gestiunea pachetelor în linia de comandă.
 Astfel, pentru a instala pachetul ``pdftk`` folosim comanda:
 
 .. code-block:: bash
@@ -78,8 +78,9 @@ Căutarea unui pachet Snap
 -------------------------
 
 Atunci când căutăm un anumit pachet Snap, avem două opțiuni:
+
 #. Folosim interfața grafică, prin intermediul aplicației Ubuntu Software, așa cum am văzut în secțiunea :ref:`app_install_uninstall_identify`.
-#. Folosim linia de comandă ca mai jos:
+#. Folosim linia de comandă, ca mai jos:
 
    .. code-block:: bash
 
@@ -101,7 +102,7 @@ Gestiunea pachetelor Snap
 Listarea pachetelor Snap
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Pentru a valida instalarea pachetelor Snap și pentru a lista pachetele instalate folosind comanda:
+Pentru a valida instalarea pachetelor Snap, listăm pachetele instalate folosind comanda:
 
 .. code-block:: bash
 
@@ -136,7 +137,7 @@ Dacă dorim să afișăm informații despre un pachet Snap, indiferent dacă est
 Dezinstalarea unui pachet Snap
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Pentru a dezinstala un pachet Snap folosim o comandă de forma:
+Pentru a dezinstala un pachet Snap, folosim o comandă de forma:
 
 .. code-block:: bash
 
@@ -172,7 +173,7 @@ Instalarea unui pachet standard de la furnizor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Un pachet se poate instala direct de la furnizorul aplicației.
-În mod tipic furnizorul are un pachet în formatul distribuției (``.deb`` sau ``.rpm``) care poate fi descărcat și instalat.
+În mod tipic, furnizorul are un pachet în formatul distribuției (``.deb`` sau ``.rpm``) care poate fi descărcat și instalat.
 
 De exemplu, dacă dorim să instalăm aplicația Teams (de la Microsoft) pe o distribuție Ubuntu, vom descărca pachetul format ``.deb`` folosind `pagina de download Teams <https://teams.microsoft.com/uswe-01/downloads>`_.
 Pachetul poate fi instalat în momentul descărcării folosind opțiunea ``Software Install`` ca în imaginea de mai jos:
@@ -205,10 +206,10 @@ Instalarea din arhivă / executabil
 
 Alteori producătorul aplicației nu oferă un pachet în formatul distribuției.
 Formatul oferit este al unei arhive sau al unui executabil sau al unui script de instalare.
-În oricare situație instalarea este specifică aplicației.
+În oricare situație, instalarea este specifică aplicației.
 
-De exemplu, în cazul aplicației IDA, versiunea freeware a acestei presupune descărcarea unui pachet specific (*custom*) de la `pagina de download IDA Freeware <https://www.hex-rays.com/products/ida/support/download_freeware/>`_.
-Putem descărca acest pachet direct în linia de comandă folosind utilitarul ``wget``:
+De exemplu, în cazul aplicației IDA, versiunea freeware a acesteia presupune descărcarea unui pachet specific (*custom*) de la `pagina de download IDA Freeware <https://www.hex-rays.com/products/ida/support/download_freeware/>`_.
+Putem descărca acest pachet direct în linia de comandă, folosind utilitarul ``wget``:
 
 .. code-block:: bash
 

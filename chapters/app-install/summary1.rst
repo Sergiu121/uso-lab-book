@@ -16,7 +16,7 @@ Folosiți LibreOffice în linia de comandă (modul headless) pentru a converti f
 Investigarea I/O a proceselor
 -----------------------------
 
-În afară de consumul de putere de calcul (memorie și procesor) ne interesează ce procese folosesc I/O (*input/output*).
+În afară de consumul de putere de calcul (memorie și procesor), ne interesează ce procese folosesc I/O (*input/output*).
 Pentru aceasta putem folosi utilitarul ``iotop``.
 
 Folosiți utilitarul ``iotop`` pentru a afișa resursele I/O consumate de procesele sistemului.
@@ -33,7 +33,9 @@ Configurați Emacs astfel încât pornirea sa în interfața grafică să fie î
 Configurare aplicații de startup
 --------------------------------
 
-Configurați sistemul astfel încât, la autentificarea utilizatorului, să fie pornite automat: o aplicație browser (Firefox) și o aplicați de terminal (GNOME Terminal).
+Configurați sistemul astfel încât, la autentificarea utilizatorului, să fie pornite automat:
+* o aplicație browser (Firefox)
+* o aplicație de terminal (GNOME Terminal)
 
 Configurare transparență terminal
 ---------------------------------

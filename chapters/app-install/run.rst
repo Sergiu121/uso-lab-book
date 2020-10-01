@@ -5,7 +5,7 @@ Rularea aplicațiilor
 
 Pornirea unei aplicații înseamnă că se alocă resursele sistemului (procesor, memorie, dispozitive de intrare/ieșire) pentru a rula aplicația.
 O aplicație care rulează, adică folosește resursele sistemului pentru a executa cod și a prelucra date, se numește **proces**.
-Atunci când pornim o aplicație se creează un proces; atunci când oprim aplicația sau își încheie execuția ne referim la încheierea execuției procesului.
+Atunci când pornim o aplicație, se creează un proces; atunci când oprim aplicația, sau când își încheie execuția, ne referim la încheierea execuției procesului.
 
 Procesul este pornit dintr-un fișier executabil care conține codul (instrucțiunile) și datele aplicației.
 Fișierul executabil mai este numit și **imaginea procesului**.
@@ -17,13 +17,10 @@ Spunem că procesul este un program aflat în execuție [#load_time_run_time]_.
 Identificarea fișierului executabil al unei aplicații
 -----------------------------------------------------
 
-Pornirea unei aplicații înseamnă că se alocă resursele sistemului (procesor, memorie, dispozitive de intrare/ieșire) pentru a rula aplicația.
-Aplicația are asociat un fișier care conține codul (instrucțiunile) și datele aplicației.
-Codul aplicației este executat, de aceea acest fișier se numește fișier executabil.
-Acest fișier executabil este încărcat în memoria sistemului și codul este executat; din acest moment spunem că aplicația **rulează**.
+Fișier executabil al unei aplicații este încărcat în memoria sistemului și codul este executat; din acest moment spunem că aplicația **rulează**.
 
 De exemplu aplicația Firefox (browser web) are asociat fișierul executabil ``/usr/bin/firefox``; aplicația Vim (editor) are asociat fișierul executabil ``/usr/bin/vim``; aplicația LibreOffice (suită office) are asociat fișierul executabil ``/usr/bin/libreoffice``.
-Putem identifica fișierul executabil al unei aplicații folosind comanda ``which`` urmată de comanda pentru pornirea aplicației ca mai jos:
+Putem identifica fișierul executabil al unei aplicații folosind comanda ``which``, urmată de comanda pentru pornirea aplicației ca mai jos:
 
 .. code-block:: bash
 
@@ -42,8 +39,6 @@ Investigarea proceselor
 -----------------------
 
 Un sistem de operare are de obicei mai multe aplicații care rulează, deci mai multe procese.
-Fiecare proces are un anumit rol: un browser este folosit pentru a naviga pe Internet, un shell primește comenzi de la utilizator, un serviciu de rețea asigură configurarea parametrilor de rețea, un serviciu jurnalizează mesajele din sistem.
-
 Prea multe procese pot duce la o încărcare prea mare a sistemului, încetinind sau împiedicând funcționarea acestuia.
 Anumite procese pot consuma excesiv resurse afectând celelalte procese.
 De aceea, este util să investigăm procesele unui sistem și consumul de resurse al acestora.
@@ -136,7 +131,7 @@ Un proces este identificat după PID, nu după numele executabilului (``CMD``).
 Putem avea mai multe procese create din același executabil, fiecare proces având PID-ul său [#process]_.
 
 Pentru a verifica existența mai multor procese, o să creăm mai multe procesele shell.
-Pentru început deschidem mai multe sesiuni de terminal, folosind, de exemplu, ``Alt+F2`` în mediul grafic și introducând comanda ``gnome-terminal`` în promptul creat.
+Pentru început, deschidem mai multe sesiuni de terminal, folosind, de exemplu, ``Alt+F2`` în mediul grafic și introducând comanda ``gnome-terminal`` în promptul creat.
 Apoi vizualizăm doar procesele create din executabilul ``bash`` rulând comanda:
 
 .. code-block:: bash
@@ -155,7 +150,7 @@ Afișarea atributelor unui proces
 """"""""""""""""""""""""""""""""
 
 Un proces are mai mult decât cele patru atribute afișate la o rulare simplă a utilitarului ``ps``.
-Pentru a afișa mai multe atribute folosim opțiunea ``-f`` (de la *full format*) sau opțiunea ``-F`` (de la *extra full format*), ca mai jos:
+Pentru a afișa mai multe atribute, folosim opțiunea ``-f`` (de la *full format*) sau opțiunea ``-F`` (de la *extra full format*), ca mai jos:
 
 .. code-block:: bash
 
@@ -231,20 +226,23 @@ Așa cum vedem mai sus, utilitarul ``ps`` are diferite opțiuni care permit sele
 Opțiunea ``-u`` selectează procesele aparținând utilizatorului primit ca argument (în cazul comenzii de mai sus ``student``).
 Opțiunea ``-C`` selectează procesele care au comanda primită ca parametru (în cazul comenzii de mai sus ``bash``).
 
-**Exercițiu**: Folosiți utilitarul ``ps`` pentru a afișa **doar** procesele care aparțin utilizatorului ``root``.
+Exerciții
+"""""""""
 
-**Exercițiu**: Folosiți utilitarul ``ps`` pentru a afișa **doar** procesele Firefox.
+#. Folosiți utilitarul ``ps`` pentru a afișa **doar** procesele care aparțin utilizatorului ``root``.
 
-**Exercițiu** (mai dificil): Folosiți utilitarul ``ps`` pentru a afișa **doar** procesele care au ca părinte procesul cu PID-ul ``1``.
+#. Folosiți utilitarul ``ps`` pentru a afișa **doar** procesele Firefox.
 
-**Exercițiu** (mai dificil): Folosiți utilitarul ``ps`` pentru a afișa **doar** procesele care **NU** aparțin utilizatorului ``student``.
+#. Folosiți utilitarul ``ps`` pentru a afișa **doar** procesele care au ca părinte procesul cu PID-ul ``1``.
+
+#. Folosiți utilitarul ``ps`` pentru a afișa **doar** procesele care **NU** aparțin utilizatorului ``student``.
 
 Sumar: Investigarea proceselor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Aplicații care rulează sunt procese.
 Procesele consumă resursele sistemului.
-Pentru a vizualiza și investiga procesele sistemului folosim utilitarul ``ps``.
+Pentru a vizualiza și investiga procesele sistemului, folosim utilitarul ``ps``.
 Utilitarul ``ps`` are opțiuni pentru afișarea selectivă a proceselor sistemului.
 
 .. _app_install_run_mon:
@@ -302,7 +300,7 @@ Folosirea ps pentru aflarea PID-ului
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Un prim mod de a afla PID-ului unui proces este prin folosi utilitarului ``ps`` care afișează procesele sistemului, incluzând PID-urile acestora.
-De exemplu dacă dorim să aflăm PID-ul / PID-urile procesului ``bash`` vom folosi comenzi precum cele de mai jos:
+De exemplu, dacă dorim să aflăm PID-ul / PID-urile procesului ``bash``, vom folosi comenzi precum cele de mai jos:
 
 .. code-block:: bash
 
@@ -406,7 +404,7 @@ Așa că vrem să identificăm procesul ``perl`` folosind ``pgrep``:
 
 Nu se afișează, însă, nici un rezultat.
 Utilitarul ``pgrep`` folosește doar numele programului, nu comanda completă.
-Dacă vrem să utilizez comanda completă, folosim opțiunea ``-f``:
+Dacă vrem, să utilizăm comanda completă, folosim opțiunea ``-f``:
 
 .. code-block:: bash
 
@@ -466,9 +464,9 @@ Sumar: Identificarea proceselor
 
 Un proces este identificat de PID (*Process Identifier*).
 Putem folosi ``ps`` pentru a obține PID-ul unui proces sau a unor procese.
-Dacă ne interesează doar PID-ul folosim utilitarele ``pidof`` sau ``pgrep``.
+Dacă ne interesează doar PID-ul, folosim utilitarele ``pidof`` sau ``pgrep``.
 Utilitarul ``pgrep`` permite identificarea proceselor după atributele sale, precum după utilizatorul care le deține, procesul părinte sau un subșir din comanda completă.
-În general vom folosi utilitarul ``ps`` pentru a obține PID-ul proceselor.
+În general, vom folosi utilitarul ``ps`` pentru a obține PID-ul proceselor.
 Utilitarele ``pidof`` și ``pgrep`` sunt utile în scripturi sau combinații de comenzi care necesită doar PID-ul unui proces.
 
 .. _app_install_run_signal:
@@ -539,7 +537,7 @@ Folosirea semnalului SIGKILL
 """"""""""""""""""""""""""""
 
 În anumite situații, folosirea utilitarului ``kill`` nu duce la omorârea procesului țintă.
-În această situația vom transmite procesului țintă semnalul ``SIGKILL`` care este garantat că va omorî procesul.
+În această situație, vom transmite procesului țintă semnalul ``SIGKILL`` care este garantat că va omorî procesul.
 Adică, amuzant spus, ``SIGKILL`` este o bombă nucleară, un glonț care trece prin vesta anti-glonț, cianură de potasiu.
 Astfel, dacă pornim pe un terminal un proces ``sleep`` la fel ca mai sus, în alt terminal vom omorî procesul folosind semnalul ``SIGKILL`` ca mai jos:
 
@@ -602,7 +600,7 @@ De exemplu, dacă pornim o comandă ``sleep 100`` și dorim accesul la promptul 
 Spunem că procesul ``sleep`` este suspendat în **background**.
 
 Acum terminalul este disponibil, putem rula alte comenzi.
-Putem de exemplu, rula comanda ``jobs`` care afișează procesele aflate în background, printre care și procesul suspendat ``sleep``:
+Putem, de exemplu, rula comanda ``jobs`` care afișează procesele aflate în background, printre care și procesul suspendat ``sleep``:
 
 .. code-block:: bash
 
@@ -620,7 +618,7 @@ Acest lucru îl facem cu ajutorul comenzii ``fg``, continuând comenzile de mai 
     student@uso:~$ fg
     sleep 100
 
-Mai sus comanda ``fg`` a restaurat procesul ``sleep`` care a preluat din nou controlul terminalului.
+Mai sus, comanda ``fg`` a restaurat procesul ``sleep`` care a preluat din nou controlul terminalului.
 
 .. note::
 
@@ -662,18 +660,24 @@ Omorâți aceste procese folosind utilitarul ``kill``.
 Exercițiu: Proces abuziv
 """"""""""""""""""""""""
 
-Folosiți scriptul ``TODO`` pentru a porni un proces care consumă mult procesor.
-Este un proces care execută o buclă infinită.
-Observați cu ajutorul comenzii ``top`` că procesorul este încărcat.
+Folosiți scriptul ``cpu_hog`` din directorul de suport, pentru a porni un proces care consumă mult procesor. Îl porniți folosind o comandă de forma:
+
+.. code-block:: bash
+
+    $ ./cpu_hog
+
+Scriptul ``cpu_hog`` pornește un proces care execută o buclă infinită.
+
+Observați, cu ajutorul comenzii ``top``, că procesorul este încărcat.
 Identificați procesul cel mai consumator de resurse și omorâți-l.
-Observați cu ajutorul comenzii ``top`` că acum procesorul nu mai este încărcat.
+Observați, cu ajutorul comenzii ``top``, că acum procesorul nu mai este încărcat.
 
 Sumar: Oprirea și suspendarea proceselor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Dacă un proces nu se oprește de la sine sau prin interacțiune cu utilizatorul, o soluție este terminarea / omorârea sa.
 Omorârea unui proces se face, uzual, prin transmiterea unui semnal procesului.
-Utilitarul ``kill`` trimite un semna unui proces, primit ca parametru PID-ul procesului.
+Utilitarul ``kill`` trimite un semnal unui proces, primit ca parametru PID-ul procesului.
 Utilitarul ``pkill`` permite omorârea proceselor după anumite atribute, similar utilitarului ``pgrep`` pentru afișarea PID-urilor proceselor.
 Procesele pot fi suspendate (în **background**), folosind combinația de taste ``Ctrl+z`` și restaurate (*resume*) (în **foreground**) folosind comanda ``fg``.
 Putem vedea procesele aflate în **background** folosind comanda ``jobs``.

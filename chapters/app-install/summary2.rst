@@ -10,7 +10,7 @@ Atunci când instalați aplicații, încercați să vedeți dacă sunt prezente 
 #. folosind Snap
 #. manual, de pe site-ul furnizorului aplicației
 
-De avut în vedere că dificultatea instalării este sporită pentru instalarea manuală a unei aplicații, de pe site-ul furnizoriului aplicației.
+De avut în vedere că dificultatea instalării este sporită pentru instalarea manuală a unei aplicații, de pe site-ul furnizorului aplicației.
 
 OBS
 ---

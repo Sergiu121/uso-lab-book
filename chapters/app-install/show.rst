@@ -3,13 +3,13 @@
 Investigarea aplicațiilor instalate
 ===================================
 
-Având acces la un sistem de calcul, suntem intersați de ce aplicații rulează pe acesta și ce versiuni ale acestora.
-Acest lucru ne va ajuta să ne dăm seama ce aplicații să (mai) instalăm sau dacă e nevoie de o actualizare a versiunilor.
+Având acces la un sistem de calcul, suntem interesați de ce aplicații rulează pe acesta și ce versiuni ale acestora.
+Acest lucru ne va ajuta să ne dăm seama ce aplicații să (mai) instalăm, sau dacă e nevoie de o actualizare a versiunilor.
 
 Listarea aplicațiilor instalate
 -------------------------------
 
-Atunci când afișăm aplicațiilor instalate, vedem dacă o aplicație este absentă din sistem; sau vedem care aplicații sunt instalate pentru a replica instalarea pe un al sistem.
+Atunci când afișăm aplicațiile instalate, vedem dacă o aplicație este absentă din sistem; sau vedem care aplicații sunt instalate, pentru a replica instalarea pe un al sistem.
 
 Dacă folosim ``apt`` pentru gestiunea pachetelor, folosim comanda de mai jos pentru afișarea pachetelor instalate:
 
@@ -170,15 +170,15 @@ Astfel, pentru ``apt`` și Snap, avem comenzile de mai jos pentru fiecare tip de
       |   |       |-- libBrokenLocale-2.23.so
       [...]
 
-  Mai sus, am afișat conținutul pachetului ``nmap`` instalat folosind ``apt``, respectiv conținutul pachetului ``pdftk`` instalat folosind Snap.
+  Mai sus, am afișat conținutul pachetului ``nmap``, instalat folosind ``apt``, respectiv conținutul pachetului ``pdftk``, instalat folosind Snap.
   Pentru pachetul ``pdftk`` (Snap) nu există comandă de instalare; urmărim conținutul directorului unde este instalat pachetul folosind Snap, adică ``/snap/pdftk/``.
 
 * Pentru a replica instalarea pe un alt sistem, ne interesează să știm ce pachet conține un anumit fișier.
-  Adică știm fișierul dorit, dar ne interesează ce pachet în conține.
+  Adică știm fișierul dorit, dar ne interesează ce pachet îl conține.
 
-  În Snap acest lucru se obține ușor: conținutului unui pachet este în directorul ``/snap/<nume_pachet>/``; având calea completă către un fișier identificăm pachetul din numele subdirectorul din cale.
+  În Snap, această informație se obține ușor: conținutul unui pachet este în directorul ``/snap/<nume_pachet>/``; având calea completă către un fișier, identificăm pachetul din numele subdirectorului din cale.
 
-  În ``apt`` folosim comanda ``dpkg -S`` urmată de numele fișierului:
+  În ``apt``, folosim comanda ``dpkg -S`` urmată de numele fișierului:
 
   .. code-block:: bash
 

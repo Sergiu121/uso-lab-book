@@ -1,7 +1,7 @@
 .. _app_install_config:
 
-Configurarea aplicațiilor
-=========================
+Configurarea rulării aplicațiilor
+=================================
 
 Modul în care o aplicație rulează este configurabil.
 Adică informațiile afișate, interfața expusă utilizatorului și opțiunile permise utilizatorului pot varia de la o rulare la altă rulare.
@@ -43,12 +43,9 @@ La o rulare simplă a comenzii ``ls``, se afișează conținutul directorului cu
 Opțiunea ``-F`` adaugă un sufix specific intrărilor pentru a indica tipul lor; de exemplu ``/`` (*slash*) în cazul directoarelor.
 Opțiunea ``-l`` afișează detalii despre intrări.
 
-La fel, dacă folosim comanda ``emacs`` pornim aplicația Emacs (în mediul grafic).
-Pe când, dacă folosim comanda ``emacs -nw`` aplicația va porni în consolă, cu interfața în linia de comandă.
+La fel, dacă folosim comanda ``emacs``, pornim aplicația Emacs (în mediul grafic).
+Pe când dacă folosim comanda ``emacs -nw``, aplicația va porni în consolă, cu interfața în linia de comandă [#emacs_close]_.
 
-.. note::
-
-    Pentru a închide editorul Emacs (pornit fie în mediul grafic, fie în consolă) folosim combinația de taste specifică pentru oprirea aplicației: ``Ctrl+x`` urmat de ``Ctrl+c``.
 
 .. important::
 
@@ -56,7 +53,7 @@ Pe când, dacă folosim comanda ``emacs -nw`` aplicația va porni în consolă, 
     De exemplu, pentru a afla argumentele posibile ale comenzii ``ls`` vom folosi comanda ``man ls`` pentru a deschide pagina de manual a utilitarului ``ls``.
     Mai multe informații despre folosirea paginilor de manual se găsesc în TODO (referință la capitolul de linia de comandă).
 
-Exercițiu
+Exerciții
 ^^^^^^^^^
 
 O aplicație poate fi pornită cu argumente în interfața grafică folosind combinația de taste ``Alt+F2``.
@@ -76,17 +73,13 @@ Browserul web Firefox are fișiere de configurare în directorul ``~/.mozilla/``
 În Linux, multe aplicații au fișiere de configurare în subdirectoare din directorul ``~/.config/``.
 
 Fișierele de configurare sunt adesea text și pot fi modificate cu ajutorul unui editor.
-Altfel, sunt modificate de obicei din cadrul aplicației sau cu o aplicație auxiliară de configurare.
-
-.. note::
-
-    În Windows, echivalentul fișierelor de configurare este Windows Registry.
+Altfel, sunt modificate de obicei din cadrul aplicației sau cu o aplicație auxiliară de configurare [#winconfig]_.
 
 Inspectarea fișierelor de configurare
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Urmăriți conținutul fișierelor de configurare ``.gitconfig``, ``.vimrc``, ``.tmux.conf``.
-Aceste fișiere sunt folosite, respectiv pentru a configura Git, Vim sau tmux.
+Aceste fișiere sunt folosite, respectiv, pentru a configura Git, Vim sau tmux.
 Nu ne interesează aici să înțelegem conținutul acestor fișiere de configurare; doar le avem în vedere ca exemple reale de fișiere de configurare.
 
 Fișierele de configurare pot fi editate cu un editor.
@@ -108,7 +101,7 @@ Alternativ, pot fi editate cu ajutorul unui utilitar dedicat, precum e cazul Git
     	name = Student USO VM User
     	email = student@example.com
 
-Mai sus am folosit comanda ``git config`` cu opțiunea ``-global`` pentru a modifica fișierul global de configurare ``~/.gitconfig``.
+Mai sus am folosit comanda ``git config`` cu opțiunea ``--global`` pentru a modifica fișierul global de configurare ``~/.gitconfig``.
 
 Exercițiu: Modificarea unui fișiere de configurare
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -119,7 +112,7 @@ Configurarea editorului Nano se face în fișierul ``~/.nanorc``.
 
 Editați (și creați dacă este cazul) fișierul ``~/.nanorc``.
 Puteți folosi chiar Nano ca editor.
-Configurați Nano să afișeze numărul liniilor prin adăugarea următoarei linii în fișierul ``~/.nanorc``:
+Configurați Nano să afișeze numărul liniilor, prin adăugarea următoarei linii în fișierul ``~/.nanorc``:
 
 .. code::
 
@@ -135,8 +128,8 @@ Creați în Nano un fișier cod sursă C în care verificați adăugarea opțiun
 Exercițiu: Configurarea clientului SSH
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Configurați utilitarul ``ssh`` (client SSH) astfel încât folosirea comenzii ``ssh fav`` să însemne conectarea la un cont la distanță SSH la care aveți acces [#ssh_config]_.
-De exemplu poate fi vorba de contul de pe sistemul ``fep.grid.pub.ro``.
+Configurați utilitarul ``ssh`` (client SSH), astfel încât folosirea comenzii ``ssh fav`` să însemne conectarea la un cont la distanță SSH la care aveți acces [#ssh_config]_.
+De exemplu, poate fi vorba de contul de pe sistemul ``fep.grid.pub.ro``.
 
 Configurarea clientului SSH se realizează în fișierul ``~/.ssh/config``.
 Vedeți și `exemplul de aici <https://linuxize.com/post/using-the-ssh-config-file/#shared-ssh-config-file-example>`_.
@@ -146,10 +139,10 @@ Configurarea din aplicație
 
 Modul în care rulează o aplicație poate fi configurat direct din aplicație.
 
-De exemplu, în cadrul interfeței browserului web Firefox putem modifica pagina de start sau putem activa anumite pluginuri sau putem personaliza dispunerea meniurilor sau fonturile folosite.
+De exemplu, în cadrul interfeței browserului web Firefox, putem modifica pagina de start, sau putem activa anumite pluginuri, sau putem personaliza dispunerea meniurilor sau fonturile folosite.
 Aceste opțiuni sunt frecvente în majoritatea aplicațiilor grafice.
 
-Exercițiu
+Exerciții
 ^^^^^^^^^
 
 Porniți editorul Gedit și configurați-l, din aplicație (mediu grafic), să afișeze numărul liniilor editate.
@@ -157,7 +150,7 @@ Porniți editorul Gedit și configurați-l, din aplicație (mediu grafic), să a
 Configurați editorul Gedit să folosească fundal închis (*dark background*).
 
 Porniți browserul de sistem de fișiere Nautilus.
-Configurați-l, din aplicație (mediu grafic), să afișeze conținutul în formă de listă, nu în formă de icon / *tile*.
+Configurați-l din aplicație (mediu grafic) pentru a afișa conținutul în formă de listă, nu în formă de icon / *tile*.
 
 Configurați browserul Nautilus să deschidă un fișier / director la un singur click, nu la două clickuri.
 
@@ -166,7 +159,7 @@ Configurarea cu variabile de mediu
 
 O variabilă de mediu (*environment variable*) este o valoare care poate fi configurată la pornirea unui proces sau în timpul rulării sale pentru a afecta comportamentul procesului.
 
-De exemplu utilitarele ``wget`` și ``curl``, clienți web, folosesc variabilele de mediu ``http_proxy`` și ``https_proxy`` pentru a folosi un proxy web [#proxy]_.
+De exemplu, utilitarele ``wget`` și ``curl``, clienți web, folosesc variabilele de mediu ``http_proxy`` și ``https_proxy`` pentru a folosi un proxy web [#proxy]_.
 Shellul folosește o serie de variabile de mediu pentru a configura funcționarea sa și modul în care pornește alte aplicații.
 De exemplu, variabila de mediu ``PATH`` reține căile unde shellul caută fișierul executabil corespunzător unei comenzi.
 
@@ -183,8 +176,8 @@ Putem modifica ordinea afișată de utilitare de afișare (precum ``ls``) folosi
     student@uso:~$ LC_ALL=POSIX ls
     Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos  examples.desktop  snap  test.c  uso.git  vm-actions-log.txt
 
-Atunci când variabila de mediul ``LC_ALL`` folosește valoarea ``en_US.UTF-8`` se afișează intrările în ordine alfabetică, indiferent dacă numele acestora începe cu literă mare sau literă mică.
-Atunci când folosește valoarea ``POSIX`` se afișează întâi intrările al căror nume începe cu literă mare.
+Atunci când variabila de mediul ``LC_ALL`` folosește valoarea ``en_US.UTF-8``, se afișează intrările în ordine alfabetică, indiferent dacă numele acestora începe cu literă mare sau literă mică.
+Atunci când folosește valoarea ``POSIX``, se afișează întâi intrările al căror nume începe cu literă mare.
 
 .. note::
 
@@ -194,6 +187,14 @@ Atunci când folosește valoarea ``POSIX`` se afișează întâi intrările al c
     **Dacă** e cazul: Mai multe informații despre variabile de mediu se găsesc în TODO (referință la capitolul de linia de comandă).
 
 .. rubric:: Note de subsol
+
+.. [#emacs_close]
+
+    Pentru a închide editorul Emacs (pornit fie în mediul grafic, fie în consolă) folosim combinația de taste specifică pentru oprirea aplicației: ``Ctrl+x`` urmat de ``Ctrl+c``.
+
+.. [#winconfig]
+
+    În Windows, echivalentul fișierelor de configurare este Windows Registry.
 
 .. [#proxy]
 
