@@ -16,83 +16,20 @@ Utilizatorul poate porni aplicațiile folosind interfața grafică (*Graphical U
 Pornirea și oprirea aplicațiilor grafice
 ----------------------------------------
 
-Pornirea unei aplicații grafice folosind iconuri
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Reminder: Pornirea aplicațiilor din interfața grafică
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Cel mai simplu mod de a porni o aplicație grafică este folosind iconuri.
-Folosim mouse-ul și facem click (sau dublu click) pe icon și pornim aplicația.
-De exemplu, în Ubuntu 18.04, pentru a porni aplicația Firefox (browser web) folosim iconul din bara de jos în stânga, la fel ca în imaginea de mai jos:
+Am prezentat informații despre pornirea și oprirea aplicațiilor grafice în :ref:`basic_start_stop_apps`.
+Am văzut că o aplicație grafică poate fi pornită în 3 moduri:
 
-.. image:: img/icons.png
-    :align: center
-    :alt: Iconuri pentru pornire aplicații
-
-După un click pe icon aplicația va porni și o putem folosi, ca în imaginea de mai jos:
-
-.. image:: img/firefox.png
-    :width: 600px
-    :align: center
-    :alt: Firefox
-
-Spunem că acum aplicația **rulează**.
-Rularea înseamnă că aplicația folosește resursele sistemului pentru a îndeplini nevoile utilizatorului sau sistemului.
-
-.. note::
-
-    În mod similar pornim alte aplicații care au iconuri.
-    Aceste iconuri pot fi prezente pe bare de iconuri sau în diferite meniuri, depinzând de mediul grafic și distribuția folosită.
-
-Oprirea unei aplicații grafice
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Odată pornită, o aplicație grafică rulează, de obicei, până la o oprire explicită din partea utilizatorului.
-Utilizatorul poate opri o aplicație grafică în mai multe moduri:
-
-* Folosind butonul de închidere a ferestrei grafice, în general în forma unui simbol **x**, ca în imaginea de mai jos:
-
-  .. image:: img/exit-gui.png
-      :align: center
-      :alt: Butoane ale ferestrei grafice
-
-* Folosind combinația de taste ``Alt+F4`` care închide fereastra grafică, o scurtătură pentru folosirea butonului de închidere.
-* Folosind intrarea de tip *Quit* / *Close* / *Exit* din meniul grafic al aplicației, ca în imaginea de mai jos, specifică aplicației Firefox:
-
-  .. image:: img/firefox-quit-menu.png
-      :align: center
-      :alt: Oprirea Firefox folosind intrarea din meniul grafic al aplicației
-
-* Folosind o combinație de taste care este asociată intrării din meniul grafic al aplicației.
-  În imaginea de mai sus, specifică Firefox, combinația de taste este ``Ctrl+q``.
-  Această combinație de taste depinde de aplicație, spre deosebire combinației de taste ``Alt+F4`` care se aplică tuturor aplicațiilor grafice.
-
-* Folosind utilitarul ``xkill``.
-  După ce pornim utilitarul ``xkill``, cursorul mouse-ului capătă o formă de ``x``.
-  Un click pe o aplicație grafică duce la omorârea acelei aplicații.
-
-**Exercițiu**: Porniți aplicația Firefox și opriți-o în toate modurile de mai sus.
-
-Pornirea unei aplicații grafice folosind Alt+F2
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Pentru a porni o aplicație grafică folosind, iconuri trebuie să existe acele iconuri.
-Dacă iconul nu este prezent, sau dacă este greu accesibil (trebuie să căutăm prin meniuri), preferăm o altă soluție.
-Soluția este folosirea unui mod generic de a lansa o aplicație în interfața grafică, adică folosirea unui prompt de tip *application launcher*.
-
-În mediile grafice Linux, pornim un prompt de tip *application launcher* folosind combinația de taste ``Alt+F2`` [#app_launcher]_.
-Când apăsăm ``Alt+F2``, mediul grafic prezintă un prompt în care introducem șirul care identifică aplicația.
-De exemplu, pentru a porni aplicația Firefox, introducem șirul ``firefox`` în prompt, ca în figura de mai jos:
-
-.. image:: img/alt+f2.png
-    :width: 600px
-    :align: center
-    :alt: Pornirea firefox folosind Alt+F2
-
-În urma introducerii șirului ``firefox`` în prompt, urmat de apăsarea tastei ``Enter``, aplicația Firefox va porni.
-
-În mod similar, dacă dorim să pornim o aplicație de tip terminal (**GNOME Terminal**), folosim ``Alt+F2`` și introducem șirul ``gnome-terminal`` [#gnome_terminal]_.
-
-Șirurile ``firefox`` și ``gnome-terminal`` identifică aplicațiile Firefox, respectiv GNOME Terminal.
-Numim un astfel de șir o **comandă**; comenzile sunt șiruri introduse de utilizator pentru a porni o anumită aplicație.
+#. Folosind iconuri în interfața grafică.
+   Iconurile se găsesc direct pe desktop sau în barele de desktop sau în meniurile și ferestrele mediului grafic.
+   Plasarea iconurilor depinde de distribuția folosită.
+#. Folosind un prompt de tip *application launcher*.
+   Acest prompt este lansat, în Linux, de combinația de taste ``Alt+F2``.
+   În Windows se folosește combinația de taste ``Windows+r``.
+   În macOS se folosește combinația de taste ``Command+Space``.
+   La acest prompt se introduce șirul (comanda) care identifică aplicația.
 
 Exerciții
 """""""""
@@ -109,7 +46,8 @@ De ce nu este afișat nimic în urma pornirii aplicației ``ls``?
 Pornirea unei aplicații grafice folosind linia de comandă
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Pornirea unei aplicații grafice poate fi realizată din linia de comandă (CLI), folosind șirul care identifică aplicația, la fel ca în cazul folosirii ``Alt+F2``.
+Pe lângă cele două moduri de mai sus, pornirea unei aplicații grafice poate fi realizată din linia de comandă (CLI), folosind șirul care identifică aplicația, la fel ca în cazul folosirii ``Alt+F2``.
+Pentru a porni o aplicație grafică din linia de comandă, avem nevoie de un terminal.
 
 Pornim o aplicație de terminal folosind fie iconul corespunzător, fie ``Alt+F2`` urmat de șirul (comanda) ``gnome-terminal``.
 În aplicația de terminal, pornim aplicația Firefox scriind șirul (comanda) ``firefox``, urmat de apăsarea tastei ``Enter``, ca în imaginea de mai jos.
@@ -177,31 +115,10 @@ Porniți aplicațiile grafice:
 * Mines (identificată de șirul ``gnome-mines``), joc de tip Minesweeper
 * ToDo (identificată de șirul ``gnome-todo``), aplicație de gestiune de taskuri / todo-uri
 
-Porniți fiecare aplicație în trei moduri:
+Porniți fiecare aplicație în două moduri:
 
-#. Folosind iconuri în interfața grafică.
-   Localizați iconul în meniurile interfeței grafice.
 #. Folosind ``Alt+F2``.
 #. Folosind interfața în linia de comandă (CLI).
-
-Sumar: Pornirea aplicațiilor grafice
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-O aplicație grafică poate fi pornită în 3 moduri:
-
-#. Folosind iconuri în interfața grafică.
-   Iconurile se găsesc direct pe desktop sau în barele de desktop sau în meniurile și ferestrele mediului grafic.
-   Plasarea iconurilor depinde de distribuția folosită.
-#. Folosind un prompt de tip *application launcher*.
-   Acest prompt este lansat, în Linux, de combinația de taste ``Alt+F2``.
-   În Windows se folosește combinația de taste ``Windows+r``.
-   În macOS se folosește combinația de taste ``Command+Space``.
-   La acest prompt se introduce șirul (comanda) care identifică aplicația.
-#. Folosind interfața în linia de comandă.
-   La promptul terminalului se introduce șirul (comanda) care identifică aplicația.
-
-O aplicație grafică pornită din terminal (în linia de comandă) va "acapara" terminalul și acesta nu va accepta alte comenzi.
-Pentru aceasta, putem trece aplicația grafică în background, folosind combinația de taste ``Ctrl+z`` urmată de comanda ``bg``.
 
 .. _app_install_start_stop_cli:
 
@@ -315,18 +232,6 @@ De exemplu, dacă folosim comanda ``sleep 100`` care se va bloca pentru 100 de s
 * ``ls -R /usr``: pentru a afișa recursiv conținutul directorului ``/usr``
 * ``dd if=/dev/zero of=/dev/null``: pentru a consuma timp de procesor (*busy waiting*)
 * ``watch ps``: pentru a monitoriza procesele din terminalul curent
-
-Sumar: Pornirea aplicațiilor în linia de comandă
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Aplicațiile în linia de comandă sunt adesea numite utilitare.
-Un utilitar în linia de comandă este pornit cu ajutorul unei comenzi.
-O comandă este un șir care conține numele utilitarului urmat, dacă este cazul, de argumente.
-Aplicația este pornită când se tastează ``Enter`` după șirul care reprezintă comanda.
-
-De multe ori, aplicațiile în linia comandă execută acțiuni, afișează un mesaj în terminal și se opresc.
-Unele aplicații în linia de comandă sunt interactive și trebuie oprite explicit de utilizator folosind comenzi sau combinații de taste interne.
-Dacă o aplicație în linia de comandă se blochează sau durează foarte mult, poate fi oprită folosind combinația de taste ``Ctrl+c``.
 
 .. _app_install_start_stop_advanced:
 
