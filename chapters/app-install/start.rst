@@ -35,19 +35,19 @@ Exerciții
 """""""""
 
 #. Porniți o aplicație browser de fișiere (*file browser*) folosind ``Alt+F2``.
-
-#. În Ubuntu 18.04 GNOME browserul de sistem de fișiere este **Nautilus**, identificat de șirul (comanda) ``nautilus``.
-
+   În Ubuntu 18.04 GNOME browserul de sistem de fișiere este **Nautilus**, identificat de șirul (comanda) ``nautilus``.
 #. Porniți aplicația **LibreOffice**, identificată de șirul (comanda) ``libreoffice``, folosind ``Alt+F2``.
-
 #. Porniți aplicația ``ls`` (de listare a conținutului unui director în linia de comandă (CLI)) folosind ``Alt+F2``.
-De ce nu este afișat nimic în urma pornirii aplicației ``ls``?
+   Observați că nu este afișat nimic.
+   Acest lucru se întâmplă pentru că aplicația ``ls`` nu are interfața grafică; are sens să fie rulată doar din linia de comandă.
 
 Pornirea unei aplicații grafice folosind linia de comandă
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Pe lângă cele două moduri de mai sus, pornirea unei aplicații grafice poate fi realizată din linia de comandă (CLI), folosind șirul care identifică aplicația, la fel ca în cazul folosirii ``Alt+F2``.
 Pentru a porni o aplicație grafică din linia de comandă, avem nevoie de un terminal.
+Terminalul este un dispozitiv în care rulează o aplicație numită **shell**, care este interpretorul comenzilor introduse.
+Pe parcursul acestui capitol și a întregii cărți vom folosi interschimbabil shell și terminal.
 
 Pornim o aplicație de terminal folosind fie iconul corespunzător, fie ``Alt+F2`` urmat de șirul (comanda) ``gnome-terminal``.
 În aplicația de terminal, pornim aplicația Firefox scriind șirul (comanda) ``firefox``, urmat de apăsarea tastei ``Enter``, ca în imaginea de mai jos.
@@ -66,7 +66,6 @@ Exerciții
 
 #. La fel ca mai sus, porniți o aplicație browser de fișiere (*file browser*) folosind linia de comandă.
    În Ubuntu 18.04 GNOME, browserul de sistem de fișiere este ``nautilus``.
-
 #. Porniți aplicația LibreOffice folosind linia de comandă.
 
 Menținerea accesului la terminal
@@ -110,7 +109,6 @@ Exerciții de aprofundare
 
 Porniți aplicațiile grafice:
 
-* Shutter (identificată de șirul ``shutter``), aplicație de creare de screenshoturi
 * Gedit (identificată de șirul ``gedit``), editor
 * Mines (identificată de șirul ``gnome-mines``), joc de tip Minesweeper
 * ToDo (identificată de șirul ``gnome-todo``), aplicație de gestiune de taskuri / todo-uri
@@ -230,7 +228,6 @@ De exemplu, dacă folosim comanda ``sleep 100`` care se va bloca pentru 100 de s
 **Exercițiu**: Folosiți următoarele comenzi care pornesc aplicații care durează mult și opriți-le forțat:
 
 * ``ls -R /usr``: pentru a afișa recursiv conținutul directorului ``/usr``
-* ``dd if=/dev/zero of=/dev/null``: pentru a consuma timp de procesor (*busy waiting*)
 * ``watch ps``: pentru a monitoriza procesele din terminalul curent
 
 .. _app_install_start_stop_advanced:
@@ -242,7 +239,7 @@ Studiu de caz: Emacs: Aplicație hibridă
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Aplicația Emacs (un editor) poate rula cu interfață grafică și cu interfață în linia de comandă.
-Dacă pornim aplicația Emacs în linia de comandă, folosind comanda ``emacs``; se va crea un proces cu interfața grafică, așa cum apare în imaginea de mai jos:
+Dacă pornim aplicația Emacs în linia de comandă, folosind comanda ``emacs``, se va crea un proces cu interfața grafică, așa cum apare în imaginea de mai jos:
 
 .. image:: img/emacs-gui.png
     :align: center
@@ -306,7 +303,7 @@ Inkscape nu are propriu zis un mod headless, dar poate fi folosită în mod nein
         student@uso:~$ sudo apt update
         student@uso:~$ sudo apt -y install inkscape
 
-    Vom detalia instalarea aplicații în :ref:`app_install_install_uninstall`.
+    Vom detalia instalarea aplicațiilor în :ref:`app_install_install_uninstall`.
 
 De exemplu, pentru a converti o imagine SVG în format PDF, folosim o comandă precum cea de mai jos:
 

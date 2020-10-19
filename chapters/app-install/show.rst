@@ -3,7 +3,7 @@
 Investigarea aplicațiilor instalate
 ===================================
 
-Având acces la un sistem de calcul, suntem interesați de ce aplicații rulează pe acesta și ce versiuni ale acestora.
+Având acces la un sistem de calcul, suntem interesați de ce aplicații rulează pe acesta și de versiunile acestor aplicații.
 Acest lucru ne va ajuta să ne dăm seama ce aplicații să (mai) instalăm, sau dacă e nevoie de o actualizare a versiunilor.
 
 Listarea aplicațiilor instalate

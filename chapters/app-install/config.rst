@@ -129,7 +129,11 @@ Exercițiu: Configurarea clientului SSH
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Configurați utilitarul ``ssh`` (client SSH), astfel încât folosirea comenzii ``ssh fav`` să însemne conectarea la un cont la distanță SSH la care aveți acces [#ssh_config]_.
-De exemplu, poate fi vorba de contul de pe sistemul ``fep.grid.pub.ro``.
+
+.. admonition:: Pentru studenții de la ACS, UPB:
+
+    Dacă sunteți student la ACS, UPB, vă puteți conecta, de exemplu, la contul vostru UPB de pe sistemul ``fep.grid.pub.ro``.
+    De exemplu, autorul acestui capitol se poate conecta la contul ``razvan.deaconescu`` pe sistemul ``fep.grid.pub.ro``.
 
 Configurarea clientului SSH se realizează în fișierul ``~/.ssh/config``.
 Vedeți și `exemplul de aici <https://linuxize.com/post/using-the-ssh-config-file/#shared-ssh-config-file-example>`_.
@@ -182,7 +186,7 @@ Atunci când folosește valoarea ``POSIX``, se afișează întâi intrările al 
 .. note::
 
     În exemplele de comenzi de mai sus variabila de mediu ``LC_ALL`` este modificată doar la nivelul comenzii ``ls``.
-    La nevoie această variabilă se poate definit la nivelul întregului shell.
+    La nevoie această variabilă se poate definiela nivelul întregului shell.
     În plus, o astfel de variabilă poate fi definită în mod persistent, într-un fișier de configurare al shellului; în felul acesta, orice proces shell nou pornit va avea acea variabilă definită.
     **Dacă** e cazul: Mai multe informații despre variabile de mediu se găsesc în TODO (referință la capitolul de linia de comandă).
 

@@ -130,7 +130,7 @@ Identificarea unui proces
 Un proces este identificat după PID, nu după numele executabilului (``CMD``).
 Putem avea mai multe procese create din același executabil, fiecare proces având PID-ul său [#process]_.
 
-Pentru a verifica existența mai multor procese, o să creăm mai multe procesele shell.
+Pentru a verifica existența mai multor procese, o să creăm mai multe procese shell.
 Pentru început, deschidem mai multe sesiuni de terminal, folosind, de exemplu, ``Alt+F2`` în mediul grafic și introducând comanda ``gnome-terminal`` în promptul creat.
 Apoi vizualizăm doar procesele create din executabilul ``bash`` rulând comanda:
 
@@ -201,7 +201,7 @@ De multe ori ne interesează și evoluția în timp a proceselor: schimbarea în
 Adică să monitorizăm procesele.
 Monitorizarea proceselor înseamnă obținerea periodică de informații despre procese.
 
-Evident, un mod simplu de monitorizare este să folosim rulăm utilitarul ``ps`` periodic.
+Evident, un mod simplu de monitorizare este să rulăm utilitarul ``ps`` periodic.
 Există, însă, utilitare dedicate pentru monitorizare.
 
 Monitorizarea folosind top
@@ -236,8 +236,8 @@ De exemplu, așa cum vedem și în imaginea de mai sus, cu ajutorul tastei ``F6`
 
 .. _app_install_run_signal:
 
-Oprirea și suspendarea proceselor. Semnale
-------------------------------------------
+Oprirea proceselor. Semnale
+---------------------------
 
 Odată pornit, un proces rulează și consumă resursele sistemului.
 După ce execută codul din executabilul corespunzător, procesul își încheie execuția și eliberează resursele consumate.
@@ -248,7 +248,7 @@ Deosebim astfel între următoarele tipuri de oprire a unui proces:
 
 #. Procesul ajunge la sfârșitul codului programului și își încheie execuția.
 #. Un comportament neașteptat sau o eroare în funcționarea programului cauzează încheierea execuției acestuia (*crash*).
-#. Utilizatorul execută o acțiune interactivă care trimite comanda de încheierea execuției procesului: de exemplu folosirea tastei ``q`` pentru a încheia un proces ``top`` sau folosirea butonului ``x`` dintr-o aplicație grafică pentru a încheia execuția acesteia.
+#. Utilizatorul execută o acțiune interactivă care trimite comanda de încheiere a execuției procesului: de exemplu folosirea tastei ``q`` pentru a încheia un proces ``top`` sau folosirea butonului ``x`` dintr-o aplicație grafică pentru a încheia execuția acesteia.
 #. Utilizatorul sau sistemul de operare decide că un proces nu rulează corespunzător și decide terminarea acestuia.
 
 Ultimul punct din pasul de mai sus, numit și terminarea unui proces (sau, informal, omorârea unui proces) este realizat, în Linux, prin folosirea **semnalelor**.

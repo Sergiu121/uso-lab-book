@@ -17,7 +17,7 @@ Cu toate acestea, sistemul de gestiune a pachetelor specific distribuției are d
 * Instalarea unei versiuni mai noi a pachetului, dintr-un alt depozit, poate produce probleme de dependență cu alte pachete instalate.
 * Actualizarea unui pachet poate necesita actualizarea multor pachete sau chiar a întregii distribuții.
 
-De aceea, există alte moduri de instala aplicații necesare utilizatorului:
+De aceea, există alte moduri de a instala aplicații necesare utilizatorului:
 
 #. Instalarea unui aplicații manual, direct de la furnizorul acestuia, prin descărcarea pachetului software corespunzător și instalarea sa.
 #. Instalarea unei aplicații din surse.
@@ -94,7 +94,7 @@ Atunci când căutăm un anumit pachet Snap, avem două opțiuni:
        fakecam         2.0.0                   diddledan   -        Fakecam
 
    În comanda de mai sus am căutat pachetele care sunt relevante pentru șirul de căutare ``skype``.
-   Am obținut pachetul ``skype`` și alte pachete aproapiate.
+   Am obținut pachetul ``skype`` și alte pachete apropiate.
 
 Gestiunea pachetelor Snap
 -------------------------

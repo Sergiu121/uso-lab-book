@@ -3,7 +3,7 @@
 Instalarea și dezinstalarea aplicațiilor
 ========================================
 
-Instalarea unui sistem de operare duce la instalarea și unui set de bază de aplicații pe acel sistem.
+Instalarea unui sistem de operare duce la instalarea unui set de bază de aplicații pe acel sistem.
 Acest set este minimal; dacă dorim funcționalități peste acest set, instalăm noi aplicații.
 Instalarea unei aplicații duce la adăugarea în sistem a unui fișier executabil (sau mai multe) pentru rularea aplicației și eventuale fișiere de configurare, de documentare și de stocare a datelor aplicației.
 Instalarea unei aplicații presupune obținerea unui fișier specializat numit **pachet software** și apoi despachetarea acestuia în fișierele specifice aplicației.
@@ -433,7 +433,9 @@ La fel ca în cazul instalării și dezinstalării, actualizarea aplicațiilor d
 Actualizarea individuală a unei aplicații
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Dacă dorim actualizarea individuală a unui pachet, vom folosi o comandă precum:
+Dacă dorim actualizarea individuală a unui pachet, putem folosi interfața grafică, navigând până la zona specifică aplicației.
+
+Altfel, putem folosi o comandă precum:
 
 .. code-block:: bash
 
