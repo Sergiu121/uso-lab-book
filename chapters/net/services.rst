@@ -102,6 +102,13 @@ Exercițiu - Descărcarea paginilor web
 Accesul la distanţă în linie de comandă
 ---------------------------------------
 
+.. note::
+
+    Pentru rularea acestui demo rulați în directorul
+    ``~/uso.git/lab-containers/`` comanda ``./lab_prepare.sh install ssh``.
+    Pentru a ne conecta la infrastructura pentru această secțiune vom folosi
+    comanda ``./lab_prepare.sh connect ssh``
+
 În multe situații atunci când lucrăm cu sisteme, este necesar să rulăm aplicații
 pe alte stații în afara calculatorului nostru fără să avem acces fizic la
 stații.
