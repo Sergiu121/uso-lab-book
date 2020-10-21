@@ -23,9 +23,11 @@ Astfel, aplicația client trimite o cerere către aplicația server, serverul
 primește cererea, procesează cererea și servește răspunsul aplicației client
 care a făcut cererea.
 
-Această paradigmă poate fi observată în schema <TODO>.
+Această paradigmă poate fi observată în schema următoare:
 
-CAPTION SCHEMĂ:
+.. image:: img/client-server.png
+    :align: center
+    :alt: Arhitectura client-server
 
 Atunci când noi vrem să urmărim un film pe Netflix aplicația client Netflix de
 pe calculator sau telefon va trimite o cerere de descărcare a filmului de pe
@@ -53,39 +55,49 @@ comanda ``wget`` pentru descărcarea unei pagini web.
 
 .. code-block::
 
-    student@uso:~$ wget <link>
+        student@uso:~$ wget elf.cs.pub.ro
+        --2020-10-20 23:01:02--  http://elf.cs.pub.ro/
+        Resolving elf.cs.pub.ro (elf.cs.pub.ro)... 141.85.227.116
+        Connecting to elf.cs.pub.ro (elf.cs.pub.ro)|141.85.227.116|:80... connected.
+        HTTP request sent, awaiting response... 200 OK
+        Length: 168 [text/html]
+        Saving to: ‘index.html’
 
-EXERCIȚIU
+        index.html                        100%[===========================================================>]     168  --.-KB/s    in 0s
 
-Deschideți în browser pagina web descărcată pentru a vedea conținutul său.
+        2020-10-20 23:01:02 (7,61 MB/s) - ‘index.html’ saved [168/168]
 
-EXERCIȚIU
+        student@uso:~$ cat index.html
+        <html>
+        	<head>
+        		<meta name="google-site-verification" content="gTsIxyV43HSJraRPl6X1A5jzGFgQ3N__hKAcuL2QsO8" />
+        	</head>
 
-Deschideți într-un editor de text pagina web descărcată pentru a vedea
-conținutul HTML.
+        	<body>
+        		<h1>It works!</h1>
+        	</body>
+        </html>
 
-OBSERVAȚIE:
+Am folosit comanda ``cat`` pentru afișarea conținutului fișierului
+``index.html``. Fișierul ``index.html`` este fișierul descărcat în mod
+implicit, daca nu descărcăm o pagină specifică.
 
-Clienții web nu sunt folosiți doar pentru accesarea paginilor web. Putem folosi
-clienți web pentru a descărca fișiere indiferent de tipul acestora.
+Exercițiu - Descărcarea paginilor web
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-EXERCIȚIU 1:
+* Deschideți într-un editor de text pagina web descărcată în pentru a vedea
+  conținutul HTML.
 
-Descărcați fișierul <insert link>.
+* Descărcați pagina web de la adresa ``www.facebook.com``. Afișați conținutul fișierului descărcat.
 
-Unele fișiere sunt pro
-Descărcați fișierul <insert link>.
+.. admonition:: Observație:
 
-NOTĂ:
+    Clienții web nu sunt folosiți doar pentru accesarea paginilor web. Putem
+    folosi clienți web pentru a descărca fișiere indiferent de tipul acestora.
 
-Observați că descărcarea nu funcționează, deoarece aceasta necesită
-autentificarea utilizatorului.
+* Descărcați pagina web de la adresa ``http://wttr.in/``. Afișați conținutul fișierului descărcat.
 
-HINT:
-
-Căutați în pagina de manual a utilitarului ``wget`` (``man wget``), pentru a
-identifica opțiunea necesară pentru autentificarea la un server HTTP. Pentru
-autentificare veți folosi utilizatorul ``student`` și parola ``student``.
+* Descărcați fișierul http://elf.cs.pub.ro/uso/res/final/07-feb/heroes.csv. Ce tip de fișier este acesta?
 
 Accesul la distanţă în linie de comandă
 ---------------------------------------
@@ -107,25 +119,75 @@ pentru a ne conecta la acesta în felul următor:
 
 .. code-block::
 
-    student@uso:~$ ssh <username>@<statie>
+        student@uso:~$ hostname
+        uso
+        student@uso:~$ ssh root@10.10.10.3
+        The authenticity of host '10.10.10.3 (10.10.10.3)' can't be established.
+        ECDSA key fingerprint is SHA256:I3Ybkkk7nF2FjwVHMzjkyujDnhlRlnSwPRVwUKm6OCM.
+        Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+        Warning: Permanently added '10.10.10.3' (ECDSA) to the list of known hosts.
+        root@10.10.10.3's password:
+        Welcome to Ubuntu 18.04.5 LTS (GNU/Linux 5.4.0-51-generic x86_64)
 
-Unde <username> este numele utilizatorului și <stație> este adresa IP, sau
+         * Documentation:  https://help.ubuntu.com
+         * Management:     https://landscape.canonical.com
+         * Support:        https://ubuntu.com/advantage
+        This system has been minimized by removing packages and content that are
+        not required on a system that users do not log into.
+
+        To restore this content, you can run the 'unminimize' command.
+
+        The programs included with the Ubuntu system are free software;
+        the exact distribution terms for each program are described in the
+        individual files in /usr/share/doc/\*/copyright.
+
+        Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+        applicable law.
+        root@ssh:~# ls /
+        bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+        root@ssh:~# hostname
+        ssh
+
+
+Unde root este numele utilizatorului și 10.10.10.3 este adresa IP, sau
 hostname-ul stației la care vrem să ne conectăm.
 
-În mod implicit protocolul SSH va folosi autentificarea cu parolă.
+Atunci când ne conectăm la o stație, clientul SSH va încerca să autentifice
+stația la care ne-am conectat. Dacă ne conectăm pentru prima oară la o mașină
+trebuie să spunem clientului că am verificat datele clientului la care ne-am
+conectat.
 
-EXERCIȚIU:
+În mod implicit protocolul SSH va folosi autentificarea cu parolă. Parola
+introdusă în exemplul de mai sus este parola ``root``.
 
-Autentificați-vă la stație <insert hostname> folosind utilizatorul <insert
-utilizator> și parola <insert parolă>
+Odată ce ne-am conectat la mașina, avem acces la un shell în care rulăm comenzi
+ca mai sus. Putem observa că ne-am logat pe un calculator diferit deoarece s-a
+schimbat promptul terminalului de la ``student@uso:~$`` la ``root@ssh:~#`` și
+s-a afișat un mesaj numit *Message of the Day*.
 
-OBSERVAȚIE:
+În exemplul de mai sus am rulat comanda ``hostname`` care afișează numele
+stației la care ne-am conectat pentru a ne asigura că ne-am logat pe un nou
+calculator. Putem observa numele stației și din prompt.
 
-Atunci când ne conectăm la o stație folosind protocolul SSH este necesar să
-precizăm un nume de utilizator valid. Dacă utilizatorul nu există, serverul
-nu va preciza faptul că utilizatorul nu există pe sistem, ci va cere parola
-utilizatorului, dar nu va permite autentificarea la stație. De ce serverul SSH
-nu specifică dacă utilizatorul exista sau nu.
+Exercițiu - Conectarea la distanță
+""""""""""""""""""""""""""""""""""
+
+* Autentificați-vă la stația ``11.11.11.3`` folosind utilizatorul ``root`` și
+  parola ``root``.
+
+* Autentificați-vă la stația ``12.12.12.3`` folosind utilizatorul ``student`` și
+  parola ``student``.
+
+.. admonition:: Observație:
+
+    Atunci când ne conectăm la o stație folosind protocolul SSH este necesar să
+    precizăm un nume de utilizator valid. Dacă utilizatorul nu există, serverul
+    nu va preciza faptul că utilizatorul nu există pe sistem, ci va cere parola
+    utilizatorului, dar nu va permite autentificarea la stație. De ce serverul SSH
+    nu specifică dacă utilizatorul exista sau nu.
+
+Rularea unei singure comenzi prin SSH
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Atunci când ne conectăm la o stație avem acces la un shell pe care putem să îl
 folosim, dar dacă nu este necesar putem să rulăm mai multe comenzi, sau vrem să
@@ -134,10 +196,31 @@ următor:
 
 .. code-block::
 
-    student@uso:~$ ssh <username>@<statie> <comanda>
+    student@uso:~$ ssh root@10.10.10.3 ip address show
+    root@10.10.10.3's password:
+    1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+        link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+        inet 127.0.0.1/8 scope host lo
+           valid_lft forever preferred_lft forever
+    544: eth0@if545: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default
+        link/ether 02:42:0a:0a:0a:03 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+        inet 10.10.10.3/24 brd 10.10.10.255 scope global eth0
+           valid_lft forever preferred_lft forever
+    546: eth1@if547: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default
+        link/ether 02:42:0b:0b:0b:03 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+        inet 11.11.11.3/24 brd 11.11.11.255 scope global eth1
+           valid_lft forever preferred_lft forever
+    550: eth2@if551: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default
+        link/ether 02:42:0c:0c:0c:03 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+        inet 12.12.12.3/24 brd 12.12.12.255 scope global eth2
+           valid_lft forever preferred_lft forever
 
-Rulați comanda <insert comanda> pe stațiile <insert stații> fără să intrați în
-interfața în linia de comandă de pe stații.
+Execițiu - Rularea unei singure comenzi prin SSH
+""""""""""""""""""""""""""""""""""""""""""""""""
+
+Rulați comanda ``cat /etc/passwd`` pe mașina de la IP-ul ``10.10.10.3`` fără să
+intrați în interfața în linia de comandă de pe stații. Vă veți autentifica
+folosind utilizatorul ``root`` și parola ``root``.
 
 Transferul fișierelor la distanţă
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -148,10 +231,16 @@ ne putem folosi de modelul de autentificare de la SSH
 
 .. code-block::
 
-    student@uso:~$ scp file1 <username>@<stație>:~/file1
-    TODO
+    student@uso:~$ scp /bin/bash student@10.10.10.3:~/
+    student@10.10.10.3's password:
+    bash                                          100% 1156KB  30.5MB/s   00:00
+    student@uso:~$ ssh student@10.10.10.3 ls ~
+    student@10.10.10.3's password:
+    bash
 
-OBSERVAȚIE:
+Fișierul ``/bin/bash`` a fost copiat de pe stația ``uso`` pe stația de la adresa IP
+``10.10.10.3`` în directorul home al utilizatorului ``student``. Am rulat
+comanda ``ls ~`` prin SSH pentru a verifica că s-a efectuat copierea cu succes.
 
 Trimiterea fișierelor poate fi realizată în orice direcție:
 
@@ -163,29 +252,52 @@ Pentru descărcarea fișierelor de pe un server folosim comanda ``scp``:
 
 .. code-block::
 
-    student@uso:~$ scp <username>@<stație>:~/file1 .
-    TODO
+    student@uso:~$ scp root@10.10.10.3:/etc/resolv.conf .
+    root@10.10.10.3's password:
+    resolv.conf                                   100%   38    19.3KB/s   00:00
+    student@uso:~$ cat resolv.conf
+    nameserver 127.0.0.11
+    options ndots:0
+    student@uso:~$ ssh root@10.10.10.3 cat /etc/resolv.conf
+    root@10.10.10.3's password:
+    nameserver 127.0.0.11
+    options ndots:0
 
-OBSERVAȚIE:
 
-Comanda rulată anterior a descărcat fișierul ``file1`` din directorul home al
-utilizatorului <user> de pe stația <stație> în directorul curent (``.``).
 
-EXERCIȚIU:
+Comanda rulată anterior a descărcat fișierul ``resolv.conf`` din directorul
+``/etc/`` de pe stația ``10.10.10.3`` în directorul curent (``.``).
 
-Copiați fișierul ``/etc/passwd`` în directorul home al utilizatorului
-``student``.
+Exercițiu - Copierea fișierelor la distanță
+"""""""""""""""""""""""""""""""""""""""""""
+
+Descărcați fișierul ``/etc/passwd`` de la adresa ``10.10.10.3`` folosind
+utilizatorul ``student`` și parola ``student`` în directorul
+``/home/student/Downloads``.
+
+Copierea directoarelor la distanță
+""""""""""""""""""""""""""""""""""
 
 Pentru copierea unui director folosim opțiunea ``-r``:
 
 .. code-block::
 
-    student@uso:~$ scp <username>@<stație>:~/file1 .
-    TODO
+    student@uso:~$ scp -r ./Downloads/ root@10.10.10.3:~/
+    root@10.10.10.3's password:
+    macos.txt                                     100%   18     4.2KB/s   00:00
+    index.html                                    100%  168   168.4KB/s   00:00
+    teamviewer_15.10.5_amd64.deb                  100%   14MB  48.1MB/s   00:00
 
-EXERCIȚIU:
+Comanda anterioară a copiat directorul ``Downloads`` și conținutul său din
+directorul curent în directorul home al utilizatorului ``root`` de la adresa
+``10.10.10.3``.
 
-Copiați directorul de pe stația TODO în directorul home al utilizatorului curent.
+Exercițiu - Copierea directoarelor la distanță
+""""""""""""""""""""""""""""""""""""""""""""""
+
+Copiați directorul ``/usr`` de pe stația de la adresa ``10.10.10.3`` în
+directorul home al utilizatorului curent. Vă veți autentifica pe stația de la
+distanță folosind utilizatorul ``root`` și parola ``root``.
 
 Conectarea folosind autentificare cu chei
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -200,9 +312,9 @@ de cineva, sau să scriem parola de 10 ori de mână.
 Pentru a trece de această problemă putem să folosim mecanismul de autentificare
 cu chei. Autentificarea cu chei presupune existentă a două chei pereche:
 
-* *cheia privată*: este o cheie secretă care este folosită de un client SSH
+* **cheia privată**: este o cheie secretă care este folosită de un client SSH
   pentru a se autentifica
-* *cheia publică*, este o cheie care este copiată pe stația unde este rulat
+* **cheia publică**, este o cheie care este copiată pe stația unde este rulat
   serverul SSH. Cheia este folosită pentru identificarea clienților SSH care se
   conectează la server.
 
@@ -216,9 +328,27 @@ Pentru generarea unei perechi de chei folosim comanda ``ssh-keygen``:
 .. code-block::
 
     student@uso:~$ ssh-keygen
-    TODO
+    Generating public/private rsa key pair.
+    Enter file in which to save the key (/home/student/.ssh/id_rsa):
+    Enter passphrase (empty for no passphrase):
+    Enter same passphrase again:
+    Your identification has been saved in /home/student/.ssh/id_rsa
+    Your public key has been saved in /home/student/.ssh/id_rsa.pub
+    The key fingerprint is:
+    SHA256:mN9IlWoU6bmSA1vvKBSAfAB/Rg9GwTaAhqZ1Kc0vfHM student@uso
+    The key's randomart image is:
+    +---[RSA 3072]----+
+    |=+o**o  ..       |
+    |+=++Oo  .. .     |
+    |+.o*oo....o      |
+    |.  o= =+Eo       |
+    |     Bo=S.       |
+    |    o ++oo       |
+    |   .   =o .      |
+    |    . . .        |
+    |     .           |
+    +----[SHA256]-----+
 
-OBSERVAȚIE:
 
 În procesul de generare a cheilor ni se cere și un passphrase
 pentru a asigura securitatea cheii private în cazul în care este pierdută,
@@ -230,36 +360,32 @@ Pentru copierea cheii publice pe o stație folosim comanda ``ssh-copy-id``:
 
 .. code-block::
 
-    student@uso:~$ ssh-copy-id <username>@<statie>
-    TODO
+    student@uso:~$ ssh-copy-id root@10.10.10.3
+    /usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/student/.ssh/id_rsa.pub"
+    /usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+    /usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+    root@10.10.10.3's password:
+
+    Number of key(s) added: 1
+
+    Now try logging into the machine, with:   "ssh 'root@10.10.10.3'"
+    and check to make sure that only the key(s) you wanted were added.
+
 
 Este necesar să cunoaștem parola utilizatorului pentru copierea cheii publice.
-
-OBSERVAȚIE:
 
 Atunci când copiem cheia publică aceasta va fi copiată pentru un singur
 utilizator. Dacă vrem să ne autentificăm pe același calculator ca utilizatori
 diferiți fără parola, este necesar să copiem cheia publică pentru fiecare
 utilizator.
 
-EXERCIȚIU:
+Exercițiu - Utilizarea cheilor ssh
+""""""""""""""""""""""""""""""""""
 
-Generați o nouă cheie SSH de tip RSA cu passphrase-ul ``mere``.
+* Generați o nouă cheie SSH de tip RSA cu passphrase-ul ``mere``.
 
-EXERCIȚIU:
-
-Efectuați modificările necesare astfel încât să vă puteți autentifica drept
-utilizatorul <TODO> de pe stația <host> fără parolă.
-
-Conectarea între două calculatoare aflate în rețele private diferite
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-<TODO: de adăugat diagramă>
-
-Pentru a demonstra principiul tunelării, ne vom folosi iar de netcat pentru a
-realiza o conexiune între două stații. Ei se vor conecta la localhost:2222 și
-vor accesa o altă mașină virtuală remote. Le vom arăta cum se face tunelul.
-
+* Efectuați modificările necesare astfel încât să vă puteți autentifica drept
+  utilizatorul ``student`` de pe stația ``10.10.10.3`` fără parolă.
 
 Controlul la distanță în mediul grafic
 --------------------------------------
@@ -281,16 +407,58 @@ Pentru control complet al unei sesiuni desktop grafice există o multitudine de
 soluții, cum ar fi VNC, sau FreeRDP, dar noi ne vom concentra pe soluția numită
 TeamViewer, deoarece oferă suport pentru toate sistemele convenționale.
 
-TeamViewer poate fi descărcat de la această adresă <TODO> și permite
+TeamViewer poate fi descărcat de la `această
+<https://www.teamviewer.com/en/download/linux/>`_ adresă și permite
 autentificarea la o mașină folosind un ID și o parolă generate de aplicația
 server.
 
-TODO: Demo cu poze
+.. image:: img/teamviewer_start.png
+    :align: center
+    :alt: Aplicația TeamViewer
 
-EXERCIȚIU:
+Recapitulare - Instalarea aplicației TeamViewer
+"""""""""""""""""""""""""""""""""""""""""""""""
 
-Porniți TeamViewer pe stația TODO și conectați-vă la stație de pe mașina voastră
-fizică.
+Descărcați și instalați aplicația TeamViewer pe mașina virtuală ``USO`` și pe
+mașina voastră fizică.
+
+Folosirea TeamViewer
+""""""""""""""""""""
+
+Pentru a ne conecta la o mașină la distanță avem nevoie de ID-ul mașinii și
+parola conexiunii. Aceste informații se găsesc în primul ecran al aplicației
+TeamViewer, cum se vede mai jos.
+
+Vom scrie ID-ul stației la care vrem să ne conectăm în câmpul ``Partner ID`` de
+pe calculatorul de pe care vrem să ne conectăm (stația client).
+
+.. image:: img/teamviewer_id.png
+    :align: center
+    :alt: ID în TeamViewer
+
+După ce apăsăm tasta ``Enter`` apare promptul pentru parolă, unde completăm
+parola stației la care vrem să ne conectăm.
+
+.. image:: img/teamviewer_pass.png
+    :align: center
+    :alt: Parola în TeamViewer
+
+După ce am introdus parola a apărut pe ecran desktop-ul mașinii la care am vrut
+să mă conectez. În cazul de față este vorba de un sistem MacOS pe care am rulat
+TeamViewer.
+
+.. image:: img/teamviewer_connection.png
+    :align: center
+    :alt: Controlul calculatorului de la distanță
+
+Deasupra cadrului în care apare desktop-ul de la distață apar putoane ce ne
+permit să închidem conexiune, sau trimiterea de acțiuni și fișiere către
+calculatorul server.
+
+Exercițiu - Conectarea la distanță folosind TeamViewer
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Conectați-vă la mașina virtuală USO de pe mașina voastră fizică.
 
 Controlul unei ferestre la distanţă
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -304,11 +472,28 @@ protocol care nu este menit pentru aplicații care au nevoie să fie responsive,
 cum sunt ferestrele interactive, dar pot fi folosite pentru aplicații cum ar fi
 kituri de instalare ale programelor.
 
-TODO: Demo cu poze
+Pentru a porni o aplicație grafică pe un calculator la distanță trebuie să ne
+conectăm la această stație folosind opțiunea ``-X`` a comenzii ssh.
 
-EXERCIȚIU:
+.. image:: img/xforwarding.png
+    :align: center
+    :alt: Controlul ferestrelor prin SSH
 
-Deschideți aplicația firefox ca utilizatorul <username> pe stația <hostname>.
+Pentru a rula browserul ``firefox`` pe mașina de la adresa ``10.10.10.3``, ne-am
+conectat la aceasta folosind comanda ``ssh`` cu opțiunea ``-X`` și am pornit
+aplicația ca și când am porni-o local.
+
+.. admonition:: Observație:
+
+    Nu putem să preluăm controlul unei aplicații dacă aceasta a fost pornită
+    deja pe stația de la distanță, deoarece putem doar sa primim semnalul
+    video pentru aplicații noi pornite.
+
+Exercițiu - Controlul une ferestre la distanță
+""""""""""""""""""""""""""""""""""""""""""""""
+
+Deschideți aplicația ``qbittorrent`` ca utilizatorul ``student`` pe stația
+``10.10.10.3``.
 
 Securizarea conexiunii la Internet folosind un VPN
 --------------------------------------------------
@@ -333,22 +518,21 @@ mai departe dintr-o rețea privată în alta.
 
 <insert diagramă>
 
-EXERCIȚIU:
-
-Porniți infrastructura
-
-EXERCIȚIU:
+Recapitulare - Identificarea adreselor IP ale interfețelor
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Identificați adresele IP ale celor două stații la care aveți acces.
 
-EXERCIȚIU:
+Recapitulare - Verificarea conexiunii între două stații
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Verificați conectivitatea între cele doua stații.
+Verificați conectivitatea între cele doua stații folosind IP-urile identificate
+mai sus.
 
-OBSERVAȚIE:
+.. admonition:: Observație:
 
-Nu există conectivitate între cele două stații, deoarece acestea se află în
-rețele private diferite.
+    Nu există conectivitate între cele două stații, deoarece acestea se află în
+    rețele private diferite.
 
 Pentru a porni VPN-ul, vom folosi ``openvpn``. Rulați următoarea comandă pe ambele
 stații pentru a porni clientul de VPN.
@@ -381,3 +565,11 @@ interfața eth0 ci trec prin interfața virtuală, ajung la serverul VPN în pas
 Astfel, un pachet care se va îndrepta spre o destinație, poate să depășească
 anumite filtre bazate pe locație, deoarece locația de unde provine pachetul va
 fi înlocuită de serverul VPN.
+
+Acesta a fost un demo didactic, dar și în viața de zi cu zi, când ne conectăm la
+un VPN folosim un fișier de configurare, sau scriem noi explicit adresa VPN-ului
+și folosim date de autentificare pentru a intra în rețeaua VPN-ului. Chiar dacă
+nu se întâmplă folosind ``openvpn`` ci alte soluții cum ar fi WireGuard sau
+Cisco AnyConnect, principiul este același: ne conectăm la un server care asigură
+conectivitatea între stații care în mod normal nu ar fi interconectate în mod
+normal.
