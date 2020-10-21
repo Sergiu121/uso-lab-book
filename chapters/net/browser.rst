@@ -1,75 +1,87 @@
 Folosirea eficientă a browser-ului
 ==================================
 
-În viața de zi cu zi utilitarul pe care îl folosim cel mai des, indiferent de
-platforma, sau sistem de operare, este browserul. Fie că acesta rulează pe
-smartphone, pe laptop, acesta este folosit pentru rularea aplicațiilor web, cum
-ar fi clienți de mesagerie, rularea de jocuri, afișarea de conținut cum ar fi
-pagini cu știri, sau conținut pe rețelele de socializare.
+Pentru instrucțiuni despre folosirea scurtăturilor în browser urmăriți secțiunea
+TODO.
 
-Așadar browserul este o aplicație pe care o folosim în mod constant și ne dorim
-să o folosim într-un mod cât mai eficient, astfel încât să petrecem cât mai
-puțin timp manevrând aplicația și cat mai mult timp folosind aplicația la
-capacitate maximă.
+Instalarea şi folosirea unui ad blocker
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-<insert intro despre componentele unui browser și recomandări de folosire ale
-browserului>
+Atunci când navigăm pe Internet găsim foarte multe informații utile, dar și foarte multe reclame.
+Recomandăm instalarea unui **ad blocker** [#ad_blocker]_ pentru a filtra reclamele care apar pe paginile web pe care le deschidem.
+În această sub-subsecțiune vom instala ad blocker-ul `AdBlock Plus <https://adblockplus.org>`_ care vine sub forma unui **plug-in** (*o extensie*) pentru browerul web care elimină (pe cât posibil) reclamele de pe paginile web pe care le deschidem.
+Pentru a instala ad blockerul *AdBlock Plus* urmăm pașii din imaginea de mai jos:
 
-Browserul este format dintr-o fereastră care conține bara cu taburi, bara cu
-adresa și butoanele de navigare și conținutul paginii web, după cum se poate
-vedea și în figura <TODO>.
+.. figure:: ./gifs/firefox-install-adblock-plus.gif
+    :alt: Instalarea AdBlock Plus
 
-.. figure:: ./img/browser.png
-  :scale: 45%
-  :alt: Alternative text
+Pașii instalării unui ad blocker
+""""""""""""""""""""""""""""""""
 
-  Firefox browser
+#. Apăsăm pe meniul browserului din dreapta sus
+#. Apăsăm pe butonul *Add-ons*
+#. Ne aflăm în secțiunea *Extensions*.
+   În bara de căutare din partea de sus a ecranului scriem *adblock plus* și apăsăm tasta ``Enter``.
+   Se deschide un nou tab.
+#. Apăsăm pe primul link apărut pe care scrie *AdBlock Plus*.
+#. Apăsăm pe butonul *Add to Firefox*.
+#. O fereastră de tip pop-up apare și apăsăm pe butonul *Add*.
+#. O altă fereastră de tip pop-up apare și apăsăm pe butonul *Okay, Got it*.
 
-.. caution:: Don't use too many tabs
+.. rubric:: Notă de subsol
+.. [#ad_blocker]
+        https://en.wikipedia.org/wiki/Ad_blocking
+        https://www.monetizemore.com/blog/what-is-an-ad-blocker/
 
-   Using too many tabs kills the RAM
+.. _basic_bookmarks_browser:
 
-1) Scurtături de tastatură
---------------------------
+Folosirea bookmarkurilor
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-Primul obiectiv al folosirii eficiente al unei aplicații este învățarea
-scurtăturilor la tastatură. Scurtăturile ne permit să scurtăm mișcările pe care
-le facem. În loc să folosim mouse-ul pentru a apăsa butoanele unui browser,
-mișcând mâna de la tastatura la mouse și înapoi, putem apăsa combinații de
-taste, reducând timpul pe care îl petrecem apăsând butoane și reducând efortul
-pe care îl facem și reducând riscul afecțiunilor musculare datorate mișcărilor
-repetitive.
+Atunci când navigăm pe Internet putem să găsim, voluntar sau nu, pagini interesante pe care vrem să le revizităm cândva în viitor.
+Ca să nu pierdem aceste pagini, folosim **Bookmarkuri**.
+În această sub-subsecțiune vom adăuga bookmarkuri noi pentru rețetele cele mai bune de prăjituri găsite pe Internet.
+Deschidem din nou browserul Firefox, accesăm pagina **www.google.com** și căutăm *Best cake recipes* ca în imaginea de mai jos:
 
-a. Deschiderea taburilor
-^^^^^^^^^^^^^^^^^^^^^^^^^
+  .. figure:: ./gifs/firefox-best-cake-recipes.gif
+    :alt: Căutarea cele mai bune rețete de tort pe Google
 
-Este important ca atunci când lucrăm în browser să folosim mai multe taburi în
-browser. Un tab reprezintă o pagină web deschisă într-o fereastră a
-browserului. Fiecare tab deschis folosește resursele calculatorului
+Putem să adăugăm un nou bookmark în mai multe moduri:
 
-Îi punem să deschidă mai multe taburi, inițial îi lăsăm de capul lor, după le
-arătăm Ctrl+t pentru a face taburi noi.
+* Folosind meniul din dreapta sus a browserului ca în imaginea de mai jos:
 
-b. Modificarea adresei web accesate
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  .. figure:: ./gifs/firefox-bookmark-page-long.gif
+    :alt: Adăugarea unei pagini la Bookmarks folosind meniul browserului
 
-Îi punem să acceseze adrese noi, pentru asta le arătăm Ctrl+l.
+  Pașii pentru această variantă sunt:
+  #. Click pe butonul meniu (*burger button*)
+  #. Click pe butonul *Library*
+  #. Click pe butonul *Bookmarks*
+  #. Click pe butonul *Bookmark This Page*.
+  #. Click pe butonul *Done*
 
-c. Navigarea taburilor deschise
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+* Apăsând pe butonul în formă de stea din browser din dreapta sus și apăsarea butonului *Done* ca în imaginea de mai jos:
 
-Îi punem să navigheze între mai multe taburi și le arătăm de Alt+cifră;
+  .. figure:: ./gifs/firefox-bookmark-page-short.gif
+    :alt: Adăugarea unei pagini la Bookmarks folosind butonul stea
 
-2) Instalarea şi folosirea unui ad blocker
-------------------------------------------
+* Folosind combinația de taste ``Ctrl+d`` și apăsarea butonului *Done* ca în modurile de mai sus.
 
-Îi punem pe un site cu aduri multe şi le arătăm cât de prost merge browserul
-<insert pornhub link> și după îi punem să își instaleze un adblocker și să
-vadă diferența de performantă
+Putem vizualiza toate bookmarkurile pe care le-am creat în mai multe moduri:
 
-3) Folosirea bookmarkurilor
-----------------------------
+* Folosind meniul din dreapta sus a browserului ca în imaginea de mai jos:
 
-Le arătăm cum se adaugă bookmarkuri și cum se organizează pe directoare și îi
-punem să adauge 3 site-uri într-un director de bookmarkuri, după îi punem să le
-acceseze din adress bar
+  .. figure:: ./gifs/firefox-view-bookmarks.gif
+    :alt: Vizualizarea bookmarkurilor din browser
+
+* Folosind combinația de taste ``Ctrl+Shift+o``.
+
+Exerciții
+"""""""""
+
+#. Deschideți pagina **www.youtube.com** într-un tab nou.
+#. Căutați primele 3 melodii preferate ale voastre și deschideți-le în taburi noi.
+#. Salvați câte un bookmark pentru fiecare melodie.
+#. Vizualizați toate bookmarkurile folosind combinația de taste ``Ctrl+Shift+o``.
+
+.. _basic_use_ad_blocker:
