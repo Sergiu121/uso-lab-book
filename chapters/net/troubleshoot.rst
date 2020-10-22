@@ -4,36 +4,44 @@ Conectarea la rețea și la Internet
 Pentru identificarea și repararea problemelor de conectivitate la rețea (sau,
 mai pe scurt, rezolvarea problemei "nu-mi merge Internetul") este necesar să
 parcurgem toate nivelurile de rețea prin care trec datele pentru a fi trimise.
-În continuare vom prezenta pașii pe care îi urmăm ca să verificăm verificăm
+În continuare vom prezenta pașii pe care îi urmăm ca să verificăm
 funcționalitatea nivelului de rețea și cum putem să îl configurăm sumar.
 
 Interacţiunea cu nivelul fizic
 ------------------------------
 
 Primul nivel cu care noi interacționăm este nivelul fizic. Nivelul fizic este
-reprezentat de cablul UTP pentru o rețea cu fir <insert poză>, sau de undele
+reprezentat de cablul UTP pentru o rețea cu fir, sau de undele
 radio ale unei rețele wireless. Acestea sunt mediul prin care informația este
 transferată.
+
+.. image:: img/utp.png
+    :align: center
+    :alt: Cablu UTP
 
 O altă componentă a nivelului fizic este placa de rețea a sistemului. Aceasta
 va trimite mesaje prin mediu de transmisie, fie acesta cablu de cupru, fibră sau
 unde radio.
 
 Majoritatea timpului problemele de conexiune la Internet vin de la faptul că nu
-este cablul de Internet la placa de rețea, sau de la faptul că avem conexiune
-slabă la rețeaua wireless.
+este cablul de Internet conectat la placa de rețea, sau de la faptul că avem
+conexiune slabă la rețeaua wireless.
 
 La nivel fizic, putem verifica conexiunea și funcționalitatea unei plăci de
 rețea uitându-ne la ledurile care reprezintă conexiunea la mediul fizic.
-Observăm în GIF-ul <TODO> cum arată ledurile unei plăci de rețea funcționale.
+Observăm în GIF-ul de mai joscum arată ledurile unei plăci de rețea funcționale.
 Dacă acestea nu sunt aprinse, atunci nu vom avea conectivitate la rețea.
+
+.. figure:: ./gifs/nic.gif
+    :alt: Conexiunea la o rețea
 
 Investigarea nivelului fizic al rețelei
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. note::
 
-    În general, în Linux asociem fiecărei interfețe de rețea o placă de rețea.
+    În general, în Linux fiecare placă de rețea are asociată câte o interfață de
+    rețea.
 
 La nivelul sistemului de operare putem verifica dacă o placă de rețea este
 activă folosind comanda următoare:
@@ -59,9 +67,9 @@ activă folosind comanda următoare:
 
 
 Starea fiecărei interfețe de rețea este reprezentată pe câte o linie împreună cu
-parametrii săi de rulate. Majoritatea informațiilor afișate de comanda de mai
-sus nu relevante pentru noi. Singurul șir de caractere care ne este ``state``,
-urmat de starea interfeței de rețea, care poate să fie ``UP``, ``DOWN`` sau
+parametrii săi de rulare. Majoritatea informațiilor afișate de comanda de mai
+sus nu relevante pentru noi. O opțiune relevantă este valoarea ``state``, urmată
+de starea interfeței de rețea, care poate să fie ``UP``, ``DOWN`` sau
 ``UNKNOWN``.
 
 .. note::
@@ -83,8 +91,8 @@ Pentru a porni interfața ``eth1`` vom folosi următoarea comandă:
 
     root@uso:~# ip link set up dev eth1
 
-Mereu după ce rulăm o comandă trebuie să verificăm că s-a efectuat comanda cu
-succes folosind o comandă de verificare. În cazul de față vom folosi tot
+Mereu, după ce rulăm o comandă, trebuie să verificăm că s-a efectuat comanda cu
+succes, folosind o comandă de verificare. În cazul de față vom folosi tot
 comanda ``ip link show``:
 
 .. code-block::
@@ -123,8 +131,8 @@ Pentru comunicare între două stații din Internet, trebuie ca cele două staț
 fie conectate la Internet. Și apoi cele două stații să se poată adresa una
 alteia. Adică fiecare stație are nevoie de un identificator, o adresă.
 
-Pentru identificarea stațiilor folosim o adresă numită adresa IP (Internet
-Protocol). Fiecare interfață de rețea are nevoie de o adresă IP să fie
+Pentru identificarea stațiilor folosim o adresă numită adresa IP (*Internet
+Protocol*). Fiecare interfață de rețea are nevoie de o adresă IP să fie
 configurată.
 
 Pentru a vedea adresele IP configurate pe interfețele de rețea folosim
@@ -168,8 +176,8 @@ Există două metode pentru configurarea unei adrese IP pe o interfață:
   informațiilor despre rețea, deoarece acestea vor fi primite automat de pe
   rețea.
 
-Vom insista pe configurarea dinamică, deoarece este mai simplă. În plus,nu avem
-cum să aflam informațiile despre rețea înainte de a configura interfața de
+Vom insista pe configurarea dinamică, deoarece este mai simplă. În plus, nu avem
+cum să aflăm informațiile despre rețea înainte de a configura interfața de
 rețea.
 
 Recapitulare - Pornirea interfețelor de rețea
@@ -181,7 +189,7 @@ Faceți modificările necesare astfel încât interfața ``eth1`` să fie în st
 Configurarea IP-ului în mod dinamic
 """""""""""""""""""""""""""""""""""
 
-Pentru a obține dinamic o adresă IP în mod dinamic pe o interfață
+Pentru a obține o adresă IP în mod dinamic pe o interfață
 folosim comanda ``dhclient``:
 
 .. code-block::
@@ -189,16 +197,23 @@ folosim comanda ``dhclient``:
     root@internet:~# dhclient eth1
     mv: cannot move '/etc/resolv.conf.dhclient-new.35' to '/etc/resolv.conf': Device or resource busy
 
+.. admonition:: Observație:
+
+    Linia ``mv: cannot move '/etc/resolv.conf.dhclient-new.35' to
+    '/etc/resolv.conf': Device or resource busy`` apare mereu în containerele
+    docker atunci când încercăm să obținem o adresă IP folosind comanda
+    ``dhclient``. Nu este o problemă dacă aceasta apare.
+
 Mai sus am rulat comanda pentru a obține o adresă IP pentru interfața ``eth1``.
 
-Comanda ``dhclient`` este bazată pe protocolul DHCP (Dynamic Host Configuration
-Protocol). Acesta presupune că există un server pe rețea care cunoaște ce IP-uri
+Comanda ``dhclient`` este bazată pe protocolul DHCP (*Dynamic Host Configuration
+Protocol*). Acesta presupune că există un server pe rețea care cunoaște ce IP-uri
 sunt folosite pe rețea și care poate să ofere adrese IP calculatoarelor care fac
-cereri pe rețea. ``dhclient`` face o cerere de rezervare a unui IP către
+cereri pe rețea. ``dhclient`` face o cerere de rezervare a unei adrese IP către
 serverul DHCP de pe rețea.
 
-Recapitulare - Afișarea IP-urilor configurate pe interfețele de rețea
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Recapitulare - Afișarea adreselor IP configurate pe interfețele de rețea
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Afișați adresele IP de pe toate interfețele.
 
@@ -209,8 +224,8 @@ Exercițiu - Configurarea dinamică a unei adrese IP
 
 Configurați adresa IP pe interfața ``eth2``.
 
-Ștergerea unei configurări de rețea de pe o interfață
-"""""""""""""""""""""""""""""""""""""""""""""""""""""
+Ștergerea unei configurații de rețea de pe o interfață
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Pentru șterge o adresă IP de pe o interfața folosim comanda ``ip address flush`` în felul următor:
 
@@ -226,8 +241,8 @@ Pentru șterge o adresă IP de pe o interfața folosim comanda ``ip address flus
     Putem să afișăm configurația unei singure interfețe de rețea
     folosind numele interfeței ca parametru pentru comanda ``ip address show``
 
-Exercițiu - Ștergerea configurării de rețea
-"""""""""""""""""""""""""""""""""""""""""""
+Exercițiu - Ștergerea configurației de rețea
+""""""""""""""""""""""""""""""""""""""""""""
 
 Ștergeți configurația de rețea de pe interfețele ``eth1`` și ``eth2``.
 
@@ -236,7 +251,7 @@ Verificarea conectivității la o altă stație
 
 .. note::
 
-    Pentru rularea acestui demo comenzile vor fi rulate în cadrul mașinii
+    Pentru rularea acestui demo, comenzile vor fi rulate în cadrul mașinii
     virtuale USO.
 
 Pentru a verifica conexiunea dintre două stații folosim comanda ``ping``. Această
@@ -266,7 +281,7 @@ server public din Internet), folosim comanda:
     rtt min/avg/max/mdev = 23.051/24.731/25.707/1.020 ms
 
 Comportamentul implicit al comenzii ``ping`` este să trimită pachete la infinit.
-Am folsit opțiunea ``-c 4`` în exemplul de mai sus  pentru a reduce numărul de
+Am folsit opțiunea ``-c 4`` în exemplul de mai sus pentru a reduce numărul de
 pachete trimise la 4.
 
 Atunci când nu pot fi trimise mesaje către stația identificată prin adresa IP,
@@ -274,18 +289,22 @@ mesajul de eroare va arăta în felul următor:
 
 .. code-block::
 
-    student@uso:~# ping -c 4 10.10.10.10
+    student@uso:~# ping 10.10.10.10
     PING 10.10.10.10 (10.10.10.10) 56(84) bytes of data.
     From 10.10.10.3 icmp_seq=1 Destination Host Unreachable
     From 10.10.10.3 icmp_seq=2 Destination Host Unreachable
     From 10.10.10.3 icmp_seq=3 Destination Host Unreachable
     From 10.10.10.3 icmp_seq=4 Destination Host Unreachable
-
+    ^C
     --- 10.10.10.10 ping statistics ---
     4 packets transmitted, 0 received, +4 errors, 100% packet loss, time 3074ms
 
 Pentru verificarea conectivității în interiorul rețelei trebuie să verificăm că
-putem să trimitem mesaje folosind ping unui calculator din rețea.
+putem să trimitem mesaje folosind utilitarul ``ping`` unui calculator din rețea.
+
+În mod implicit comanda ``ping`` trimite mesaje de verificare a conexiunii la
+infinit. De data aceasta, în loc să rulăm comanda ``ping`` folosind opțiunea
+``-c 4``, am oprit rularea comenzii folosind combinația de taste ``Ctrl+c``.
 
 O țintă bună de testare pentru trimiterea mesajelor în rețea este (default)
 gateway-ul. Un gateway este un dispozitiv de rețea care se ocupă de
@@ -294,7 +313,7 @@ rețea pentru a le trimite în Internet.
 
 Gateway-ul este configurat static sau dinamic, cum este configurată și adresa IP a unei interfețe.
 
-Pentru a identifica gateway-ul folosim comanda ``ip route show`` în felul următor:
+Pentru a identifica gateway-ul, folosim comanda ``ip route show`` în felul următor:
 
 .. code-block::
 
@@ -315,8 +334,9 @@ Aflați adresa de rețea de pe interfața ``enp0s3``.
 
 .. admonition:: Observație
 
-    Adresa IP a gateway-ului și adresa IP a interfeței eth0 sunt foarte
-    similare. Asta se întâmplă deoarece stațiile se află în aceeași rețea.
+    Adresa IP a gateway-ului și adresa IP a interfeței ``enp0s3`` sunt foarte
+    similare. Acest lucru se întâmplă deoarece stațiile se află în aceeași
+    rețea.
 
 Exercițiu - Verificarea conectivității cu gateway-ul
 """"""""""""""""""""""""""""""""""""""""""""""""""""
@@ -325,12 +345,12 @@ Verificați conexiunea cu gateway-ul folosind comanda ``ping``.
 
 Pentru verificarea conexiunii la Internet este bine să verificăm cu o adresă
 consacrată, care avem încredere că nu va avea probleme tehnice. Un astfel de
-exemplu este server-ul oferit de Google de la adresa IP ``4.4.4.4``.
+exemplu este serverul oferit de Google de la adresa IP ``4.4.4.4``.
 
 Exercițiu - Verificarea conectivității la Internet
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-Verificați conexiunea la server-ul ``8.8.8.8`` oferit de Google folosind comanda
+Verificați conexiunea la serverul ``8.8.8.8`` oferit de Google folosind comanda
 ``ping``.
 
 Investigarea serviciului DNS
@@ -341,7 +361,7 @@ După cum ați observat, până acum am lucrat numai cu adrese IP, dar noi lucr�
 reținem nume decât adrese IP.
 
 Pentru a rezolva această necesitate folosim serviciul DNS. Acesta este oferit de
-un server către care noi trimitem cereri de *lookup*  pentru o adresa
+un server către care noi trimitem cereri de *lookup* pentru o adresa
 *hostname* cum ar fi ``www.google.com``. Serverul DSN va răspunde cu adresa IP
 asociată cu adresa cerută.
 
@@ -363,14 +383,14 @@ caractere ``DNS``.
     student@uso:~$ nmcli dev show | grep DNS
     IP4.DNS[1]:                             10.0.2.3
 
-Conform cu output-ul comenzii, serverul DNS către care sunt trimise comenzi este
+Conform cu outputul comenzii, serverul DNS către care sunt trimise comenzi este
 ``10.0.2.3``.
 
 Efectuarea cererilor DNS
 """"""""""""""""""""""""
 
 Pentru a verifica funcționalitatea serviciului DNS, putem să facem o cerere DNS
-folosind comanda ``host`` în felul următor.
+folosind comanda ``host`` în felul următor:
 
 .. code-block::
 
@@ -379,8 +399,10 @@ folosind comanda ``host`` în felul următor.
     elf.cs.pub.ro mail is handled by 10 elf.cs.pub.ro.
 
 Rezultatul rulării comenzii ``host`` este o lista cu servicii și adrese care pot
-fi identificare prin numele ``elf.cs.pub.ro``. Pe linia care conține șirul de
-caractere ``address`` se află adresa IPv4 asociată numelui.
+fi identificate prin numele ``elf.cs.pub.ro``. Pe linia care conține șirul de
+caractere ``address`` se află adresa IPv4 asociată numelui. Observăm că serverul
+``elf.cs.pub.ro`` găzduiește și un server de mail. Acest lucru este evidențiat
+de linia care conține parametrul ``mail``.
 
 Exemplu - Efectuarea cererilor DNS în mod implicit
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -391,25 +413,25 @@ accesăm o resursă din Internet folosind un nume, deoarece aplicațiile fac cer
 
 .. code-block::
 
-    student@uso:~$ ping -c 4 google.com
+    student@uso:~$ ping google.com
     PING google.com (216.58.214.238) 56(84) bytes of data.
     64 bytes from bud02s24-in-f14.1e100.net (216.58.214.238): icmp_seq=1 ttl=63 time=19.5 ms
     64 bytes from bud02s24-in-f14.1e100.net (216.58.214.238): icmp_seq=2 ttl=63 time=21.6 ms
     64 bytes from bud02s24-in-f14.1e100.net (216.58.214.238): icmp_seq=3 ttl=63 time=21.3 ms
     64 bytes from bud02s24-in-f14.1e100.net (216.58.214.238): icmp_seq=4 ttl=63 time=19.4 ms
-
+    ^C
     --- google.com ping statistics ---
     4 packets transmitted, 4 received, 0% packet loss, time 3006ms
     rtt min/avg/max/mdev = 19.377/20.426/21.588/1.009 ms
 
-Observați că aplicația ping a aflat de una singură care este adresa IP asociată
-numelui ``google.com`` și a făcut cererea în fundal și a verificat conexiunea cu
-serverul de la adresa IP ``216.58.214.238``.
+Observați că utilitarul ``ping`` a aflat de unul singur care este adresa IP
+asociată numelui ``google.com`` și a făcut cererea în fundal și a verificat
+conexiunea cu serverul de la adresa IP ``216.58.214.238``.
 
 Reconfigurarea temporară a serviciului DNS
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-În caz că vrem să schimbăm temporar DNS-ul pe care îl folosim trebuie să
+În caz că vrem să schimbăm temporar serverul DNS pe care îl folosim trebuie să
 modificăm fișierul ``/etc/resolv.conf``. Acest fișier specifică DNS-ul care va
 fi folosit pentru cereri pe linia care conține cuvântul nameserver, după cum
 puteți vedea mai jos.
@@ -456,7 +478,7 @@ Exercițiu - Schimbarea serverului DNS folosit
 Configurarea nivelului Transport
 --------------------------------
 
-Atunci când folosim Internetul ce facem de fapt este că ne conectăm la
+Atunci când folosim Internetul, ce facem de fapt este că ne conectăm la
 aplicații care rulează și noi pornim la rândul nostru aplicații care așteaptă
 conexiuni din exterior.
 
@@ -469,12 +491,13 @@ aplicații rețea pe o stație.
 
 Există două tipuri de porturi care pot fi deschise, în funcție de protocolul folosit:
 
-* porturi TCP, folosite de aplicații care depind de trimiterea corectă și în
-  ordine a informației, cum ar fi servere web;
+* porturi TCP (*Transmission Control Protocol*), folosite de aplicații care
+  depind de trimiterea corectă și în ordine a informației, cum ar fi servere
+  web;
 
-* porturi UDP, folosite de aplicații care trebuie să trimită informație repede
-  și care sunt rezistente la greșeli de trimitere ale pachetelor, cum ar fi
-  aplicații de video streaming
+* porturi UDP (*User Datagram Protocol*), folosite de aplicații care trebuie să
+  trimită informație repede și care sunt rezistente la greșeli de trimitere ale
+  pachetelor, cum ar fi aplicații de video streaming
 
 Conectivitatea între aplicații de rețea folosind porturi
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -502,14 +525,9 @@ Pentru comanda de mai sus folosim următoarele opțiuni pentru filtrarea afișă
 
 * ``-l`` afișează doar porturile deschise care ascultă mesaje, nu și cele deschide pentru trimiterea mesajelor
 
-* ``-p`` afișează programul care a deschis portul
+* ``-p`` afișează programul care a deschis portul [#netstat_sudo]_
 
 * ``-n`` afișează IP-ul pe care se ascultă după conexiuni
-
-.. admonition:: Observație
-
-    Am folosit comanda sudo pentru a afișa numele programului care ascultă pe
-    portul deschis
 
 Exercițiu - afișarea porturilor UDP deschise
 """"""""""""""""""""""""""""""""""""""""""""
@@ -559,7 +577,15 @@ Exercițiu - Testarea conexiunii la aplicații
 """"""""""""""""""""""""""""""""""""""""""""
 
 * Trimiteți un mesaj către programul care ascultă pe portul 22 pe mașina locală
-  (cu IP-ul 127.0.0.1).
+  (cu IP-ul ``127.0.0.1``).
 
 * Trimiteți un mesaj către programul care ascultă pe portul 80 de la adresa
   identificată prin numele ``elf.cs.pub.ro``.
+
+
+.. rubric:: Note de subsol
+
+.. [#netstat_sudo]
+    Am folosit comanda ``sudo`` pentru a afișa numele programelor care ascultă pe
+    portul deschis, deoarece avem nevoie de privilegiu pentru această
+    funcționalitate oferită de opțiunea ``-p`` a utilitarului ``netstat``.

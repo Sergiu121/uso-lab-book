@@ -5,18 +5,18 @@ Pentru instrucțiuni despre folosirea scurtăturilor în browser urmăriți sec�
 TODO.
 
 Instalarea şi folosirea unui ad blocker
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------------------
 
 Atunci când navigăm pe Internet găsim foarte multe informații utile, dar și foarte multe reclame.
 Recomandăm instalarea unui **ad blocker** [#ad_blocker]_ pentru a filtra reclamele care apar pe paginile web pe care le deschidem.
-În această sub-subsecțiune vom instala ad blocker-ul `AdBlock Plus <https://adblockplus.org>`_ care vine sub forma unui **plug-in** (*o extensie*) pentru browerul web care elimină (pe cât posibil) reclamele de pe paginile web pe care le deschidem.
+În această sub-subsecțiune vom instala ad blockerul `AdBlock Plus <https://adblockplus.org>`_ care vine sub forma unui **plug-in** (*o extensie*) pentru browerul web, care elimină (pe cât posibil) reclamele de pe paginile web pe care le deschidem.
 Pentru a instala ad blockerul *AdBlock Plus* urmăm pașii din imaginea de mai jos:
 
 .. figure:: ./gifs/firefox-install-adblock-plus.gif
     :alt: Instalarea AdBlock Plus
 
 Pașii instalării unui ad blocker
-""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Apăsăm pe meniul browserului din dreapta sus
 #. Apăsăm pe butonul *Add-ons*
@@ -28,15 +28,10 @@ Pașii instalării unui ad blocker
 #. O fereastră de tip pop-up apare și apăsăm pe butonul *Add*.
 #. O altă fereastră de tip pop-up apare și apăsăm pe butonul *Okay, Got it*.
 
-.. rubric:: Notă de subsol
-.. [#ad_blocker]
-        https://en.wikipedia.org/wiki/Ad_blocking
-        https://www.monetizemore.com/blog/what-is-an-ad-blocker/
-
 .. _basic_bookmarks_browser:
 
 Folosirea bookmarkurilor
-^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------
 
 Atunci când navigăm pe Internet putem să găsim, voluntar sau nu, pagini interesante pe care vrem să le revizităm cândva în viitor.
 Ca să nu pierdem aceste pagini, folosim **Bookmarkuri**.
@@ -54,6 +49,7 @@ Putem să adăugăm un nou bookmark în mai multe moduri:
     :alt: Adăugarea unei pagini la Bookmarks folosind meniul browserului
 
   Pașii pentru această variantă sunt:
+
   #. Click pe butonul meniu (*burger button*)
   #. Click pe butonul *Library*
   #. Click pe butonul *Bookmarks*
@@ -77,11 +73,17 @@ Putem vizualiza toate bookmarkurile pe care le-am creat în mai multe moduri:
 * Folosind combinația de taste ``Ctrl+Shift+o``.
 
 Exerciții
-"""""""""
+^^^^^^^^^
 
-#. Deschideți pagina **www.youtube.com** într-un tab nou.
+#. Deschideți pagina **youtube.com** într-un tab nou.
 #. Căutați primele 3 melodii preferate ale voastre și deschideți-le în taburi noi.
 #. Salvați câte un bookmark pentru fiecare melodie.
 #. Vizualizați toate bookmarkurile folosind combinația de taste ``Ctrl+Shift+o``.
 
 .. _basic_use_ad_blocker:
+
+.. rubric:: Notă de subsol
+
+.. [#ad_blocker]
+        https://en.wikipedia.org/wiki/Ad_blocking
+        https://www.monetizemore.com/blog/what-is-an-ad-blocker/

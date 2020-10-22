@@ -1,20 +1,21 @@
 Funcţionalităţi suplimentare de reţelistică
 ===========================================
 
-Aceste exerciții sunt menite să abordeze lucruri care nu sunt neapărat necesare
-pentru utilizarea și înțelegerea conceptelor din acest capitol, dar oferă bune
-practici și cunoștințe extra despre conectarea calculatorului la Internet și
-funcționarea serviciilor în Internet.
+Aceste exerciții și tutoriale sunt menite să abordeze lucruri care nu sunt
+neapărat necesare pentru utilizarea și înțelegerea conceptelor din acest
+capitol, dar oferă bune practici și cunoștințe extra despre conectarea
+calculatorului la Internet și funcționarea serviciilor în Internet.
 
 Folosirea proxy-urilor HTTP
 ---------------------------
 
 Din unele motive, anumite site-uri nu permit accesul utilizatorilor din unele
-țări la ele. Asta se întâmplă din motive logistice, legislative (cu precădere
-la politicile de colectare a datelor interzise în anumite țări) sau securitate.
-Totuși noi ne dorim să accesăm aceste site-uri. Putem identifica din ce țară
-apare calculatorul nostru folosind site-ul `WhatsMyIP <https://whatsmyip.com/>`
-în felul următor:
+țări la ele. Acest lucru se întâmplă din motive logistice, legislative (cu
+precădere la politicile de colectare a datelor interzise în anumite țări) sau
+securitate. Presupunem că ne aflăm într-o astfel de situație, în care nu ne
+putem conecta la un site din locul / rețeaua în care ne aflăm. Sau vrem să
+ascundem poziția noastră. Putem identifica din ce țară apare calculatorul nostru
+folosind site-ul `WhatsMyIP <https://whatsmyip.com/>`_ în felul următor:
 
 .. image:: img/proxy_ip_ro.png
     :align: center
@@ -27,31 +28,31 @@ Proxy-ul HTTP este o alternativă a VPN care în loc să tuneleze tot traficul
 în Internet, o va face doar pentru traficul HTTP. Putem să folosim un serviciu
 online de proxy-ing.
 
-Proxy-ul se bazează pe faptul că este un calculator undeva care va primi
+Proxy-ul se bazează pe faptul că există un sistem undeva care va primi
 mesajele noastre și le va trimite mai departe. Există servere proxy libere în
-internet care oferă serviciul de proxying gratis. Putem să obținem o listă cu
+Internet care oferă serviciul de proxy-ing gratis. Putem să obținem o listă cu
 astfel de servere gratis. Putem obține o listă cu astfel de servere de `aici
-<https://free-proxy-list.net>`.
+<https://free-proxy-list.net>`_.
 
 Pentru a folosi aceste servere în siguranță, fără ca acestea să poată vedea
 traficul nostru, trebuie să identificăm servere care folosesc protocolul HTTPS.
 
-Odată selectat un server, trebuie să îl setăm în browser. Pentru asta accesăm
-meniul de preferințe `Preferences <about:preferences>`, apoi căutăm după
-cuvântul cheie ``proxy`` în setările browser-ului:
+Odată selectat un server, trebuie să îl configurăm în browser. Pentru aceasta
+accesăm meniul de preferințe `Preferences <about:preferences>`_, apoi căutăm
+după cuvântul cheie ``proxy`` în setările browserului:
 
 .. image:: img/proxy_serach.png
     :align: center
     :alt: Meniul proxy-urilor în Mozilla Firefox
 
-Acesta sunt setările implicite pentru folosirea proxy-ului în Mozilla Firefox:
+În imaginea de mai jos se găsește configurația implicită:
 
 .. image:: img/proxy_settings.png
     :align: center
     :alt: Setările implicite pentru proxy-uri
 
 Odată ajunși la setările pentru proxy, vom selecta setarea manuală a
-proxy-urilor și vom introduce adresa proxy-ului selectat împreuna cu portul
+proxy-urilor și vom introduce adresa proxy-ului selectat împreună cu portul
 acestuia.
 
 .. image:: img/proxy_final.png
@@ -63,7 +64,7 @@ acestuia.
     Selectăm opțiunea ``Also use this proxy fot FTP and HTTPS`` pentru a
     folosi proxy-ul pentru tot traficul.
 
-Folosind site-ul `WhatsMyIP <https://whatsmyip.com/>` vedem că adresa noastră nu
+Folosind site-ul `WhatsMyIP <https://whatsmyip.com/>`_ vedem că adresa noastră nu
 mai apare ca cea inițială ci apare ca fiind dintr-o altă țară.
 
 .. image:: img/proxy_ip_us.png
@@ -73,25 +74,25 @@ mai apare ca cea inițială ci apare ca fiind dintr-o altă țară.
 Evitarea paywall-urilor pe site-uri web
 -----------------------------------------------
 
-Sunt unele site-uri pe internet să accesăm un număr limitat de articole pe ele.
+Sunt unele site-uri pe Internet să accesăm un număr limitat de articole pe ele.
 Funcționalitatea de blocare a conținutului de pe un site până la plata unei sume
-se numește un *paywall* și poate fi foarte agasantă atunci când încercăm să
-găsim mai multe surse pentru știri, sau când vrem să parcurgem mai multe
-articole de pe același site.
+se numește un *paywall*. *Paywall*-urile sunt foarte agasantă atunci când
+încercăm să găsim mai multe surse pentru știri, sau când vrem să parcurgem mai
+multe articole de pe același site.
 
 .. image:: img/browser_paywall.png
     :align: center
     :alt: NY Times folosind paywall
 
-*Paywall*-urile se reduc la niște elemente HTML care pot fi șterse din pagină
+*Paywall*-urile se reduc la elemente HTML care pot fi șterse din pagină
 pentru a afișa conținutul complet al unui articol. Elementele web pot fi șterse
 manual, sau automat, folosind un add-on de browser.
 
 Pentru ștergerea automată a blocajelor putem folosi `acest
-<https://github.com/iamadamdev/bypass-paywalls-chrome>` add-on de browser care
+<https://github.com/iamadamdev/bypass-paywalls-chrome>`_ add-on de browser care
 funcționează atât pe Google Chrome cât și pe Mozilla Firefox, care poate fi
 descărcat și instalat în browser de `aici
-<https://github.com/iamadamdev/bypass-paywalls-chrome/releases>`.
+<https://github.com/iamadamdev/bypass-paywalls-chrome/releases>`_.
 
 .. image:: img/browser_nopaywall.png
     :align: center
@@ -110,13 +111,13 @@ Aplicația SSH permite configurarea scurtăturilor pentru destinații la care vr
 să ne conectăm prin SSH.
 
 Pentru a ne conecta în mod normal la stația ``10.10.10.3``, ca utilizatorul
-``root`` folosind opțiunea ``-X`` ar fi nevoie să rulăm comanda:
+``root`` folosind opțiunea ``-X``, ar fi nevoie să rulăm comanda:
 
 .. code-block::
 
     student@tom:~$ ssh -X root@10.10.10.3
 
-Tastarea acestei comenzi pentru fiecare conexiune succesivă este ineficientă și
+Introducerea acestei comenzi pentru fiecare conexiune succesivă este ineficientă și
 există alternative pentru a reduce timpul de scriere al comenzii.
 
 Vom configura o scurtătura pentru utilitarul ``ssh`` folosit de utilizatorul
@@ -159,20 +160,19 @@ scurtătura ``remote-stud``.
 Configurarea accesului prin chei SSH
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-După cum am observat în secțiunea <TODO>, ca să ne copiem singuri cheia publică
-pe o stație este necesar să cunoaștem parola utilizatorului drept care vrem să
-ne autentificăm.
+După cum am observat în secțiunea <TODO>, ca să propagăm cheia publică pe o
+stație este necesar să cunoaștem parola utilizatorului drept care vrem să ne
+autentificăm.
 
 Însă există situații în care nu cunoaștem parola utilizatorului, dar avem acces
 fizic sau printr-un protocol de comunicare la stație.
 
-În această situație putem să configurăm cheia publică folosindu-ne de fișierele
+În această situație, putem să configurăm cheia publică folosindu-ne de fișierele
 de configurare ale serverului SSH.
 
-Atunci când verifică cheile publice ale utilizatorilor care încearcă să se
-autentifice, serverul SSH verifică identitatea clientului folosind cheile
-private care sunt salvate în fișierul ``~/.ssh/authorized_keys``.
-
+Pentru autentificarea utilizatorilor folosind chei publice-private, serverul SSH
+verifică fișierul ``~/.ssh/authorized_keys``. Acest fișier conține o listă a
+tuturor cheilor publice care au voie să se conecteze la server.
 
 .. code-block::
 
@@ -190,9 +190,9 @@ Gestiunea avansată a conexiunilor la rețea
 ------------------------------------------
 
 Pentru a ușura configurarea conexiunii la Internet pentru utilizatorii Linux, a
-fost adoptat ca serviciu standard pentru gestionarea conexiunilor la Internet
+fost adoptat ca serviciu standard pentru gestionarea conexiunilor la Internet:
 serviciul ``NetworkManager``. Acesta permite utilizatorilor să configureze din
-mediul grafic parametrii de funcționare ai rețelei, cum ar fi serviciul DNS
+mediul grafic parametrii de funcționare a rețelei, cum ar fi serviciul DNS
 folosit.
 
 ``NetworkManager`` oferă și funcționalități în linie de comandă, cu scopul de a
@@ -206,7 +206,7 @@ acesta le configurează și există conexiuni, care rețin configurările.
 Configurarea conexiunilor folosind ``nmcli``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Pentru interfețe conectate prin cablu exista doar o singură conexiune în mod
+Pentru interfețe conectate prin cablu există doar o singură conexiune în mod
 normal.
 
 Pentru a vizualiza parametrii de funcționare ai unei conexiuni rulăm comanda:
@@ -233,11 +233,11 @@ următor:
     student@tom:~$ nmcli connection modify "Wired connection 1" ipv4.dns 1.1.1.1
     TODO
 
-Atributul ``ipv4.dns`` reține date despre DNS-ul care va fi folosit în cadrul
-conexiunii.
+Atributul ``ipv4.dns`` reține date despre serverul DNS care va fi folosit în
+cadrul conexiunii.
 
-Exercițiu - Setarea DNS-ului permanent folosind ``nmcli``
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Exercițiu - Setarea serverului DNS permanent folosind ``nmcli``
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Faceți modificările necesare folosind comanda ``nmcli`` astfel încât conexiunea
-``Wired Connection 1`` să folosească DNS-ul ``8.8.8.8``.
+``Wired Connection 1`` să folosească serverul DNS ``8.8.8.8``.

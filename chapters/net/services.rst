@@ -12,7 +12,7 @@ local pe calculatorul pe care îl folosim. Toată puterea de procesare și tot
 spațiul de stocare s-a mutat de pe calculatorul propriu pe servere aflate în
 Internet.
 
-Vom numi aceste aplicații care rulează în Internet servicii.
+Vom numi aceste aplicații care rulează în Internet **servicii**.
 
 Un serviciu este o aplicație care oferă o funcționalitate utilizatorilor care
 apelează la ele. Serviciile în domeniul calculatoarelor lucrează folosind
@@ -30,7 +30,7 @@ Această paradigmă poate fi observată în schema următoare:
     :alt: Arhitectura client-server
 
 Atunci când noi vrem să urmărim un film pe Netflix aplicația client Netflix de
-pe calculator sau telefon va trimite o cerere de descărcare a filmului de pe
+pe calculator sau smart TV va trimite o cerere de descărcare a filmului de pe
 serverul Netflix aflat la distanță.
 
 Clienţi web în linia de comandă
@@ -41,12 +41,13 @@ web, deoarece majoritatea aplicațiilor pe care le folosim au fost transformate
 în pagini web cu care noi interacționăm. Browserul web este o aplicație care
 execută o cerere HTTP către un server web, identificat printr-o adresă, un link,
 prin care face o acțiune și primește un răspuns. De exemplu, când accesăm pagina
-``www.facebook.com`` se execută o acțiune de tip GET, browserul primește ca
-răspuns o pagină web, în formatul HTML, pe care o afișează.
+``www.facebook.com`` se trimite o cerere către serverul HTTP, iar acesta trimite
+un răspuns către browser sub forma unei pagini web, în formatul HTML, pe care
+browserul o afișează.
 
 Pentru interacțiunea cu serverele web putem folosi și clienți web în linie de
 comandă. Clienții web folosiți în linie de comandă sunt folositori atunci când
-nu avem acces la o interfață GUI, sau încercăm să automatizăm un proces. De
+nu avem acces la o interfață GUI, sau când încercăm să automatizăm un proces. De
 exemplu, pentru a verifica automat starea unui site avem nevoie să descărcăm
 pagina site-ului.
 
@@ -78,14 +79,17 @@ comanda ``wget`` pentru descărcarea unei pagini web.
         	</body>
         </html>
 
+Comanda ``wget`` primește ca parametru link-ul către pagina pe care vrem să o
+descărcăm.
+
 Am folosit comanda ``cat`` pentru afișarea conținutului fișierului
 ``index.html``. Fișierul ``index.html`` este fișierul descărcat în mod
-implicit, daca nu descărcăm o pagină specifică.
+implicit, dacă nu descărcăm o pagină specifică.
 
 Exercițiu - Descărcarea paginilor web
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* Deschideți într-un editor de text pagina web descărcată în pentru a vedea
+* Deschideți într-un editor de text pagina web descărcată pentru a vedea
   conținutul HTML.
 
 * Descărcați pagina web de la adresa ``www.facebook.com``. Afișați conținutul fișierului descărcat.
@@ -121,8 +125,8 @@ care vrem să ne autentificăm, sau să folosim o cheie de acces la stație.
 Conectarea folosind autentificare cu parolă
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Pentru a rula comenzi pe o altă stație putem folosi programul SSH (Secure Shell)
-pentru a ne conecta la acesta în felul următor:
+Pentru a rula comenzi pe o altă stație putem folosi programul SSH (*Secure
+Shell*) pentru a ne conecta la acesta în felul următor:
 
 .. code-block::
 
@@ -156,34 +160,34 @@ pentru a ne conecta la acesta în felul următor:
         ssh
 
 
-Unde root este numele utilizatorului și 10.10.10.3 este adresa IP, sau
+Unde ``root`` este numele utilizatorului și ``10.10.10.3`` este adresa IP, sau
 hostname-ul stației la care vrem să ne conectăm.
 
 Atunci când ne conectăm la o stație, clientul SSH va încerca să autentifice
-stația la care ne-am conectat. Dacă ne conectăm pentru prima oară la o mașină
+stația la care ne-am conectat. Dacă ne conectăm pentru prima oară la un sistem
 trebuie să spunem clientului că am verificat datele clientului la care ne-am
 conectat.
 
 În mod implicit protocolul SSH va folosi autentificarea cu parolă. Parola
 introdusă în exemplul de mai sus este parola ``root``.
 
-Odată ce ne-am conectat la mașina, avem acces la un shell în care rulăm comenzi
-ca mai sus. Putem observa că ne-am logat pe un calculator diferit deoarece s-a
-schimbat promptul terminalului de la ``student@uso:~$`` la ``root@ssh:~#`` și
-s-a afișat un mesaj numit *Message of the Day*.
+Odată ce ne-am conectat la calculator, avem acces la un shell în care rulăm
+comenzi ca mai sus. Putem observa că ne-am autentificat pe un calculator diferit
+deoarece s-a schimbat promptul terminalului de la ``student@uso:~$`` la
+``root@ssh:~#`` și s-a afișat un mesaj numit *Message of the Day*.
 
 În exemplul de mai sus am rulat comanda ``hostname`` care afișează numele
-stației la care ne-am conectat pentru a ne asigura că ne-am logat pe un nou
+stației la care ne-am conectat pentru a ne asigura că ne-am conectat pe un nou
 calculator. Putem observa numele stației și din prompt.
 
 Exercițiu - Conectarea la distanță
 """"""""""""""""""""""""""""""""""
 
-* Autentificați-vă la stația ``11.11.11.3`` folosind utilizatorul ``root`` și
-  parola ``root``.
+* Autentificați-vă la stația cu adresa IP ``11.11.11.3`` folosind utilizatorul
+  ``root`` și parola ``root``.
 
-* Autentificați-vă la stația ``12.12.12.3`` folosind utilizatorul ``student`` și
-  parola ``student``.
+* Autentificați-vă la stația  cu adresa IP ``12.12.12.3`` folosind utilizatorul
+  ``student`` și parola ``student``.
 
 .. admonition:: Observație:
 
@@ -191,7 +195,7 @@ Exercițiu - Conectarea la distanță
     precizăm un nume de utilizator valid. Dacă utilizatorul nu există, serverul
     nu va preciza faptul că utilizatorul nu există pe sistem, ci va cere parola
     utilizatorului, dar nu va permite autentificarea la stație. De ce serverul SSH
-    nu specifică dacă utilizatorul exista sau nu.
+    nu specifică dacă utilizatorul exista sau nu?
 
 Rularea unei singure comenzi prin SSH
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -222,19 +226,23 @@ următor:
         inet 12.12.12.3/24 brd 12.12.12.255 scope global eth2
            valid_lft forever preferred_lft forever
 
+Am rulat comanda ``ip address show`` pentru a afișa setările de rețea pe
+stația de la adresa IP ``10.10.10.3``, autentificându-ne ca utilizatorul
+``root``.
+
 Execițiu - Rularea unei singure comenzi prin SSH
 """"""""""""""""""""""""""""""""""""""""""""""""
 
-Rulați comanda ``cat /etc/passwd`` pe mașina de la IP-ul ``10.10.10.3`` fără să
+Rulați comanda ``cat /etc/passwd`` pe stația de la IP-ul ``10.10.10.3`` fără să
 intrați în interfața în linia de comandă de pe stații. Vă veți autentifica
 folosind utilizatorul ``root`` și parola ``root``.
 
 Transferul fișierelor la distanţă
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Pentru a transfera fișiere la distanță să folosească ``scp``. Comanda ``scp``
+Pentru a transfera fișiere la distanță folosim ``scp``. Comanda ``scp``
 se folosește de protocolul SSH pentru transferul de date între stații, astfel
-ne putem folosi de modelul de autentificare de la SSH
+ne putem folosi de modelul de autentificare de la SSH, ca în comanda de mai jos:
 
 .. code-block::
 
@@ -311,13 +319,13 @@ Conectarea folosind autentificare cu chei
 
 În anumite scenarii ne dorim să evităm introducerea parolei pentru
 autentificarea la o stație la distanță. De exemplu, ne dorim să rulăm aceeași
-comandă pe 10 stații. Dacă am folosi autentificare bazată pe parolă fie ar fi
-nevoie să scriem într-un fișier în clar parola, lucru care este o problema de
-securitate, deoarece dacă păstrăm o cheie în format text aceasta poate fi furată
-de cineva, sau să scriem parola de 10 ori de mână.
+comandă pe 10 stații. Dacă am folosi autentificare bazată pe parolă ar fi nevoie
+să scriem într-un fișier în clar parola. Acest este o problema de securitate,
+deoarece dacă păstrăm o cheie în format text aceasta poate fi furată de cineva.
+O alternativă ineficientă este să scriem parola de 10 ori de mână.
 
 Pentru a trece de această problemă putem să folosim mecanismul de autentificare
-cu chei. Autentificarea cu chei presupune existentă a două chei pereche:
+cu chei. Autentificarea cu chei presupune existență a două chei pereche:
 
 * **cheia privată**: este o cheie secretă care este folosită de un client SSH
   pentru a se autentifica
@@ -361,7 +369,8 @@ Pentru generarea unei perechi de chei folosim comanda ``ssh-keygen``:
 pentru a asigura securitatea cheii private în cazul în care este pierdută,
 furată sau altcineva are acces accidental la ea. Desigur, uitarea
 passphrase-ului face cheia nefolosibilă. Așa că passphrase-ul trebuie reținut
-(și protejat) ca orice altă parolă.
+(și protejat) ca orice altă parolă. Este indicat să nu protejați cheia printr-un
+passphrase deoarece prezintă aceleași probleme ca folosirea unei parole.
 
 Pentru copierea cheii publice pe o stație folosim comanda ``ssh-copy-id``:
 
@@ -381,12 +390,12 @@ Pentru copierea cheii publice pe o stație folosim comanda ``ssh-copy-id``:
 
 Este necesar să cunoaștem parola utilizatorului pentru copierea cheii publice.
 
-Atunci când copiem cheia publică aceasta va fi copiată pentru un singur
-utilizator. Dacă vrem să ne autentificăm pe același calculator ca utilizatori
+Atunci când copiem cheia publică, aceasta va fi copiată pentru un singur
+utilizator. Dacă vrem să ne autentificăm pe același sistem ca utilizatori
 diferiți fără parola, este necesar să copiem cheia publică pentru fiecare
 utilizator.
 
-Exercițiu - Utilizarea cheilor ssh
+Exercițiu - Utilizarea cheilor SSH
 """"""""""""""""""""""""""""""""""
 
 * Generați o nouă cheie SSH de tip RSA cu passphrase-ul ``mere``.
@@ -401,7 +410,7 @@ Există anumite tipuri de aplicații care funcționează în mod implicit în me
 grafic și aceste aplicații nu pot fi rulate în interfața în linie de comandă. De
 exemplu, installer-ul unui joc nu poate să fie rulat din linie de comandă.
 
-Controlul aplicațiilor se poate reduce la două probleme:
+Controlul acestor aplicații se poate reduce la două probleme:
 
 * controlul întregului desktop;
 
@@ -410,7 +419,7 @@ Controlul aplicațiilor se poate reduce la două probleme:
 Controlul desktopului la distanţă
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Pentru control complet al unei sesiuni desktop grafice există o multitudine de
+Pentru control complet al unei sesiuni desktop grafice există o mai multe
 soluții, cum ar fi VNC, sau FreeRDP, dar noi ne vom concentra pe soluția numită
 TeamViewer, deoarece oferă suport pentru toate sistemele convenționale.
 
@@ -427,7 +436,7 @@ Recapitulare - Instalarea aplicației TeamViewer
 """""""""""""""""""""""""""""""""""""""""""""""
 
 Descărcați și instalați aplicația TeamViewer pe mașina virtuală ``USO`` și pe
-mașina voastră fizică.
+stația voastră fizică.
 
 Folosirea TeamViewer
 """"""""""""""""""""
@@ -458,14 +467,14 @@ TeamViewer.
     :align: center
     :alt: Controlul calculatorului de la distanță
 
-Deasupra cadrului în care apare desktop-ul de la distață apar putoane ce ne
-permit să închidem conexiune, sau trimiterea de acțiuni și fișiere către
+Deasupra cadrului în care apare desktop-ul de la distață apar butoane ce ne
+permit să închidem conexiunea, sau să trimitem acțiuni și fișiere către
 calculatorul server.
 
 Exercițiu - Conectarea la distanță folosind TeamViewer
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-Conectați-vă la mașina virtuală USO de pe mașina voastră fizică.
+Conectați-vă la mașina virtuală USO de pe stația voastră fizică.
 
 Controlul unei ferestre la distanţă
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -480,13 +489,13 @@ cum sunt ferestrele interactive, dar pot fi folosite pentru aplicații cum ar fi
 kituri de instalare ale programelor.
 
 Pentru a porni o aplicație grafică pe un calculator la distanță trebuie să ne
-conectăm la această stație folosind opțiunea ``-X`` a comenzii ssh.
+conectăm la această stație folosind opțiunea ``-X`` a comenzii ``ssh``.
 
 .. image:: img/xforwarding.png
     :align: center
     :alt: Controlul ferestrelor prin SSH
 
-Pentru a rula browserul ``firefox`` pe mașina de la adresa ``10.10.10.3``, ne-am
+Pentru a rula browserul ``firefox`` pe stația de la adresa ``10.10.10.3``, ne-am
 conectat la aceasta folosind comanda ``ssh`` cu opțiunea ``-X`` și am pornit
 aplicația ca și când am porni-o local.
 
@@ -494,18 +503,18 @@ aplicația ca și când am porni-o local.
 
     Nu putem să preluăm controlul unei aplicații dacă aceasta a fost pornită
     deja pe stația de la distanță, deoarece putem doar sa primim semnalul
-    video pentru aplicații noi pornite.
+    video pentru aplicații nou pornite.
 
 Exercițiu - Controlul une ferestre la distanță
 """"""""""""""""""""""""""""""""""""""""""""""
 
-Deschideți aplicația ``qbittorrent`` ca utilizatorul ``student`` pe stația
-``10.10.10.3``.
+Deschideți aplicația grafică ``qbittorrent`` ca utilizatorul ``student`` pe
+stația ``10.10.10.3``.
 
 Securizarea conexiunii la Internet folosind un VPN
 --------------------------------------------------
 
-O aplicație de tip VPN (Virtual Private Network) este o aplicație care permite
+O aplicație de tip VPN (*Virtual Private Network*) este o aplicație care permite
 crearea rețelelor de calculatoare în Internet fără ca acestea să fie neapărat în
 aceeași rețea fizică.
 
@@ -513,9 +522,9 @@ Funcționalitatea unui VPN este încapsularea datelor trimise de către un
 calculator, criptarea și trimiterea lor către un server care le va trimite
 mai departe către destinație.
 
-Primul avantaj al folosirii unui VPN sunt "ascunderea" traficului între client,
+Primul avantaj al folosirii unui VPN este "ascunderea" traficului între client,
 adică stația de pe care se trimit datele și serverul VPN-ului. Astfel, acestea nu
-mai pot fi văzute de alte entități până când ajung la server-ul VPN.
+mai pot fi văzute de alte entități până când ajung la serverul VPN.
 
 Al doilea avantaj al VPN-urilor este interconectarea facilă între calculatoare
 care se află în rețele private diferite. De exemplu, pentru a juca un joc în
@@ -533,8 +542,8 @@ Identificați adresele IP ale celor două stații la care aveți acces.
 Recapitulare - Verificarea conexiunii între două stații
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Verificați conectivitatea între cele doua stații folosind IP-urile identificate
-mai sus.
+Verificați conectivitatea între cele două stații folosind adresele IP
+identificate mai sus.
 
 .. admonition:: Observație:
 
@@ -562,7 +571,7 @@ Testați conectivitatea de pe stația <TODO> cu stația de la adresa <TODO>.
 
 Pentru a verifica că drumul pachetului chiar trece prin VPN, rulăm comanda
 ``traceroute 8.8.8.8`` și observăm că mesajele spre Internet nu mai trec prin
-interfața eth0 ci trec prin interfața virtuală, ajung la serverul VPN în pasul
+interfața eth0, ci trec prin interfața virtuală, ajung la serverul VPN în pasul
 <TODO>, iar abia apoi sunt lansate mai departe spre Internet.
 
 .. code-block::
@@ -573,10 +582,18 @@ Astfel, un pachet care se va îndrepta spre o destinație, poate să depășeasc
 anumite filtre bazate pe locație, deoarece locația de unde provine pachetul va
 fi înlocuită de serverul VPN.
 
-Acesta a fost un demo didactic, dar și în viața de zi cu zi, când ne conectăm la
-un VPN folosim un fișier de configurare, sau scriem noi explicit adresa VPN-ului
-și folosim date de autentificare pentru a intra în rețeaua VPN-ului. Chiar dacă
-nu se întâmplă folosind ``openvpn`` ci alte soluții cum ar fi WireGuard sau
-Cisco AnyConnect, principiul este același: ne conectăm la un server care asigură
-conectivitatea între stații care în mod normal nu ar fi interconectate în mod
-normal.
+Acesta a fost o demonstrație didactică, dar și în viața de zi cu zi, când ne
+conectăm la un VPN folosim un fișier de configurare, sau scriem noi explicit
+adresa VPN-ului și folosim date de autentificare pentru a intra în rețeaua
+VPN-ului. Chiar dacă nu se întâmplă folosind ``openvpn``, ci alte soluții cum ar
+fi WireGuard [#WireGuard]_ sau Cisco AnyConnect[#AnyConnect]_, principiul este
+același: ne conectăm la un server care asigură conectivitatea între stații care
+în mod normal nu ar fi interconectate.
+
+.. rubric:: Notă de subsol
+
+.. [#WireGuard]
+        https://www.wireguard.com/
+
+.. [#AnyConnect]
+        https://www.cisco.com/c/en/us/products/security/anyconnect-secure-mobility-client/index.html
