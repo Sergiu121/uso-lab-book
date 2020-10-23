@@ -230,7 +230,8 @@ următor:
 
 .. code-block::
 
-    student@tom:~$ nmcli connection modify "Wired connection 1" ipv4.dns 1.1.1.1
+    student@uso:~$ nmcli connection modify "Wired connection 1" ignore-auto-dns=true
+    student@uso:~$ nmcli connection modify "Wired connection 1" ipv4.dns 1.1.1.1
     TODO
 
 Atributul ``ipv4.dns`` reține date despre serverul DNS care va fi folosit în

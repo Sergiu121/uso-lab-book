@@ -92,16 +92,19 @@ Exercițiu - Descărcarea paginilor web
 * Deschideți într-un editor de text pagina web descărcată pentru a vedea
   conținutul HTML.
 
-* Descărcați pagina web de la adresa ``www.facebook.com``. Afișați conținutul fișierului descărcat.
+* Descărcați pagina web de la adresa ``www.facebook.com``. Afișați conținutul
+  fișierului descărcat.
 
 .. admonition:: Observație:
 
     Clienții web nu sunt folosiți doar pentru accesarea paginilor web. Putem
     folosi clienți web pentru a descărca fișiere indiferent de tipul acestora.
 
-* Descărcați pagina web de la adresa ``http://wttr.in/``. Afișați conținutul fișierului descărcat.
+* Descărcați pagina web de la adresa ``http://wttr.in/``. Afișați conținutul
+  fișierului descărcat.
 
-* Descărcați fișierul http://elf.cs.pub.ro/uso/res/final/07-feb/heroes.csv. Ce tip de fișier este acesta?
+* Descărcați fișierul ``http://elf.cs.pub.ro/uso/res/final/07-feb/heroes.csv``.
+  Ce tip de fișier este acesta?
 
 Accesul la distanţă în linie de comandă
 ---------------------------------------
@@ -586,7 +589,7 @@ Acesta a fost o demonstrație didactică, dar și în viața de zi cu zi, când 
 conectăm la un VPN folosim un fișier de configurare, sau scriem noi explicit
 adresa VPN-ului și folosim date de autentificare pentru a intra în rețeaua
 VPN-ului. Chiar dacă nu se întâmplă folosind ``openvpn``, ci alte soluții cum ar
-fi WireGuard [#WireGuard]_ sau Cisco AnyConnect[#AnyConnect]_, principiul este
+fi WireGuard [#WireGuard]_ sau Cisco AnyConnect [#AnyConnect]_, principiul este
 același: ne conectăm la un server care asigură conectivitatea între stații care
 în mod normal nu ar fi interconectate.
 
