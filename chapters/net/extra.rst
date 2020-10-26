@@ -78,13 +78,14 @@ mai apare ca cea inițială ci apare ca fiind dintr-o altă țară.
 .. _network_extra_paywall:
 
 Evitarea paywall-urilor pe site-uri web
------------------------------------------------
+---------------------------------------
 
-Sunt unele site-uri pe Internet să accesăm un număr limitat de articole pe ele.
-Funcționalitatea de blocare a conținutului de pe un site până la plata unei sume
-se numește un *paywall*. *Paywall*-urile sunt foarte agasantă atunci când
-încercăm să găsim mai multe surse pentru știri, sau când vrem să parcurgem mai
-multe articole de pe același site.
+Exista anumite site-uri, cum ar fi cele de știri, sau articole științifice care
+ne limitează accesul la un număr de articole pe zi. Funcționalitatea de blocare
+a conținutului de pe un site până la plata unei sume se numește un *paywall*.
+*Paywall*-urile sunt foarte agasante atunci când încercăm să găsim mai multe
+surse pentru știri, sau când vrem să parcurgem mai multe articole de pe același
+site.
 
 .. image:: img/browser_paywall.png
     :align: center
@@ -95,10 +96,10 @@ pentru a afișa conținutul complet al unui articol. Elementele web pot fi șter
 manual, sau automat, folosind un add-on de browser.
 
 Pentru ștergerea automată a blocajelor putem folosi `acest
-<https://github.com/iamadamdev/bypass-paywalls-chrome>`_ add-on de browser care
+<https://github.com/iamadamdev/bypass-paywalls-chrome/releases>`_ add-on de browser care
 funcționează atât pe Google Chrome cât și pe Mozilla Firefox, care poate fi
 descărcat și instalat în browser de `aici
-<https://github.com/iamadamdev/bypass-paywalls-chrome/releases>`_.
+<https://github.com/iamadamdev/bypass-paywalls-firefox/releases>`_.
 
 .. image:: img/browser_nopaywall.png
     :align: center
@@ -246,12 +247,15 @@ următor:
 
 .. code-block::
 
-    student@uso:~$ nmcli connection modify "Wired connection 1" ignore-auto-dns=true
+    student@uso:~$ nmcli connection modify "Wired connection 1" ignore-auto-dns yes
     student@uso:~$ nmcli connection modify "Wired connection 1" ipv4.dns 1.1.1.1
-    TODO
+    student@uso:~$ sudo systemctl restart network-manager.service
 
-Atributul ``ipv4.dns`` reține date despre serverul DNS care va fi folosit în
-cadrul conexiunii.
+Pentru a folosi un sever DNS dorit de noi, în loc de cel primit prin DHCP este
+nevoie să setăm parametrul ``ignore-audo-dns`` la valoarea ``yes``.  Atributul
+``ipv4.dns`` reține date despre serverul DNS care va fi folosit în cadrul
+conexiunii. Pentru a schimba serverul DNS folosit am setat acest parametru la
+adresa IP ``1.1.1.1``.
 
 Exercițiu - Setarea serverului DNS permanent folosind ``nmcli``
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

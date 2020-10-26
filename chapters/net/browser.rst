@@ -1,6 +1,6 @@
 .. _network_browser:
 
-Folosirea eficientă a browser-ului
+Folosirea eficientă a browserului
 ==================================
 
 Pentru instrucțiuni despre folosirea scurtăturilor în browser urmăriți secțiunea
@@ -13,8 +13,8 @@ Instalarea şi folosirea unui ad blocker
 
 Atunci când navigăm pe Internet găsim foarte multe informații utile, dar și foarte multe reclame.
 Recomandăm instalarea unui **ad blocker** [#ad_blocker]_ pentru a filtra reclamele care apar pe paginile web pe care le deschidem.
-În această sub-subsecțiune vom instala ad blockerul `AdBlock Plus <https://adblockplus.org>`_ care vine sub forma unui **plug-in** (*o extensie*) pentru browerul web, care elimină (pe cât posibil) reclamele de pe paginile web pe care le deschidem.
-Pentru a instala ad blockerul *AdBlock Plus* urmăm pașii din imaginea de mai jos:
+În această subsecțiune vom instala ad blockerul `AdBlock Plus <https://adblockplus.org>`_ care vine sub forma unui **plug-in** (*o extensie*) pentru browerul web, care elimină (pe cât posibil) reclamele de pe paginile web pe care le deschidem.
+Pentru a instala ad blockerul *AdBlock Plus* urmăm pașii enumerați mai jos, prezenți și în GIF. Acești pași se aplică pentru browserul Mozilla Firefox.
 
 .. figure:: ./gifs/firefox-install-adblock-plus.gif
     :alt: Instalarea AdBlock Plus

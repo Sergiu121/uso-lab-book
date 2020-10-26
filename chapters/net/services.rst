@@ -19,8 +19,8 @@ Vom numi aceste aplicații care rulează în Internet **servicii**.
 Un serviciu este o aplicație care oferă o funcționalitate utilizatorilor care
 apelează la ele. Serviciile în domeniul calculatoarelor lucrează folosind
 paradigma server-client. Un avantaj major al acestei abordări este că reduce
-puterea de calcul necesară pentru rularea aplicațiilor de către utilizatori,
-aceștia au nevoie doar de o aplicație client care știe să comunice cu serverul.
+puterea de calcul necesară pentru rularea aplicațiilor de către utilizatori.
+Aceștia au nevoie doar de o aplicație client care știe să comunice cu serverul.
 Astfel, aplicația client trimite o cerere către aplicația server, serverul
 primește cererea, procesează cererea și servește răspunsul aplicației client
 care a făcut cererea.
@@ -128,8 +128,9 @@ stații.
 
 Protocolul cel mai folosit pentru accesul la stații la distanță este protocolul
 SSH. SSH permite autentificarea la o stație pe care rulează un server SSH.
-Pentru a ne conecta la stație este necesar să introducem parola utilizatorului cu
-care vrem să ne autentificăm, sau să folosim o cheie de acces la stație.
+Când ne conecta la o stație, trebuie să precizăm utilizatorul cu care vrem să
+ne logăm. Pentru autentificare introducem parola utilizatorului, sau
+folosim o cheie de acces la stație.
 
 .. _network_services_remotecli_pass:
 
@@ -337,7 +338,7 @@ Conectarea folosind autentificare cu chei
 În anumite scenarii ne dorim să evităm introducerea parolei pentru
 autentificarea la o stație la distanță. De exemplu, ne dorim să rulăm aceeași
 comandă pe 10 stații. Dacă am folosi autentificare bazată pe parolă ar fi nevoie
-să scriem într-un fișier în clar parola. Acest este o problema de securitate,
+să scriem într-un fișier în clar parola. Aceasta este o problema de securitate,
 deoarece dacă păstrăm o cheie în format text aceasta poate fi furată de cineva.
 O alternativă ineficientă este să scriem parola de 10 ori de mână.
 
@@ -607,7 +608,7 @@ Astfel, un pachet care se va îndrepta spre o destinație, poate să depășeasc
 anumite filtre bazate pe locație, deoarece locația de unde provine pachetul va
 fi înlocuită de serverul VPN.
 
-Acesta a fost o demonstrație didactică, dar și în viața de zi cu zi, când ne
+Aceasta a fost o demonstrație didactică, dar și în viața de zi cu zi, când ne
 conectăm la un VPN folosim un fișier de configurare, sau scriem noi explicit
 adresa VPN-ului și folosim date de autentificare pentru a intra în rețeaua
 VPN-ului. Chiar dacă nu se întâmplă folosind ``openvpn``, ci alte soluții cum ar

@@ -3,11 +3,12 @@
 Conectarea la rețea și la Internet
 ==================================
 
-Pentru identificarea și repararea problemelor de conectivitate la rețea (sau,
-mai pe scurt, rezolvarea problemei "nu-mi merge Internetul") este necesar să
-parcurgem toate nivelurile de rețea prin care trec datele pentru a fi trimise.
-În continuare vom prezenta pașii pe care îi urmăm ca să verificăm
-funcționalitatea nivelului de rețea și cum putem să îl configurăm sumar.
+În cadrul acestei secțiuni vom învăța cum să reparăm problemele de conectivitate
+la rețea (sau, informal, rezolvarea problemei "nu-mi merge Internetul").  Pentru
+a face asta este necesar să parcurgem toate nivelurile de rețea prin care trec
+datele pentru a fi trimise în Internet. În continuare vom prezenta pașii pe care
+îi urmăm ca să verificăm funcționalitatea nivelului de rețea și cum putem să îl
+configurăm sumar.
 
 .. _network_troubleshoot_phys:
 
@@ -33,7 +34,7 @@ conexiune slabă la rețeaua wireless.
 
 La nivel fizic, putem verifica conexiunea și funcționalitatea unei plăci de
 rețea uitându-ne la ledurile care reprezintă conexiunea la mediul fizic.
-Observăm în GIF-ul de mai joscum arată ledurile unei plăci de rețea funcționale.
+Observăm în GIF-ul de mai jos cum arată ledurile unei plăci de rețea funcționale.
 Dacă acestea nu sunt aprinse, atunci nu vom avea conectivitate la rețea.
 
 .. figure:: ./gifs/nic.gif
@@ -74,17 +75,17 @@ activă folosind comanda următoare:
 
 Starea fiecărei interfețe de rețea este reprezentată pe câte o linie împreună cu
 parametrii săi de rulare. Majoritatea informațiilor afișate de comanda de mai
-sus nu relevante pentru noi. O opțiune relevantă este valoarea ``state``, urmată
-de starea interfeței de rețea, care poate să fie ``UP``, ``DOWN`` sau
-``UNKNOWN``.
+sus nu sunt relevante pentru noi. O opțiune relevantă este valoarea
+``state``, urmată de starea interfeței de rețea, care poate să fie ``UP``,
+``DOWN`` sau ``UNKNOWN``.
 
 .. note::
 
     Formatul pentru numele interfețelor diferă de la o distribuție la alta. În
-    cadrul infrastructurii de laborator folosim containere de tip Docker
-    în cadrul cărora numele interfețelor este de forma ``ethX``, unde X este un
-    număr. În funcție de mașina pe care rulăm numele interfețelor poate să se
-    fie într-un format diferit.
+    cadrul infrastructurii de laborator folosim containere de tip Docker în
+    cadrul cărora numele interfețelor este de forma ``ethX``, unde X este un
+    număr. În funcție de distribuția pe care rulăm numele interfețelor poate să
+    se fie într-un format diferit.
 
 Observăm că interfața de rețea cu numele ``eth0`` este pornită, deoarece linia
 asociată interfeței conține șirul de caractere ``state UP``. În același timp
@@ -97,9 +98,9 @@ Pentru a porni interfața ``eth1`` vom folosi următoarea comandă:
 
     root@uso:~# ip link set up dev eth1
 
-Mereu, după ce rulăm o comandă, trebuie să verificăm că s-a efectuat comanda cu
-succes, folosind o comandă de verificare. În cazul de față vom folosi tot
-comanda ``ip link show``:
+Mereu, după ce rulăm o comandă, trebuie să verificăm că s-a efectuat cu succes,
+folosind o metodă de verificare. În cazul de față vom folosi tot comanda ``ip
+link show``:
 
 .. code-block::
 
@@ -139,7 +140,9 @@ Identificarea adresei de Internet
 
 Pentru comunicare între două stații din Internet, trebuie ca cele două stații să
 fie conectate la Internet. Și apoi cele două stații să se poată adresa una
-alteia. Adică fiecare stație are nevoie de un identificator, o adresă.
+alteia. Adică fiecare stație are nevoie de un identificator, o adresă. Cum
+fiecare casă din lume are o adresă cu care poate fi identificată unic, similar
+este necesar pentru un calculator.
 
 Pentru identificarea stațiilor folosim o adresă numită adresa IP (*Internet
 Protocol*). Fiecare interfață de rețea are nevoie de o adresă IP să fie
@@ -164,14 +167,14 @@ următoarea comandă:
     203: eth2@if204: <BROADCAST,MULTICAST> mtu 1500 qdisc noqueue state DOWN group default 
         link/ether 02:42:0c:0c:0c:02 brd ff:ff:ff:ff:ff:ff link-netnsid 0
 
-Adresele IP ale interfețelor sunt scrise pe liniile care conțin ``inet``.
-Observăm că există două tipuri de adrese IP, în funcție de parametrul ``inet``:
 
-* Adrese IPv4 care sunt de forma ``A.B.C.D``, unde A, B, C și D sunt numere cu
-  valori între 1 si 255;
+Există două tipuri de adrese IP (IPv4 și IPv6), dar în cadrul acestui laborator
+vom lucra numai cu adrese de tip IPv4. Adresele IP ale interfețelor sunt scrise
+pe liniile care conțin ``inet``.  Adresele IPv4 sunt de forma ``A.B.C.D``, unde
+A, B, C și D sunt numere cu valori între 1 si 255.
 
-* Adrese IPv6, care sunt de forma ``A:B:C:D:E:F:G:H``, unde A-H sunt numere în
-  format hexazecimal care pot lua valori de la ``0x0000" la ``0xFFFF``.
+Pentru detalii despre adresele de tip IPv6 folosiți urmăriți această [#ipv6]_
+explicație.
 
 .. _network_troubleshoot_internet_config:
 
@@ -180,7 +183,7 @@ Configurarea unei adrese IP
 
 Există două metode pentru configurarea unei adrese IP pe o interfață:
 
-* configurare statică, prin care noi configurăm manual adresa IP pe interfață de
+* configurare statică, prin care noi configurăm manual adresa IP pe interfața de
   rețea, implică să cunoaștem din ce rețea face parte interfața
   pe care vrem să o configurăm și ce adrese IP sunt libere;
 
@@ -346,7 +349,7 @@ Recapitulare - Afișarea adresei IP configurată pe o interfață
 
 Aflați adresa de rețea de pe interfața ``enp0s3``.
 
-.. admonition:: Observație
+.. admonition:: Observație:
 
     Adresa IP a gateway-ului și adresa IP a interfeței ``enp0s3`` sunt foarte
     similare. Acest lucru se întâmplă deoarece stațiile se află în aceeași
@@ -445,7 +448,7 @@ asociată numelui ``google.com`` și a făcut cererea în fundal și a verificat
 conexiunea cu serverul de la adresa IP ``216.58.214.238``.
 
 Reconfigurarea temporară a serviciului DNS
-""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""
 
 În caz că vrem să schimbăm temporar serverul DNS pe care îl folosim trebuie să
 modificăm fișierul ``/etc/resolv.conf``. Acest fișier specifică DNS-ul care va
@@ -460,8 +463,9 @@ puteți vedea mai jos.
     nameserver 127.0.0.53
     options edns0
 
-Dacă schimbăm adresa DNS-ului cu altă adresă, cum ar fi cea a DNS-ului oferit
-de Google, putem să vedem o schimbare în răspunsurile de la serverul DNS.
+Dacă schimbăm adresa serverului DNS cu altă adresă, cum ar fi cea a serverului DNS
+oferit de Google, putem să vedem o schimbare în răspunsurile de la serverul DNS
+pentru unele site-uri.
 
 
 .. code-block::
@@ -497,8 +501,8 @@ Configurarea nivelului Transport
 --------------------------------
 
 Atunci când folosim Internetul, ce facem de fapt este că ne conectăm la
-aplicații care rulează și noi pornim la rândul nostru aplicații care așteaptă
-conexiuni din exterior.
+aplicații care rulează pe servere în Internet și noi pornim la rândul nostru
+aplicații pe calculatorul nostru care așteaptă conexiuni din Internet.
 
 Pentru a distinge aplicațiile și destinația mesajelor, folosim conceptul de
 porturi. Astfel, fiecare aplicație deschide un port pentru a comunica cu exteriorul.
@@ -522,7 +526,8 @@ Există două tipuri de porturi care pot fi deschise, în funcție de protocolul
 Conectivitatea între aplicații de rețea folosind porturi
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Pentru afișarea porturilor deschide, pe care comunica o aplicație, folosim comanda ``netstat``:
+Pentru afișarea porturilor deschise, pe care comunică o aplicație, folosim
+comanda ``netstat``:
 
 .. code-block::
 
@@ -564,7 +569,7 @@ Afișați porturile UDP deschise pe stația pe care lucrați.
 Conectarea TCP la o aplicație
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Vrem să observăm cum răspunde serverul HTTP la mesaje. De regula un server HTTP răspunde printr-un mesaj în format HTML.
+Vrem să observăm cum răspunde serverul HTTP la mesaje. De regulă un server HTTP răspunde printr-un mesaj în format HTML.
 
 Pentru a trimite mesaje, indiferent de tipul aplicației care primește mesajul folosim comanda ``nc`` în felul următor
 
@@ -598,7 +603,7 @@ am trimis un mesaj care nu este în formatul așteptat de serverul HTTP.
 Exercițiu - Testarea conexiunii la aplicații
 """"""""""""""""""""""""""""""""""""""""""""
 
-* Trimiteți un mesaj către programul care ascultă pe portul 22 pe mașina locală
+* Trimiteți un mesaj către programul care ascultă pe portul 22 pe sistemul local
   (cu IP-ul ``127.0.0.1``).
 
 * Trimiteți un mesaj către programul care ascultă pe portul 80 de la adresa
@@ -611,3 +616,6 @@ Exercițiu - Testarea conexiunii la aplicații
     Am folosit comanda ``sudo`` pentru a afișa numele programelor care ascultă pe
     portul deschis, deoarece avem nevoie de privilegiu pentru această
     funcționalitate oferită de opțiunea ``-p`` a utilitarului ``netstat``.
+
+.. [#ipv6]
+    https://en.wikipedia.org/wiki/IP_address#IPv6_addresses
