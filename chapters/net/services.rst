@@ -1,3 +1,5 @@
+.. _network_services:
+
 Servicii și clienți de rețea
 ============================
 
@@ -32,6 +34,8 @@ Această paradigmă poate fi observată în schema următoare:
 Atunci când noi vrem să urmărim un film pe Netflix aplicația client Netflix de
 pe calculator sau smart TV va trimite o cerere de descărcare a filmului de pe
 serverul Netflix aflat la distanță.
+
+.. _network_services_clients:
 
 Clienţi web în linia de comandă
 --------------------------------
@@ -106,6 +110,8 @@ Exercițiu - Descărcarea paginilor web
 * Descărcați fișierul ``http://elf.cs.pub.ro/uso/res/final/07-feb/heroes.csv``.
   Ce tip de fișier este acesta?
 
+.. _network_services_remotecli:
+
 Accesul la distanţă în linie de comandă
 ---------------------------------------
 
@@ -124,6 +130,8 @@ Protocolul cel mai folosit pentru accesul la stații la distanță este protocol
 SSH. SSH permite autentificarea la o stație pe care rulează un server SSH.
 Pentru a ne conecta la stație este necesar să introducem parola utilizatorului cu
 care vrem să ne autentificăm, sau să folosim o cheie de acces la stație.
+
+.. _network_services_remotecli_pass:
 
 Conectarea folosind autentificare cu parolă
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -200,6 +208,8 @@ Exercițiu - Conectarea la distanță
     utilizatorului, dar nu va permite autentificarea la stație. De ce serverul SSH
     nu specifică dacă utilizatorul exista sau nu?
 
+.. _network_services_remotecli_cmd:
+
 Rularea unei singure comenzi prin SSH
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -239,6 +249,8 @@ Execițiu - Rularea unei singure comenzi prin SSH
 Rulați comanda ``cat /etc/passwd`` pe stația de la IP-ul ``10.10.10.3`` fără să
 intrați în interfața în linia de comandă de pe stații. Vă veți autentifica
 folosind utilizatorul ``root`` și parola ``root``.
+
+.. _network_services_remotecli_scp:
 
 Transferul fișierelor la distanţă
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -316,6 +328,8 @@ Exercițiu - Copierea directoarelor la distanță
 Copiați directorul ``/usr`` de pe stația de la adresa ``10.10.10.3`` în
 directorul home al utilizatorului curent. Vă veți autentifica pe stația de la
 distanță folosind utilizatorul ``root`` și parola ``root``.
+
+.. _network_services_remotecli_key:
 
 Conectarea folosind autentificare cu chei
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -406,6 +420,8 @@ Exercițiu - Utilizarea cheilor SSH
 * Efectuați modificările necesare astfel încât să vă puteți autentifica drept
   utilizatorul ``student`` de pe stația ``10.10.10.3`` fără parolă.
 
+.. _network_services_remotegui:
+
 Controlul la distanță în mediul grafic
 --------------------------------------
 
@@ -418,6 +434,8 @@ Controlul acestor aplicații se poate reduce la două probleme:
 * controlul întregului desktop;
 
 * controlul unei singure aplicații.
+
+.. _network_services_remotegui_dekstop:
 
 Controlul desktopului la distanţă
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -479,6 +497,8 @@ Exercițiu - Conectarea la distanță folosind TeamViewer
 
 Conectați-vă la mașina virtuală USO de pe stația voastră fizică.
 
+.. _network_services_remotegui_window:
+
 Controlul unei ferestre la distanţă
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -513,6 +533,8 @@ Exercițiu - Controlul une ferestre la distanță
 
 Deschideți aplicația grafică ``qbittorrent`` ca utilizatorul ``student`` pe
 stația ``10.10.10.3``.
+
+.. _network_services_vpn:
 
 Securizarea conexiunii la Internet folosind un VPN
 --------------------------------------------------

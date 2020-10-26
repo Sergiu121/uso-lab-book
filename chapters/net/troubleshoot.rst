@@ -1,3 +1,5 @@
+.. _network_troubleshoot:
+
 Conectarea la rețea și la Internet
 ==================================
 
@@ -6,6 +8,8 @@ mai pe scurt, rezolvarea problemei "nu-mi merge Internetul") este necesar să
 parcurgem toate nivelurile de rețea prin care trec datele pentru a fi trimise.
 În continuare vom prezenta pașii pe care îi urmăm ca să verificăm
 funcționalitatea nivelului de rețea și cum putem să îl configurăm sumar.
+
+.. _network_troubleshoot_phys:
 
 Interacţiunea cu nivelul fizic
 ------------------------------
@@ -34,6 +38,8 @@ Dacă acestea nu sunt aprinse, atunci nu vom avea conectivitate la rețea.
 
 .. figure:: ./gifs/nic.gif
     :alt: Conexiunea la o rețea
+
+.. _network_troubleshoot_phys_show:
 
 Investigarea nivelului fizic al rețelei
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -114,8 +120,12 @@ Exercițiu - Pornirea unei interfețe
 Porniți interfața de rețea ``eth2``.
 
 
+.. _network_troubleshoot_internet:
+
 Configurarea nivelului Internet
 -------------------------------
+
+.. _network_troubleshoot_internet_show:
 
 Identificarea adresei de Internet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -162,6 +172,8 @@ Observăm că există două tipuri de adrese IP, în funcție de parametrul ``in
 
 * Adrese IPv6, care sunt de forma ``A:B:C:D:E:F:G:H``, unde A-H sunt numere în
   format hexazecimal care pot lua valori de la ``0x0000" la ``0xFFFF``.
+
+.. _network_troubleshoot_internet_config:
 
 Configurarea unei adrese IP
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -245,6 +257,8 @@ Exercițiu - Ștergerea configurației de rețea
 """"""""""""""""""""""""""""""""""""""""""""
 
 Ștergeți configurația de rețea de pe interfețele ``eth1`` și ``eth2``.
+
+.. _network_troubleshoot_internet_ping:
 
 Verificarea conectivității la o altă stație
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -352,6 +366,8 @@ Exercițiu - Verificarea conectivității la Internet
 
 Verificați conexiunea la serverul ``8.8.8.8`` oferit de Google folosind comanda
 ``ping``.
+
+.. _network_troubleshoot_internet_dns:
 
 Investigarea serviciului DNS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -475,6 +491,8 @@ Exercițiu - Schimbarea serverului DNS folosit
 
 * Afișați cu ce adresă răspunde noul server DNS pentru numele ``google.com``.
 
+.. _network_troubleshoot_transport:
+
 Configurarea nivelului Transport
 --------------------------------
 
@@ -498,6 +516,8 @@ Există două tipuri de porturi care pot fi deschise, în funcție de protocolul
 * porturi UDP (*User Datagram Protocol*), folosite de aplicații care trebuie să
   trimită informație repede și care sunt rezistente la greșeli de trimitere ale
   pachetelor, cum ar fi aplicații de video streaming
+
+.. _network_troubleshoot_transport_show:
 
 Conectivitatea între aplicații de rețea folosind porturi
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -538,6 +558,8 @@ Afișați porturile UDP deschise pe stația pe care lucrați.
 
     Având în vedere că opțiunea ``-t`` se referă la porturile TCP, care credeți
     ca va fi opțiunea necesară pentru identificarea porturilor UDP?
+
+.. _network_troubleshoot_transport_connect:
 
 Conectarea TCP la o aplicație
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

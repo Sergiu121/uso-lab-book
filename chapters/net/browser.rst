@@ -1,8 +1,12 @@
+.. _network_browser:
+
 Folosirea eficientă a browser-ului
 ==================================
 
 Pentru instrucțiuni despre folosirea scurtăturilor în browser urmăriți secțiunea
-TODO.
+:ref:`basic_use_browser`.
+
+.. _network_browser_adblocker:
 
 Instalarea şi folosirea unui ad blocker
 ---------------------------------------
@@ -14,6 +18,8 @@ Pentru a instala ad blockerul *AdBlock Plus* urmăm pașii din imaginea de mai j
 
 .. figure:: ./gifs/firefox-install-adblock-plus.gif
     :alt: Instalarea AdBlock Plus
+
+.. _network_browser_adblocker_install:
 
 Pașii instalării unui ad blocker
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -28,7 +34,7 @@ Pașii instalării unui ad blocker
 #. O fereastră de tip pop-up apare și apăsăm pe butonul *Add*.
 #. O altă fereastră de tip pop-up apare și apăsăm pe butonul *Okay, Got it*.
 
-.. _basic_bookmarks_browser:
+.. _network_browser_bookmarks:
 
 Folosirea bookmarkurilor
 ------------------------
@@ -79,8 +85,6 @@ Exerciții
 #. Căutați primele 3 melodii preferate ale voastre și deschideți-le în taburi noi.
 #. Salvați câte un bookmark pentru fiecare melodie.
 #. Vizualizați toate bookmarkurile folosind combinația de taste ``Ctrl+Shift+o``.
-
-.. _basic_use_ad_blocker:
 
 .. rubric:: Notă de subsol
 

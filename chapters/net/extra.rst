@@ -1,3 +1,5 @@
+.. _network_extra:
+
 Funcţionalităţi suplimentare de reţelistică
 ===========================================
 
@@ -5,6 +7,8 @@ Aceste exerciții și tutoriale sunt menite să abordeze lucruri care nu sunt
 neapărat necesare pentru utilizarea și înțelegerea conceptelor din acest
 capitol, dar oferă bune practici și cunoștințe extra despre conectarea
 calculatorului la Internet și funcționarea serviciilor în Internet.
+
+.. _network_extra_proxy:
 
 Folosirea proxy-urilor HTTP
 ---------------------------
@@ -71,6 +75,8 @@ mai apare ca cea inițială ci apare ca fiind dintr-o altă țară.
     :align: center
     :alt: WhatsMyIP în proxy
 
+.. _network_extra_paywall:
+
 Evitarea paywall-urilor pe site-uri web
 -----------------------------------------------
 
@@ -101,8 +107,12 @@ descărcat și instalat în browser de `aici
 Observăm cum după instalarea și activarea add-onului putem vedea conținutul
 paginii web nerestricționat.
 
+.. _network_extra_ssh:
+
 Configurarea avansată pentru SSH
 --------------------------------
+
+.. _network_extra_ssh_shortcuts:
 
 Configurarea scurtăturilor SSH
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -157,6 +167,8 @@ Realizați configurările necesare astfel încât să va puteți conecta la sta�
 ``10.10.10.3`` ca utilizatorul ``student``, folosind opțiunea de X forwarding cu
 scurtătura ``remote-stud``.
 
+.. _network_extra_ssh_keys:
+
 Configurarea accesului prin chei SSH
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -186,6 +198,8 @@ este suficient să scriem cheia SSH a utilizatorului pe o linie nouă a fișieru
 
 TODO infra
 
+.. _network_extra_nmcli:
+
 Gestiunea avansată a conexiunilor la rețea
 ------------------------------------------
 
@@ -202,6 +216,8 @@ gestionarea configurărilor.
 
 Din punctul de vedere al serviciului ``NetworkManager``, există interfețe pe care
 acesta le configurează și există conexiuni, care rețin configurările.
+
+.. _network_extra_nmcli_connecition:
 
 Configurarea conexiunilor folosind ``nmcli``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
