@@ -3,6 +3,21 @@
 Conectarea la rețea și la Internet
 ==================================
 
+.. note::
+    Pentru a parcurge această secțiune este recomandat să descărcați ultima
+    versiune a respository-ului laboratorului. Pentru a descărca ultima versiune
+    a repository-ului rulați comanda ``git pull`` în directorul
+    ``~/uso-lab/lab-containers``.
+
+    Infrastructura laboratorului este bazată pe containere docker ale căror
+    imagini vor fi generate pe propriul calculator. Dacă nu veți deja instalat
+    Docker Engine pe sistem, scriptul
+    ``~/uso-lab/lab-containers/lab-prepare.sh`` vă va instala aplicația.
+
+    După ce ați terminat de lucrat vă recomandăm să opriți containerele rulând
+    comanda ``./lab-prepare.sh delete`` în directorul
+    ``~/uso-lab/lab-containers/``.
+
 În cadrul acestei secțiuni vom învăța cum să reparăm problemele de conectivitate
 la rețea (sau, informal, rezolvarea problemei "nu-mi merge Internetul").  Pentru
 a face asta este necesar să parcurgem toate nivelurile de rețea prin care trec
