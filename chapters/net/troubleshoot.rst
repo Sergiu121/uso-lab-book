@@ -129,7 +129,6 @@ link show``:
     299: eth2@if300: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DEFAULT group default
         link/ether 02:42:0c:0c:0c:01 brd ff:ff:ff:ff:ff:ff link-netnsid 0
 
-
 Exercițiu - Pornirea unei interfețe
 """""""""""""""""""""""""""""""""""
 
@@ -313,7 +312,7 @@ server public din Internet), folosim comanda:
     rtt min/avg/max/mdev = 23.051/24.731/25.707/1.020 ms
 
 Comportamentul implicit al comenzii ``ping`` este să trimită pachete la infinit.
-Am folsit opțiunea ``-c 4`` în exemplul de mai sus pentru a reduce numărul de
+Am folosit opțiunea ``-c 4`` în exemplul de mai sus pentru a reduce numărul de
 pachete trimise la 4.
 
 Atunci când nu pot fi trimise mesaje către stația identificată prin adresa IP,

@@ -489,7 +489,7 @@ TeamViewer.
     :align: center
     :alt: Controlul calculatorului de la distanță
 
-Deasupra cadrului în care apare desktop-ul de la distață apar butoane ce ne
+Deasupra cadrului în care apare desktop-ul de la distanță apar butoane ce ne
 permit să închidem conexiunea, sau să trimitem acțiuni și fișiere către
 calculatorul server.
 
