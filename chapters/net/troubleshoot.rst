@@ -627,9 +627,10 @@ Exercițiu - Testarea conexiunii la aplicații
 .. rubric:: Note de subsol
 
 .. [#netstat_sudo]
-    Am folosit comanda ``sudo`` pentru a afișa numele programelor care ascultă pe
-    portul deschis, deoarece avem nevoie de privilegiu pentru această
-    funcționalitate oferită de opțiunea ``-p`` a utilitarului ``netstat``.
+    Am folosit comanda ``sudo`` pentru a permite afișarea numelor programelor
+    care ascultă pe portul deschis. Comanda ``netstat`` trebuie executată de un
+    utilizatot privilegiat pentru această funcționalitate oferită de opțiunea
+    ``-p``.
 
 .. [#ipv6]
     https://en.wikipedia.org/wiki/IP_address#IPv6_addresses

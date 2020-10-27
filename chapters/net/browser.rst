@@ -44,15 +44,15 @@ Ca să nu pierdem aceste pagini, folosim **Bookmarkuri**.
 În această sub-subsecțiune vom adăuga bookmarkuri noi pentru rețetele cele mai bune de prăjituri găsite pe Internet.
 Deschidem din nou browserul Firefox, accesăm pagina **www.google.com** și căutăm *Best cake recipes* ca în imaginea de mai jos:
 
-  .. figure:: ./gifs/firefox-best-cake-recipes.gif
+.. figure:: ./gifs/firefox-best-cake-recipes.gif
     :alt: Căutarea cele mai bune rețete de tort pe Google
 
 Putem să adăugăm un nou bookmark în mai multe moduri:
 
 * Folosind meniul din dreapta sus a browserului ca în imaginea de mai jos:
 
-  .. figure:: ./gifs/firefox-bookmark-page-long.gif
-    :alt: Adăugarea unei pagini la Bookmarks folosind meniul browserului
+.. figure:: ./gifs/firefox-bookmark-page-long.gif
+  :alt: Adăugarea unei pagini la Bookmarks folosind meniul browserului
 
   Pașii pentru această variantă sunt:
 
@@ -89,5 +89,6 @@ Exerciții
 .. rubric:: Notă de subsol
 
 .. [#ad_blocker]
+
         https://en.wikipedia.org/wiki/Ad_blocking
         https://www.monetizemore.com/blog/what-is-an-ad-blocker/
