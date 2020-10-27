@@ -118,6 +118,13 @@ Configurarea avansată pentru SSH
 Configurarea scurtăturilor SSH
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. note::
+
+    Pentru rularea acestui demo rulați în directorul
+    ``~/uso.git/labs/03-user/lab-containers/`` comanda ``./lab_prepare.sh install ssh``.
+    Pentru a ne conecta la infrastructura pentru această secțiune vom folosi
+    comanda ``./lab_prepare.sh connect ssh``
+
 Aplicația SSH permite configurarea scurtăturilor pentru destinații la care vrem
 să ne conectăm prin SSH.
 
@@ -126,7 +133,7 @@ Pentru a ne conecta în mod normal la stația ``10.10.10.3``, ca utilizatorul
 
 .. code-block::
 
-    student@tom:~$ ssh -X root@10.10.10.3
+    student@uso:~$ ssh -X root@10.10.10.3
 
 Introducerea acestei comenzi pentru fiecare conexiune succesivă este ineficientă și
 există alternative pentru a reduce timpul de scriere al comenzii.
@@ -230,7 +237,7 @@ Pentru a vizualiza parametrii de funcționare ai unei conexiuni rulăm comanda:
 
 .. code-block::
 
-    student@tom:~$ nmcli connection show "Wired connection 1" | less
+    student@uso:~$ nmcli connection show "Wired connection 1" | less
     connection.id:                          Wired connection 1
     connection.uuid:                        eb564cd4-e37e-3d00-a94a-6596698ef4e3
     connection.stable-id:                   --

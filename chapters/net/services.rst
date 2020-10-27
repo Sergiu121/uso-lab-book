@@ -118,7 +118,7 @@ Accesul la distanţă în linie de comandă
 .. note::
 
     Pentru rularea acestui demo rulați în directorul
-    ``~/uso.git/lab-containers/`` comanda ``./lab_prepare.sh install ssh``.
+    ``~/uso.git/labs/03-user/lab-containers/`` comanda ``./lab_prepare.sh install ssh``.
     Pentru a ne conecta la infrastructura pentru această secțiune vom folosi
     comanda ``./lab_prepare.sh connect ssh``
 

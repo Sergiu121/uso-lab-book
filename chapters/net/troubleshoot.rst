@@ -7,16 +7,16 @@ Conectarea la rețea și la Internet
     Pentru a parcurge această secțiune este recomandat să descărcați ultima
     versiune a respository-ului laboratorului. Pentru a descărca ultima versiune
     a repository-ului rulați comanda ``git pull`` în directorul
-    ``~/uso-lab/lab-containers``.
+    ``~/uso-lab/labs/03-user/lab-containers/``.
 
     Infrastructura laboratorului este bazată pe containere docker ale căror
     imagini vor fi generate pe propriul calculator. Dacă nu veți deja instalat
     Docker Engine pe sistem, scriptul
-    ``~/uso-lab/lab-containers/lab-prepare.sh`` vă va instala aplicația.
+    ``~/uso-lab/labs/03-user/lab-containers/lab-prepare.sh`` vă va instala aplicația.
 
     După ce ați terminat de lucrat vă recomandăm să opriți containerele rulând
     comanda ``./lab-prepare.sh delete`` în directorul
-    ``~/uso-lab/lab-containers/``.
+    ``~/uso-lab/labs/03-user/lab-containers/``.
 
 În cadrul acestei secțiuni vom învăța cum să reparăm problemele de conectivitate
 la rețea (sau, informal, rezolvarea problemei "nu-mi merge Internetul").  Pentru
@@ -71,7 +71,7 @@ activă folosind comanda următoare:
 .. note::
 
     Pentru rularea acestui demo rulați în directorul
-    ``~/uso.git/lab-containers/`` comanda ``./lab_prepare.sh install fizic``.
+    ``~/uso.git/labs/03-user/lab-containers/`` comanda ``./lab_prepare.sh install fizic``.
     Pentru a ne conecta la infrastructura pentru această secțiune vom folosi
     comanda ``./lab_prepare.sh connect fizic``
 
@@ -148,7 +148,7 @@ Identificarea adresei de Internet
 .. note::
 
     Pentru rularea acestui demo rulați în directorul
-    ``~/uso.git/lab-containers/`` comanda ``./lab_prepare.sh install internet``.
+    ``~/uso.git/labs/03-user/lab-containers/`` comanda ``./lab_prepare.sh install internet``.
     Pentru a ne conecta la infrastructura pentru această secțiune vom folosi
     comanda ``./lab_prepare.sh connect internet``
 
@@ -545,7 +545,7 @@ comanda ``netstat``:
 
 .. code-block::
 
-    student@uso:~/lab-container$ sudo netstat -tlpn
+    student@uso:~$ sudo netstat -tlpn
     Active Internet connections (only servers)
     Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
     tcp        0      0 127.0.0.1:5939          0.0.0.0:*               LISTEN      794/teamviewerd
@@ -589,7 +589,7 @@ Pentru a trimite mesaje, indiferent de tipul aplicației care primește mesajul 
 
 .. code-block::
 
-        student@uso:~/lab-container$ nc google.com 80
+        student@uso:~$ nc google.com 80
         test
         HTTP/1.0 400 Bad Request
         Content-Type: text/html; charset=UTF-8
