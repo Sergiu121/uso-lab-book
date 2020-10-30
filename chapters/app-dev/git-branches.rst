@@ -5,10 +5,10 @@ Lucrul pe branch-uri
 
 Un dezvoltator vrea să lucreze la o funcționalitate nouă, care poate destabiliza proiectul.
 Pentru aceasta creează **o ramură de dezvoltare nouă** (*branch*) pe care face commituri noi.
-Ulterior, dacă funcționalitatea este utilă, va fi adăugată în proiect prin unificarea acestui branch (merge); altfel branch-ul va fi șters.
+Ulterior, dacă funcționalitatea este utilă, va fi adăugată în proiect prin unificarea acestui branch (*merge*); altfel branch-ul va fi șters.
 
 Un repository Git are un branch principal de dezvoltare, numit **master**.
-Branch-ul master este branch-ul implicit cu care lucrăm, în care adăugăm commituri și în care vedem istoricul de commituri.
+Branch-ul ``master`` este branch-ul implicit cu care lucrăm, în care adăugăm commituri și în care vedem istoricul de commituri.
 
 În acest moment istoricul de commituri este următorul:
 
@@ -57,8 +57,8 @@ O reprezentare vizuală a istoricului commiturilor este:
   :scale: 45%
   :alt: Reprezentarea vizuală a istoricului de commituri
 
-**Root-commitul** este primul commit din istoric (*b2a590a8637f1eab96e557334dbd4be14bf95833*, *b2a590a*).
-Toate celelalte commituri vin în continuarea acestuia
+**Root-commitul** este primul commit din istoric (*b2a590a8637f1eab96e557334dbd4be14bf95833*, *b2a590a*) [#hash]
+Toate celelalte commituri vin în continuarea acestuia.
 Spre exemplu, al doilea commit (*f65a7fbe8bbe1b36ba5c8e16607456a879bfb6fa*, *f65a7fb*) a avut la bază primul commit (*b2a590a*).
 Modificările au fost făcute peste commitul *b2a590a*.
 
@@ -85,7 +85,7 @@ Crearea unui commit nou pe un *alt* branch va modifica istoricul ca în imaginea
 Adăugarea unui fișier .gitignore repository-ului
 ------------------------------------------------
 
-De acum încolo, vom face toate modificările de pe un nou branch, diferit de branch-ul **master**.
+De acum încolo, vom face toate modificările de pe un nou branch, diferit de branch-ul **master** [#good_practice]_.
 
 În această subsecțiune vom crea un nou branch numit ``add-gitignore``.
 Vom adăuga un fișier ``.gitignore`` proiectului de pe acest branch.
@@ -125,10 +125,6 @@ Avem 2 branch-uri **add-gitignore** și **master** și ne aflăm pe branch-ul **
 În acest moment branch-ul **add-gitignore** nu diferă de branch-ul **master**.
 Când vom face schimbări (în formă de commituri), cele două branch-uri vor diverge.
 
-.. note::
-
-    Este **GOOD-PRACTICE** ca fiecare modificare făcută pe un repository să fie făcută pe un branch nou.
-    Branch-ul trebuie să aibă un nume sugestiv ca ceilalți să poată înțelege rapid ce schimbări se fac pe el.
 
 Nu dorim să avem fișiere obiect în repository așa că vom configura Git să ignore aceste fișiere.
 Facem acest lucru prin adăugarea șirului ``*.o`` în fișierul ``.gitignore``:
@@ -148,6 +144,7 @@ Facem acest lucru prin adăugarea șirului ``*.o`` în fișierul ``.gitignore``:
     nothing added to commit but untracked files present (use "git add" to track)
 
 Creăm un commit cu această modificare și în publicăm.
+Odată cu publicarea commitului pe GitHib, a fost creat și branch-ul ``add-gitignore`` remote.
 
 .. code-block:: bash
 
@@ -183,7 +180,7 @@ Am publicat commitul în repository-ul remote pe branch-ul ``add-gitignore``.
 
     Orice operație trebuie să fie urmată de o operație de verficare.
     Din grabă sau neatenție putem face operații incorecte și este mai ușor să le remediem pe loc decât mai târziu.
-    Spre exemplu, după crearea unui commit, verificăm **statusul repository-uluiu** și **istoricul de commituri**.
+    Spre exemplu, după crearea unui commit, verificăm **statusul repository-ului** și **istoricul de commituri**.
 
 
 .. _app_dev_merge:
@@ -339,6 +336,16 @@ Creăm un branch numit **update-gitiginore** și ne mutăm pe el.
     Switched to branch 'update-gitignore'
 
 Suntem pe branch-ul **update-gitignore** și adăugăm linia ``build/`` în fișierul ``.gitignore``.
+
+.. note::
+
+    De obicei, într-un proiect vom avea un director în care punem fișierele generate (spre exemplu, fișierele excutabile).
+    Astfel, punem doar numele directorului în ``.gitginore`` și toate fișierele din el vor fi ignorate de Git.
+
+    Alternativa ar fi să adăugăm numele tuturor fișierelor executabile pe care le generăm în ``.gitignore``.
+    Dezavantajul aici este că nu putem refolosi un fișier ``.gitignore`` de la un proiect la altul pentru că numele executabilelor vor fi, cel mai probabil, diferite.
+
+
 Putem face acest lucru folosind un editor text sau folosind următoarea comandă:
 
 .. code-block:: bash
@@ -391,7 +398,7 @@ Creăm un commit care să conțină modificărea din fișierul ``.gitignore``.
 
 Am verificat istoricul de commituri și vedem că ultimul commit este cel cu identificatorul *6d5189fd7095a19a6ad9bddb8c95491b37d9e828*, adică cel creat în această subsecțiune.
     
-Publicăm commitul și în repository-ul origin folosind comanda ``git push``:
+Publicăm commitul și în repository-ul origin ca el să fie vizibil și celorlalți colaboratori ai proiectului,folosind comanda ``git push`` 
 
 .. code-block:: bash
 
@@ -448,104 +455,104 @@ Vedem și din interfața GitHub că nu mai există branch-ul **update-gitignore*
 
 .. _app_dev_branches_ex:
 
-Exerciții practice
-------------------
+Exerciții
+---------
 
 #. Creați un branch cu numele ``merge-sort-implementation``.
 #. Treceți pe branch-ul ``merge-sort-implementation``.
 #. Modificați conținutul fișierului **merge-sort.c** cu următorul conținut:
 
-    .. code-block:: c
+  .. code-block:: c
 
-        #include <stdio.h>
+    #include <stdio.h>
 
-        #define MAX_LEN 100
+    #define MAX_LEN 100
 
-        static void merge(int arr[], int l, int m, int r) 
-        { 
-            int i, j, k; 
-            int n1 = m - l + 1; 
-            int n2 = r - m; 
-        
-            int L[n1], R[n2]; 
-        
-            for (i = 0; i < n1; i++) 
-                L[i] = arr[l + i]; 
-            for (j = 0; j < n2; j++) 
-                R[j] = arr[m + 1 + j]; 
-        
-            i = 0;
-            j = 0;
-            k = l;
-            while (i < n1 && j < n2) { 
-                if (L[i] <= R[j]) { 
-                    arr[k] = L[i]; 
-                    i++; 
-                } 
-                else { 
-                    arr[k] = R[j]; 
-                    j++; 
-                } 
-                k++; 
-            } 
-        
-            while (i < n1) { 
+    static void merge(int arr[], int l, int m, int r) 
+    { 
+        int i, j, k; 
+        int n1 = m - l + 1; 
+        int n2 = r - m; 
+    
+        int L[n1], R[n2]; 
+    
+        for (i = 0; i < n1; i++) 
+            L[i] = arr[l + i]; 
+        for (j = 0; j < n2; j++) 
+            R[j] = arr[m + 1 + j]; 
+    
+        i = 0;
+        j = 0;
+        k = l;
+        while (i < n1 && j < n2) { 
+            if (L[i] <= R[j]) { 
                 arr[k] = L[i]; 
                 i++; 
-                k++; 
             } 
-        
-            while (j < n2) { 
+            else { 
                 arr[k] = R[j]; 
                 j++; 
-                k++; 
             } 
-        }
+            k++; 
+        } 
+    
+        while (i < n1) { 
+            arr[k] = L[i]; 
+            i++; 
+            k++; 
+        } 
+    
+        while (j < n2) { 
+            arr[k] = R[j]; 
+            j++; 
+            k++; 
+        } 
+    }
 
-        static void sort(int arr[], int l, int r)
-        {
-            if (l < r) {
-                int m = l + (r - l) / 2; 
+    static void sort(int arr[], int l, int r)
+    {
+        if (l < r) {
+            int m = l + (r - l) / 2; 
+    
+            sort(arr, l, m); 
+            sort(arr, m + 1, r); 
+    
+            merge(arr, l, m, r); 
+        } 
+    }
+
+    static void print_array(int *arr, int len)
+    {
+        int i;
+
+        for (i = 0; i < len; i++) {
+            printf("%d ", arr[i]);
+        }
+        printf("\n");
+    }
+
+    int main()
+    {
+        int arr[MAX_LEN], len, i;
         
-                sort(arr, l, m); 
-                sort(arr, m + 1, r); 
-        
-                merge(arr, l, m, r); 
-            } 
+        printf("What's the length of the array? Maximum lenght is %d\n", MAX_LEN);
+        scanf("%d", &len);
+
+        printf("Gimme the %d elements\n", len);
+        for (i = 0; i < len; i++) {
+        scanf("%d", &arr[i]);
         }
 
-        static void print_array(int *arr, int len)
-        {
-            int i;
+        printf("Nonsorted array: ");
+        print_array(arr, len);
 
-            for (i = 0; i < len; i++) {
-                printf("%d ", arr[i]);
-            }
-            printf("\n");
-        }
+        sort(arr, len);
 
-        int main()
-        {
-            int arr[MAX_LEN], len, i;
-            
-            printf("What's the length of the array? Maximum lenght is %d\n", MAX_LEN);
-            scanf("%d", &len);
+        printf("Sorted array: ");
+        print_array(arr, len);
 
-            printf("Gimme the %d elements\n", len);
-            for (i = 0; i < len; i++) {
-            scanf("%d", &arr[i]);
-            }
-
-            printf("Nonsorted array: ");
-            print_array(arr, len);
-
-            sort(arr, len);
-
-            printf("Sorted array: ");
-            print_array(arr, len);
-
-            return 0; 
-        }
+        return 0; 
+    }
 
 #. Creați un nou commit cu această schimbare folosind mesajul de commit ``Add Merge Sort implementation``.
 #. Publicați commitul folosind comanda ``git push origin merge-sort-implementation``.
@@ -566,3 +573,15 @@ Astfel, lucrul pe acest branch ar însemna să facem commituri doar atunci când
 2. Lucrul pe un singur branch nu se oferă posibilitatea de a da feedback pe schimbările făcute pe repository.
 Dacă nu avem posibilitatea să oferim feedback unui coleg prin intermediul GitHub, atunci vom avea nevoie să comunicăm pe un alt mediu observațiile noastre, iar ei vor trebui să creeze un nou commit pentru rezolvarea problemelor.
 Mult mai simplu este să se realizeze întreaga etapă de feedback, numită **code review** înainte ca schimbările să apară pe **master**.
+
+.. rubric:: Note de subsol
+
+.. [#hash]
+
+    ID-ul unui commit are o formă lungă, completă, și o formă scurtă formată din primele 7 caractere.
+    De exemplu, pentru commitul cu ID-ul *b2a590a8637f1eab96e557334dbd4be14bf95833*, forma scurtă este *b2a590a*.
+
+.. [#good_practice]
+
+    Este **GOOD-PRACTICE** ca fiecare modificare făcută pe un repository să fie făcută pe un branch nou.
+    Branch-ul trebuie să aibă un nume sugestiv ca ceilalți să poată înțelege rapid ce schimbări se fac pe el.

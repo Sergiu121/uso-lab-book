@@ -282,13 +282,8 @@ O descriere potrivită poate fi:
 Configurarea branch-ului în care vom integra PR-ul
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Ca să finalizăm PR-ul, modificările din acesta trebuie să fie adăugate într-un branch, cel mai adesea în branch-ul **master**.
-
-.. note::
-
-	Putem schimba acest branch prin apăsarea butonului ``base: master`` din imaginea de mai jos.
-	Vor fi afișate toate branch-urile din acest repository și vom putea alege în ce branch să integrăm PR-ul.
-
+Ca să finalizăm PR-ul, modificările din acesta trebuie să fie adăugate într-un branch, cel mai adesea în branch-ul **master** [#base_branch]_.
+	
 În acest tutorial vom folosi branch-ul ``master`` ca în imaginea de mai jos:
 
 .. figure:: ./img/GitHub-create-PR-base-branch.png
@@ -380,8 +375,8 @@ Am șters branch-ul **bubble-sort-implementation**.
 
 .. _app_dev_pr_ex:
 
-Exercițiu practic - Crearea unui PR
------------------------------------
+Exercițiu - Crearea unui PR
+---------------------------
 
 Veți folosi acest repository-ul ``array-sorting-algorithms`` pentru rezolvarea acestui exercțiu.
 
@@ -492,3 +487,8 @@ Așa cum am menționat și în secțiunile anterioare, este **BAD-PRACTICE** să
 	https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests
 
 	https://www.atlassian.com/git/tutorials/making-a-pull-request
+
+.. [#base_branch]
+
+	Putem schimba acest branch prin apăsarea butonului ``base: master`` din imaginea de mai jos.
+	Vor fi afișate toate branch-urile din acest repository și vom putea alege în ce branch să integrăm PR-ul.

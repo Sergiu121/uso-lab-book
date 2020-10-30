@@ -20,9 +20,6 @@ Variabile pentru linker
 Modificarea fișierului Makefile folosind variabile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Crearea unui nou commit cu schimbările făcute
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 Regula .PHONY
 -------------
 
@@ -31,6 +28,3 @@ Necesitatea folosirii targetului .PHONY
 
 Adăugarea targetului .PHONY
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Comiterea schimbărilor făcute
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -3,15 +3,20 @@
 Introducere în Git și GitHub
 ============================
 
-În multe proiecte la care vom lucra, vom fi parte dintr-o echipă. Cu toții vom lucra la un proiect mai mare care este modificat zilnic.
+Versionarea codului ne ajută să ne structurăm codul pe care îl scriem (teme, proiecte personale, etc.).
+Vor fi cazuri când vom *strica* o versiune a codului și vom avea nevoie să revenim la ea, caz în care un istoric de versiuni ne-ar fi de folos.
+Vom putea să lucrăm la un proiect software sau la o temă de pe un alt sistem în afară de al nostru sau când vom vrea să cerem feedback pe codul scris de noi.
+
+În unele proiecte la care vom lucra, vom fi parte dintr-o echipă.
 În particular, când vorbim despre un proiect software vrem să avem dezvoltatori, oameni care să lucreze împreună cu noi la proiect.
 Dezvoltatorii au nevoie de acces la codul sursă al proiectului software la care lucrăm.
 După ce le dăm acces, vrem ca fiecare dezvoltator să știe la ce a lucrat și la ce lucrează ceilalți; ca să nu se suprapună, ca să ajute și ca să ofere feedback.
 
-Pentru a putea rezolva problemele de sincronizare între doi sau mai mulți colegi de echipă care lucrează la același proiect, ne ajută să avem un **sistem de versionare a codului**, adică să avem un istoric de modificări, adică o listă de versiuni.
-Versionarea codului aduce și alte avantaje cum ar fi revenirea la o versiune mai veche a proiectului, găsirea rapidă a autorului unei secvențe de cod sau pur și simplu organizarea unui proiect.
+Pentru a putea rezolva problemele de sincronizare între doi sau mai mulți colegi de echipă care lucrează la același proiect, ne ajută să avem un **sistem de versionare a codului**, adică să avem un istoric de modificări.
+Fiecare modificare înseamnă o nouă versiune a proiectului; avem astfel o listă de versiuni gestionată de sistemul de versionare a codului.
+Pe lângă rezolvarea problemelor de sincronizare, versionarea codului aduce și alte avantaje cum ar fi revenirea la o versiune mai veche a proiectului, găsirea rapidă a autorului unei secvențe de cod sau pur și simplu organizarea unui proiect.
 
-**Git** este un sistem de management și versionare a codului sursă care permite această partajare dorită.
+**Git** este un sistem de management și versionare a codului sursă care permite lucru eficient la un proiect software..
 
 `GitHub <http://www.github.com/>`_ este o platformă online, bazată pe Git, pe care dezvoltatorii o pot folosi pentru a stoca și versiona codul lor sursă.
 Git este utilitarul folosit, iar GitHub este serverul și aplicația web pe care rulează acesta, locul în care păstrăm repository-ul remote.
@@ -39,8 +44,8 @@ Pagina de pornire va arăta similar cu cea din imaginea de mai jos.
   :scale: 30%
   :alt: Pagina principală GitHub
 
-Introduceți un username, adresa voastră de e-mail și o parolă sigură pentru cont.
-Pentru validarea contului accesați-vă căsuța de e-mail.
+Introduceți un nume de utilizator (*username*), adresa voastră de e-mail și o parolă sigură pentru cont.
+Pentru validarea contului, accesați-vă căsuța de e-mail.
 Acolo veți găsi un e-mail în care vi se explică cum se poate valida noul cont creat.
 Verificați și căsuța **spam** în caz că nu ați primit nimic în inbox.
 
@@ -60,7 +65,9 @@ Ca să utilizăm Git, facem în primă fază niște pași de configurare. Adică
 
     student@uso:~$ git config --global user.name "Prenume Nume"
     student@uso:~$ git config --global user.email "adresa_de_email@example.com"
-  
+
+În listingul de mai sus "Prenume Nume" și "adresa_de_email@example.com" sunt placeholdere.
+Le înlocuiți cu datele voastre.  
 De exemplu, pentru autorul acestei secțiuni comenzile rulate sunt:
 
 .. code-block:: bash
@@ -102,7 +109,7 @@ Vedem pașii prezentați în imaginea de mai jos și explicați imediat după.
 .. figure:: ./gifs/GitHub-create-repo.gif
   :alt: Crearea unui repository nou pe GitHub
 
-#. Apăsăm pe săgeată din meniul din dreapta sus și vedem ceva similar cu imaginea de mai jos.
+#. Apăsăm pe săgeată din meniul din dreapta sus și vedem ceva similar cu imaginea de mai sus.
 
 #. Apăsăm pe ``Your profile`` pentru a merge pe profilul nostru.
    Aici este locul în care vom putea vedea contribuțiile noastre pe GitHub.
@@ -121,6 +128,8 @@ Vedem pașii prezentați în imaginea de mai jos și explicați imediat după.
    Vor apărea câteva instrucțiuni pentru crearea unui repository local nou și conectarea celui noi cu cel remote.
    Acest lucru este acoperit în secțiunile următoare.
 
+Acum avem un repository create remote, pe GitHub, numit ``array-sorting-algorithms``.
+
 .. _app_dev_create_local_repo:
 
 Crearea unui repository gol local
@@ -128,7 +137,7 @@ Crearea unui repository gol local
 
 Primul pas este să alegem un director în care să inițializăm repository-ul.
 Navigăm în directorul nou creat.
-În acest tutorial creăm directorul ``array-sorting-algorithms`` în directorul home (adică ``/home/student`` sau ``~``).
+În acest tutorial creăm directorul ``array-sorting-algorithms`` în directorul home (adică ``/home/student`` sau ``~``), folosind comenzile de mai jos:
 
 .. code-block:: bash
 
@@ -141,7 +150,9 @@ Navigăm în directorul nou creat.
     student@uso:~/array-sorting-algorithms$ ls -a
     ./    ../   .git/
 
-Mai sus am inițializat repository-ul local prin comanda ``git init`` dată în directorul ales (``array-sorting-algorithms``).
+Mai sus am inițializat repository-ul local prin comanda ``git init`` dată în directorul ales (``array-sorting-algorithms``) din directorul home al utilizatorului student (``/home/student``).
+
+Acum avem un repository creat local, numit ``array-sorting-algorithms``.
 
 .. admonition:: **Init**
 
@@ -158,7 +169,7 @@ Am creat până în acest moment un repository local și unul remote.
 Trebuie să le interconectăm pentru a lucra cu ele.
 
 În cazul în care sunteți mai mulți membri în echipă, fiecare membru va conecta repository-ul său local, la repository-ul remote.
-Pentru conectarea celor două repository-uri folosim comanda:
+Pentru conectarea celor două repository-uri folosim comanda de mai jos, dată în directorul unde este repository-ul local Git (adică în ``/home/student/array-sorting-algorithms``):
 
 .. code-block:: bash
 
@@ -169,11 +180,9 @@ Conectarea celor două repository-uril înseamnă setarea repository-ului ``orig
 În comanda de mai sus ``{username}`` este numele utilizatorului nostru de pe GitHub.
 De exemplu, pentru autorul acestui capitol ``{username}`` se înlocuiește cu ``lizababu``.
 
+Imaginea de mai jos arată cum arată cum se contectează repository-urile **remote** și **local**.
+Sincronizarea lor se face prin intermediul operațiilor **push** și **pull** care sunt prezentate pe parcursul secțiunii :ref:`app_dev_first_commits`.
+
 .. figure:: ./gifs/GitHub-remote-local-repos.gif
     :alt: Conectarea repository-ului local cu cel remote
     :scale: 50%
-
-.. note::
-
-  Imaginea de mai sus arată cum arată cum se contectează repository-urile **remote** și **local**.
-  Sincronizarea lor se face prin intermediul operațiilor **push** și **pull** care sunt prezentate pe parcursul secțiunii :ref:`app_dev_first_commits`.

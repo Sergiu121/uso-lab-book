@@ -6,7 +6,7 @@ Primele commituri
 Odată creat repository-ul, putem să începem să lucrăm la proiect.
 
 Lucrul la proiect înseamnă să adăugăm și să ștergem fișiere sau să modificăm fișiere existente.
-De obicei este vorba de fișiere text (*human-readable*), cel mai des fișiere cod sursă.
+De obicei este vorba de fișiere text (*human-readable*), cel mai des fișiere cod sursă [#source_code]_..
 Vrem să salvăm aceste adăugări și modificări; apoi să salvăm din nou alte modificări; și tot așa.
 
 Salvarea acestor modificări înseamnă crearea unui **commit** în repository.
@@ -33,10 +33,10 @@ Git se ocupă de păstrarea și gestiunea istoricului repository-ului nostru pri
     Vom vedea în următoarele secțiuni care sunt pașii pentru a crea un commit și pentru a-l publica.
 
 În următoarele secțiuni vom lucra în repository-ul ``array-sorting-algorithms`` creat în secțiunea :ref:`app_dev_git_intro`.
-Vom crea pas cu pas un proiect software scris în limbajul de programare C care conține mai mulți algoritmi de sortare al unui vector de elemente întregi.
+Vom crea pas cu pas un proiect software scris în limbajul de programare C care conține mai mulți algoritmi de sortare a unui vector de elemente întregi.
 
 Punctual, în această secțiune vom crea fișierul ``README`` al proiectului și scheletul de cod pentru algoritmii de sortare **Bubble Sort**, **Merge Sort** și **Radix Sort**.
-Vom crea commituri pentru fiecare schimbare, după care vom publica commiturile astfel încât schimbările să fie vizibile și pe GitHub.
+Vom crea commituri în repository-ul local pentru fiecare schimbare, după care vom publica commiturile astfel încât schimbările să fie vizibile și pe GitHub, în repository-ul remote.
 
 .. _app_dev_add_readme:
 
@@ -48,8 +48,8 @@ Adăugarea unui fișier README
     O bună practică, prezentă în majoritatea proiectelor software, este să adăugăm un fișier ``README`` în care se află informații despre un proiect.
     Spre exemplu în ``README`` se află informații despre ce funcționalități are proiectul nostru, cum se compilează un proiect, cum se rulează, pe ce tip de platforme poate fi rulat etc.
 
-Un fișier README este un fișier text.
-Îl putem crea și îi putem adăuga conținut folosind un editor sau, mai simplu și mai direct, folosind comanda de mai jos:
+Un fișier ``README`` este un fișier text.
+Îl putem crea și îi putem adăuga titlul ``Sorting Algorithms for Beginners`` folosind un editor sau, mai simplu și mai direct, folosind comanda de mai jos:
 
 .. code-block:: bash
 
@@ -57,10 +57,15 @@ Un fișier README este un fișier text.
     student@uso:~/array-sorting-algorithms$ ls -a
     ./         ../        .git/      README.md
 
+
+
 .. note::
 
+    Caracterul ``#`` din fața textului ``Sorting Algorithms for Beginners`` are rol de a formata textul sub formă de titlu.
+    Nu intrăm în mai multe detalii aici pentru că nu face obiectul cărții.
+
     Folosim extensia ``.md`` care semnalează un fișier de tip `Markdown <https://www.markdownguide.org>`_.
-    Facem acest lucru deoarece pe GitHub fișierele README sunt afișate în format Markdown.
+    Facem acest lucru deoarece pe GitHub fișierele ``README`` sunt afișate în format Markdown.
     Acest format este simplu de înțeles, însă nu face obiectul acestei cărți, deci nu vom insista pe înțelegerea lui.
 
 .. _app_dev_create_first_commit:
@@ -75,7 +80,7 @@ Pașii creării unui commit sunt următorii:
 
 #. Verificăm repository-ului.
    Cu alte cuvinte, verificăm ce modificări au fost făcute în repository de la ultimul commit.
-#. Adăugăm fișierele pe care vrem să le împachetăm într-un commit în **staging area**.
+#. Adăugăm fișierele pe care vrem să le împachetăm într-un commit în **staging area**, adică în lista de fișiere pe care Git le organizează.
 #. Alegem un mesaj de commit.
    Creăm commitul.
 #. Publicăm commitul și pe repository-ul remote.
@@ -103,7 +108,7 @@ Pentru a verifica starea repository-ului folosim comanda ``git status``:
 
         README.md
 
-Prima linie afișată ``On branch master`` se referă la branch-ul master local.
+Prima linie afișată ``On branch master`` se referă la branch-ul ``master`` local.
 Vom discuta în secțiunea :ref:`app_dev_branches` despre branch-uri.
 
 A doua linie afișată ``No commits yet`` ne spune că nu am făcut până acum niciun commit, adică am pornit de la un repository gol.
@@ -114,12 +119,14 @@ Asta înseamnă că deocamdată orice modificare vom face asupra acestor fișier
 
 .. _app_dev_add_staging:
 
-Adăugarea unui fișier (în staging area)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Adăugarea unui fișier (în **staging area**)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Un commit va conține o listă de modificări: fișiere adăugate, fișiere șterse, conținut modificat. Un pas intermediar în crearea unui commit este pregătirea modificărilor ce vor fi parte din commit. Acest pas de pregătire înseamnă să adăugăm (add) aceste modificări într-o zonă de lucru pentru Git, numită staging area.
+Un commit va conține o listă de modificări: fișiere adăugate, fișiere șterse, conținut modificat.
+Un pas intermediar în crearea unui commit este pregătirea modificărilor ce vor fi parte din commit.
+Acest pas de pregătire înseamnă să adăugăm (*add*) aceste modificări într-o zonă de lucru pentru Git, numită **staging area**.
 
-În cazul nostru, vrem să adăugăm fișierul README.md în staging area. Facem acest lucru folosind comanda ``git add``:
+În cazul nostru, vrem să adăugăm fișierul ``README.md`` în *staging area*. Facem acest lucru folosind comanda ``git add``:
 
 .. code-block:: bash
 
@@ -162,7 +169,7 @@ Creăm un commit cu modificările făcute folosind comanda ``git commit``:
     On branch master
     nothing to commit, working tree clean  
 
-Am folosit descrierea ``Add README file`` drept **mesaj de commit**.
+Am folosit descrierea ``Add README file`` la comanda ``git commit`` drept **mesaj de commit**.
 Aceasta este o descriere succintă a modificările făcute prin acest commit.
 
 .. note:: 
@@ -178,9 +185,22 @@ Crearea unui nou commit
 În continuare vom adăuga scheletul de cod pentru algotimul Bubble Sort în repository.
 Vom crea un nou fișier cod sursă C ``bubble-sort.c`` și vom scrie în el scheletul de cod pentru algoritm.
 Vom crea un nou commit care va conține fișierul ``bubble-sort.c``.
+Pentru acesata vom folosi un editor, precum nano, ca în imaginea de mai jos:
 
 .. figure:: gifs/GitHub-create-new-commit.gif
     :alt: Crearea unui nou commit
+
+Mai sus am creat un commit cu fișierul ``bubble-sort.c`` urmând pași similari cu cei din secțiunea :ref:`app_dev_local_commit`:
+
+.. code-block:: bash
+
+    student@uso:~/array-sorting-algorithms$ git status
+    (...)
+    student@uso:~/array-sorting-algorithms$ git add bubble-sort.c
+    student@uso:~/array-sorting-algorithms$ git status
+    (...)
+    student@uso:~/array-sorting-algorithms$ git commit -m "Add Bubble Sort skeleton"
+    (...)
 
 Conținutul fișierului ``bubble-sort.c`` este:
 
@@ -200,8 +220,8 @@ Conținutul fișierului ``bubble-sort.c`` este:
 
 .. _app_dev_add_new_file_ex:
 
-Exerciții practice
-""""""""""""""""""
+Exerciții
+"""""""""
 
 #. Creați un nou fișier numit ``radix-sort.c`` cu următorul conținut:
 
@@ -247,7 +267,7 @@ Crearea unui commit cu modificări în fișiere existente
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Până acum am creat commituri care conțineau un fișier nou creat.
-În această secțiune vom modifica conțintului fișierului ``README.md`` și vom crea un nou commit.
+În această secțiune vom modifica conțintului fișierului ``README.md`` și vom crea un nou commit, așa cum apare în comenzile de mai jos:
 
 .. code-block::
 
@@ -288,16 +308,17 @@ Când am adăugat fișierul ``bubble-sort.c`` în staging area în imaginea din 
         new file:   README.md
     (...)
 
-Acum noi am modificat fișierul ``README.md`` care deja exista, așadar comanda ``git status`` în arată ca fiind modificat (*modified*).
+Mai sus am folosit comanda ``git add`` pentru că am modificat fișierul ``README.md`` care deja exista.
+Comanda ``git status`` arată că acesta a fost modificat (*modified*).
 
 .. _app_dev_modify_commit_ex:
 
-Exerciții practice
-""""""""""""""""""
+Exerciții
+"""""""""
 
 #. Modificați titlul fișierului ``README.md`` în ``# Sorting Algorithm for Integer Arrays``.
 
-#. Creați un commit care să conțină fișierul ``README.md``.
+#. Creați un commit care să conțină modificările la fișierul ``README.md``.
    Folosiți următorul mesaj de commit: ``Update README title``.
 
 .. _app_dev_check_history:
@@ -358,24 +379,22 @@ Verificăm istoricul commiturilor folosind comanda ``git log``:
     În cazul autorului acestui capitol, numele, prenumele și emailul sunt ``Liza Babu <lizababu@example.com>`` ca mai jos.
 
 
-Fiecare commit este identificat unic printr-un cod, numit **cod hash**.
+Fiecare commit este identificat unic printr-un cod, numit **cod hash** [#hash]_.
 Discutăm în continuare despre ultimul commit din listă.
 Acesta are hash-ul ``0dfb632b9de79f9a25011e8b98be48c7b1a0aad8`` și mesajul de commit ``Update README title``.
 
 Acum vedem că repository-ul indică spre acest nou commit.
 Ne dăm seama de acest lucru pentru că ``HEAD`` se află în dreptul commitului tocmai făcut.
+``HEAD`` ne indică starea repository-ului, adică ne arată care este ultimul commit pe care l-am făcut în repository.
 
-.. note::
-
-    Codul hash este calculat ca o sumă de control `SHA-1 <https://en.wikipedia.org/wiki/SHA-1>`_ a conținutului commitului.
 
 .. _app_dev_publish_commits:
 
 Publicarea commiturilor în repository-ul remote
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Vrem să publicăm toate schimbările făcute și în repository-ul remote.
-Pentru acesta asta folosim comanda ``git push``:
+Vrem să publicăm toate schimbările făcute pe GitHub ca ele să fie vizibile și altor colaboratori ai proiectului.
+Publicăm commitul folosind comanda ``git push``:
 
 .. code-block::
 
@@ -411,8 +430,20 @@ Pot apărea diferențe în momentul în care altcineva a publicat schimbări rem
 În momentul în care cineva a publicat modificări asupra unei secvențe de cod pe care și noi o modificăm, apar conflicte.
 Conflictele trebuie rezolvate.
 
-Facem acest lucru prin operația ``pull`` care aduce local toate modificările și încearcă să rezolve conflicetele în mod automat.
+Facem acest lucru prin operația ``pull`` care aduce local toate modificările și încearcă să rezolve conflicetele în mod automat [#git_pull]_.
 Dacă rezolvarea conflictelor nu se poate face automat, trebuie să ne ocupăm de acest pas.
 
-.. note::
-    Noi am pornit de la un repository gol, așadar operațiile ``merge`` și ``pull`` nu au fost necesare.
+
+.. rubric:: Note de subsol
+
+.. [#source_code]
+
+    https://en.wikipedia.org/wiki/Source_code
+
+.. [#hash]
+
+    Codul hash este calculat ca o sumă de control `SHA-1 <https://en.wikipedia.org/wiki/SHA-1>`_ a conținutului commitului.
+
+.. [#git_pull]
+
+    Noi am pornit de la un repository gol, așadar operația ``pull`` nu a fost necesară.
