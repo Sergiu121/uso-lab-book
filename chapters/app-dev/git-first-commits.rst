@@ -6,7 +6,7 @@ Primele commituri
 Odată creat repository-ul, putem să începem să lucrăm la proiect.
 
 Lucrul la proiect înseamnă să adăugăm și să ștergem fișiere sau să modificăm fișiere existente.
-De obicei este vorba de fișiere text (*human-readable*), cel mai des fișiere cod sursă [#source_code]_..
+De obicei este vorba de fișiere text (*human-readable*), cel mai des fișiere cod sursă [#source_code]_.
 Vrem să salvăm aceste adăugări și modificări; apoi să salvăm din nou alte modificări; și tot așa.
 
 Salvarea acestor modificări înseamnă crearea unui **commit** în repository.
@@ -17,7 +17,7 @@ Având commiturile în repository putem să gestionăm mai ușor proiectul, adic
 
 * să revenim la un commit anterior (adesea chiar ultimul) dacă modificările cele mai recente "strică" proiectul
 * să vedem cine este autorul anumitor modificări
-* să creăm o ramură de dezvoltare separată pornind la un commit anterior pe care să încercăm o funcționalitate nouă, fără a afecta restul proiectului
+* să creăm o ramură de dezvoltare separată pornind la un commit anterior, pe care să încercăm o funcționalitate nouă, fără a afecta restul proiectului
 
 Git se ocupă de păstrarea și gestiunea istoricului repository-ului nostru prin păstrarea listei de commituri făcute.
 
@@ -33,9 +33,9 @@ Git se ocupă de păstrarea și gestiunea istoricului repository-ului nostru pri
     Vom vedea în următoarele secțiuni care sunt pașii pentru a crea un commit și pentru a-l publica.
 
 În următoarele secțiuni vom lucra în repository-ul ``array-sorting-algorithms`` creat în secțiunea :ref:`app_dev_git_intro`.
-Vom crea pas cu pas un proiect software scris în limbajul de programare C care conține mai mulți algoritmi de sortare a unui vector de elemente întregi.
+Vom crea, pas cu pas, un proiect software scris în limbajul de programare C, care conține mai mulți algoritmi de sortare a unui vector de elemente întregi.
 
-Punctual, în această secțiune vom crea fișierul ``README`` al proiectului și scheletul de cod pentru algoritmii de sortare **Bubble Sort**, **Merge Sort** și **Radix Sort**.
+Punctual, în această secțiune, vom crea fișierul ``README`` al proiectului și scheletul de cod pentru algoritmii de sortare **Bubble Sort**, **Merge Sort** și **Radix Sort**.
 Vom crea commituri în repository-ul local pentru fiecare schimbare, după care vom publica commiturile astfel încât schimbările să fie vizibile și pe GitHub, în repository-ul remote.
 
 .. _app_dev_add_readme:
@@ -85,6 +85,8 @@ Pașii creării unui commit sunt următorii:
    Creăm commitul.
 #. Publicăm commitul și pe repository-ul remote.
 
+Detaliem acești pași în continuare.
+
 .. _app_dev_check status:
 
 Verificarea stării repository-ului local
@@ -114,8 +116,8 @@ Vom discuta în secțiunea :ref:`app_dev_branches` despre branch-uri.
 A doua linie afișată ``No commits yet`` ne spune că nu am făcut până acum niciun commit, adică am pornit de la un repository gol.
 
 În ultima parte a outputului se află o listă de fișiere ``untracked``, adică lista fișierelor pe care Git le vede ca nou adăugate în repository-ul curent, dar pe care nu le monitorizează încă.
-Asta înseamnă că deocamdată orice modificare vom face asupra acestor fișiere nu va fi urmărită (tracked) de Git.
-În cazul nostru este vorba de fișierul ``README.md``.
+Asta înseamnă că, deocamdată, orice modificare vom face asupra acestor fișiere nu va fi urmărită (*tracked*) de Git.
+În cazul nostru fișierul aflat în starea *untracked* este ``README.md``.
 
 .. _app_dev_add_staging:
 
@@ -150,14 +152,14 @@ Verificăm se s-a schimbat în urma adăugării fișierului ``README.md`` în st
 Primele 2 mesaje afișate au rămas neschimbate.
 Partea interesantă apare la ultima parte a outputului.
 Vedem că mesajul a devenit ``Changes to be commited``.
-Asta înseamnă că acum Git știe de noile modificări și așteaptă ca modificările să fie adunate într-un commit.
+Acest lucru înseamnă că acum Git urmărește noile modificări și așteaptă ca modificările să fie adunate într-un commit.
 
 .. _app_dev_local_commit:
 
 Crearea commitului local
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Creăm un commit cu modificările făcute folosind comanda ``git commit``:
+Creăm un commit cu modificările de mai sus folosind comanda ``git commit``:
 
 .. code-block::
 
@@ -169,13 +171,9 @@ Creăm un commit cu modificările făcute folosind comanda ``git commit``:
     On branch master
     nothing to commit, working tree clean  
 
-Am folosit descrierea ``Add README file`` la comanda ``git commit`` drept **mesaj de commit**.
+Am folosit descrierea ``Add README file`` la comanda ``git commit`` drept **mesaj de commit** [#commit_message]_.
 Aceasta este o descriere succintă a modificările făcute prin acest commit.
 
-.. note:: 
-
-    Mesajele de commit trebuie să fie punctuale și ușor de înțeles.
-    Alte persoane care lucrează la același proiect software vor vrea să înțeleagă rapid ce am modificat printr-un anumit commit.
 
 .. _app_dev_create_new_commit:
 
@@ -185,7 +183,7 @@ Crearea unui nou commit
 În continuare vom adăuga scheletul de cod pentru algotimul Bubble Sort în repository.
 Vom crea un nou fișier cod sursă C ``bubble-sort.c`` și vom scrie în el scheletul de cod pentru algoritm.
 Vom crea un nou commit care va conține fișierul ``bubble-sort.c``.
-Pentru acesata vom folosi un editor, precum nano, ca în imaginea de mai jos:
+Pentru aceasta vom folosi un editor, precum nano, ca în imaginea de mai jos:
 
 .. figure:: gifs/GitHub-create-new-commit.gif
     :alt: Crearea unui nou commit
@@ -225,38 +223,38 @@ Exerciții
 
 #. Creați un nou fișier numit ``radix-sort.c`` cu următorul conținut:
 
-    .. code-block:: c
+   .. code-block:: c
 
-        #include <stdio.h>
+    #include <stdio.h>
 
-        static void sort(void)
-        {
-            // TODO: add radix sort algorithm here
-        }
+    static void sort(void)
+    {
+        // TODO: add radix sort algorithm here
+    }
 
-        int main()
-        {
-            return 0;
-        }
+    int main()
+    {
+        return 0;
+    }
 
 #. Creați un commit care să conțină fișierul ``radix-sort.c``.
    Folosiți următorul mesaj de commit: ``Add Radix Sort algorithm skeleton``.
 
 #. Creați un nou fișier numit ``merge-sort.c`` cu următorul conținut:
 
-    .. code-block:: c
+   .. code-block:: c
 
-        #include <stdio.h>
+    #include <stdio.h>
 
-        static void sort(void)
-        {
-            // TODO: add merge sort algorithm here
-        }
+    static void sort(void)
+    {
+        // TODO: add merge sort algorithm here
+    }
 
-        int main()
-        {
-            return 0;
-        }
+    int main()
+    {
+        return 0;
+    }
 
 #. Creați un commit care să conțină fișierul ``merge-sort.c``.
    Folosiți următorul mesaj de commit: ``Add Merge Sort algorithm skeleton``.
@@ -294,7 +292,7 @@ Până acum am creat commituri care conțineau un fișier nou creat.
     [master 247b87f] Update README with project explanation
     1 file changed, 1 insertion(+)
 
-Când am adăugat fișierul ``bubble-sort.c`` în staging area în imaginea din secțiunea :ref:`app_dev_create_new_commit`, comanda status ne arăta că fișierul ``bubble-sort.c`` este nou (*new file*).
+Când am adăugat fișierul ``bubble-sort.c`` în staging area în imaginea din secțiunea :ref:`app_dev_create_new_commit`, comanda ``status`` ne arăta că fișierul ``bubble-sort.c`` este nou (*new file*).
 
 .. code-block:: bash
 
@@ -376,12 +374,12 @@ Verificăm istoricul commiturilor folosind comanda ``git log``:
 
 .. note::
 
-    În cazul autorului acestui capitol, numele, prenumele și emailul sunt ``Liza Babu <lizababu@example.com>`` ca mai jos.
+    În cazul autorului acestui capitol, numele, prenumele și emailul sunt ``Liza Babu <lizababu@example.com>``, așa cum apare în exemplul de mai sus: ``Author: Liza Babu <lizababu@example.com>``.
 
 
 Fiecare commit este identificat unic printr-un cod, numit **cod hash** [#hash]_.
 Discutăm în continuare despre ultimul commit din listă.
-Acesta are hash-ul ``0dfb632b9de79f9a25011e8b98be48c7b1a0aad8`` și mesajul de commit ``Update README title``.
+Acesta are codul hash ``0dfb632b9de79f9a25011e8b98be48c7b1a0aad8`` și mesajul de commit ``Update README title``.
 
 Acum vedem că repository-ul indică spre acest nou commit.
 Ne dăm seama de acest lucru pentru că ``HEAD`` se află în dreptul commitului tocmai făcut.
@@ -393,7 +391,7 @@ Ne dăm seama de acest lucru pentru că ``HEAD`` se află în dreptul commitului
 Publicarea commiturilor în repository-ul remote
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Vrem să publicăm toate schimbările făcute pe GitHub ca ele să fie vizibile și altor colaboratori ai proiectului.
+Vrem să publicăm pe GitHub toate schimbările făcute, pentru a fi vizibile și altor colaboratori ai proiectului.
 Publicăm commitul folosind comanda ``git push``:
 
 .. code-block::
@@ -430,7 +428,7 @@ Pot apărea diferențe în momentul în care altcineva a publicat schimbări rem
 În momentul în care cineva a publicat modificări asupra unei secvențe de cod pe care și noi o modificăm, apar conflicte.
 Conflictele trebuie rezolvate.
 
-Facem acest lucru prin operația ``pull`` care aduce local toate modificările și încearcă să rezolve conflicetele în mod automat [#git_pull]_.
+Facem acest lucru prin operația ``pull``, care aduce local toate modificările și încearcă să rezolve conflicetele în mod automat [#git_pull]_.
 Dacă rezolvarea conflictelor nu se poate face automat, trebuie să ne ocupăm de acest pas.
 
 
@@ -447,3 +445,10 @@ Dacă rezolvarea conflictelor nu se poate face automat, trebuie să ne ocupăm d
 .. [#git_pull]
 
     Noi am pornit de la un repository gol, așadar operația ``pull`` nu a fost necesară.
+
+.. [#commit_message]
+
+    Mesajele de commit trebuie să fie punctuale și ușor de înțeles.
+    Alte persoane care lucrează la același proiect software vor vrea să înțeleagă rapid ce am modificat printr-un anumit commit.
+    
+    https://chris.beams.io/posts/git-commit/

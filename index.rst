@@ -23,18 +23,17 @@ USO lab book
    :maxdepth: 3
    :caption: Dezvoltarea aplicațiilor
 
+   chapters/app-dev/intro.rst
+   chapters/app-dev/make-intro.rst
+   chapters/app-dev/make-multiple.rst
+   chapters/app-dev/make-lib.rst
+   chapters/app-dev/make-simple-automation.rst
+   chapters/app-dev/make-advanced-automation.rst
    chapters/app-dev/git-intro.rst
    chapters/app-dev/git-first-commits.rst
    chapters/app-dev/git-branches.rst
    chapters/app-dev/git-first-pull-request.rst
-   chapters/app-dev/make-setup.rst
-   chapters/app-dev/make-intro.rst
-   chapters/app-dev/make-multiple.rst
-   chapters/app-dev/make-lib.rst
-   chapters/app-dev/make-debug.rst
-   chapters/app-dev/make-simple-automation.rst
-   chapters/app-dev/make-advanced-automation.rst
-   chapters/app-dev/make-contribute.rst
+
    chapters/app-dev/extra.rst
 
 .. toctree::

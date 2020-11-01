@@ -144,7 +144,7 @@ Facem acest lucru prin adăugarea șirului ``*.o`` în fișierul ``.gitignore``:
     nothing added to commit but untracked files present (use "git add" to track)
 
 Creăm un commit cu această modificare și în publicăm.
-Odată cu publicarea commitului pe GitHib, a fost creat și branch-ul ``add-gitignore`` remote.
+Odată cu publicarea commitului pe GitHub, a fost creat și branch-ul ``add-gitignore`` remote.
 
 .. code-block:: bash
 
@@ -179,7 +179,7 @@ Am publicat commitul în repository-ul remote pe branch-ul ``add-gitignore``.
 .. note::
 
     Orice operație trebuie să fie urmată de o operație de verficare.
-    Din grabă sau neatenție putem face operații incorecte și este mai ușor să le remediem pe loc decât mai târziu.
+    Din grabă sau neatenție, putem face operații incorecte și este mai ușor să le remediem pe loc decât mai târziu.
     Spre exemplu, după crearea unui commit, verificăm **statusul repository-ului** și **istoricul de commituri**.
 
 
@@ -192,7 +192,7 @@ Operația **merge** dintre un branch secundar și master
 
 .. note::
 
-    Ne amintim că este **BAD-PRACTICE** să facem modificări direct pe branch-ul **master**.
+    Ne amintim că este **BAD PRACTICE** să facem modificări direct pe branch-ul **master**.
 
 Vrem ca modificarea făcută de noi, în acest caz crearea unui fișier **gitignore**, să se regăsească și pe branch-ul master.
 Facem acest lucru prin intermediul operației ``merge``, operație care unește două branch-uri: adică aduce conținutul unui branch pe un alt branch, în cazul nostru de pe **add-gitignore** pe **master**.
@@ -214,7 +214,7 @@ Suntem pe branch-ul **master** local și ne asigurăm că este sincronizat cu ce
     * branch            master     -> FETCH_HEAD
     Already up to date.
 
-Branch-ul **master local** este sincronizat cu cel origin (*Already up to date*).
+Branch-ul **master** local este sincronizat cu cel remote (*Already up to date*).
 Integrăm branch-ul **add-gitignore** în branch-ul **master** folosind comanda ``git merge``:
 
 .. code-block:: bash 
@@ -232,7 +232,7 @@ Integrăm branch-ul **add-gitignore** în branch-ul **master** folosind comanda 
 
     nothing to commit, working tree clean
 
-Acum avem pe repository-ul local cu un commit decât în repository-ul origin (*Your branch is ahead of 'origin/master' by 1 commit*), adică avem un commit care nu a fost publicat.
+Acum avem pe repository-ul local un commit în plus față de repository-ul origin (*Your branch is ahead of 'origin/master' by 1 commit*), adică avem un commit care nu a fost publicat.
 Verificăm istoricul de commituri pentru a-l vedea folosind comanda ``git log``:
 
 .. code-block:: bash
@@ -294,7 +294,7 @@ Verificăm branch-ul pe care ne aflăm folosind comanda ``git branch``:
     * master
 
 Ne aflăm pe branch-ul **master**.
-Ștergem branch-ul **add-gitignore** din repository-ul local folosind comanda ``git branch -d``
+Ștergem branch-ul **add-gitignore** din repository-ul local folosind comanda ``git branch -d``:
 
 .. code-block:: bash
 
@@ -462,7 +462,7 @@ Exerciții
 #. Treceți pe branch-ul ``merge-sort-implementation``.
 #. Modificați conținutul fișierului **merge-sort.c** cu următorul conținut:
 
-  .. code-block:: c
+   .. code-block:: c
 
     #include <stdio.h>
 
@@ -473,14 +473,14 @@ Exerciții
         int i, j, k; 
         int n1 = m - l + 1; 
         int n2 = r - m; 
-    
+
         int L[n1], R[n2]; 
-    
+
         for (i = 0; i < n1; i++) 
             L[i] = arr[l + i]; 
         for (j = 0; j < n2; j++) 
             R[j] = arr[m + 1 + j]; 
-    
+
         i = 0;
         j = 0;
         k = l;
@@ -495,13 +495,13 @@ Exerciții
             } 
             k++; 
         } 
-    
+
         while (i < n1) { 
             arr[k] = L[i]; 
             i++; 
             k++; 
         } 
-    
+
         while (j < n2) { 
             arr[k] = R[j]; 
             j++; 
@@ -513,10 +513,10 @@ Exerciții
     {
         if (l < r) {
             int m = l + (r - l) / 2; 
-    
+
             sort(arr, l, m); 
             sort(arr, m + 1, r); 
-    
+
             merge(arr, l, m, r); 
         } 
     }
@@ -565,14 +565,15 @@ Bune practici
 -------------
 
 Atunci când contribuim la un proiect putem să lucrăm fie branch-ul **master**, fie pe un alt branch.
-Este considerat **BAD-PRACTICE** să lucrăm pe branch-ul **master** din mai multe motive:
+Este considerat **BAD PRACTICE** să lucrăm pe branch-ul **master** din mai multe motive:
 
-1. Pe branch-ul **master** se ține întotdeauna o versiune de cod funcțională.
+#. Pe branch-ul **master** se ține întotdeauna o versiune de cod funcțională.
 Astfel, lucrul pe acest branch ar însemna să facem commituri doar atunci când o funcționalitate este finalizată, altfel pe branch-ul **master** vom avea o bucată de cod neterminată care poate să afecteze întreg proiectul.
 
-2. Lucrul pe un singur branch nu se oferă posibilitatea de a da feedback pe schimbările făcute pe repository.
+#. Lucrul pe un singur branch nu oferă posibilitatea de a da feedback pe schimbările făcute pe repository.
 Dacă nu avem posibilitatea să oferim feedback unui coleg prin intermediul GitHub, atunci vom avea nevoie să comunicăm pe un alt mediu observațiile noastre, iar ei vor trebui să creeze un nou commit pentru rezolvarea problemelor.
 Mult mai simplu este să se realizeze întreaga etapă de feedback, numită **code review** înainte ca schimbările să apară pe **master**.
+Vom vorbi în următoarea secțiune, :ref:`app_dev_pr`, termenul de *pull request*, folosit pentru code review.
 
 .. rubric:: Note de subsol
 
@@ -583,5 +584,5 @@ Mult mai simplu este să se realizeze întreaga etapă de feedback, numită **co
 
 .. [#good_practice]
 
-    Este **GOOD-PRACTICE** ca fiecare modificare făcută pe un repository să fie făcută pe un branch nou.
+    Este **GOOD PRACTICE** ca fiecare modificare făcută pe un repository să fie făcută pe un branch nou.
     Branch-ul trebuie să aibă un nume sugestiv ca ceilalți să poată înțelege rapid ce schimbări se fac pe el.
