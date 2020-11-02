@@ -11,10 +11,10 @@ Alți colaboratori ai proiectului vor recenza modificările și vor aproba, vor 
 Practic, un Pull Request este o interfață GitHub de contribuit la proiecte software, interfață bazată pe lucrul cu branch-uri Git.
 
 Spunem că deschidem un Pull Request care urmează să fie integrat într-un anumit branch.
-De obice acel branch este **main**.
-În acest tutorial vom deschide un Pull Request care urmează să fie integrat în branch-ul **main**.
+De obicei acel branch este **master**.
+În acest tutorial vom deschide un Pull Request care urmează să fie integrat în branch-ul **master**.
 
-În secțiunea :ref:`app_dev_branches` am adus modificările de pe branch-ul **add-gitignore** pe branch-ul **main** prin operația **merge**.
+În secțiunea :ref:`app_dev_branches` am adus modificările de pe branch-ul **add-gitignore** pe branch-ul **master** prin operația **merge**.
 În această secțiune vom integra schimbările prin intermediul unui **Pull Request** [#pull_request]_ urmând pașii din subsecțiunea :ref:`app_dev_pr_steps`.
 
 .. note::
@@ -37,7 +37,7 @@ Ca să avem o contribuție prin Pull Request, în mod uzual se urmează pașii:
 #. Creăm un commit (sau mai multe) pe noul branch și îl publicăm pe GitHub.
 #. Creăm un PR în interfața GitHub.
 #. Ulterior, un maintainer al repository-ului va recenza PR-ul. Dacă e nevoie de modificări, vom face actualizări pe care le vom adăuga (prin operația **push**) din nou în branch-ul nou creat, PR-ul fiind actualizat.
-#. După un număr dat de iterații, PR-ul va fi definitivat. Atunci maintainerul va integra branch-ul în **main** (operația **merge**).
+#. După un număr dat de iterații, PR-ul va fi definitivat. Atunci maintainerul va integra branch-ul în **master** (operația **merge**).
 
 În următoarele subsecțiuni vom implementa algoritmul Bubble Sort și vom modifica repository-ul ``array-sorting-algorithms`` prin intermediul unui **Pull Request**.
 
@@ -46,8 +46,8 @@ Ca să avem o contribuție prin Pull Request, în mod uzual se urmează pașii:
 Crearea unui branch nou
 -----------------------
 
-Pentru a putea deschide un Pull Request, trebuie să lucrăm pe un branch diferit dață de cel în care vrem să integrăm schimbările.
-Vom lucra pe un nou branch, diferit de branch-ul **main**.
+Pentru a putea deschide un Pull Request, trebuie să lucrăm pe un branch diferit față de cel în care vrem să integrăm schimbările.
+Vom lucra pe un nou branch, diferit de branch-ul **master**.
 
 Creăm un branch numit **bubble-sort-implementation** folosind comanda ``git branch``:
 
@@ -282,7 +282,7 @@ O descriere potrivită poate fi:
 Configurarea branch-ului în care vom integra PR-ul
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Ca să finalizăm PR-ul, modificările din acesta trebuie să fie adăugate într-un branch, cel mai adesea în branch-ul **main** [#base_branch]_.
+Ca să finalizăm PR-ul, modificările din acesta trebuie să fie adăugate într-un branch, cel mai adesea în branch-ul **master** [#base_branch]_.
 	
 În acest tutorial vom folosi branch-ul ``master`` ca în imaginea de mai jos:
 
@@ -316,7 +316,7 @@ Recenzenții fac parte din colaboratorii proiectului.
 Integrarea PR-ului
 ------------------
 
-După mai multe runde de feedback și aplicarea acestuia, PR-ul va fi gata de integrat în branch-ul **main**.
+După mai multe runde de feedback și aplicarea acestuia, PR-ul va fi gata de integrat în branch-ul **master**.
 
 .. note::
 
@@ -329,7 +329,7 @@ Apăsăm mai întâi butonul ``Merge pull request`` după care butonul ``Confirm
     :alt: Operația merge. Închiderea PR-ului
 
 Am făcut operația **merge** în repository-ul remote (*origin*).
-Avem pe branch-ul **main** implementarea algoritmului Bubble Sort.
+Avem pe branch-ul **master** implementarea algoritmului Bubble Sort.
 Actualizăm și repository-ul local folosind comanda ``git pull``:
 
 .. code-block:: bash
@@ -370,7 +370,7 @@ Ca să ștergem branch-ul **bubble-sort-implementation** și din repository-ul l
 	student@uso:~/array-sorting-algorithms$ git branch
 	* master
 
-În final am ajuns să integrăm modificările de pe branch-ul **bubble-sort-implementation** în branch-ul **main** prin intermediul unui **Pull Request**.
+În final am ajuns să integrăm modificările de pe branch-ul **bubble-sort-implementation** în branch-ul **master** prin intermediul unui **Pull Request**.
 Am șters branch-ul **bubble-sort-implementation**.
 
 .. _app_dev_pr_ex:
@@ -472,13 +472,17 @@ Pe parcursul creării acestui Pull Request țineți cont de următoarele:
 Bune practici
 -------------
 
-Alternativa la a crea un **Pull Request** ar fi să lucrăm direct pe branch-ul **main**.
+Alternativa la a crea un **Pull Request** ar fi să lucrăm direct pe branch-ul **master**.
 
-Așa cum am menționat și în secțiunile anterioare, este **BAD-PRACTICE** să lucrăm direct pe branch-ul **main** din mai multe motive:
+Așa cum am menționat și în secțiunile anterioare, este **BAD-PRACTICE** să lucrăm direct pe branch-ul **master** din mai multe motive:
 
-#. Pe branch-ul **main** se ține întotdeauna o versiune de cod funcțională. Astfel, lucrul pe acest branch ar însemna să facem commituri doar atunci când o funcționalitate este finalizată. Altfel pe branch-ul **main** vom avea o bucată de cod neterminată care poate să afecteze întreg proiectul.
-#. Lucrul pe un singur branch nu oferă posibilitatea de a da feedback pe schimbările făcute pe repository. Dacă nu avem posibilitatea să oferim feedback unui coleg prin intermediul GitHub, atunci vom avea nevoie să comunicăm pe un alt mediu observațiile noastre, iar ei vor trebui să creeze un nou commit pentru rezolvarea problemelor. Mult mai simplu este să se realizeze întreaga etapă de feedback, numită **code review** înainte ca schimbările să apară pe **main**.
-#. În unele situații nici nu vom avea drepturi să scriem pe branch-ul **main**, astfel devenind obligatoriu lucrul pe un alt branch și integrarea codului în branch-ul **main** printr-un **Pull Request**.
+#. Pe branch-ul **master** se ține întotdeauna o versiune de cod funcțională.
+   Astfel, lucrul pe acest branch ar însemna să facem commituri doar atunci când o funcționalitate este finalizată.
+   Altfel pe branch-ul **master** vom avea o bucată de cod neterminată care poate să afecteze întreg proiectul.
+#. Lucrul pe un singur branch nu oferă posibilitatea de a da feedback pe schimbările făcute pe repository.
+   Dacă nu avem posibilitatea să oferim feedback unui coleg prin intermediul GitHub, atunci vom avea nevoie să comunicăm pe un alt mediu observațiile noastre, iar ei vor trebui să creeze un nou commit pentru rezolvarea problemelor.
+   Mult mai simplu este să se realizeze întreaga etapă de feedback, numită **code review**, înainte ca schimbările să apară pe **master**.
+#. În unele situații nici nu vom avea drepturi să scriem pe branch-ul **master**, astfel devenind obligatoriu lucrul pe un alt branch și integrarea codului în branch-ul **master** printr-un **Pull Request**.
 
 .. rubric:: Note de subsol
 

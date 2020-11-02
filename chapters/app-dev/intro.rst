@@ -32,7 +32,7 @@ Limbaje de programare compilate
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Programele scrise într-un limbaj **compilat** sunt analizate de către un program numit *compilator* înainte ca ele să poată fi rulate pe sistem.
-În general, acest limbajele compilate sunt mai rapide în execuție decât cele interpretate sau hibride. Deoarece problemele de **sintaxă** (*de scriere*) sunt eliminate din faza *compilării*, înainte să rulăm programul.
+În general, acest limbajele compilate sunt mai rapide în execuție decât cele interpretate sau hibride, deoarece problemele de **sintaxă** (*de scriere*) sunt eliminate din faza *compilării*, înainte să rulăm programul.
 Neajunsul programelor compilate este faptul că programele **NU** sunt **portabile**, adică nu putem lua un program compilat pe calculator să îl rulăm pe un smartwatch; trebuie să *recompilăm* codul sursă.
 
 Exemple de limbaje compilate sunt **C**, **C++**, **Fortran**, **Rust**, **Go**, **D**.
@@ -62,8 +62,8 @@ Exemple de limbare hibride sunt **Python**, **Java** și **C#**.
 Scrierea codului sursă
 ----------------------
 
-Atunci când spunem că *dezvoltăm o aplicație* spunem de fapt că scriem codul sursă, îl compilăm, îl verificăm de erori.
-Pentru scrierea codului sursă putem să alegem **editoare de text** sau **medii de dezvoltare integrat** (*IDE-uri*).
+Atunci când spunem că *dezvoltăm o aplicație*, spunem, de fapt, că scriem codul sursă, îl compilăm, îl verificăm de erori.
+Pentru scrierea codului sursă putem să alegem **editoare de text** sau `medii de dezvoltare integrat <https://www.redhat.com/en/topics/middleware/what-is-ide>`_ (*Integrated Development Environment*, *IDE*).
 
 *Editoarele de text* sunt programe mai simple în care putem edita fișiere text, deci putem dezvolta programe.
 Ele pot permite instalarea de extensii care aduc funcționalități în plus, specifice pentru un anumit limbaj.

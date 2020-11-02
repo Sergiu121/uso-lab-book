@@ -14,7 +14,7 @@ Acest proces se numește *build automation*.
 Există mai multe soluții de build automation [#build_automation]_.
 În această carte vom folosi utilitarul `Make <https://linux.die.net/man/1/make>`_ împreună cu fișiere `Makefile <https://www.gnu.org/software/make/manual/make.html#Makefiles>`_ ca să automatizăm procesul de compilare.
 
-În secțiunile următoare vom folosi vedea cum funcționează utilitarul Make și care este formatul lui.
+În secțiunile următoare vom folosi vedea cum funcționează utilitarul Make și cum arată un fișier Makefile.
 După, vom crea un fișier Makefile pentru un proiect dat.
 
 .. _app_dev_use_makefile:
@@ -22,7 +22,7 @@ După, vom crea un fișier Makefile pentru un proiect dat.
 Folosirea unui Makefile existent
 --------------------------------
 
-În această secțiune vom compila programul Hangman folosind un fișier Makefile.
+În această secțiune vom compila programul `Hangman <https://rextester.com/WYT71966>`_ folosind un fișier Makefile.
 
 Întrăm în directorul ``~/support/simple-make`` folosind comanda ``cd``:
 
@@ -85,7 +85,7 @@ TODO: adaugă numere la linii
 Liniile din fișier sunt de două tipuri:
 
 #. **Regulă**, care are formatul ``regulă: <dependență>`` (``all: hangman`` sau ``clean:``).
-#. **Comandă**, care începe cu un ``Tab`` la începutul rândului, urmat de o comandă (``    gcc -o hangman hangman.o``).
+#. **Comandă**, care începe cu un ``Tab`` la începutul rândului, urmat de o comandă (``gcc -o hangman hangman.o``).
 
 O *regulă* din fișierul Makefile este, de fapt, un nume asociat unei *comenzi*. Spunem că rulăm *regula* ``clean`` atunci când vrem să executăm *comanda* ``rm -rf *.o hangman``.
 În terminal, facem acest lucru folosind comanda ``make`` urmată de numele regulii, în acest caz ``make clean``:

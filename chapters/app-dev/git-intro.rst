@@ -14,7 +14,7 @@ Pentru a putea rezolva problemele de sincronizare între doi sau mai mulți cole
 Fiecare modificare înseamnă o nouă versiune a proiectului; avem astfel o listă de versiuni gestionată de sistemul de versionare a codului.
 Pe lângă rezolvarea problemelor de sincronizare, versionarea codului aduce și alte avantaje cum ar fi revenirea la o versiune mai veche a proiectului, găsirea rapidă a autorului unei secvențe de cod sau, pur și simplu, organizarea unui proiect.
 
-**Git** este un sistem de management și versionare a codului sursă care permite lucru eficient la un proiect software..
+**Git** este un sistem de management și versionare a codului sursă care permite lucru eficient la un proiect software.
 
 `GitHub <http://www.github.com/>`_ este o platformă online, bazată pe Git, pe care dezvoltatorii o pot folosi pentru a stoca și versiona codul lor sursă.
 Git este utilitarul folosit, iar GitHub este serverul și aplicația web pe care rulează acesta, locul în care păstrăm repository-ul remote.
@@ -25,7 +25,7 @@ Git este utilitarul folosit, iar GitHub este serverul și aplicația web pe care
   Comenzile pe care le vom studia se aplică pentru toate platformele care folosesc **Git**, doar interfața grafică diferă.
 
   În această carte vom folosi GitHub ca suport.
-  În mare parte acesta nu diferă foarte mult de alte platforme.
+  În mare parte, acesta nu diferă foarte mult de alte platforme.
 
 .. _app_dev_create_github_account:
 
@@ -33,7 +33,7 @@ Crearea unui cont pe GitHub (dacă nu aveți deja)
 ------------------------------------------------
 
 Înainte de toate, ne asigurăm că avem cont pe GitHub.
-Dacă aveți deja un cont pe GitHub puteți trece la subsecțiunea următoare: :ref:`app_dev_git_setup`.
+Dacă aveți deja un cont pe GitHub, puteți trece la subsecțiunea următoare: :ref:`app_dev_git_setup`.
 
 Dacă nu aveți cont, intrați pe `GitHub <http://www.github.com/>`_.
 Pagina de pornire va arăta similar cu cea din imaginea de mai jos.
@@ -133,7 +133,7 @@ Acum avem un repository creat remote, pe GitHub, numit ``array-sorting-algorithm
 Crearea unui repository gol local
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Creăm un director din ierarhia de fișiere în care vom inițializa repository-ul git.
+Creăm un director din ierarhia de fișiere în care vom inițializa repository-ul Git.
 
 În acest tutorial creăm directorul ``array-sorting-algorithms`` în directorul home (adică ``/home/student`` sau ``~``), folosind comenzile de mai jos:
 
@@ -148,14 +148,14 @@ Creăm un director din ierarhia de fișiere în care vom inițializa repository-
     student@uso:~/array-sorting-algorithms$ ls -a
     ./    ../   .git/
 
-Mai sus am inițializat repository-ul local prin comanda ``git init`` dată în directorul ales (``array-sorting-algorithms``) din directorul home al utilizatorului student (``/home/student``).
+Mai sus am inițializat repository-ul local prin comanda ``git init``, dată în directorul ales (``array-sorting-algorithms``) din directorul home al utilizatorului student (``/home/student``).
 
 Acum avem un repository creat local, numit ``array-sorting-algorithms``.
 
 .. admonition:: **Init**
 
   Operația **init** este una locală și are rolul de a inițializa un repository gol, local.
-  Inițializarea repository-ului local înseamnă crearea, în directorul ales, a mediului pentru a putea a putea lucra la un proiect software versionat Git.
+  Inițializarea repository-ului local înseamnă crearea, în directorul ales, a mediului pentru a putea lucra la un proiect software versionat Git.
   Această operare duce la crearea unui director numit ``.git`` în care se vor ține ulterior date suplimentare despre repository, numite **metadatele** repository-ului.
 
   Am folosit opțiunea ``-a`` (``ls -a``) pentru a afișa și fișierele și directoarele ascunse.
@@ -170,16 +170,16 @@ Am creat până în acest moment un repository local și unul remote.
 Trebuie să le interconectăm pentru a lucra cu ele.
 
 În cazul în care suntem mai mulți membri în echipă, fiecare membru va conecta repository-ul său local, la repository-ul remote.
-Pentru conectarea celor două repository-uri folosim comanda de mai jos, dată în directorul unde este repository-ul local Git (adică în ``/home/student/array-sorting-algorithms``):
+Pentru conectarea celor două repository-uri folosim comanda de mai jos, dată în directorul unde este repository-ul local Git (în cazul nostru ``/home/student/array-sorting-algorithms``):
 
 .. code-block:: bash
 
     student@uso:~/array-sorting-algorithms$ git remote add origin https://github.com/{username}/array-sorting-algorithms.git
 
 În comanda de mai sus ``{username}`` este numele utilizatorului nostru de pe GitHub.
-De exemplu, pentru autorul acestui capitol ``{username}`` se înlocuiește cu ``lizababu``.
+De exemplu, pentru autorul acestui capitol, ``{username}`` se înlocuiește cu ``lizababu``.
 
-Conectarea celor două repository-uril înseamnă setarea repository-ului ``origin``, adică repository-ului remote la care se conectează cel local.
+Conectarea celor două repository-uri înseamnă setarea repository-ului ``origin``, adică repository-ului remote la care se conectează cel local.
 
 Imaginea de mai jos arată cum arată cum se contectează repository-urile **remote** și **local**.
 Sincronizarea lor se face prin intermediul operațiilor **push** și **pull** care sunt prezentate pe parcursul secțiunii :ref:`app_dev_first_commits`.

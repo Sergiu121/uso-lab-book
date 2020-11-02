@@ -62,7 +62,7 @@ Acum, de fiecare dată când modificăm fișierul ``main.c``, compilatorul va tr
 Acest lucru este ineficient atunci când lucrăm la un proiect mai mare, unde etapa de compilare durează mult [#compile_linux_kernel]_.
 În secțiunea următoare, :ref:`app_dev_object_files`, vedem cum scăpăm de această problemă.
 
-Ștergem fișierul ``algorithms`` ca să avem directorul *curat*, folosind comanda ``rm``.
+Ștergem fișierul ``algorithms`` ca să avem directorul curat, folosind comanda ``rm``.
 
 .. code-block:: bash
 
@@ -173,7 +173,7 @@ Rulăm executabilul și vedem că are același comportament ca în secțiunea :r
 Plecând de la 2 fișiere obiect, ``main.o`` și ``algorithms.o``, am obținut același executabil ``algorithms``.
 
 Știind cum compilăm individual 2 fișere cod surs, vedem în secțiunea următoare, :ref:`app_dev_modify_recompile`, beneficiile compilării în pași.
-Recompilăm *doar* fișierele care au fost modificate de la ultima compilare și refacem executabilul prin legarea fișierelor obiect vechi (nemodificate de la ultima compilare) cu cele noi (recompilate după modificarea fișierelor cod sursă 
+Recompilăm *doar* fișierele care au fost modificate de la ultima compilare și refacem executabilul prin legarea fișierelor obiect vechi (nemodificate de la ultima compilare) cu cele noi (recompilate după modificarea fișierelor cod sursă.
 
 .. _app_dev_modify_recompile:
 
@@ -219,7 +219,7 @@ Rulăm executabilul ``algorithms``, ca mai jos:
     11! = 39916800
 
 Am văzut în această secțiune cum compilăm eficient un program din mai multe fișiere cod sursă.
-Concret, am compilat fișierele ``main.c`` și ``algorithms.c`` independent unul față de celălalt în fișierele obiect ``main.o`` și ``algorithms.o``, le-am legat, și am creat executabilul ``algorithms``.
+Concret, am compilat fișierele ``main.c`` și ``algorithms.c``, independent unul față de celălalt, în fișierele obiect ``main.o`` și ``algorithms.o``, le-am legat, și am creat executabilul ``algorithms``.
 
 .. _app_dev_make_multiple_ex:
 
@@ -227,7 +227,7 @@ Exerciții
 ---------
 
 #. Mergeți în directorul ``~/support/compile-multiple-ex``.
-#. Înspectați fișierele ``main.c``, ``lottery.c``.
+#. Inspectați fișierele ``main.c``, ``lottery.c``.
 #. Compilați fișierul cod sursă ``main.c`` în fișierul obiect ``main.o``.
 #. Compilați fișierul cod sursă ``lottery.c`` în fișierul obiect ``lottery.o``.
 #. Legați fișierele obiect ``main.o`` și ``lottery.o`` în executabilul ``lottery``.

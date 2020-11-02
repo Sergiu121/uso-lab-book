@@ -57,7 +57,7 @@ O reprezentare vizuală a istoricului commiturilor este:
   :scale: 45%
   :alt: Reprezentarea vizuală a istoricului de commituri
 
-**Root-commitul** este primul commit din istoric (*b2a590a8637f1eab96e557334dbd4be14bf95833*, *b2a590a*) [#hash]
+**Root-commitul** este primul commit din istoric (*b2a590a8637f1eab96e557334dbd4be14bf95833*, *b2a590a*) [#hash]_.
 Toate celelalte commituri vin în continuarea acestuia.
 Spre exemplu, al doilea commit (*f65a7fbe8bbe1b36ba5c8e16607456a879bfb6fa*, *f65a7fb*) a avut la bază primul commit (*b2a590a*).
 Modificările au fost făcute peste commitul *b2a590a*.
@@ -68,7 +68,7 @@ Crearea unui commit nou pe un *alt* branch va modifica istoricul ca în imaginea
   :scale: 50%
   :alt: Reprezentarea vizuală a istoricului de commituri
 
-În acest moment, pe repository-ul vostru aveți un singur branch - **master**.
+În acest moment, pe repository-ul nostru aveți un singur branch - **master**.
 În continuare vom lucra la proiectul nostru ``array-sorting-algorithms``, dar vom face schimbări de pe alt branch-uri.
 
 În această secțiune vom adăuga un fișier ``.gitignore`` proiectului și vom adăuga implementarea pentru agloritmul Merge Sort.
@@ -399,7 +399,7 @@ Creăm un commit care să conțină modificărea din fișierul ``.gitignore``.
 
 Am verificat istoricul de commituri și vedem că ultimul commit este cel cu identificatorul *6d5189fd7095a19a6ad9bddb8c95491b37d9e828*, adică cel creat în această subsecțiune.
     
-Publicăm commitul și în repository-ul origin ca el să fie vizibil și celorlalți colaboratori ai proiectului,folosind comanda ``git push`` 
+Publicăm commitul și în repository-ul origin, pentru ca acesta să fie vizibil și celorlalți colaboratori ai proiectului, folosind comanda ``git push`` 
 
 .. code-block:: bash
 
@@ -569,12 +569,12 @@ Atunci când contribuim la un proiect putem să lucrăm fie branch-ul **master**
 Este considerat **BAD PRACTICE** să lucrăm pe branch-ul **master** din mai multe motive:
 
 #. Pe branch-ul **master** se ține întotdeauna o versiune de cod funcțională.
-Astfel, lucrul pe acest branch ar însemna să facem commituri doar atunci când o funcționalitate este finalizată, altfel pe branch-ul **master** vom avea o bucată de cod neterminată care poate să afecteze întreg proiectul.
+   Astfel, lucrul pe acest branch ar însemna să facem commituri doar atunci când o funcționalitate este finalizată, altfel pe branch-ul **master** vom avea o bucată de cod neterminată care poate să afecteze întreg proiectul.
 
 #. Lucrul pe un singur branch nu oferă posibilitatea de a da feedback pe schimbările făcute pe repository.
-Dacă nu avem posibilitatea să oferim feedback unui coleg prin intermediul GitHub, atunci vom avea nevoie să comunicăm pe un alt mediu observațiile noastre, iar ei vor trebui să creeze un nou commit pentru rezolvarea problemelor.
-Mult mai simplu este să se realizeze întreaga etapă de feedback, numită **code review** înainte ca schimbările să apară pe **master**.
-Vom vorbi în următoarea secțiune, :ref:`app_dev_pr`, termenul de *pull request*, folosit pentru code review.
+   Dacă nu avem posibilitatea să oferim feedback unui coleg prin intermediul GitHub, atunci vom avea nevoie să comunicăm pe un alt mediu observațiile noastre, iar ei vor trebui să creeze un nou commit pentru rezolvarea problemelor.
+   Mult mai simplu este să se realizeze întreaga etapă de feedback, numită **code review** înainte ca schimbările să apară pe **master**.
+   Vom vorbi în următoarea secțiune, :ref:`app_dev_pr`, termenul de *pull request*, folosit pentru code review.
 
 .. rubric:: Note de subsol
 
@@ -586,4 +586,4 @@ Vom vorbi în următoarea secțiune, :ref:`app_dev_pr`, termenul de *pull reques
 .. [#good_practice]
 
     Este **GOOD PRACTICE** ca fiecare modificare făcută pe un repository să fie făcută pe un branch nou.
-    Branch-ul trebuie să aibă un nume sugestiv ca ceilalți să poată înțelege rapid ce schimbări se fac pe el.
+    Branch-ul trebuie să aibă un nume sugestiv pentru ca ceilalți să poată înțelege rapid ce schimbări se fac pe el.

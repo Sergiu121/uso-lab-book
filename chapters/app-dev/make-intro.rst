@@ -57,7 +57,7 @@ Compilarea codului sursă în executabilul ``a.out``
 --------------------------------------------------
 
 Avem fișierul cod sursă ``is-prime.c`` și vrem să obținem un program pe care să-l rulăm pe sistemul nostru.
-Pentru aceasta, trebuie să compilăm fișierul``is-prime.c``.
+Pentru aceasta, trebuie să compilăm fișierul ``is-prime.c``.
 Acest program este de fapt un **executabil** (*binar*).
 Executabilele sunt fișiere care conțin instrucțiuni pe care sistemul de calcul le poate interpreta și rula.
 
@@ -71,7 +71,7 @@ Creăm un executabil din fișierul ``is-prime.c`` folosind comanda ``gcc``:
     -rwxr-xr-x 1 student student 8448 Oct 26 06:34 a.out
     -rw-r--r-- 1 student student  406 Oct 26 06:17 is-prime.c
 
-Executabilul se numește ``a.out``.
+Așa cum vedem în rezultatul rulări comenzii ``ls -l`` de mai sus, executabilul se numește ``a.out``.
 Acesta este numele implicit dat de GCC.
 Adică ``a.out`` va fi numele tuturor fișierelor executabile generate cu GCC, indiferent de fișierul cod sursă.
 Verificăm că fișierul ``a.out`` este într-adevăr un fișier executabil:
@@ -81,7 +81,7 @@ Verificăm că fișierul ``a.out`` este într-adevăr un fișier executabil:
     student@uso:~$ file a.out 
     a.out: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/l, for GNU/Linux 3.2.0, BuildID[sha1]=14553360a84b6dbe4dba5f287a665047572bde7f, not stripped
 
-Acronimele **ELF** (*Executable and Linkable Format) și **LSB**(*Least Significant Byte*) nu sunt relevante în această carte, dar reținem că atunci când vedem un fișier *ELF*, acesta este un fișier *executabil*.
+Acronimele **ELF** (*Executable and Linkable Format) și **LSB** (*Linux Standard Base*) nu sunt relevante în această carte, dar reținem că atunci când vedem un fișier **ELF**, acesta este un fișier *executabil*.
 
 Rulăm executabilul ``a.out`` în felul următor și introducem de la tastatură un număr:
 
@@ -100,7 +100,7 @@ Compilarea codului sursă într-un executabil cu nume diferit
 -----------------------------------------------------------
 
 Numele ``a.out`` este implicit, deci toate programele compilate cu GCC se vor numi ``a.out``.
-Putem seta un nume diferit pentru executabilul obținut.
+Putem configura un nume diferit pentru executabilul obținut.
 
 Spre exemplu, pentru programul care verifică dacă un număr este prim sau nu, numim executabilul ``is-prime``.
 Creăm un executabil cu numele ``is-prime`` din fișierul ``is-prime.c`` folosind comanda ``gcc``:
@@ -125,7 +125,7 @@ Rulăm executabilul ``is-prime`` în felul următor și introducem de la tastatu
     Please gimme a number: 13
     13 is not prime
 
-Vedem că programele ``a.out`` și ``is-prime`` au același comportament, dar au nume diferit.
+Vedem că, deși au nume diferit, programele ``a.out`` și ``is-prime`` au același comportament.
 Acest lucru este normal deoarece ele sunt 2 fișiere executabile obținute din același fișier cod sursă obținute folosind același compilator: GCC.
 
 .. _app_dev_make_intro_ex:

@@ -40,7 +40,7 @@ Găsim implementarea funcției ``factorial`` în fișierul ``algorithms.c``:
     }
 
 Găsim implementarea funcției ``printf`` în **biblioteca standard C** (*C Standard Library*).
-Pentru a folosi funcția ``print`` în fișierul ``main.c``, am inclus fișierul header ``stdio.h``.
+Pentru a folosi funcția ``printf`` în fișierul ``main.c``, am inclus fișierul header ``stdio.h``.
 
 O **bibliotecă** este un fișier în care găsim colecție de funcții generale, pe care le putem folosi în programele noastre, dar pe care nu le-am scris noi.
 
@@ -181,7 +181,7 @@ Exerciții
 ---------
 
 Înainte să începeți exercițiile, rulați comanda ``sudo apt-get install libncurses5-dev libncursesw5-dev``.
-Ea are rolul de a instala biblioteca grafică ``ncurses`` pe sistemul vostru; bibliotecă folosită de programul ``hello_world.c``.
+Aceasta are rolul de a instala biblioteca grafică ``ncurses`` pe sistemul vostru, bibliotecă folosită de programul ``hello_world.c``.
 
 #. Intrați în directorul ``~/support/compile-with-lib-ex``.
 #. Inspectați fișierul ``hello_world.c`` și identificați linia din program care ne arată că programul folosește biblioteca ``ncurses``.
@@ -190,4 +190,4 @@ Ea are rolul de a instala biblioteca grafică ``ncurses`` pe sistemul vostru; bi
 
 .. hint::
 
-    Pentru a lega programul la biblioteca ncurses folosiți opțiunea ``-lncurses``.
+    Pentru a lega programul la biblioteca ``ncurses`` folosiți opțiunea ``-lncurses``.

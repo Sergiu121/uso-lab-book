@@ -20,11 +20,11 @@ Având commiturile în repository putem să gestionăm mai ușor proiectul, adic
 * să creăm o ramură de dezvoltare separată pornind la un commit anterior, pe care să încercăm o funcționalitate nouă, fără a afecta restul proiectului
 
 Git se ocupă de păstrarea și gestiunea istoricului repository-ului nostru prin păstrarea listei de commituri făcute.
-Adică, Git păstrează un istoric de versiuni al proiectului.
+Adică Git păstrează un istoric de versiuni al proiectului.
 
 .. note::
 
-    Când facem un commit acesta va fi reținut în repository-ul Git local, nu și în repository-ul Git remote.
+    Când facem un commit, acesta va fi reținut în repository-ul Git local, nu și în repository-ul Git remote.
 
     Fără a actualiza și repository-ul remote, ceilalți colegi nu vor putea vedea schimbările făcute de noi.
     Vrem, așadar, ca modificările făcute local să se găsească și remote.
@@ -47,7 +47,7 @@ Adăugarea unui fișier README
 .. admonition:: Reamintire
 
     O bună practică, prezentă în majoritatea proiectelor software, este să adăugăm un fișier ``README`` în care se află informații despre un proiect.
-    Spre exemplu în ``README`` se află informații despre ce funcționalități are proiectul nostru, cum se compilează un proiect, cum se rulează, pe ce tip de platforme poate fi rulat etc.
+    Spre exemplu, în ``README`` se află informații despre ce funcționalități are proiectul nostru, cum se compilează un proiect, cum se rulează, pe ce tip de platforme poate fi rulat etc.
 
 Un fișier ``README`` este un fișier text.
 Îl putem crea și îi putem adăuga titlul ``Sorting Algorithms for Beginners`` folosind un editor sau, mai simplu și mai direct, folosind comanda de mai jos:
@@ -117,8 +117,8 @@ Vom discuta în secțiunea :ref:`app_dev_branches` despre branch-uri.
 A doua linie afișată ``No commits yet`` ne spune că nu am făcut până acum niciun commit, adică am pornit de la un repository gol.
 
 În ultima parte a outputului se află o listă de fișiere ``untracked``, adică lista fișierelor pe care Git le vede ca nou adăugate în repository-ul curent, dar pe care nu le monitorizează încă.
-Asta înseamnă că, deocamdată, orice modificare vom face asupra acestor fișiere nu va fi urmărită (*tracked*) de Git.
-În cazul nostru fișierul aflat în starea *untracked* este ``README.md``.
+Acest lucru înseamnă că, deocamdată, orice modificare vom face asupra acestor fișiere nu va fi urmărită (*tracked*) de Git.
+În cazul nostru, fișierul aflat în starea *untracked* este ``README.md``.
 
 .. _app_dev_add_staging:
 
@@ -136,7 +136,7 @@ Acest pas de pregătire înseamnă să adăugăm (*add*) aceste modificări înt
     student@uso:~/array-sorting-algorithms$ git add README.md
 
 
-Verificăm se s-a schimbat în urma adăugării fișierului ``README.md`` în staging folosind comanda ``git status``:
+Verificăm ce s-a schimbat în urma adăugării fișierului ``README.md`` în staging folosind comanda ``git status``:
 
 .. code-block:: bash
 
@@ -182,7 +182,7 @@ Aceasta este o descriere succintă a modificările făcute prin acest commit.
 Crearea unui nou commit
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-În continuare vom adăuga scheletul de cod pentru algotimul Bubble Sort în repository.
+În continuare vom adăuga scheletul de cod pentru algoritmul Bubble Sort în repository.
 Vom crea un nou fișier cod sursă C ``bubble-sort.c`` și vom scrie în el scheletul de cod pentru algoritm.
 Vom crea un nou commit care va conține fișierul ``bubble-sort.c``.
 Pentru aceasta vom folosi un editor, precum nano, ca în imaginea de mai jos:
@@ -242,6 +242,9 @@ Exerciții
 #. Creați un commit care să conțină fișierul ``radix-sort.c``.
    Folosiți următorul mesaj de commit: ``Add Radix Sort algorithm skeleton``.
 
+#. Dați comanda de verificare ``git log``.
+   Detaliem outputul comenzii ``git log`` în subsecțiunea :ref:`app_dev_check_history`.
+
 #. Creați un nou fișier numit ``merge-sort.c`` cu următorul conținut:
 
    .. code-block:: c
@@ -260,6 +263,8 @@ Exerciții
 
 #. Creați un commit care să conțină fișierul ``merge-sort.c``.
    Folosiți următorul mesaj de commit: ``Add Merge Sort algorithm skeleton``.
+
+#. Dați comanda de verificare ``git log``.
 
 .. _app_dev_modify_commit:
 
@@ -294,22 +299,8 @@ Până acum am creat commituri care conțineau un fișier nou creat.
     [master 247b87f] Update README with project explanation
     1 file changed, 1 insertion(+)
 
-Când am adăugat fișierul ``bubble-sort.c`` în staging area în imaginea din secțiunea :ref:`app_dev_create_new_commit`, comanda ``status`` ne arăta că fișierul ``bubble-sort.c`` este nou (*new file*).
-
-.. code-block:: bash
-
-    (...)
-    student@uso:~/array-sorting-algorithms$ git add bubble-sort.c
-    student@uso:~/array-sorting-algorithms$ git status
-    On branch master
-    Changes to be committed:
-    (use "git reset HEAD <file>..." to unstage)
-
-        new file:   README.md
-    (...)
-
-Mai sus am folosit comanda ``git add`` pentru că am modificat fișierul ``README.md`` care deja exista.
-Comanda ``git status`` arată că acesta a fost modificat (*modified*).
+Spre deosebire de secțiunea :ref:`app_dev_create_new_commit`, unde comanda ``git status`` arăta că fișierul modificat (în acel caz, ``bubble-sort.c``) este nou (*new file*), acum comanda ``git status`` arată că fișierul modificat (în acest caz, ``README.md``) a fost modificat (*modified*).
+Deși apare această diferență în outputul comenzii ``git status``, pașii pentru crearea unui commit care conține un fișier nou sau unul deja existent (dar modificat) sunt aceiași.
 
 .. _app_dev_modify_commit_ex:
 
@@ -453,4 +444,4 @@ Dacă rezolvarea conflictelor nu se poate face automat, trebuie să ne ocupăm d
     Mesajele de commit trebuie să fie punctuale și ușor de înțeles.
     Alte persoane care lucrează la același proiect software vor vrea să înțeleagă rapid ce am modificat printr-un anumit commit.
     
-    https://chris.beams.io/posts/git-commit/
+    Recomandări punctuale legate de crearea unor bune mesaje de commit găsiți aici: https://chris.beams.io/posts/git-commit/
