@@ -5,13 +5,16 @@ Introducere în utilitarul Make și fișiere Makefile
 
 În secțiunile anterioare, am compilat fișiere cod sursă C folosind compilatorul GCC.
 Dezvoltarea unui program este un proces *continuu*, nu scriem tot codul dintr-o singură iterație și de multe ori ajungem să îl modificăm pe parcurs.
-La fiecare schimbare pe care o facem în program, trebuie să *recompilăm* fișierul pe care l-am modificat și să creăm un nou executabil.
+Vrem să testăm schimbările aduse în program.
+Pentru aceasta trebuie să *recompilăm* fișierul pe care l-am modificat și să creăm un nou executabil.
 
 Automatizarea procesului de compilare ne ajută să fim eficienți atunci când dezvoltăm un proiect.
 În loc să dăm de fiecare dată toate comenzile pentru recompilarea fișierelor, putem să dăm o singură comandă care să le facă pe toate.
-Utilitarul `Make <https://linux.die.net/man/1/make>`_ împreună cu fișiere `Makefile <https://www.gnu.org/software/make/manual/make.html#Makefiles>`_ ne ajută să automatizăm procesul de compilare
+Acest proces se numește *build automation*.
+Există mai multe soluții de build automation [#build_automation]_.
+În această carte vom folosi utilitarul `Make <https://linux.die.net/man/1/make>`_ împreună cu fișiere `Makefile <https://www.gnu.org/software/make/manual/make.html#Makefiles>`_ ca să automatizăm procesul de compilare.
 
-În secțiunile următoare vom folosi vedea cum funcționează utilitarul Make și care este structura lui.
+În secțiunile următoare vom folosi vedea cum funcționează utilitarul Make și care este formatul lui.
 După, vom crea un fișier Makefile pentru un proiect dat.
 
 .. _app_dev_use_makefile:
@@ -42,10 +45,10 @@ Ca să compilăm programul, folosim comanda ``make``:
 
 Comanda ``make`` a rulat, de fapt, 2 comenzi:
 
-#. ``gcc -c hangman.c``, comandă prin care am creat fișierul obiect ``hangman.o``
-#. ``gcc -o hangman hangman.o``, comandă prin care am creat executabilul ``hangman``.
+#. De *compilare*: ``gcc -c hangman.c``, comandă prin care am creat fișierul obiect ``hangman.o``
+#. De *legare*: ``gcc -o hangman hangman.o``, comandă prin care am creat executabilul ``hangman``.
 
-Practic, scriind doar comanda ``make``, am trecut fișierul ``hangman.c`` prin toate etapele compilării și am obținut executabilul final.
+Practic, scriind doar comanda ``make``, am trecut fișierul ``hangman.c`` prin toate etapele compilării și am obținut executabilul final, așa cum am făcut în secțiunea :ref:`app_dev_compile_multiple_sources` pentru fișierele ``main.c`` și ``algorithms.c``.
 
 Rulăm executabilul ``hangman`` ca să vedem că funcționează, ca în imaginea de mai jos:
 
@@ -58,11 +61,11 @@ Rulăm executabilul ``hangman`` ca să vedem că funcționează, ca în imaginea
 Înțelegerea formatului Makefile
 -------------------------------
 
-În secțiunea anterioară, :ref:`app_dev_use_makefile`, am folosit fișierul Makefile ca să compilăm programul Hangman.
+În secțiunea anterioară, :ref:`app_dev_use_makefile`, am folosit fișierul ``Makefile`` ca să compilăm programul Hangman.
 Ca să putem crea un Makefile pentru un proiect al nostru, trebuie să înțelegem formatul fișierului Makefile.
 În această secțiune vom folosi fișierul Makefile pe care l-am folosit anterior.
 
-Fișierul ``Makefile`` arată în felul următor:
+Fișierul ``Makefile`` folosit la programul Hangman are următorul conținut:
 
 TODO: adaugă numere la linii
 
@@ -79,13 +82,13 @@ TODO: adaugă numere la linii
     clean:
         rm -rf *.o hangman
 
-Avem în fișier 2 tipuri de rânduri:
+Liniile din fișier sunt de două tipuri:
 
 #. **Regulă**, care are formatul ``regulă: <dependență>`` (``all: hangman`` sau ``clean:``).
 #. **Comandă**, care începe cu un ``Tab`` la începutul rândului, urmat de o comandă (``    gcc -o hangman hangman.o``).
 
 O *regulă* din fișierul Makefile este, de fapt, un nume asociat unei *comenzi*. Spunem că rulăm *regula* ``clean`` atunci când vrem să executăm *comanda* ``rm -rf *.o hangman``.
-În terminal facem acest lucru folosind comanda ``make`` urmată de numele regulii, în acest caz ``make clean``:
+În terminal, facem acest lucru folosind comanda ``make`` urmată de numele regulii, în acest caz ``make clean``:
 
 .. code-block:: bash
 
@@ -137,3 +140,13 @@ Testarea fișierului Makefile
 
 Vor testa toate targeturile și vor observa încă de aici că fișierele se recompilează
 la fiecare rulare a targetului indiferent dacă fișierul obținut a fost modificat sau nu.
+
+.. rubric:: Note de subsol
+
+.. [#build_automation]
+
+    Exemple de soluții de build automation sunt `Maven <https://maven.apache.org>`_, `Ant <https://ant.apache.org>`_, `Gradle <https://gradle.org>`_.
+    
+    https://en.wikipedia.org/wiki/Build_automation
+    
+    https://www.softwaretestinghelp.com/best-build-automation-software-tools/

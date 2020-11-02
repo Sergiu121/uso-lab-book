@@ -20,6 +20,7 @@ Având commiturile în repository putem să gestionăm mai ușor proiectul, adic
 * să creăm o ramură de dezvoltare separată pornind la un commit anterior, pe care să încercăm o funcționalitate nouă, fără a afecta restul proiectului
 
 Git se ocupă de păstrarea și gestiunea istoricului repository-ului nostru prin păstrarea listei de commituri făcute.
+Adică, Git păstrează un istoric de versiuni al proiectului.
 
 .. note::
 
@@ -159,7 +160,8 @@ Acest lucru înseamnă că acum Git urmărește noile modificări și așteaptă
 Crearea commitului local
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Creăm un commit cu modificările de mai sus folosind comanda ``git commit``:
+Acum vrem ca modificările de mai sus să ajungă în repository.
+Pentru aceasta creăm un commit folosind comanda ``git commit``:
 
 .. code-block::
 

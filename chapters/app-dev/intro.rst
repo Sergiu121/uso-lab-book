@@ -21,10 +21,10 @@ Vom vorbi despre toate aceste aspecte în acest capitol.
 Alegerea limbajului de programare
 ---------------------------------
 
-Există 3 categorii de limbaje de programare, grupate în funcție de modul în care codul sursă scris de noi (*de limbaj înalt*) ajunge să fie rulat pe procesor: **compilate**, **interpretate** și **hibride**.
+Există trei categorii de limbaje de programare, grupate în funcție de modul în care codul sursă scris de noi (*de limbaj înalt*) ajunge să fie rulat pe procesor: **compilate**, **interpretate** și **hibride**.
 Alegem limbajul de programare potrivit pentru dezvoltarea programului nostru în funcție de ce avem nevoie: să avem un program portabil sau să avem un program rapid sau să avem acces mai ușor la memorie.
 
-În această carte vom folosi *limbajul C* ca să scriem codul sursă și *compilatorul gcc*, de pe Linux, pentru a compila codul sursă, însă mai jos descriem mai jos particularitățile fiecărui tip de limbaj de programare. 
+În această carte vom folosi *limbajul C* ca să scriem codul sursă și *compilatorul gcc* pentru a compila codul sursă, însă mai jos descriem mai jos particularitățile fiecărui tip de limbaj de programare. 
 
 .. _app_dev_compiled_languages:
 
@@ -32,10 +32,10 @@ Limbaje de programare compilate
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Programele scrise într-un limbaj **compilat** sunt analizate de către un program numit *compilator* înainte ca ele să poată fi rulate pe sistem.
-În general, acest limbajele compilate sunt mai rapide în execuție decât cele interpretate sau hibride deoarece problemele de **sintaxă** (*de scriere*) sunt eliminate din faza *compilării*, înainte să rulăm programul.
-Neajunsului programelor compilate este faptul că programele **NU** sunt **portabile**, adică nu putem lua un program compilat pe calculator să îl rulăm pe un smartwatch; trebuie să *recompilăm* codul sursă.
+În general, acest limbajele compilate sunt mai rapide în execuție decât cele interpretate sau hibride. Deoarece problemele de **sintaxă** (*de scriere*) sunt eliminate din faza *compilării*, înainte să rulăm programul.
+Neajunsul programelor compilate este faptul că programele **NU** sunt **portabile**, adică nu putem lua un program compilat pe calculator să îl rulăm pe un smartwatch; trebuie să *recompilăm* codul sursă.
 
-Exemple de limbaje compilate sunt **C** și **C++**.
+Exemple de limbaje compilate sunt **C**, **C++**, **Fortran**, **Rust**, **Go**, **D**.
 
 .. _app_dev_interpreted_languages:
 
@@ -66,11 +66,13 @@ Atunci când spunem că *dezvoltăm o aplicație* spunem de fapt că scriem codu
 Pentru scrierea codului sursă putem să alegem **editoare de text** sau **medii de dezvoltare integrat** (*IDE-uri*).
 
 *Editoarele de text* sunt programe mai simple în care putem edita fișiere text, deci putem dezvolta programe.
-Ele pot permite instalarea de extensii care aduc functionalităti în plus, sau aduc functionalităti specifice pentru un anumit limbaj.
-Printre cele mai populare editoare de text se numără `GNU Nano <https://www.nano-editor.org>`_, `Vim <https://www.vim.org>`_, `Sublime <http://sublimetext.com>`_, `Atom <https://atom.io>`_, `Visual Studio Code <https://code.visualstudio.com>`_.
+Ele pot permite instalarea de extensii care aduc funcționalități în plus, specifice pentru un anumit limbaj.
+Printre cele mai cunoscute editoare de text se numără `GNU Nano <https://www.nano-editor.org>`_, `Vim <https://www.vim.org>`_, `Sublime <http://sublimetext.com>`_, `Atom <https://atom.io>`_, `Visual Studio Code <https://code.visualstudio.com>`_.
 
-*IDE-urile* au anumite funcționalități avansate, multe dintre ele fiind adaptate unui singur limbaj de programare, iar în plus ele au integrat un compilator/interpretor pentru limbajul suportat.
+*IDE-urile* au anumite funcționalități avansate, multe dintre ele fiind adaptate unui singur limbaj de programare.
+În plus, ele au integrat un compilator/interpretor pentru limbajul suportat.
 Astfel, la o simplă apăsare de buton programul este rulat.
-Printre IDE-urile preferate se număra: `Microsoft Visual Studio <https://visualstudio.microsoft.com>`_, `Eclipse <https://www.eclipse.org/ide/>`_, `IntelliJ <https://www.jetbrains.com/idea/>`_, `XCode <https://developer.apple.com/xcode/>`_.
+Printre IDE-uri se număra: `Microsoft Visual Studio <https://visualstudio.microsoft.com>`_, `Eclipse <https://www.eclipse.org/ide/>`_, `IntelliJ <https://www.jetbrains.com/idea/>`_, `XCode <https://developer.apple.com/xcode/>`_.
 
 În această carte vom folosi *GNU Nano* ca editor de text principal.
+Este un editor CLI și se pornește folosind comanda ``nano``, așa cum a fost prezentat în capitolul *Lucrul cu fișiere*.

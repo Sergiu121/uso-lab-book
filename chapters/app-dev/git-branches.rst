@@ -143,8 +143,7 @@ Facem acest lucru prin adăugarea șirului ``*.o`` în fișierul ``.gitignore``:
 
     nothing added to commit but untracked files present (use "git add" to track)
 
-Creăm un commit cu această modificare și în publicăm.
-Odată cu publicarea commitului pe GitHub, a fost creat și branch-ul ``add-gitignore`` remote.
+Creăm un commit cu această modificare (``git add`` și ``git commit``) și îl publicăm (``git push``):
 
 .. code-block:: bash
 
@@ -174,7 +173,9 @@ Odată cu publicarea commitului pe GitHub, a fost creat și branch-ul ``add-giti
     To https://github.com/lizababu/array-sorting-algorithmss.git
     * [new branch]      add-gitignore -> add-gitignore
 
+
 Am publicat commitul în repository-ul remote pe branch-ul ``add-gitignore``.
+Odată cu publicarea commitului pe GitHub, a fost creat și branch-ul ``add-gitignore`` remote.
 
 .. note::
 

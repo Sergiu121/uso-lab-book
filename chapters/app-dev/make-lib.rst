@@ -39,12 +39,12 @@ Găsim implementarea funcției ``factorial`` în fișierul ``algorithms.c``:
         return fact;
     }
 
-Găsim implementarea funcției ``printf`` în **biblioteca stdio** (*Standard Input Output library*).
+Găsim implementarea funcției ``printf`` în **biblioteca standard C** (*C Standard Library*).
+Pentru a folosi funcția ``print`` în fișierul ``main.c``, am inclus fișierul header ``stdio.h``.
+
 O **bibliotecă** este un fișier în care găsim colecție de funcții generale, pe care le putem folosi în programele noastre, dar pe care nu le-am scris noi.
 
-Prima linie din fișierul ``main.c``, ``#include <stdio.h>``, înseamnă că îm *inclus* biblioteca în fișierul nostru sursă și că putem să folosim funcțiile definite din bibliotecă.
-
-Atunci când am legat fișierele obiect ``main.o`` și ``algorithms.o`` în executabilul ``algorithms``, am legat, de fapt, fișierele obiect ``main.o``, ``algorithms.o`` **și** biblioteca stdio.
+Atunci când am legat fișierele obiect ``main.o`` și ``algorithms.o`` în executabilul ``algorithms``, am legat, de fapt, fișierele obiect ``main.o``, ``algorithms.o`` **și** biblioteca standard C.
 Compilatorul GCC leagă implicit această bibliotecă la executabilul final.
 Diagrama de mai jos arată cum se întâmplă acest lucru:
 
@@ -64,14 +64,14 @@ Diagrama de mai jos arată cum se întâmplă acest lucru:
     |           {d}|     |           {d}|   |     | cGRE       |
     +--------------+     +--------------+   |     +------------+
                                             |
-                         +---+----+         |
-                         | {d}    |         |
-                         |  stdio +---------+
-                         | cPNK   |
-                         +--------+
+                +-----------------------+   |
+                | {d}                   |   |
+                |  C standard library   +---+
+                | cPNK                  |
+                +-----------------------+
                                          
 
-Există alte biblioteci, precum biblioteca ``math`` pe care compilatorul nu le leagă implicit la programele noastre.
+Există alte biblioteci (precum ``math``, ``ncurses``) pe care compilatorul nu le leagă implicit la programele noastre.
 
 În continuare vom compila un fișier cod sursă care folosește biblioteca ``math`` pentru a calcula rădăcina pătrată a unui număr întreg.
 
@@ -136,7 +136,7 @@ Corectăm eroarea folosind opțiunea ``-lm`` pentru ``gcc``:
     student@uso:~/support/compile-with-lib$ ls
     squared_root  squared_root.c
 
-Opțiunea ``-lm`` este formată prin alipirea opțiunii ``-l``(*library*, *bibliotecă*) cu ``m``(*math*).
+Opțiunea ``-lm`` este formată prin alipirea opțiunii ``-l`` (*library*, *bibliotecă*) cu ``m`` (*math*).
 În cazul bibliotecii ``math`` trebuie folosită prescurtarea ``m``, pentru alte biblioteci va fi diferit.
 
 Rulăm executabilul ``squared_root`` ca să verificăm că funcționează:
