@@ -14,7 +14,7 @@ Acest proces se numește *build automation*.
 Există mai multe soluții de build automation [#build_automation]_.
 În această carte vom folosi utilitarul `Make <https://linux.die.net/man/1/make>`_ împreună cu fișiere `Makefile <https://www.gnu.org/software/make/manual/make.html#Makefiles>`_ ca să automatizăm procesul de compilare.
 
-În secțiunile următoare vom folosi vedea cum funcționează utilitarul Make și cum arată un fișier Makefile.
+În secțiunile următoare vom vedea cum funcționează utilitarul Make și cum arată un fișier Makefile.
 După, vom crea un fișier Makefile pentru un proiect dat.
 
 .. _app_dev_use_makefile:
@@ -63,11 +63,9 @@ Rulăm executabilul ``hangman`` ca să vedem că funcționează, ca în imaginea
 
 În secțiunea anterioară, :ref:`app_dev_use_makefile`, am folosit fișierul ``Makefile`` ca să compilăm programul Hangman.
 Ca să putem crea un Makefile pentru un proiect al nostru, trebuie să înțelegem formatul fișierului Makefile.
-În această secțiune vom folosi fișierul Makefile pe care l-am folosit anterior.
+În această secțiune vom folosi fișierul Makefile pe care l-am folosit anterior ca suport.
 
 Fișierul ``Makefile`` folosit la programul Hangman are următorul conținut:
-
-TODO: adaugă numere la linii
 
 .. code-block:: 
 

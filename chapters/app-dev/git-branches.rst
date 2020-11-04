@@ -69,9 +69,9 @@ Crearea unui commit nou pe un *alt* branch va modifica istoricul ca în imaginea
   :alt: Reprezentarea vizuală a istoricului de commituri
 
 În acest moment, pe repository-ul nostru aveți un singur branch - **master**.
-În continuare vom lucra la proiectul nostru ``array-sorting-algorithms``, dar vom face schimbări de pe alt branch-uri.
+În continuare vom lucra la proiectul nostru ``array-sorting-algorithms``, dar vom face schimbări de pe alte branch-uri.
 
-În această secțiune vom adăuga un fișier ``.gitignore`` proiectului și vom adăuga implementarea pentru agloritmul Merge Sort.
+În următoarea secțiune vom adăuga un fișier ``.gitignore`` proiectului și vom adăuga implementarea pentru agloritmul Merge Sort.
 
 .. note::
 
@@ -89,6 +89,14 @@ De acum încolo, vom face toate modificările de pe un nou branch, diferit de br
 
 În această subsecțiune vom crea un nou branch numit ``add-gitignore``.
 Vom adăuga un fișier ``.gitignore`` proiectului de pe acest branch.
+
+.. note::
+
+    Într-un proiect Git, scriem în fișierul ``.gitignore`` nume de fișiere și directoare.
+    Acestea sunt fișiere și directoare din directorul proiectului pe care nu vrem să le adăugăm în repository.
+
+    Spre exemplu, nu punem fișiere obiect și fișiere executabile în repository pentru că sunt fișiere generate pentru un anumit tip de sistem.
+    Având codul sursă, putem genera fișierele obiect și executabile pe sistemul nostru. 
 
 Verificăm branch-ul pe care ne aflăm folosind comanda ``git branch``:
 
@@ -175,7 +183,7 @@ Creăm un commit cu această modificare (``git add`` și ``git commit``) și îl
 
 
 Am publicat commitul în repository-ul remote pe branch-ul ``add-gitignore``.
-Odată cu publicarea commitului pe GitHub, a fost creat și branch-ul ``add-gitignore`` remote.
+Odată cu publicarea commitului pe GitHub, a fost creat și branch-ul ``add-gitignore`` în repository-ul remote.
 
 .. note::
 
@@ -469,36 +477,36 @@ Exerciții
 
     #define MAX_LEN 100
 
-    static void merge(int arr[], int l, int m, int r) 
+    static void merge(int arr[], int left, int mid, int right) 
     { 
         int i, j, k; 
-        int n1 = m - l + 1; 
-        int n2 = r - m; 
+        int n1 = mid - left + 1; 
+        int n2 = right - mid; 
 
-        int L[n1], R[n2]; 
+        int aux_left[n1], aux_right[n2]; 
 
         for (i = 0; i < n1; i++) 
-            L[i] = arr[l + i]; 
+            aux_left[i] = arr[left + i]; 
         for (j = 0; j < n2; j++) 
-            R[j] = arr[m + 1 + j]; 
+            aux_right[j] = arr[mid + 1 + j]; 
 
         i = 0;
         j = 0;
         k = l;
         while (i < n1 && j < n2) { 
-            if (L[i] <= R[j]) { 
-                arr[k] = L[i]; 
+            if (aux_left[i] <= aux_right[j]) { 
+                arr[k] = aux_left[i]; 
                 i++; 
             } 
             else { 
-                arr[k] = R[j]; 
+                arr[k] = aux_right[j]; 
                 j++; 
             } 
             k++; 
         } 
 
         while (i < n1) { 
-            arr[k] = L[i]; 
+            arr[k] = aux_left[i]; 
             i++; 
             k++; 
         } 
@@ -510,15 +518,15 @@ Exerciții
         } 
     }
 
-    static void sort(int arr[], int l, int r)
+    static void sort(int arr[], int left, int right)
     {
-        if (l < r) {
-            int m = l + (r - l) / 2; 
+        if (left < right) {
+            int mid = left + (right - left) / 2; 
 
-            sort(arr, l, m); 
-            sort(arr, m + 1, r); 
+            sort(arr, left, mid); 
+            sort(arr, mid + 1, right); 
 
-            merge(arr, l, m, r); 
+            merge(arr, left, mid, right); 
         } 
     }
 
@@ -565,7 +573,7 @@ Exerciții
 Bune practici
 -------------
 
-Atunci când contribuim la un proiect putem să lucrăm fie branch-ul **master**, fie pe un alt branch.
+Atunci când contribuim la un proiect putem să lucrăm fie pe branch-ul **master**, fie pe un alt branch.
 Este considerat **BAD PRACTICE** să lucrăm pe branch-ul **master** din mai multe motive:
 
 #. Pe branch-ul **master** se ține întotdeauna o versiune de cod funcțională.

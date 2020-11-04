@@ -42,7 +42,7 @@ Găsim implementarea funcției ``factorial`` în fișierul ``algorithms.c``:
 Găsim implementarea funcției ``printf`` în **biblioteca standard C** (*C Standard Library*).
 Pentru a folosi funcția ``printf`` în fișierul ``main.c``, am inclus fișierul header ``stdio.h``.
 
-O **bibliotecă** este un fișier în care găsim colecție de funcții generale, pe care le putem folosi în programele noastre, dar pe care nu le-am scris noi.
+O **bibliotecă** este un fișier în care găsim o colecție de funcții generale, pe care le putem folosi în programele noastre, dar pe care nu le-am scris noi.
 
 Atunci când am legat fișierele obiect ``main.o`` și ``algorithms.o`` în executabilul ``algorithms``, am legat, de fapt, fișierele obiect ``main.o``, ``algorithms.o`` **și** biblioteca standard C.
 Compilatorul GCC leagă implicit această bibliotecă la executabilul final.

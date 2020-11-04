@@ -77,7 +77,7 @@ Vom reface executabilul ``algorithms`` în secțiunea :ref:`app_dev_object_files
 Fișiere obiect
 --------------
 
-Ca să evităm recompilarea fișierelor cod sursă care nu au fost modifcate, putem să *descompunem* etapa de compilare în 2 parți:
+Ca să evităm recompilarea fișierelor cod sursă care nu au fost modifcate, putem să *descompunem* etapa de compilare în 2 părți:
 
 #. Compilarea tuturor fișierelor cod sursă (*fișiere cu extensia .c*) până la **fișiere obiect** (*fișiere cu extensia .o*)
 #. Legarea fișierelor obiect într-un *executabil*.
@@ -113,19 +113,21 @@ Nu este nevoie să regenerăm fișierul ``algorithms.o`` pentru că ``algorithms
 
 .. _app_dev_compile_to_object_files:
 
-Compilarea fișierelor cod sursă în fișere obiect
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Compilarea fișierelor cod sursă în fișiere obiect
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 În această subsecțiune vom trece prin pasul ``1`` din diagrama din secțiunea :ref:`app_dev_object_files`, adică pașii de *compilare*.
 
-Compilăm fișierul ``main.c`` într-un fișier obiect ``main.o`` folosind ``gcc``:
+Compilăm fișierul ``main.c`` într-un fișier obiect ``main.o`` folosind opțiunea ``-c`` a comenzii ``gcc``:
 
 .. code-block:: bash
 
     student@uso:~/support/compile-multiple$ gcc -c main.c
     student@uso:~/support/compile-multiple$ ls
     algorithms.c  algorithms.h  main.c  main.o
-    
+
+Opțiunea ``-c`` compilează fișierul cod sursă ``main.c`` într-un fișier obiect ``main.o``.
+
 Facem același lucru pentru ``algorithms.c``:
 
 .. code-block:: bash
@@ -172,15 +174,15 @@ Rulăm executabilul și vedem că are același comportament ca în secțiunea :r
 
 Plecând de la 2 fișiere obiect, ``main.o`` și ``algorithms.o``, am obținut același executabil ``algorithms``.
 
-Știind cum compilăm individual 2 fișere cod surs, vedem în secțiunea următoare, :ref:`app_dev_modify_recompile`, beneficiile compilării în pași.
-Recompilăm *doar* fișierele care au fost modificate de la ultima compilare și refacem executabilul prin legarea fișierelor obiect vechi (nemodificate de la ultima compilare) cu cele noi (recompilate după modificarea fișierelor cod sursă.
+Știind cum compilăm individual 2 fișiere cod sursă, vedem în secțiunea următoare, :ref:`app_dev_modify_recompile`, beneficiile compilării incrementale.
+Recompilăm *doar* fișierele care au fost modificate de la ultima compilare și refacem executabilul prin legarea fișierelor obiect vechi (nemodificate de la ultima compilare) cu cele noi (recompilate după modificarea fișierelor cod sursă).
 
 .. _app_dev_modify_recompile:
 
 Modificarea fișierelor sursă și recompilarea lor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-În continuare, vedem care sunt avantajele compilării în pași, în care unele operații de compilare nu au loc.
+În continuare, vedem care sunt avantajele compilării incrementale, în care unele operații de compilare nu au loc.
 
 Modificăm fișierul ``main.c``, îl recompilăm într-un fișier obiect ``main.o``.
 Fișierul ``algorithms.o`` rămâne nemodificat.
@@ -227,7 +229,7 @@ Exerciții
 ---------
 
 #. Mergeți în directorul ``~/support/compile-multiple-ex``.
-#. Inspectați fișierele ``main.c``, ``lottery.c``.
+#. Inspectați fișierele ``main.c`` și ``lottery.c``.
 #. Compilați fișierul cod sursă ``main.c`` în fișierul obiect ``main.o``.
 #. Compilați fișierul cod sursă ``lottery.c`` în fișierul obiect ``lottery.o``.
 #. Legați fișierele obiect ``main.o`` și ``lottery.o`` în executabilul ``lottery``.

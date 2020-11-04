@@ -24,7 +24,7 @@ Copiem codul sursă de mai jos și îl lipim în nano ca în imaginea de mai jos
         int i;
 
         for (i = 2; i < n / 2; i++) {
-            if (n % i) {
+            if (n % i == 0) {
                 return 0;
             }
         }
@@ -50,6 +50,8 @@ Copiem codul sursă de mai jos și îl lipim în nano ca în imaginea de mai jos
 
 .. figure:: gifs/create-is-prime.gif
     :alt: Crearea unui fișier ``is-prime.c`` cu algoritmul asociat
+
+Mai multe detalii despre folosirea editorului de text ``nano`` găsim în capitolul *Lucrul cu fișiere*.
 
 .. _app_dev_compile_aout:
 
@@ -89,7 +91,7 @@ Rulăm executabilul ``a.out`` în felul următor și introducem de la tastatură
 
     student@uso:~$ ./a.out
     Please gimme a number: 13
-    13 is not prime
+    13 is prime
 
 
 Programul funcționează: citește un număr de la tastatură și afișează dacă acesta este prim sau nu.
@@ -103,7 +105,7 @@ Numele ``a.out`` este implicit, deci toate programele compilate cu GCC se vor nu
 Putem configura un nume diferit pentru executabilul obținut.
 
 Spre exemplu, pentru programul care verifică dacă un număr este prim sau nu, numim executabilul ``is-prime``.
-Creăm un executabil cu numele ``is-prime`` din fișierul ``is-prime.c`` folosind comanda ``gcc``:
+Creăm un executabil cu numele ``is-prime`` din fișierul ``is-prime.c`` folosind opțiunea ``-o`` a comenzii ``gcc``:
 
 .. code-block:: bash
 
@@ -123,7 +125,7 @@ Rulăm executabilul ``is-prime`` în felul următor și introducem de la tastatu
 
     student@uso:~$ ./is-prime
     Please gimme a number: 13
-    13 is not prime
+    13 is prime
 
 Vedem că, deși au nume diferit, programele ``a.out`` și ``is-prime`` au același comportament.
 Acest lucru este normal deoarece ele sunt 2 fișiere executabile obținute din același fișier cod sursă obținute folosind același compilator: GCC.

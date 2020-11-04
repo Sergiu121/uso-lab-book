@@ -3,7 +3,7 @@
 Introducere în Git și GitHub
 ============================
 
-Vor fi cazuri când vom *strica* o versiune a codului și vom avea nevoie să revenim la ea, caz în care un istoric de versiuni ne-ar fi de folos.
+Vor fi cazuri când vom *strica* o versiune a codului și vom avea nevoie să revenim la o versiune corectă, caz în care un istoric de versiuni ne-ar fi de folos.
 Vom putea să lucrăm la un proiect de pe un alt sistem, în afară de al nostru, sau vom vrea să cerem feedback pe codul scris de noi.
 
 Când vorbim despre un proiect software vrem să avem dezvoltatori, oameni care să lucreze împreună cu noi la proiect.
@@ -14,7 +14,7 @@ Pentru a putea rezolva problemele de sincronizare între doi sau mai mulți cole
 Fiecare modificare înseamnă o nouă versiune a proiectului; avem astfel o listă de versiuni gestionată de sistemul de versionare a codului.
 Pe lângă rezolvarea problemelor de sincronizare, versionarea codului aduce și alte avantaje cum ar fi revenirea la o versiune mai veche a proiectului, găsirea rapidă a autorului unei secvențe de cod sau, pur și simplu, organizarea unui proiect.
 
-**Git** este un sistem de management și versionare a codului sursă care permite lucru eficient la un proiect software.
+**Git** este un sistem de management și versionare a codului sursă care permite lucrul eficient la un proiect software.
 
 `GitHub <http://www.github.com/>`_ este o platformă online, bazată pe Git, pe care dezvoltatorii o pot folosi pentru a stoca și versiona codul lor sursă.
 Git este utilitarul folosit, iar GitHub este serverul și aplicația web pe care rulează acesta, locul în care păstrăm repository-ul remote.
@@ -91,7 +91,7 @@ Vom crea unul pe GitHub, unul local, după care le vom interconecta.
   Acestea pot fi interconectate și să refere de fapt același proiect.
   Repository-ul local este cel pe care îl avem la noi pe calculator, pe când cel remote este unul stocat pe un server (în cazul nostru **GitHub**).
   Este doar o diferență de perspectivă între cele două, ele nu diferă din punct de vedere tehnic.
-  De obicei, într-un proiect Git / GitHub există un repository central (remote) și mai multe repository-uri secundare (locale), câte unul pentru fiecare dezvoltator în echipa proiectului.
+  De obicei, într-un proiect Git / GitHub există un repository central (remote) și mai multe repository-uri secundare (locale), câte unul pentru fiecare dezvoltator din echipa proiectului.
 
   Printre cele mai importante operații cu un repository sunt: **init**, **fork**, **clone**.
   Vom detalia aceste operații când le vom folosi în acest capitol.
@@ -123,7 +123,7 @@ Urmărim pașii prezentați în imaginea de mai jos și explicați imediat după
    Descrierea proiectului este opțională, dar e recomandat să o adăugăm pentru a fi ușor de înțeles pentru cei care vor ajunge la proiectul nostru.
 
 #. Apăsăm pe ``Create repository``.
-   Vor apărea câteva instrucțiuni pentru crearea unui repository local nou și conectarea celui noi cu cel remote.
+   Vor apărea câteva instrucțiuni pentru crearea unui repository local nou și conectarea celui nou cu cel remote.
    Acest lucru este acoperit în secțiunile următoare.
 
 Acum avem un repository creat remote, pe GitHub, numit ``array-sorting-algorithms``.

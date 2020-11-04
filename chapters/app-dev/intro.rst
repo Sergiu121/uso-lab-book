@@ -24,7 +24,7 @@ Alegerea limbajului de programare
 Există trei categorii de limbaje de programare, grupate în funcție de modul în care codul sursă scris de noi (*de limbaj înalt*) ajunge să fie rulat pe procesor: **compilate**, **interpretate** și **hibride**.
 Alegem limbajul de programare potrivit pentru dezvoltarea programului nostru în funcție de ce avem nevoie: să avem un program portabil sau să avem un program rapid sau să avem acces mai ușor la memorie.
 
-În această carte vom folosi *limbajul C* ca să scriem codul sursă și *compilatorul gcc* pentru a compila codul sursă, însă mai jos descriem mai jos particularitățile fiecărui tip de limbaj de programare. 
+În această carte vom folosi *limbajul C* ca să scriem codul sursă și *compilatorul gcc* pentru a compila codul sursă, însă mai jos descriem particularitățile fiecărui tip de limbaj de programare. 
 
 .. _app_dev_compiled_languages:
 
@@ -32,7 +32,7 @@ Limbaje de programare compilate
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Programele scrise într-un limbaj **compilat** sunt analizate de către un program numit *compilator* înainte ca ele să poată fi rulate pe sistem.
-În general, acest limbajele compilate sunt mai rapide în execuție decât cele interpretate sau hibride, deoarece problemele de **sintaxă** (*de scriere*) sunt eliminate din faza *compilării*, înainte să rulăm programul.
+În general, limbajele compilate sunt mai rapide în execuție decât cele interpretate sau hibride, deoarece problemele de **sintaxă** (*de scriere*) sunt eliminate din faza *compilării*, înainte să rulăm programul.
 Neajunsul programelor compilate este faptul că programele **NU** sunt **portabile**, adică nu putem lua un program compilat pe calculator să îl rulăm pe un smartwatch; trebuie să *recompilăm* codul sursă.
 
 Exemple de limbaje compilate sunt **C**, **C++**, **Fortran**, **Rust**, **Go**, **D**.
@@ -43,7 +43,7 @@ Limbaje de programare interpretate
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Atunci când scriem un program într-un limbaj **interpretat**, programul este trecut printr-un alt program, numit *interpretor* care analizează și rulează fiecare linie de cod scrisă, pe rând.
-Dacă alegem să scriem un program într-un limbaj de programare interpretat, atunci programul nostru este **portabil**, adică putem să îl rulăm pe orice sistem dacă avem interpretorul instalat.
+Dacă alegem să scriem un program într-un limbaj de programare interpretat, atunci programul nostru este **portabil**, adică putem să îl rulăm pe orice sistem pe care avem interpretorul instalat.
 Din cauza faptului că programele sunt analizate și rulate linie cu linie, execuția lor poate fi mai lentă.
 
 Exemple de limbaje interpretate sunt **PHP** și **Perl**.
@@ -63,7 +63,7 @@ Scrierea codului sursă
 ----------------------
 
 Atunci când spunem că *dezvoltăm o aplicație*, spunem, de fapt, că scriem codul sursă, îl compilăm, îl verificăm de erori.
-Pentru scrierea codului sursă putem să alegem **editoare de text** sau `medii de dezvoltare integrat <https://www.redhat.com/en/topics/middleware/what-is-ide>`_ (*Integrated Development Environment*, *IDE*).
+Pentru scrierea codului sursă putem să alegem **editoare de text** sau `medii de dezvoltare integrate <https://www.redhat.com/en/topics/middleware/what-is-ide>`_ (*Integrated Development Environment*, *IDE*).
 
 *Editoarele de text* sunt programe mai simple în care putem edita fișiere text, deci putem dezvolta programe.
 Ele pot permite instalarea de extensii care aduc funcționalități în plus, specifice pentru un anumit limbaj.

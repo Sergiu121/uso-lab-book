@@ -401,18 +401,23 @@ De această dată veți modifica fișierul ``radix-sort.c`` cu următorul conți
 	static void count_sort(int array[], int n, int exp) 
 	{ 
 		int output[n];
-		int i, count[10] = {0}; 
+		int i, count[10] = {0};
 
-		for (i = 0; i < n; i++) 
-			count[ (array[i]/exp)%10 ]++; 
+		for (i = 0; i < 10; i++) {
+			count[i] = 0;
+		}
 
-		for (i = 1; i < 10; i++) 
-			count[i] += count[i - 1]; 
+		for (i = 0; i < n; i++) {
+			count[(array[i] / exp) % 10]++;
+		}
 
-		for (i = n - 1; i >= 0; i--) 
-		{ 
-			output[count[ (array[i]/exp)%10 ] - 1] = array[i]; 
-			count[ (array[i]/exp)%10 ]--; 
+		for (i = 1; i < 10; i++) {
+			count[i] += count[i - 1];
+		} 
+
+		for (i = n - 1; i >= 0; i--) { 
+			output[count[(array[i] / exp) % 10] - 1] = array[i]; 
+			count[(array[i] / exp) % 10]--; 
 		}
 
 		for (i = 0; i < n; i++) 
@@ -423,7 +428,7 @@ De această dată veți modifica fișierul ``radix-sort.c`` cu următorul conți
 	{ 
 		int m = get_max(array, n); 
 	
-		for (int exp = 1; m/exp > 0; exp *= 10) 
+		for (int exp = 1; m / exp > 0; exp *= 10) 
 			count_sort(array, n, exp); 
 	} 
 

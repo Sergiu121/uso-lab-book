@@ -17,7 +17,7 @@ Având commiturile în repository putem să gestionăm mai ușor proiectul, adic
 
 * să revenim la un commit anterior (adesea chiar ultimul) dacă modificările cele mai recente "strică" proiectul
 * să vedem cine este autorul anumitor modificări
-* să creăm o ramură de dezvoltare separată pornind la un commit anterior, pe care să încercăm o funcționalitate nouă, fără a afecta restul proiectului
+* să creăm o ramură de dezvoltare separată pornind de la un commit anterior, pe care să încercăm o funcționalitate nouă, fără a afecta restul proiectului
 
 Git se ocupă de păstrarea și gestiunea istoricului repository-ului nostru prin păstrarea listei de commituri făcute.
 Adică Git păstrează un istoric de versiuni al proiectului.
@@ -94,7 +94,7 @@ Verificarea stării repository-ului local
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Prin **starea repository-ului** înțelegem forma la care am adus proiectul prin modificările noastre.
-Aceasta include ce fișiere am creat, modificat sau șters de la ultima sincronizare cu repository-ul remote.
+Aceasta include ce fișiere am creat, modificat sau șters de la ultimul commit.
 Ne interesează întotdeauna starea repository-ului pe care lucrăm.
 
 Pentru a verifica starea repository-ului folosim comanda ``git status``:
@@ -174,7 +174,7 @@ Pentru aceasta creăm un commit folosind comanda ``git commit``:
     nothing to commit, working tree clean  
 
 Am folosit descrierea ``Add README file`` la comanda ``git commit`` drept **mesaj de commit** [#commit_message]_.
-Aceasta este o descriere succintă a modificările făcute prin acest commit.
+Aceasta este o descriere succintă a modificărilor făcute prin acest commit.
 
 
 .. _app_dev_create_new_commit:
@@ -325,6 +325,7 @@ Verificăm istoricul commiturilor folosind comanda ``git log``:
 .. code-block::
 
     student@uso:~/array-sorting-algorithms$ git log
+    commit 66b7c5fabb93b521326e6cd9ff219a06a3aec064 (HEAD -> master)
     Author: Liza Babu <lizababu@example.com>
     Date:   Thu Sep 24 10:40:06 2020 -0700
 
@@ -372,7 +373,7 @@ Verificăm istoricul commiturilor folosind comanda ``git log``:
 
 Fiecare commit este identificat unic printr-un cod, numit **cod hash** [#hash]_.
 Discutăm în continuare despre ultimul commit din listă.
-Acesta are codul hash ``0dfb632b9de79f9a25011e8b98be48c7b1a0aad8`` și mesajul de commit ``Update README title``.
+Acesta are codul hash ``66b7c5fabb93b521326e6cd9ff219a06a3aec064`` și mesajul de commit ``Update README title``.
 
 Acum vedem că repository-ul indică spre acest nou commit.
 Ne dăm seama de acest lucru pentru că ``HEAD`` se află în dreptul commitului tocmai făcut.
