@@ -540,6 +540,15 @@ stația ``10.10.10.3``.
 Securizarea conexiunii la Internet folosind un VPN
 --------------------------------------------------
 
+.. note::
+
+    Pentru rularea acestui demo rulați în directorul
+    ``~/uso.git/labs/03-user/lab-containers/`` comanzile ``./lab_prepare.sh install vpn``.
+    Pentru a ne conecta la infrastructura pentru această secțiune vom folosi
+    comanda ``./lab_prepare.sh connect openvpn-client1`` pentru stația
+    ``openvpn-client1`` și ``./lab_prepare.sh connect openvpn-client2`` pentru a vă
+    conecta la stația ``openvpn-client2``.
+
 O aplicație de tip VPN (*Virtual Private Network*) este o aplicație care permite
 crearea rețelelor de calculatoare în Internet fără ca acestea să fie neapărat în
 aceeași rețea fizică.
@@ -563,7 +572,8 @@ mai departe dintr-o rețea privată în alta.
 Recapitulare - Identificarea adreselor IP ale interfețelor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Identificați adresele IP ale celor două stații la care aveți acces.
+Identificați adresele IP configurate pe interfețele stațiilor
+``openvpn-client1`` și ``openvpn-client2``.
 
 Recapitulare - Verificarea conexiunii între două stații
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -576,33 +586,84 @@ identificate mai sus.
     Nu există conectivitate între cele două stații, deoarece acestea se află în
     rețele private diferite.
 
-Pentru a porni VPN-ul, vom folosi ``openvpn``. Rulați următoarea comandă pe ambele
-stații pentru a porni clientul de VPN.
+Pentru a porni VPN-ul, vom folosi comanda ``openvpn``. Rulați următoarea comandă
+pe ambele stații pentru a porni clientul de VPN:
 
 .. code-block::
 
-    student@tom:~$ ip a s
-    TODO
+    root@openvpn-client1:~# openvpn --config ./openvpn-client1.ovpn --daemon
+    root@openvpn-client1:~# ip address show
+    1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+        link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+        inet 127.0.0.1/8 scope host lo
+           valid_lft forever preferred_lft forever
+    3: tun0: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UNKNOWN group default qlen 100
+        link/none
+        inet 192.168.255.6 peer 192.168.255.5/32 scope global tun0
+           valid_lft forever preferred_lft forever
+    45: eth0@if46: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default
+        link/ether 02:42:0a:0a:0a:0f brd ff:ff:ff:ff:ff:ff link-netnsid 0
+        inet 10.10.10.15/24 brd 10.10.10.255 scope global eth0
+           valid_lft forever preferred_lft forever
 
-    student@jerry:~$ ip a s
-    TODO
+    root@openvpn-client2:~# openvpn --config ./openvpn-client2.ovpn --daemon
+    root@openvpn-client2:~# ip address show
+    1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+        link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+        inet 127.0.0.1/8 scope host lo
+           valid_lft forever preferred_lft forever
+    2: tun0: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UNKNOWN group default qlen 100
+        link/none
+        inet 192.168.255.10 peer 192.168.255.9/32 scope global tun0
+           valid_lft forever preferred_lft forever
+    47: eth0@if48: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default
+        link/ether 02:42:0b:0b:0b:0f brd ff:ff:ff:ff:ff:ff link-netnsid 0
+        inet 11.11.11.15/24 brd 11.11.11.255 scope global eth0
+           valid_lft forever preferred_lft forever
+
 
 Observăm că a apărut o nouă interfață de rețea în sistem care nu are o componentă
 fizică. Adresa IP setată pe această interfață este adresa care identifică
 stațiile în rețeaua VPN-ului. Observați că ambele adrese de pe interfețele
-<TODO> sunt foarte similare. Asta înseamnă că cele două stații sunt acum în
+``tun0`` sunt foarte similare. Asta înseamnă că cele două stații sunt acum în
 aceeași rețea virtuală
 
-Testați conectivitatea de pe stația <TODO> cu stația de la adresa <TODO>.
+Recapitulare - Verificarea conexiunii între două stații
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Testați conectivitatea de pe stația ``openvpn-client1`` cu stația
+``openvpn-client2`` folosind adresele configurate pe interfața ``tun0`` de pe
+ambele sisteme.
+
+Modificarea drumului prin care trec datele
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Pentru a verifica că drumul pachetului chiar trece prin VPN, rulăm comanda
-``traceroute 8.8.8.8`` și observăm că mesajele spre Internet nu mai trec prin
-interfața eth0, ci trec prin interfața virtuală, ajung la serverul VPN în pasul
-<TODO>, iar abia apoi sunt lansate mai departe spre Internet.
+``traceroute 8.8.8.8`` și observăm că mesajele spre Internet nu trec prin
+interfața eth0, ci trec prin interfața ``tun0``, ajung la serverul VPN
+identifiat prin adresa ``192.168.255.1`` în pasul 1, iar abia apoi sunt lansate
+mai departe spre Internet.
 
 .. code-block::
 
-    student@tom:~$ traceroute 8.8.8.8
+    root@openvpn-client1:~# traceroute 8.8.8.8
+    traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+     1  192.168.255.1 (192.168.255.1)  6.033 ms  6.031 ms  5.881 ms
+     2  10.10.10.253 (10.10.10.253)  8.582 ms  8.447 ms  8.306 ms
+     3  10.0.2.2 (10.0.2.2)  8.165 ms  8.031 ms  7.808 ms
+     4  * * *
+     5  * * *
+     6  r-c3550-l3-vlan11.bucharest.roedu.net (141.85.0.65)  8.308 ms  5.578 ms  4.876 ms
+     7  172.31.255.93 (172.31.255.93)  4.681 ms  6.882 ms  6.855 ms
+     8  po-23.acc1.buc.roedu.net (37.128.225.225)  16.711 ms  16.151 ms  16.751 ms
+     9  bu-13.core2.buc.roedu.net (37.128.232.177)  9.248 ms  9.268 ms  9.232 ms
+    10  hu-0-0-0-0.core3.nat.roedu.net (37.128.239.101)  8.510 ms  8.466 ms  6.542 ms
+    11  te-0-6-0-1.peers1.nat.roedu.net (37.128.239.42)  6.347 ms  5.894 ms  5.987 ms
+    12  google.interlan.ro (86.104.125.129)  31.665 ms  31.614 ms  31.529 ms
+    13  108.170.252.65 (108.170.252.65)  31.506 ms 108.170.251.193 (108.170.251.193)  31.146 ms 108.170.252.1 (108.170.252.1)  31.591 ms
+    14  172.253.73.153 (172.253.73.153)  31.795 ms 74.125.37.197 (74.125.37.197)  30.256 ms 74.125.37.167 (74.125.37.167)  30.068 ms
+    15  dns.google (8.8.8.8)  29.710 ms  34.122 ms  30.538 ms
+
 
 Astfel, un pachet care se va îndrepta spre o destinație, poate să depășească
 anumite filtre bazate pe locație, deoarece locația de unde provine pachetul va
