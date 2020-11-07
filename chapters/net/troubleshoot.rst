@@ -12,7 +12,7 @@ Conectarea la rețea și la Internet
     Infrastructura laboratorului este bazată pe containere docker ale căror
     imagini vor fi generate pe propriul calculator. Dacă nu veți deja instalat
     Docker Engine pe sistem, scriptul
-    ``~/uso-lab/labs/03-user/lab-containers/lab-prepare.sh`` vă va instala aplicația.
+    ``~/uso-lab/labs/03-user/lab-containers/lab_prepare.sh`` vă va instala aplicația.
 
     După ce ați terminat de lucrat vă recomandăm să opriți containerele rulând
     comanda ``./lab-prepare.sh delete`` în directorul
@@ -300,7 +300,7 @@ server public din Internet), folosim comanda:
 
 .. code-block::
 
-    student@uso:~# ping -c 4 8.8.8.8
+    student@uso:~$ ping -c 4 8.8.8.8
     PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
     64 bytes from 8.8.8.8: icmp_seq=1 ttl=61 time=23.0 ms
     64 bytes from 8.8.8.8: icmp_seq=2 ttl=61 time=25.7 ms
@@ -320,7 +320,7 @@ mesajul de eroare va arăta în felul următor:
 
 .. code-block::
 
-    student@uso:~# ping 10.10.10.10
+    student@uso:~$ ping 10.10.10.10
     PING 10.10.10.10 (10.10.10.10) 56(84) bytes of data.
     From 10.10.10.3 icmp_seq=1 Destination Host Unreachable
     From 10.10.10.3 icmp_seq=2 Destination Host Unreachable
@@ -348,7 +348,7 @@ Pentru a identifica gateway-ul, folosim comanda ``ip route show`` în felul urm�
 
 .. code-block::
 
-    student@uso:~# ip route show
+    student@uso:~$ ip route show
     10.0.2.0/24 dev enp0s3 proto kernel scope link src 10.0.2.15 metric 100
     169.254.0.0/16 dev enp0s3 scope link metric 1000
     172.17.0.0/16 dev docker0 proto kernel scope link src 172.17.0.1 linkdown
@@ -376,7 +376,7 @@ Verificați conexiunea cu gateway-ul folosind comanda ``ping``.
 
 Pentru verificarea conexiunii la Internet este bine să verificăm cu o adresă
 consacrată, care avem încredere că nu va avea probleme tehnice. Un astfel de
-exemplu este serverul oferit de Google de la adresa IP ``4.4.4.4``.
+exemplu este serverul oferit de Google de la adresa IP ``1.1.1.1``.
 
 Exercițiu - Verificarea conectivității la Internet
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -395,7 +395,7 @@ reținem nume decât adrese IP.
 
 Pentru a rezolva această necesitate folosim serviciul DNS. Acesta este oferit de
 un server către care noi trimitem cereri de *lookup* pentru o adresa
-*hostname* cum ar fi ``www.google.com``. Serverul DSN va răspunde cu adresa IP
+*hostname* cum ar fi ``www.google.com``. Serverul DNS va răspunde cu adresa IP
 asociată cu adresa cerută.
 
 Ne dorim să avem un serviciu DNS funcțional în permanență pe sistemul pe care lucrăm.
