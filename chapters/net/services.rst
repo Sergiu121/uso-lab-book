@@ -563,7 +563,7 @@ mai pot fi văzute de alte entități până când ajung la serverul VPN.
 
 Al doilea avantaj al VPN-urilor este interconectarea facilă între calculatoare
 care se află în rețele private diferite. De exemplu, pentru a juca un joc în
-LAN, putem folosi un VPN, cum ar fi Hamachi, la care se conectează doi
+LAN, putem folosi un VPN, cum ar fi Hamachi [#Hamachi]_ , la care se conectează doi
 utilizatori. Serverul de VPN va primi datele de la clienți și le va trimite
 mai departe dintr-o rețea privată în alta.
 
@@ -678,6 +678,9 @@ același: ne conectăm la un server care asigură conectivitatea între stații 
 în mod normal nu ar fi interconectate.
 
 .. rubric:: Notă de subsol
+
+.. [#Hamachi]
+        https://www.vpn.net/
 
 .. [#WireGuard]
         https://www.wireguard.com/
