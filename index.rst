@@ -87,6 +87,20 @@ USO lab book
    chapters/improve-cli/improve-shell.rst
    chapters/improve-cli/term-multiplexing.rst
 
+.. toctree::
+   :numbered:
+   :maxdepth: 3
+   :caption: Planificarea sarcinilor administrative
+
+   chapters/task-admin/workstation.rst
+   chapters/task-admin/remote.rst
+   chapters/task-admin/usage.rst
+   chapters/task-admin/storage.rst
+   chapters/task-admin/services-config.rst
+   chapters/task-admin/services-install.rst
+   chapters/task-admin/monitor.rst
+   chapters/task-admin/cron.rst
+
 
 Indices and tables
 ==================
